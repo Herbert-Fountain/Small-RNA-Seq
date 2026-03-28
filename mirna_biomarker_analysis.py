@@ -1,0 +1,722 @@
+#!/usr/bin/env python3
+"""
+miRNA Biomarker Analysis Pipeline
+==================================
+Interactive analysis of differential miRNA expression from small RNA-seq data.
+Generates interactive Plotly HTML plots for exploring potential biomarkers.
+
+Groups: Cells (4T1), Heart (He), Kidney (Ki), Liver (Li), Lung (Lu), Spleen (Sp)
+"""
+
+import pandas as pd
+import numpy as np
+import plotly.graph_objects as go
+import plotly.express as px
+from plotly.subplots import make_subplots
+import os
+
+# =============================================================================
+# 1. DATA PARSING
+# =============================================================================
+
+def parse_signatures_sheet(filepath):
+    """Parse the signatures DE genes table (one-vs-rest comparisons)."""
+    df_raw = pd.read_excel(filepath, sheet_name="signatures DE genes table", header=None)
+    data = df_raw.iloc[5:].copy()
+    data.columns = range(len(data.columns))
+    data = data.reset_index(drop=True)
+
+    # Gene info
+    genes = pd.DataFrame({
+        'Index': pd.to_numeric(data[0], errors='coerce'),
+        'SortOrder': data[1],
+        'GeneID': data[2],
+        'Tests': pd.to_numeric(data[3], errors='coerce'),
+        'Significant': pd.to_numeric(data[4], errors='coerce'),
+        'DIFF': pd.to_numeric(data[5], errors='coerce'),
+        'MaxLog2FC': pd.to_numeric(data[6], errors='coerce'),
+    })
+
+    # Comparison blocks (11 columns each)
+    comparisons_info = [
+        ('He_vs_nonHe', 7),
+        ('Ki_vs_nonKi', 18),
+        ('Li_vs_nonLi', 29),
+        ('Lu_vs_nonLu', 40),
+        ('Sp_vs_nonSp', 51),
+        ('Cells_vs_Organs', 62),
+    ]
+
+    comparisons = {}
+    for comp_name, sc in comparisons_info:
+        comp_df = pd.DataFrame({
+            'GeneID': data[2],
+            'avg_group1': pd.to_numeric(data[sc], errors='coerce'),
+            'avg_group2': pd.to_numeric(data[sc+1], errors='coerce'),
+            'log2avg': pd.to_numeric(data[sc+2], errors='coerce'),
+            'log2FC': pd.to_numeric(data[sc+3], errors='coerce'),
+            'abs_log2FC': pd.to_numeric(data[sc+4], errors='coerce'),
+            'pvalue': pd.to_numeric(data[sc+5], errors='coerce'),
+            'padj': pd.to_numeric(data[sc+6], errors='coerce'),
+            'significant': data[sc+7],
+            'min_nCount': pd.to_numeric(data[sc+8], errors='coerce'),
+            'min_log2FC': pd.to_numeric(data[sc+9], errors='coerce'),
+            'DIFF_EXP': pd.to_numeric(data[sc+10], errors='coerce'),
+        })
+        comparisons[comp_name] = comp_df
+
+    # Group averages
+    group_avg = pd.DataFrame({
+        'GeneID': data[2],
+        'baseMean': pd.to_numeric(data[73], errors='coerce'),
+        'avg_Cells': pd.to_numeric(data[74], errors='coerce'),
+        'avg_He': pd.to_numeric(data[75], errors='coerce'),
+        'avg_Lu': pd.to_numeric(data[76], errors='coerce'),
+        'avg_Li': pd.to_numeric(data[77], errors='coerce'),
+        'avg_Sp': pd.to_numeric(data[78], errors='coerce'),
+        'avg_Ki': pd.to_numeric(data[79], errors='coerce'),
+    })
+
+    # Individual samples
+    sample_counts = pd.DataFrame({
+        'GeneID': data[2],
+        '4T1.1': pd.to_numeric(data[80], errors='coerce'),
+        '4T1.2': pd.to_numeric(data[81], errors='coerce'),
+        '4T1.3': pd.to_numeric(data[82], errors='coerce'),
+        'He.4': pd.to_numeric(data[83], errors='coerce'),
+        'He.5': pd.to_numeric(data[84], errors='coerce'),
+        'Lu.4': pd.to_numeric(data[85], errors='coerce'),
+        'Lu.5': pd.to_numeric(data[86], errors='coerce'),
+        'Lu.3': pd.to_numeric(data[87], errors='coerce'),
+        'Li.4': pd.to_numeric(data[88], errors='coerce'),
+        'Li.5': pd.to_numeric(data[89], errors='coerce'),
+        'Li.3': pd.to_numeric(data[90], errors='coerce'),
+        'Sp.4': pd.to_numeric(data[91], errors='coerce'),
+        'Sp.5': pd.to_numeric(data[92], errors='coerce'),
+        'Sp.3': pd.to_numeric(data[93], errors='coerce'),
+        'Ki.4': pd.to_numeric(data[94], errors='coerce'),
+        'Ki.5': pd.to_numeric(data[95], errors='coerce'),
+    })
+
+    return genes, comparisons, group_avg, sample_counts
+
+
+# =============================================================================
+# 2. INTERACTIVE VOLCANO PLOTS
+# =============================================================================
+
+def create_volcano_plot(comp_df, comp_name, fdr_cutoff=0.05, fc_cutoff=1.0):
+    """Create an interactive volcano plot for a single comparison."""
+    df = comp_df.dropna(subset=['log2FC', 'padj']).copy()
+    df = df[df['padj'] > 0]  # remove zero p-values for log transform
+    df['neg_log10_padj'] = -np.log10(df['padj'])
+
+    # Classify points
+    conditions = [
+        (df['padj'] <= fdr_cutoff) & (df['log2FC'] >= fc_cutoff),
+        (df['padj'] <= fdr_cutoff) & (df['log2FC'] <= -fc_cutoff),
+        (df['padj'] <= fdr_cutoff) & (df['log2FC'].abs() < fc_cutoff),
+    ]
+    choices = ['Up', 'Down', 'Sig (low FC)']
+    df['category'] = np.select(conditions, choices, default='Not Sig')
+
+    color_map = {
+        'Up': '#e74c3c',
+        'Down': '#3498db',
+        'Sig (low FC)': '#95a5a6',
+        'Not Sig': '#d5d8dc'
+    }
+
+    fig = go.Figure()
+
+    for cat in ['Not Sig', 'Sig (low FC)', 'Down', 'Up']:
+        subset = df[df['category'] == cat]
+        if len(subset) == 0:
+            continue
+        fig.add_trace(go.Scattergl(
+            x=subset['log2FC'],
+            y=subset['neg_log10_padj'],
+            mode='markers',
+            name=f'{cat} ({len(subset)})',
+            marker=dict(color=color_map[cat], size=5, opacity=0.7),
+            text=subset['GeneID'],
+            customdata=np.stack([
+                subset['avg_group1'].values,
+                subset['avg_group2'].values,
+                subset['padj'].values,
+                subset['log2FC'].values
+            ], axis=-1),
+            hovertemplate=(
+                '<b>%{text}</b><br>'
+                'log2FC: %{customdata[3]:.3f}<br>'
+                'FDR: %{customdata[2]:.2e}<br>'
+                'Avg Group1: %{customdata[0]:.0f}<br>'
+                'Avg Group2: %{customdata[1]:.0f}<br>'
+                '<extra></extra>'
+            ),
+        ))
+
+    # Add threshold lines
+    fig.add_hline(y=-np.log10(fdr_cutoff), line_dash="dash", line_color="gray",
+                  annotation_text=f"FDR={fdr_cutoff}")
+    fig.add_vline(x=fc_cutoff, line_dash="dash", line_color="gray")
+    fig.add_vline(x=-fc_cutoff, line_dash="dash", line_color="gray")
+
+    # Label top hits
+    top_up = df[(df['category'] == 'Up')].nlargest(5, 'neg_log10_padj')
+    top_down = df[(df['category'] == 'Down')].nlargest(5, 'neg_log10_padj')
+    top_hits = pd.concat([top_up, top_down])
+
+    fig.add_trace(go.Scatter(
+        x=top_hits['log2FC'],
+        y=top_hits['neg_log10_padj'],
+        mode='text',
+        text=top_hits['GeneID'].str.replace('mmu-', ''),
+        textposition='top center',
+        textfont=dict(size=8, color='black'),
+        showlegend=False,
+        hoverinfo='skip',
+    ))
+
+    pretty_name = comp_name.replace('_', ' ').replace('vs', 'vs.')
+    n_up = (df['category'] == 'Up').sum()
+    n_down = (df['category'] == 'Down').sum()
+
+    fig.update_layout(
+        title=dict(text=f'Volcano Plot: {pretty_name}<br><sub>{n_up} up, {n_down} down (FDR<{fdr_cutoff}, |log2FC|>{fc_cutoff})</sub>'),
+        xaxis_title='log2(Fold Change)',
+        yaxis_title='-log10(FDR)',
+        template='plotly_white',
+        width=800,
+        height=600,
+        legend=dict(x=0.01, y=0.99, bgcolor='rgba(255,255,255,0.8)'),
+    )
+    return fig
+
+
+def create_all_volcano_plots(comparisons, output_dir):
+    """Create volcano plots for all comparisons in a single HTML."""
+    from plotly.subplots import make_subplots
+
+    figs = {}
+    for comp_name, comp_df in comparisons.items():
+        fig = create_volcano_plot(comp_df, comp_name)
+        figs[comp_name] = fig
+        fig.write_html(os.path.join(output_dir, f'volcano_{comp_name}.html'))
+
+    # Combined with dropdown
+    combined = go.Figure()
+    comp_names = list(comparisons.keys())
+
+    for i, (comp_name, comp_df) in enumerate(comparisons.items()):
+        df = comp_df.dropna(subset=['log2FC', 'padj']).copy()
+        df = df[df['padj'] > 0]
+        df['neg_log10_padj'] = -np.log10(df['padj'])
+
+        conditions = [
+            (df['padj'] <= 0.05) & (df['log2FC'] >= 1.0),
+            (df['padj'] <= 0.05) & (df['log2FC'] <= -1.0),
+        ]
+        choices = ['Up', 'Down']
+        df['category'] = np.select(conditions, choices, default='NS')
+
+        color_map = {'Up': '#e74c3c', 'Down': '#3498db', 'NS': '#d5d8dc'}
+        visible = (i == 0)
+
+        for cat in ['NS', 'Down', 'Up']:
+            subset = df[df['category'] == cat]
+            if len(subset) == 0:
+                continue
+            combined.add_trace(go.Scattergl(
+                x=subset['log2FC'],
+                y=subset['neg_log10_padj'],
+                mode='markers',
+                name=f'{cat} ({len(subset)})',
+                marker=dict(color=color_map[cat], size=5, opacity=0.7),
+                text=subset['GeneID'],
+                hovertemplate='<b>%{text}</b><br>log2FC: %{x:.3f}<br>-log10(FDR): %{y:.2f}<extra></extra>',
+                visible=visible,
+            ))
+
+    # Build visibility toggles for dropdown
+    traces_per_comp = []
+    idx = 0
+    for comp_name, comp_df in comparisons.items():
+        df = comp_df.dropna(subset=['log2FC', 'padj']).copy()
+        df = df[df['padj'] > 0]
+        conditions = [
+            (df['padj'] <= 0.05) & (df['log2FC'] >= 1.0),
+            (df['padj'] <= 0.05) & (df['log2FC'] <= -1.0),
+        ]
+        df['category'] = np.select(conditions, ['Up', 'Down'], default='NS')
+        n_cats = sum(1 for cat in ['NS', 'Down', 'Up'] if (df['category'] == cat).sum() > 0)
+        traces_per_comp.append(n_cats)
+
+    total_traces = sum(traces_per_comp)
+    buttons = []
+    offset = 0
+    for i, comp_name in enumerate(comp_names):
+        vis = [False] * total_traces
+        for j in range(traces_per_comp[i]):
+            vis[offset + j] = True
+        offset += traces_per_comp[i]
+        pretty = comp_name.replace('_', ' ').replace('vs', 'vs.')
+        buttons.append(dict(label=pretty, method='update',
+                            args=[{'visible': vis},
+                                  {'title': f'Volcano Plot: {pretty}'}]))
+
+    combined.update_layout(
+        updatemenus=[dict(buttons=buttons, direction='down',
+                          x=0.01, xanchor='left', y=1.15, yanchor='top')],
+        title='Volcano Plot: ' + comp_names[0].replace('_', ' ').replace('vs', 'vs.'),
+        xaxis_title='log2(Fold Change)',
+        yaxis_title='-log10(FDR)',
+        template='plotly_white',
+        width=900, height=650,
+    )
+    combined.write_html(os.path.join(output_dir, 'volcano_all_comparisons.html'))
+    return figs
+
+
+# =============================================================================
+# 3. INTERACTIVE HEATMAP
+# =============================================================================
+
+def create_heatmap(group_avg, genes, comparisons, output_dir, top_n=50):
+    """Create an interactive heatmap of top DE miRNAs across all groups."""
+    # Select top DE miRNAs: those with highest DIFF count and highest fold change
+    gene_info = genes[genes['DIFF'] > 0].copy()
+    gene_info = gene_info.sort_values(['DIFF', 'MaxLog2FC'], ascending=[False, False])
+    top_genes = gene_info.head(top_n)['GeneID'].tolist()
+
+    avg_cols = ['avg_Cells', 'avg_He', 'avg_Ki', 'avg_Li', 'avg_Lu', 'avg_Sp']
+    display_names = ['Cells (4T1)', 'Heart', 'Kidney', 'Liver', 'Lung', 'Spleen']
+
+    heatmap_data = group_avg[group_avg['GeneID'].isin(top_genes)].copy()
+    heatmap_data = heatmap_data.set_index('GeneID')
+
+    # Log2 transform (add pseudocount)
+    expr = heatmap_data[avg_cols] + 1
+    log2_expr = np.log2(expr)
+
+    # Z-score normalize per gene (row)
+    z_scores = log2_expr.subtract(log2_expr.mean(axis=1), axis=0).divide(log2_expr.std(axis=1), axis=0)
+    z_scores.columns = display_names
+
+    # Reorder by clustering-like sort: group by max expression group
+    z_scores['max_group'] = z_scores.idxmax(axis=1)
+    group_order = ['Cells (4T1)', 'Heart', 'Kidney', 'Liver', 'Lung', 'Spleen']
+    z_scores['sort_key'] = z_scores['max_group'].map({g: i for i, g in enumerate(group_order)})
+    z_scores = z_scores.sort_values(['sort_key', 'max_group'])
+    z_scores = z_scores.drop(columns=['max_group', 'sort_key'])
+
+    # Build hover text with raw counts
+    raw_for_hover = heatmap_data.loc[z_scores.index, avg_cols]
+    raw_for_hover.columns = display_names
+    hover_text = []
+    for gene in z_scores.index:
+        row = []
+        for grp in display_names:
+            row.append(f'{gene}<br>{grp}<br>Z-score: {z_scores.loc[gene, grp]:.2f}<br>Avg count: {raw_for_hover.loc[gene, grp]:.0f}')
+        hover_text.append(row)
+
+    fig = go.Figure(data=go.Heatmap(
+        z=z_scores.values,
+        x=display_names,
+        y=[g.replace('mmu-', '') for g in z_scores.index],
+        colorscale='RdBu_r',
+        zmid=0,
+        text=hover_text,
+        hoverinfo='text',
+        colorbar=dict(title='Z-score'),
+    ))
+
+    fig.update_layout(
+        title=f'Top {len(z_scores)} Differentially Expressed miRNAs (Z-score normalized)',
+        xaxis_title='Group',
+        yaxis_title='miRNA',
+        template='plotly_white',
+        width=800,
+        height=max(600, len(z_scores) * 18),
+        yaxis=dict(tickfont=dict(size=9)),
+    )
+    fig.write_html(os.path.join(output_dir, 'heatmap_top_DE_miRNAs.html'))
+    return fig
+
+
+# =============================================================================
+# 4. GROUP-SPECIFIC BIOMARKER IDENTIFICATION
+# =============================================================================
+
+def identify_biomarkers(comparisons, group_avg, sample_counts, fdr_cutoff=0.05, fc_cutoff=1.0, min_count=10):
+    """
+    Identify group-specific biomarker miRNAs.
+
+    A group-specific biomarker is a miRNA that is:
+    1. Significantly DE (FDR < cutoff) in the one-vs-rest comparison
+    2. Has |log2FC| > fc_cutoff
+    3. Has sufficient expression (min_count in at least one group)
+
+    Returns a dict of DataFrames, one per group.
+    """
+    group_map = {
+        'He_vs_nonHe': ('Heart', 'avg_He'),
+        'Ki_vs_nonKi': ('Kidney', 'avg_Ki'),
+        'Li_vs_nonLi': ('Liver', 'avg_Li'),
+        'Lu_vs_nonLu': ('Lung', 'avg_Lu'),
+        'Sp_vs_nonSp': ('Spleen', 'avg_Sp'),
+        'Cells_vs_Organs': ('Cells (4T1)', 'avg_Cells'),
+    }
+
+    # Sample groupings for CV calculation
+    sample_groups = {
+        'Cells (4T1)': ['4T1.1', '4T1.2', '4T1.3'],
+        'Heart': ['He.4', 'He.5'],
+        'Kidney': ['Ki.4', 'Ki.5'],
+        'Liver': ['Li.4', 'Li.5', 'Li.3'],
+        'Lung': ['Lu.4', 'Lu.5', 'Lu.3'],
+        'Spleen': ['Sp.4', 'Sp.5', 'Sp.3'],
+    }
+
+    biomarkers = {}
+
+    for comp_name, (group_label, avg_col) in group_map.items():
+        df = comparisons[comp_name].copy()
+        df = df.dropna(subset=['padj', 'log2FC'])
+
+        # Filter for significant with sufficient FC
+        mask = (df['padj'] <= fdr_cutoff) & (df['abs_log2FC'] >= fc_cutoff)
+
+        # Filter for minimum expression
+        avg_data = group_avg.set_index('GeneID')
+        mask_count = df['GeneID'].map(lambda g: avg_data.loc[g, avg_col] >= min_count if g in avg_data.index else False)
+        mask = mask & mask_count
+
+        sig_df = df[mask].copy()
+
+        # Add group average expression
+        sig_df = sig_df.merge(group_avg[['GeneID', 'baseMean', avg_col]], on='GeneID', how='left')
+
+        # Calculate specificity score: ratio of group avg to overall baseMean
+        sig_df['specificity'] = sig_df[avg_col] / (sig_df['baseMean'] + 1)
+
+        # Direction
+        sig_df['direction'] = np.where(sig_df['log2FC'] > 0, 'UP in ' + group_label, 'DOWN in ' + group_label)
+
+        # Calculate CV within the group
+        cvs = []
+        for gene in sig_df['GeneID']:
+            samples = sample_groups[group_label]
+            vals = sample_counts[sample_counts['GeneID'] == gene][samples].values.flatten()
+            vals = vals[~np.isnan(vals)]
+            if len(vals) > 1 and np.mean(vals) > 0:
+                cvs.append(np.std(vals) / np.mean(vals))
+            else:
+                cvs.append(np.nan)
+        sig_df['CV'] = cvs
+
+        # Biomarker score: combine significance, fold change, and specificity
+        sig_df['biomarker_score'] = (
+            -np.log10(sig_df['padj'] + 1e-300) *
+            sig_df['abs_log2FC'] *
+            np.clip(sig_df['specificity'], 0, 10)
+        )
+
+        sig_df = sig_df.sort_values('biomarker_score', ascending=False)
+        biomarkers[group_label] = sig_df
+
+    return biomarkers
+
+
+def create_biomarker_summary(biomarkers, output_dir):
+    """Create summary table and export to CSV."""
+    all_markers = []
+    for group, df in biomarkers.items():
+        top = df.head(20).copy()
+        top['Group'] = group
+        all_markers.append(top)
+
+    summary = pd.concat(all_markers, ignore_index=True)
+    cols = ['Group', 'GeneID', 'log2FC', 'padj', 'avg_group1', 'avg_group2',
+            'direction', 'specificity', 'CV', 'biomarker_score']
+    summary = summary[[c for c in cols if c in summary.columns]]
+    summary.to_csv(os.path.join(output_dir, 'biomarker_candidates.csv'), index=False)
+    return summary
+
+
+# =============================================================================
+# 5. EXPRESSION PROFILE PLOTS
+# =============================================================================
+
+def create_expression_dotplot(biomarkers, group_avg, output_dir, top_per_group=10):
+    """
+    Create an interactive dot plot showing expression of top biomarkers across groups.
+    Dot size = expression level, color = z-score.
+    """
+    avg_cols = ['avg_Cells', 'avg_He', 'avg_Ki', 'avg_Li', 'avg_Lu', 'avg_Sp']
+    display_names = ['Cells (4T1)', 'Heart', 'Kidney', 'Liver', 'Lung', 'Spleen']
+
+    # Collect top biomarkers per group
+    selected_genes = []
+    gene_groups = []
+    for group, df in biomarkers.items():
+        up = df[df['log2FC'] > 0].head(top_per_group)
+        for g in up['GeneID']:
+            if g not in selected_genes:
+                selected_genes.append(g)
+                gene_groups.append(group)
+
+    if not selected_genes:
+        return None
+
+    # Get expression data
+    expr_data = group_avg[group_avg['GeneID'].isin(selected_genes)].copy()
+    expr_data = expr_data.set_index('GeneID')
+    expr_data = expr_data.loc[[g for g in selected_genes if g in expr_data.index]]
+
+    log2_expr = np.log2(expr_data[avg_cols] + 1)
+    z_scores = log2_expr.subtract(log2_expr.mean(axis=1), axis=0).divide(log2_expr.std(axis=1), axis=0)
+
+    # Build the dot plot
+    fig = go.Figure()
+
+    genes_display = [g.replace('mmu-', '') for g in expr_data.index]
+    for j, (col, name) in enumerate(zip(avg_cols, display_names)):
+        sizes = np.log2(expr_data[col].values + 1)
+        sizes = np.clip(sizes * 2, 3, 30)  # scale for visibility
+
+        fig.add_trace(go.Scatter(
+            x=[name] * len(genes_display),
+            y=genes_display,
+            mode='markers',
+            name=name,
+            marker=dict(
+                size=sizes,
+                color=z_scores.iloc[:, j].values,
+                colorscale='RdBu_r',
+                cmid=0,
+                cmin=-3, cmax=3,
+                showscale=(j == 0),
+                colorbar=dict(title='Z-score') if j == 0 else None,
+                line=dict(width=0.5, color='black'),
+            ),
+            customdata=np.stack([
+                expr_data[col].values,
+                z_scores.iloc[:, j].values,
+            ], axis=-1),
+            hovertemplate=(
+                '<b>%{y}</b> in %{x}<br>'
+                'Avg count: %{customdata[0]:.0f}<br>'
+                'Z-score: %{customdata[1]:.2f}<br>'
+                '<extra></extra>'
+            ),
+        ))
+
+    fig.update_layout(
+        title=f'Top {top_per_group} Upregulated Biomarker Candidates per Group',
+        xaxis_title='Group',
+        yaxis_title='miRNA',
+        template='plotly_white',
+        width=900,
+        height=max(600, len(genes_display) * 20),
+        yaxis=dict(tickfont=dict(size=9)),
+        showlegend=False,
+    )
+    fig.write_html(os.path.join(output_dir, 'biomarker_dotplot.html'))
+    return fig
+
+
+def create_individual_expression_plots(biomarkers, sample_counts, output_dir, top_per_group=5):
+    """
+    Create box/strip plots for top biomarker candidates showing individual sample values.
+    """
+    sample_groups = {
+        'Cells (4T1)': ['4T1.1', '4T1.2', '4T1.3'],
+        'Heart': ['He.4', 'He.5'],
+        'Kidney': ['Ki.4', 'Ki.5'],
+        'Liver': ['Li.4', 'Li.5', 'Li.3'],
+        'Lung': ['Lu.4', 'Lu.5', 'Lu.3'],
+        'Spleen': ['Sp.4', 'Sp.5', 'Sp.3'],
+    }
+    group_colors = {
+        'Cells (4T1)': '#e74c3c',
+        'Heart': '#e67e22',
+        'Kidney': '#2ecc71',
+        'Liver': '#9b59b6',
+        'Lung': '#3498db',
+        'Spleen': '#1abc9c',
+    }
+    group_order = ['Cells (4T1)', 'Heart', 'Kidney', 'Liver', 'Lung', 'Spleen']
+
+    # Collect top genes
+    all_top_genes = []
+    for group, df in biomarkers.items():
+        top = df[df['log2FC'] > 0].head(top_per_group)
+        for g in top['GeneID'].values:
+            if g not in all_top_genes:
+                all_top_genes.append(g)
+
+    if not all_top_genes:
+        return None
+
+    n_genes = len(all_top_genes)
+    n_cols = 3
+    n_rows = (n_genes + n_cols - 1) // n_cols
+
+    fig = make_subplots(rows=n_rows, cols=n_cols,
+                        subplot_titles=[g.replace('mmu-', '') for g in all_top_genes],
+                        vertical_spacing=0.06)
+
+    for idx, gene in enumerate(all_top_genes):
+        row = idx // n_cols + 1
+        col = idx % n_cols + 1
+
+        gene_data = sample_counts[sample_counts['GeneID'] == gene]
+        if len(gene_data) == 0:
+            continue
+
+        for group_name in group_order:
+            samples = sample_groups[group_name]
+            vals = gene_data[samples].values.flatten()
+            vals = vals[~np.isnan(vals)]
+
+            fig.add_trace(go.Box(
+                y=vals,
+                name=group_name,
+                marker_color=group_colors[group_name],
+                boxpoints='all',
+                jitter=0.3,
+                pointpos=0,
+                showlegend=(idx == 0),
+                legendgroup=group_name,
+            ), row=row, col=col)
+
+    fig.update_layout(
+        title='Individual Sample Expression: Top Biomarker Candidates',
+        template='plotly_white',
+        width=1100,
+        height=max(400, n_rows * 300),
+        boxmode='group',
+    )
+    fig.write_html(os.path.join(output_dir, 'biomarker_expression_boxplots.html'))
+    return fig
+
+
+# =============================================================================
+# 6. MA PLOT
+# =============================================================================
+
+def create_ma_plots(comparisons, output_dir):
+    """Create MA plots (log2FC vs mean expression) for each comparison."""
+    for comp_name, comp_df in comparisons.items():
+        df = comp_df.dropna(subset=['log2FC', 'padj', 'log2avg']).copy()
+
+        df['significant'] = np.where(
+            (df['padj'] <= 0.05) & (df['abs_log2FC'] >= 1.0), 'DE', 'Not DE'
+        )
+
+        fig = go.Figure()
+        for cat, color in [('Not DE', '#d5d8dc'), ('DE', '#e74c3c')]:
+            subset = df[df['significant'] == cat]
+            fig.add_trace(go.Scattergl(
+                x=subset['log2avg'],
+                y=subset['log2FC'],
+                mode='markers',
+                name=f'{cat} ({len(subset)})',
+                marker=dict(color=color, size=4, opacity=0.6),
+                text=subset['GeneID'],
+                hovertemplate='<b>%{text}</b><br>log2(avg): %{x:.2f}<br>log2FC: %{y:.3f}<extra></extra>',
+            ))
+
+        fig.add_hline(y=0, line_color='black', line_width=0.5)
+        fig.add_hline(y=1, line_dash='dash', line_color='gray')
+        fig.add_hline(y=-1, line_dash='dash', line_color='gray')
+
+        pretty = comp_name.replace('_', ' ').replace('vs', 'vs.')
+        fig.update_layout(
+            title=f'MA Plot: {pretty}',
+            xaxis_title='log2(Mean Expression)',
+            yaxis_title='log2(Fold Change)',
+            template='plotly_white',
+            width=800, height=550,
+        )
+        fig.write_html(os.path.join(output_dir, f'ma_plot_{comp_name}.html'))
+
+
+# =============================================================================
+# MAIN
+# =============================================================================
+
+def main():
+    filepath = "Updated 7066_DEmiRNAs.xlsx"
+    output_dir = "results"
+    os.makedirs(output_dir, exist_ok=True)
+
+    print("=" * 60)
+    print("miRNA Biomarker Analysis Pipeline")
+    print("=" * 60)
+
+    # 1. Parse data
+    print("\n[1/6] Parsing data...")
+    genes, comparisons, group_avg, sample_counts = parse_signatures_sheet(filepath)
+    print(f"  Loaded {len(genes)} miRNAs, {len(comparisons)} comparisons")
+
+    # 2. Volcano plots
+    print("[2/6] Creating interactive volcano plots...")
+    create_all_volcano_plots(comparisons, output_dir)
+    print("  -> volcano_all_comparisons.html + individual volcano plots")
+
+    # 3. Heatmap
+    print("[3/6] Creating interactive heatmap...")
+    create_heatmap(group_avg, genes, comparisons, output_dir, top_n=60)
+    print("  -> heatmap_top_DE_miRNAs.html")
+
+    # 4. Biomarker identification
+    print("[4/6] Identifying group-specific biomarkers...")
+    biomarkers = identify_biomarkers(comparisons, group_avg, sample_counts)
+
+    print("\n  === BIOMARKER SUMMARY ===")
+    for group, df in biomarkers.items():
+        n_total = len(df)
+        n_up = (df['log2FC'] > 0).sum()
+        n_down = (df['log2FC'] < 0).sum()
+        print(f"\n  {group}: {n_total} biomarker candidates ({n_up} up, {n_down} down)")
+        if n_up > 0:
+            top_up = df[df['log2FC'] > 0].head(5)
+            print(f"    Top UP-regulated:")
+            for _, row in top_up.iterrows():
+                print(f"      {row['GeneID']:30s} log2FC={row['log2FC']:+.2f}  FDR={row['padj']:.2e}  score={row['biomarker_score']:.1f}")
+        if n_down > 0:
+            top_down = df[df['log2FC'] < 0].head(5)
+            print(f"    Top DOWN-regulated:")
+            for _, row in top_down.iterrows():
+                print(f"      {row['GeneID']:30s} log2FC={row['log2FC']:+.2f}  FDR={row['padj']:.2e}  score={row['biomarker_score']:.1f}")
+
+    summary = create_biomarker_summary(biomarkers, output_dir)
+    print(f"\n  -> biomarker_candidates.csv ({len(summary)} candidates)")
+
+    # 5. Expression plots
+    print("\n[5/6] Creating expression profile plots...")
+    create_expression_dotplot(biomarkers, group_avg, output_dir)
+    print("  -> biomarker_dotplot.html")
+
+    create_individual_expression_plots(biomarkers, sample_counts, output_dir)
+    print("  -> biomarker_expression_boxplots.html")
+
+    # 6. MA plots
+    print("[6/6] Creating MA plots...")
+    create_ma_plots(comparisons, output_dir)
+    print("  -> MA plots for each comparison")
+
+    print("\n" + "=" * 60)
+    print("ANALYSIS COMPLETE")
+    print(f"All outputs saved to: {output_dir}/")
+    print("=" * 60)
+    print("\nGenerated files:")
+    for f in sorted(os.listdir(output_dir)):
+        size = os.path.getsize(os.path.join(output_dir, f))
+        print(f"  {f:45s} ({size/1024:.0f} KB)")
+
+
+if __name__ == "__main__":
+    main()
