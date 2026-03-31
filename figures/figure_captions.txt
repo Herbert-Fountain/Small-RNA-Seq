@@ -1,0 +1,107 @@
+
+================================================================================
+FIGURE CAPTIONS — 7066S Small RNA-Seq Experiment
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+Figure 1: Counts Distribution (Raw and Normalized)
+────────────────────────────────────────────────────────────────────────────────
+
+Boxplots showing the distribution of small RNA (miRNA) read counts across all
+16 samples before (left panel) and after (right panel) normalization. Samples
+are derived from six experimental groups: 4T1 cell line (Cells, n=3), Heart
+(He, n=2), Lung (Lu, n=3), Liver (Li, n=3), Spleen (Sp, n=3), and Kidney
+(Ki, n=2). Box colors correspond to experimental groups. The y-axis is shown
+on a log10 scale.
+
+KEY TAKEAWAYS: After normalization, the median expression levels are more
+consistent across samples, indicating successful library size correction. The
+Liver (Li) samples show notably higher expression of certain miRNAs, while
+the 4T1 cell line samples (Cells) tend to have a different count distribution
+compared to the organ-derived samples, consistent with their distinct
+biological origin as a breast cancer cell line.
+
+────────────────────────────────────────────────────────────────────────────────
+Figure 2: Sample Clustering Dendrogram
+────────────────────────────────────────────────────────────────────────────────
+
+Hierarchical clustering dendrogram of all 16 samples based on normalized miRNA
+expression counts. Euclidean distance was used as the distance metric and Ward's
+minimum variance criterion was used for agglomeration. Samples are labeled by
+tissue type and replicate number along the x-axis.
+
+KEY TAKEAWAYS: Samples cluster primarily by tissue of origin, demonstrating
+strong biological reproducibility. The 4T1 cell samples (4T1-1, 4T1-2, 4T1-3)
+form a tight cluster that is most distinct from all organ samples, as expected
+for a cultured cancer cell line versus normal tissues. Among the organs, Liver
+(Li) and Spleen (Sp) samples each form distinct subclusters. Heart (He) and
+Kidney (Ki) samples cluster together, while Lung (Lu) samples are positioned
+nearby, suggesting some shared miRNA expression patterns among these tissues.
+The clear separation between biological groups confirms that the primary source
+of variance is biological condition rather than technical noise.
+
+────────────────────────────────────────────────────────────────────────────────
+Figure 3: Principal Component Analysis (PCA)
+────────────────────────────────────────────────────────────────────────────────
+
+Principal Component Analysis of normalized miRNA expression across all 16
+samples. The left panel displays PC1 vs PC2, and the right panel displays PC1
+vs PC3. PC1 explains 47.83% of the total variance, PC2
+explains 13.91%, and PC3 explains 12.07%.
+Points are colored by tissue group and labeled with sample identifiers.
+
+KEY TAKEAWAYS: PC1 (47.83% variance) clearly separates the
+Liver (Li) samples from all other groups, indicating that Liver has the most
+distinctive miRNA profile. PC2 (13.91% variance) separates
+the Lung (Lu) samples upward and 4T1 Cells to the left, further resolving
+tissue-specific expression signatures. In the PC1 vs PC3 plot, the Spleen (Sp)
+samples separate along PC3, revealing additional tissue-specific variance not
+captured in the first two components. Replicates within each group cluster
+tightly together, confirming high reproducibility. The 4T1 cell line samples
+form a compact, distinct cluster, consistent with their unique biology as
+tumor-derived cells compared to normal organ tissues.
+
+────────────────────────────────────────────────────────────────────────────────
+Figure 4: MA-Plots (Differential Expression — All Pairwise Comparisons)
+────────────────────────────────────────────────────────────────────────────────
+
+MA-plots for all 15 pairwise comparisons from the 6-group differential
+expression analysis. Each panel shows the log2 fold change (y-axis) versus the
+mean of normalized counts (x-axis) for all detected miRNAs. Differentially
+expressed miRNAs (FDR < 0.05) are highlighted in red; non-significant miRNAs
+are shown in black. Triangles indicate features with fold changes exceeding the
+display range. The number of significantly upregulated and downregulated miRNAs
+is indicated in each panel title.
+
+Summary of differentially expressed miRNAs per comparison (FDR < 0.05):
+  He vs Cells          —  598 DE miRNAs (369 up, 229 down)
+  Ki vs Cells          —  590 DE miRNAs (358 up, 232 down)
+  Li vs Cells          —  666 DE miRNAs (409 up, 257 down)
+  Lu vs Cells          —  654 DE miRNAs (410 up, 244 down)
+  Sp vs Cells          —  603 DE miRNAs (380 up, 223 down)
+  Ki vs He             —  216 DE miRNAs (98 up, 118 down)
+  Li vs He             —  258 DE miRNAs (116 up, 142 down)
+  Lu vs He             —  203 DE miRNAs (125 up, 78 down)
+  Sp vs He             —  399 DE miRNAs (201 up, 198 down)
+  Ki vs Li             —  204 DE miRNAs (117 up, 87 down)
+  Ki vs Lu             —  217 DE miRNAs (79 up, 138 down)
+  Ki vs Sp             —  355 DE miRNAs (160 up, 195 down)
+  Li vs Lu             —  351 DE miRNAs (139 up, 212 down)
+  Sp vs Li             —  400 DE miRNAs (227 up, 173 down)
+  Sp vs Lu             —  435 DE miRNAs (219 up, 216 down)
+
+KEY TAKEAWAYS: The largest numbers of differentially expressed miRNAs are
+observed in comparisons involving the 4T1 Cells versus organ tissues
+(particularly Cells vs Liver, Cells vs Lung, and Cells vs Spleen), reflecting
+the fundamentally different miRNA programs between a breast cancer cell line
+and normal murine tissues. Among organ-to-organ comparisons, Liver shows the
+most distinct miRNA profile with high numbers of DE miRNAs against all other
+organs, consistent with the PCA results. Kidney vs Spleen and Kidney vs Lung
+comparisons also reveal substantial differential expression. Heart tends to
+have fewer DE miRNAs in pairwise organ comparisons, potentially reflecting
+shared expression patterns with Kidney and Lung. The symmetry of up- vs
+down-regulated miRNAs varies by comparison, with some comparisons showing
+strongly asymmetric regulation (e.g., more miRNAs upregulated in one tissue
+relative to another), pointing to tissue-specific miRNA regulatory programs.
+
+================================================================================
