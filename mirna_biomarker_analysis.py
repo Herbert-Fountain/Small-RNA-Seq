@@ -192,96 +192,6 @@ def create_volcano_plot(comp_df, comp_name, fdr_cutoff=0.05, fc_cutoff=1.0):
     n_up = (df['category'] == 'Up').sum()
     n_down = (df['category'] == 'Down').sum()
 
-    # Build control buttons
-    # Collect the miRNA label annotations (those with a font dict)
-    base_annotations = list(fig.layout.annotations)
-
-    # Helper: update annotation properties for miRNA labels only
-    def _make_annot_buttons(base, prop, values, fmt_label):
-        buttons = []
-        for val in values:
-            new_annots = []
-            for a in base:
-                a_dict = a.to_plotly_json()
-                if a_dict.get('font'):  # miRNA label annotations have font
-                    a_dict = dict(a_dict)
-                    if prop == 'font.size':
-                        a_dict['font'] = dict(a_dict['font'])
-                        a_dict['font']['size'] = val
-                    elif prop == 'arrowsize':
-                        a_dict['arrowsize'] = val
-                    elif prop == 'arrowwidth':
-                        a_dict['arrowwidth'] = val
-                    elif prop == 'arrowhead':
-                        a_dict['arrowhead'] = val
-                    elif prop == 'arrowcolor':
-                        a_dict['arrowcolor'] = val
-                new_annots.append(a_dict)
-            buttons.append(dict(
-                label=fmt_label(val),
-                method='relayout',
-                args=[{'annotations': new_annots}],
-            ))
-        return buttons
-
-    label_buttons = _make_annot_buttons(
-        base_annotations, 'font.size',
-        [7, 8, 9, 10, 11, 12, 14, 16],
-        lambda v: f'{v}pt')
-
-    title_sizes = [12, 14, 16, 18, 20]
-    title_buttons = [dict(label=f'{sz}pt', method='relayout',
-                          args=[{'title.font.size': sz}])
-                     for sz in title_sizes]
-
-    axis_sizes = [10, 12, 14, 16, 18]
-    axis_buttons = [dict(label=f'{sz}pt', method='relayout',
-                         args=[{'xaxis.title.font.size': sz,
-                                'yaxis.title.font.size': sz,
-                                'xaxis.tickfont.size': sz - 2,
-                                'yaxis.tickfont.size': sz - 2}])
-                    for sz in axis_sizes]
-
-    arrow_size_buttons = _make_annot_buttons(
-        base_annotations, 'arrowsize',
-        [0.5, 0.75, 1.0, 1.5, 2.0, 3.0],
-        lambda v: f'{v}x')
-
-    arrow_width_buttons = _make_annot_buttons(
-        base_annotations, 'arrowwidth',
-        [0.5, 1.0, 1.5, 2.0, 3.0],
-        lambda v: f'{v}px')
-
-    arrow_head_buttons = _make_annot_buttons(
-        base_annotations, 'arrowhead',
-        [0, 1, 2, 3, 4, 5, 6, 7],
-        lambda v: ['none', 'thin', 'arrow', 'barbed', 'wide',
-                    'diamond', 'dot', 'open'][v])
-
-    arrow_colors = [
-        ('gray', 'gray'), ('black', 'black'), ('red', '#e74c3c'),
-        ('blue', '#3498db'), ('green', '#27ae60'), ('dark gray', '#555555'),
-    ]
-    arrow_color_buttons = _make_annot_buttons(
-        base_annotations, 'arrowcolor',
-        [c[1] for c in arrow_colors],
-        lambda v: [c[0] for c in arrow_colors][[c[1] for c in arrow_colors].index(v)])
-
-    title_x_buttons = [
-        dict(label=pos, method='relayout', args=[{'title.x': val}])
-        for pos, val in [('left', 0.0), ('center', 0.5), ('right', 1.0)]
-    ]
-
-    title_pad_buttons = [
-        dict(label=f'{p}px', method='relayout', args=[{'title.pad.t': p}])
-        for p in [0, 10, 20, 30, 40, 50]
-    ]
-
-    # Shared dropdown styling
-    dd = dict(showactive=True, bgcolor='rgba(240,240,240,0.9)',
-              bordercolor='gray', font=dict(size=10),
-              pad=dict(r=5, t=5), type='dropdown', direction='down')
-
     fig.update_layout(
         title=dict(
             text=(f'Volcano Plot: {pretty_name}<br>'
@@ -294,61 +204,228 @@ def create_volcano_plot(comp_df, comp_name, fdr_cutoff=0.05, fc_cutoff=1.0):
         xaxis_title='log2(Fold Change)',
         yaxis_title='-log10(FDR)',
         template='plotly_white',
-        width=950,
-        height=700,
+        width=900,
+        height=650,
         legend=dict(x=0.01, y=0.99, bgcolor='rgba(255,255,255,0.8)'),
-        updatemenus=[
-            dict(buttons=label_buttons, x=1.0, xanchor='left',
-                 y=1.0, yanchor='top', **dd),
-            dict(buttons=title_buttons, x=1.0, xanchor='left',
-                 y=0.88, yanchor='top', **dd),
-            dict(buttons=axis_buttons, x=1.0, xanchor='left',
-                 y=0.76, yanchor='top', **dd),
-            dict(buttons=arrow_size_buttons, x=1.0, xanchor='left',
-                 y=0.64, yanchor='top', **dd),
-            dict(buttons=arrow_width_buttons, x=1.0, xanchor='left',
-                 y=0.52, yanchor='top', **dd),
-            dict(buttons=arrow_head_buttons, x=1.0, xanchor='left',
-                 y=0.40, yanchor='top', **dd),
-            dict(buttons=arrow_color_buttons, x=1.0, xanchor='left',
-                 y=0.28, yanchor='top', **dd),
-            dict(buttons=title_x_buttons, x=1.0, xanchor='left',
-                 y=0.16, yanchor='top', **dd),
-            dict(buttons=title_pad_buttons, x=1.0, xanchor='left',
-                 y=0.04, yanchor='top', **dd),
-        ],
-        annotations=base_annotations + [
-            dict(text='Labels:', x=1.0, xref='paper', xanchor='left',
-                 y=1.04, yref='paper', yanchor='top',
-                 showarrow=False, font=dict(size=9, color='gray')),
-            dict(text='Title size:', x=1.0, xref='paper', xanchor='left',
-                 y=0.92, yref='paper', yanchor='top',
-                 showarrow=False, font=dict(size=9, color='gray')),
-            dict(text='Axes:', x=1.0, xref='paper', xanchor='left',
-                 y=0.80, yref='paper', yanchor='top',
-                 showarrow=False, font=dict(size=9, color='gray')),
-            dict(text='Arrow size:', x=1.0, xref='paper', xanchor='left',
-                 y=0.68, yref='paper', yanchor='top',
-                 showarrow=False, font=dict(size=9, color='gray')),
-            dict(text='Arrow width:', x=1.0, xref='paper', xanchor='left',
-                 y=0.56, yref='paper', yanchor='top',
-                 showarrow=False, font=dict(size=9, color='gray')),
-            dict(text='Arrowhead:', x=1.0, xref='paper', xanchor='left',
-                 y=0.44, yref='paper', yanchor='top',
-                 showarrow=False, font=dict(size=9, color='gray')),
-            dict(text='Arrow color:', x=1.0, xref='paper', xanchor='left',
-                 y=0.32, yref='paper', yanchor='top',
-                 showarrow=False, font=dict(size=9, color='gray')),
-            dict(text='Title pos:', x=1.0, xref='paper', xanchor='left',
-                 y=0.20, yref='paper', yanchor='top',
-                 showarrow=False, font=dict(size=9, color='gray')),
-            dict(text='Title pad:', x=1.0, xref='paper', xanchor='left',
-                 y=0.08, yref='paper', yanchor='top',
-                 showarrow=False, font=dict(size=9, color='gray')),
-        ],
-        margin=dict(r=170),
     )
     return fig
+
+
+def _write_volcano_html(fig, filepath):
+    """Write a volcano plot to an HTML file with an external control panel.
+    Controls use JavaScript to update individual properties without
+    resetting other settings."""
+    plot_div = fig.to_html(full_html=False, include_plotlyjs='cdn',
+                           config={'editable': True})
+    # Find the div id
+    import re as _re
+    div_match = _re.search(r'id="([^"]+)"', plot_div)
+    div_id = div_match.group(1) if div_match else 'plot'
+
+    html = f"""<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+  body {{ margin: 0; font-family: Arial, sans-serif; background: #fafafa; }}
+  .container {{ display: flex; gap: 0; }}
+  .plot-area {{ flex: 1; min-width: 0; }}
+  .controls {{
+    width: 220px; min-width: 220px; padding: 14px 16px;
+    background: #f5f5f5; border-left: 1px solid #ddd;
+    overflow-y: auto; max-height: 100vh; box-sizing: border-box;
+  }}
+  .controls h3 {{
+    margin: 0 0 12px 0; font-size: 14px; color: #333;
+    border-bottom: 2px solid #999; padding-bottom: 6px;
+  }}
+  .ctrl-group {{
+    margin-bottom: 10px;
+  }}
+  .ctrl-group label {{
+    display: block; font-size: 11px; color: #666;
+    margin-bottom: 3px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }}
+  .ctrl-group select, .ctrl-group input[type=range] {{
+    width: 100%; box-sizing: border-box; font-size: 12px;
+    padding: 4px 6px; border: 1px solid #ccc; border-radius: 3px;
+    background: white;
+  }}
+  .ctrl-group input[type=color] {{
+    width: 100%; height: 28px; border: 1px solid #ccc;
+    border-radius: 3px; cursor: pointer; padding: 2px;
+  }}
+  .ctrl-group .val-display {{
+    font-size: 10px; color: #888; text-align: right; margin-top: 1px;
+  }}
+  hr.sep {{ border: none; border-top: 1px solid #ddd; margin: 12px 0; }}
+</style>
+</head><body>
+<div class="container">
+  <div class="plot-area">{plot_div}</div>
+  <div class="controls">
+    <h3>Display Controls</h3>
+
+    <div class="ctrl-group">
+      <label>Label Font Size</label>
+      <input type="range" id="labelSize" min="6" max="20" value="10" step="1">
+      <div class="val-display" id="labelSizeVal">10pt</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Title Font Size</label>
+      <input type="range" id="titleSize" min="10" max="28" value="16" step="1">
+      <div class="val-display" id="titleSizeVal">16pt</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Axis Label Size</label>
+      <input type="range" id="axisSize" min="8" max="22" value="14" step="1">
+      <div class="val-display" id="axisSizeVal">14pt</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Tick Label Size</label>
+      <input type="range" id="tickSize" min="6" max="18" value="12" step="1">
+      <div class="val-display" id="tickSizeVal">12pt</div>
+    </div>
+
+    <hr class="sep">
+
+    <div class="ctrl-group">
+      <label>Arrow Size</label>
+      <input type="range" id="arrowSize" min="0.5" max="4" value="1" step="0.25">
+      <div class="val-display" id="arrowSizeVal">1x</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Arrow Width</label>
+      <input type="range" id="arrowWidth" min="0.5" max="4" value="1" step="0.5">
+      <div class="val-display" id="arrowWidthVal">1px</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Arrowhead Style</label>
+      <select id="arrowHead">
+        <option value="0">None</option>
+        <option value="1">Thin</option>
+        <option value="2" selected>Arrow</option>
+        <option value="3">Barbed</option>
+        <option value="4">Wide</option>
+        <option value="5">Diamond</option>
+        <option value="6">Dot</option>
+        <option value="7">Open arrow</option>
+      </select>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Arrow Color</label>
+      <input type="color" id="arrowColor" value="#808080">
+    </div>
+
+    <hr class="sep">
+
+    <div class="ctrl-group">
+      <label>Title Position</label>
+      <select id="titlePos">
+        <option value="0">Left</option>
+        <option value="0.5" selected>Center</option>
+        <option value="1">Right</option>
+      </select>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Title Top Padding</label>
+      <input type="range" id="titlePad" min="0" max="60" value="0" step="5">
+      <div class="val-display" id="titlePadVal">0px</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Legend Font Size</label>
+      <input type="range" id="legendSize" min="8" max="18" value="12" step="1">
+      <div class="val-display" id="legendSizeVal">12pt</div>
+    </div>
+  </div>
+</div>
+
+<script>
+var gd = document.getElementById('{div_id}');
+
+// Helper: update only miRNA label annotations (those with showarrow=true and font)
+function updateAnnotProp(prop, value) {{
+  var annots = gd.layout.annotations;
+  var update = {{}};
+  for (var i = 0; i < annots.length; i++) {{
+    if (annots[i].showarrow && annots[i].font) {{
+      update['annotations[' + i + '].' + prop] = value;
+    }}
+  }}
+  Plotly.relayout(gd, update);
+}}
+
+// Slider helpers
+function bindSlider(id, valId, suffix, callback) {{
+  var el = document.getElementById(id);
+  var valEl = document.getElementById(valId);
+  el.addEventListener('input', function() {{
+    valEl.textContent = el.value + suffix;
+    callback(parseFloat(el.value));
+  }});
+}}
+
+bindSlider('labelSize', 'labelSizeVal', 'pt', function(v) {{
+  updateAnnotProp('font.size', v);
+}});
+
+bindSlider('titleSize', 'titleSizeVal', 'pt', function(v) {{
+  Plotly.relayout(gd, {{'title.font.size': v}});
+}});
+
+bindSlider('axisSize', 'axisSizeVal', 'pt', function(v) {{
+  Plotly.relayout(gd, {{
+    'xaxis.title.font.size': v,
+    'yaxis.title.font.size': v
+  }});
+}});
+
+bindSlider('tickSize', 'tickSizeVal', 'pt', function(v) {{
+  Plotly.relayout(gd, {{
+    'xaxis.tickfont.size': v,
+    'yaxis.tickfont.size': v
+  }});
+}});
+
+bindSlider('arrowSize', 'arrowSizeVal', 'x', function(v) {{
+  updateAnnotProp('arrowsize', v);
+}});
+
+bindSlider('arrowWidth', 'arrowWidthVal', 'px', function(v) {{
+  updateAnnotProp('arrowwidth', v);
+}});
+
+document.getElementById('arrowHead').addEventListener('change', function() {{
+  updateAnnotProp('arrowhead', parseInt(this.value));
+}});
+
+document.getElementById('arrowColor').addEventListener('input', function() {{
+  updateAnnotProp('arrowcolor', this.value);
+}});
+
+document.getElementById('titlePos').addEventListener('change', function() {{
+  Plotly.relayout(gd, {{'title.x': parseFloat(this.value)}});
+}});
+
+bindSlider('titlePad', 'titlePadVal', 'px', function(v) {{
+  Plotly.relayout(gd, {{'title.pad.t': v}});
+}});
+
+bindSlider('legendSize', 'legendSizeVal', 'pt', function(v) {{
+  Plotly.relayout(gd, {{'legend.font.size': v}});
+}});
+</script>
+</body></html>"""
+
+    with open(filepath, 'w') as f:
+        f.write(html)
 
 
 def create_all_volcano_plots(comparisons, output_dir):
@@ -363,8 +440,7 @@ def create_all_volcano_plots(comparisons, output_dir):
             comp_df['log2FC'] = -comp_df['log2FC']
         fig = create_volcano_plot(comp_df, comp_name)
         figs[comp_name] = fig
-        fig.write_html(os.path.join(output_dir, f'volcano_{comp_name}.html'),
-                       config={'editable': True})
+        _write_volcano_html(fig, os.path.join(output_dir, f'volcano_{comp_name}.html'))
 
     # Combined with dropdown
     combined = go.Figure()
