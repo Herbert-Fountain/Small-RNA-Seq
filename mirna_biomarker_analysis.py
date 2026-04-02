@@ -537,29 +537,87 @@ document.getElementById('subtitleApply').addEventListener('click', function() {{
   Plotly.relayout(gd, {{'title.text': full}});
 }});
 
-document.getElementById('exportPNG').addEventListener('click', function() {{
+// Capture current font sizes, scale them up, export, then restore
+function exportWithScaledFonts(format) {{
   var scale = parseInt(document.getElementById('exportScale').value);
   var w = parseInt(document.getElementById('exportWidth').value);
   var h = parseInt(document.getElementById('exportHeight').value);
-  Plotly.downloadImage(gd, {{
-    format: 'png',
-    width: w,
-    height: h,
-    scale: scale,
-    filename: 'volcano_plot'
+  var s = (format === 'svg') ? 1 : scale;
+
+  // Gather current sizes to restore later
+  var layout = gd.layout;
+  var saved = {{
+    titleSize: (layout.title && layout.title.font) ? layout.title.font.size : 16,
+    xTitleSize: (layout.xaxis && layout.xaxis.title && layout.xaxis.title.font) ? layout.xaxis.title.font.size : 14,
+    yTitleSize: (layout.yaxis && layout.yaxis.title && layout.yaxis.title.font) ? layout.yaxis.title.font.size : 14,
+    xTickSize: (layout.xaxis && layout.xaxis.tickfont) ? layout.xaxis.tickfont.size : 12,
+    yTickSize: (layout.yaxis && layout.yaxis.tickfont) ? layout.yaxis.tickfont.size : 12,
+    legendSize: (layout.legend && layout.legend.font) ? layout.legend.font.size : 12,
+    annots: []
+  }};
+  var annots = layout.annotations || [];
+  for (var i = 0; i < annots.length; i++) {{
+    saved.annots.push({{
+      fontSize: annots[i].font ? annots[i].font.size : null,
+      arrowwidth: annots[i].arrowwidth,
+      arrowsize: annots[i].arrowsize
+    }});
+  }}
+
+  // Scale up all fonts and arrows
+  var relayoutUp = {{
+    'title.font.size': saved.titleSize * s,
+    'xaxis.title.font.size': saved.xTitleSize * s,
+    'yaxis.title.font.size': saved.yTitleSize * s,
+    'xaxis.tickfont.size': saved.xTickSize * s,
+    'yaxis.tickfont.size': saved.yTickSize * s,
+    'legend.font.size': saved.legendSize * s
+  }};
+  for (var i = 0; i < annots.length; i++) {{
+    if (saved.annots[i].fontSize) {{
+      relayoutUp['annotations[' + i + '].font.size'] = saved.annots[i].fontSize * s;
+    }}
+    if (saved.annots[i].arrowwidth) {{
+      relayoutUp['annotations[' + i + '].arrowwidth'] = saved.annots[i].arrowwidth * s;
+    }}
+  }}
+
+  Plotly.relayout(gd, relayoutUp).then(function() {{
+    return Plotly.downloadImage(gd, {{
+      format: format,
+      width: w * s,
+      height: h * s,
+      scale: 1,
+      filename: 'volcano_plot'
+    }});
+  }}).then(function() {{
+    // Restore original sizes
+    var relayoutDown = {{
+      'title.font.size': saved.titleSize,
+      'xaxis.title.font.size': saved.xTitleSize,
+      'yaxis.title.font.size': saved.yTitleSize,
+      'xaxis.tickfont.size': saved.xTickSize,
+      'yaxis.tickfont.size': saved.yTickSize,
+      'legend.font.size': saved.legendSize
+    }};
+    for (var i = 0; i < annots.length; i++) {{
+      if (saved.annots[i].fontSize) {{
+        relayoutDown['annotations[' + i + '].font.size'] = saved.annots[i].fontSize;
+      }}
+      if (saved.annots[i].arrowwidth) {{
+        relayoutDown['annotations[' + i + '].arrowwidth'] = saved.annots[i].arrowwidth;
+      }}
+    }}
+    return Plotly.relayout(gd, relayoutDown);
   }});
+}}
+
+document.getElementById('exportPNG').addEventListener('click', function() {{
+  exportWithScaledFonts('png');
 }});
 
 document.getElementById('exportSVG').addEventListener('click', function() {{
-  var w = parseInt(document.getElementById('exportWidth').value);
-  var h = parseInt(document.getElementById('exportHeight').value);
-  Plotly.downloadImage(gd, {{
-    format: 'svg',
-    width: w,
-    height: h,
-    scale: 1,
-    filename: 'volcano_plot'
-  }});
+  exportWithScaledFonts('svg');
 }});
 </script>
 </body></html>"""
