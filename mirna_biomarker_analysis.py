@@ -106,7 +106,9 @@ def parse_signatures_sheet(filepath):
 # =============================================================================
 
 def create_volcano_plot(comp_df, comp_name, fdr_cutoff=0.05, fc_cutoff=1.0):
-    """Create an interactive volcano plot for a single comparison."""
+    """Create an interactive volcano plot for a single comparison.
+    Labels are draggable annotations with leader lines. Text sizes
+    are adjustable via dropdown menus in the plot."""
     df = comp_df.dropna(subset=['log2FC', 'padj']).copy()
     df = df[df['padj'] > 0]  # remove zero p-values for log transform
     df['neg_log10_padj'] = -np.log10(df['padj'])
@@ -162,34 +164,110 @@ def create_volcano_plot(comp_df, comp_name, fdr_cutoff=0.05, fc_cutoff=1.0):
     fig.add_vline(x=fc_cutoff, line_dash="dash", line_color="gray")
     fig.add_vline(x=-fc_cutoff, line_dash="dash", line_color="gray")
 
-    # Label top hits
+    # Label top hits as draggable annotations with leader lines
     top_up = df[(df['category'] == 'Up')].nlargest(5, 'neg_log10_padj')
     top_down = df[(df['category'] == 'Down')].nlargest(5, 'neg_log10_padj')
     top_hits = pd.concat([top_up, top_down])
 
-    fig.add_trace(go.Scatter(
-        x=top_hits['log2FC'],
-        y=top_hits['neg_log10_padj'],
-        mode='text',
-        text=top_hits['GeneID'].str.replace('mmu-', ''),
-        textposition='top center',
-        textfont=dict(size=8, color='black'),
-        showlegend=False,
-        hoverinfo='skip',
-    ))
+    default_label_size = 10
+    for _, row in top_hits.iterrows():
+        label = row['GeneID'].replace('mmu-', '')
+        fig.add_annotation(
+            x=row['log2FC'],
+            y=row['neg_log10_padj'],
+            text=label,
+            font=dict(size=default_label_size, color='black'),
+            showarrow=True,
+            arrowhead=2,
+            arrowsize=1,
+            arrowwidth=1,
+            arrowcolor='gray',
+            ax=0,
+            ay=-30,
+            bgcolor='rgba(255,255,255,0.7)',
+            borderpad=2,
+        )
 
     pretty_name = comp_name.replace('_', ' ').replace('vs', 'vs.')
     n_up = (df['category'] == 'Up').sum()
     n_down = (df['category'] == 'Down').sum()
 
+    # Build text size control buttons
+    # Collect the miRNA label annotations (those with a font dict)
+    base_annotations = list(fig.layout.annotations)
+
+    label_sizes = [7, 8, 9, 10, 11, 12, 14, 16]
+    label_buttons = []
+    for sz in label_sizes:
+        new_annots = []
+        for a in base_annotations:
+            a_dict = a.to_plotly_json()
+            if a_dict.get('font'):
+                a_dict = dict(a_dict)
+                a_dict['font'] = dict(a_dict['font'])
+                a_dict['font']['size'] = sz
+            new_annots.append(a_dict)
+        label_buttons.append(dict(
+            label=f'{sz}pt',
+            method='relayout',
+            args=[{'annotations': new_annots}],
+        ))
+
+    title_sizes = [12, 14, 16, 18, 20]
+    title_buttons = [dict(label=f'{sz}pt', method='relayout',
+                          args=[{'title.font.size': sz}])
+                     for sz in title_sizes]
+
+    axis_sizes = [10, 12, 14, 16, 18]
+    axis_buttons = [dict(label=f'{sz}pt', method='relayout',
+                         args=[{'xaxis.title.font.size': sz,
+                                'yaxis.title.font.size': sz,
+                                'xaxis.tickfont.size': sz - 2,
+                                'yaxis.tickfont.size': sz - 2}])
+                    for sz in axis_sizes]
+
     fig.update_layout(
-        title=dict(text=f'Volcano Plot: {pretty_name}<br><sub>{n_up} up, {n_down} down (FDR<{fdr_cutoff}, |log2FC|>{fc_cutoff})</sub>'),
+        title=dict(
+            text=(f'Volcano Plot: {pretty_name}<br>'
+                  f'<sub>{n_up} up, {n_down} down '
+                  f'(FDR<{fdr_cutoff}, |log2FC|>{fc_cutoff})</sub>'),
+            font=dict(size=16),
+        ),
         xaxis_title='log2(Fold Change)',
         yaxis_title='-log10(FDR)',
         template='plotly_white',
-        width=800,
-        height=600,
+        width=900,
+        height=650,
         legend=dict(x=0.01, y=0.99, bgcolor='rgba(255,255,255,0.8)'),
+        updatemenus=[
+            dict(buttons=label_buttons, direction='down',
+                 x=1.0, xanchor='left', y=1.0, yanchor='top',
+                 showactive=True, bgcolor='rgba(240,240,240,0.9)',
+                 bordercolor='gray', font=dict(size=10),
+                 pad=dict(r=5, t=5), type='dropdown'),
+            dict(buttons=title_buttons, direction='down',
+                 x=1.0, xanchor='left', y=0.85, yanchor='top',
+                 showactive=True, bgcolor='rgba(240,240,240,0.9)',
+                 bordercolor='gray', font=dict(size=10),
+                 pad=dict(r=5, t=5), type='dropdown'),
+            dict(buttons=axis_buttons, direction='down',
+                 x=1.0, xanchor='left', y=0.70, yanchor='top',
+                 showactive=True, bgcolor='rgba(240,240,240,0.9)',
+                 bordercolor='gray', font=dict(size=10),
+                 pad=dict(r=5, t=5), type='dropdown'),
+        ],
+        annotations=base_annotations + [
+            dict(text='Labels:', x=1.0, xref='paper', xanchor='left',
+                 y=1.04, yref='paper', yanchor='top',
+                 showarrow=False, font=dict(size=9, color='gray')),
+            dict(text='Title:', x=1.0, xref='paper', xanchor='left',
+                 y=0.89, yref='paper', yanchor='top',
+                 showarrow=False, font=dict(size=9, color='gray')),
+            dict(text='Axes:', x=1.0, xref='paper', xanchor='left',
+                 y=0.74, yref='paper', yanchor='top',
+                 showarrow=False, font=dict(size=9, color='gray')),
+        ],
+        margin=dict(r=150),
     )
     return fig
 
@@ -206,7 +284,8 @@ def create_all_volcano_plots(comparisons, output_dir):
             comp_df['log2FC'] = -comp_df['log2FC']
         fig = create_volcano_plot(comp_df, comp_name)
         figs[comp_name] = fig
-        fig.write_html(os.path.join(output_dir, f'volcano_{comp_name}.html'))
+        fig.write_html(os.path.join(output_dir, f'volcano_{comp_name}.html'),
+                       config={'editable': True})
 
     # Combined with dropdown
     combined = go.Figure()
