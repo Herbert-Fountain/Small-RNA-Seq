@@ -401,8 +401,22 @@ def identify_biomarkers(comparisons, group_avg, sample_counts, fdr_cutoff=0.05, 
         mask = (df['padj'] <= fdr_cutoff) & (df['abs_log2FC'] >= fc_cutoff)
 
         # Filter for minimum expression
+        # For upregulated markers: require sufficient expression in the target group
+        # For downregulated markers: require sufficient expression in other groups
+        #   (absence in the target group is the signal)
         avg_data = group_avg.set_index('GeneID')
-        mask_count = df['GeneID'].map(lambda g: avg_data.loc[g, avg_col] >= min_count if g in avg_data.index else False)
+        other_avg_cols = [c for c in ['avg_Cells', 'avg_He', 'avg_Ki', 'avg_Li', 'avg_Lu', 'avg_Sp']
+                          if c != avg_col]
+
+        def passes_min_count(gene, log2fc):
+            if gene not in avg_data.index:
+                return False
+            if log2fc > 0:
+                return avg_data.loc[gene, avg_col] >= min_count
+            else:
+                return avg_data.loc[gene, other_avg_cols].max() >= min_count
+
+        mask_count = df.apply(lambda r: passes_min_count(r['GeneID'], r['log2FC']), axis=1)
         mask = mask & mask_count
 
         sig_df = df[mask].copy()
