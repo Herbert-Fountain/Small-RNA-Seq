@@ -192,26 +192,42 @@ def create_volcano_plot(comp_df, comp_name, fdr_cutoff=0.05, fc_cutoff=1.0):
     n_up = (df['category'] == 'Up').sum()
     n_down = (df['category'] == 'Down').sum()
 
-    # Build text size control buttons
+    # Build control buttons
     # Collect the miRNA label annotations (those with a font dict)
     base_annotations = list(fig.layout.annotations)
 
-    label_sizes = [7, 8, 9, 10, 11, 12, 14, 16]
-    label_buttons = []
-    for sz in label_sizes:
-        new_annots = []
-        for a in base_annotations:
-            a_dict = a.to_plotly_json()
-            if a_dict.get('font'):
-                a_dict = dict(a_dict)
-                a_dict['font'] = dict(a_dict['font'])
-                a_dict['font']['size'] = sz
-            new_annots.append(a_dict)
-        label_buttons.append(dict(
-            label=f'{sz}pt',
-            method='relayout',
-            args=[{'annotations': new_annots}],
-        ))
+    # Helper: update annotation properties for miRNA labels only
+    def _make_annot_buttons(base, prop, values, fmt_label):
+        buttons = []
+        for val in values:
+            new_annots = []
+            for a in base:
+                a_dict = a.to_plotly_json()
+                if a_dict.get('font'):  # miRNA label annotations have font
+                    a_dict = dict(a_dict)
+                    if prop == 'font.size':
+                        a_dict['font'] = dict(a_dict['font'])
+                        a_dict['font']['size'] = val
+                    elif prop == 'arrowsize':
+                        a_dict['arrowsize'] = val
+                    elif prop == 'arrowwidth':
+                        a_dict['arrowwidth'] = val
+                    elif prop == 'arrowhead':
+                        a_dict['arrowhead'] = val
+                    elif prop == 'arrowcolor':
+                        a_dict['arrowcolor'] = val
+                new_annots.append(a_dict)
+            buttons.append(dict(
+                label=fmt_label(val),
+                method='relayout',
+                args=[{'annotations': new_annots}],
+            ))
+        return buttons
+
+    label_buttons = _make_annot_buttons(
+        base_annotations, 'font.size',
+        [7, 8, 9, 10, 11, 12, 14, 16],
+        lambda v: f'{v}pt')
 
     title_sizes = [12, 14, 16, 18, 20]
     title_buttons = [dict(label=f'{sz}pt', method='relayout',
@@ -226,48 +242,111 @@ def create_volcano_plot(comp_df, comp_name, fdr_cutoff=0.05, fc_cutoff=1.0):
                                 'yaxis.tickfont.size': sz - 2}])
                     for sz in axis_sizes]
 
+    arrow_size_buttons = _make_annot_buttons(
+        base_annotations, 'arrowsize',
+        [0.5, 0.75, 1.0, 1.5, 2.0, 3.0],
+        lambda v: f'{v}x')
+
+    arrow_width_buttons = _make_annot_buttons(
+        base_annotations, 'arrowwidth',
+        [0.5, 1.0, 1.5, 2.0, 3.0],
+        lambda v: f'{v}px')
+
+    arrow_head_buttons = _make_annot_buttons(
+        base_annotations, 'arrowhead',
+        [0, 1, 2, 3, 4, 5, 6, 7],
+        lambda v: ['none', 'thin', 'arrow', 'barbed', 'wide',
+                    'diamond', 'dot', 'open'][v])
+
+    arrow_colors = [
+        ('gray', 'gray'), ('black', 'black'), ('red', '#e74c3c'),
+        ('blue', '#3498db'), ('green', '#27ae60'), ('dark gray', '#555555'),
+    ]
+    arrow_color_buttons = _make_annot_buttons(
+        base_annotations, 'arrowcolor',
+        [c[1] for c in arrow_colors],
+        lambda v: [c[0] for c in arrow_colors][[c[1] for c in arrow_colors].index(v)])
+
+    title_x_buttons = [
+        dict(label=pos, method='relayout', args=[{'title.x': val}])
+        for pos, val in [('left', 0.0), ('center', 0.5), ('right', 1.0)]
+    ]
+
+    title_pad_buttons = [
+        dict(label=f'{p}px', method='relayout', args=[{'title.pad.t': p}])
+        for p in [0, 10, 20, 30, 40, 50]
+    ]
+
+    # Shared dropdown styling
+    dd = dict(showactive=True, bgcolor='rgba(240,240,240,0.9)',
+              bordercolor='gray', font=dict(size=10),
+              pad=dict(r=5, t=5), type='dropdown', direction='down')
+
     fig.update_layout(
         title=dict(
             text=(f'Volcano Plot: {pretty_name}<br>'
                   f'<sub>{n_up} up, {n_down} down '
                   f'(FDR<{fdr_cutoff}, |log2FC|>{fc_cutoff})</sub>'),
             font=dict(size=16),
+            x=0.5,
+            xanchor='center',
         ),
         xaxis_title='log2(Fold Change)',
         yaxis_title='-log10(FDR)',
         template='plotly_white',
-        width=900,
-        height=650,
+        width=950,
+        height=700,
         legend=dict(x=0.01, y=0.99, bgcolor='rgba(255,255,255,0.8)'),
         updatemenus=[
-            dict(buttons=label_buttons, direction='down',
-                 x=1.0, xanchor='left', y=1.0, yanchor='top',
-                 showactive=True, bgcolor='rgba(240,240,240,0.9)',
-                 bordercolor='gray', font=dict(size=10),
-                 pad=dict(r=5, t=5), type='dropdown'),
-            dict(buttons=title_buttons, direction='down',
-                 x=1.0, xanchor='left', y=0.85, yanchor='top',
-                 showactive=True, bgcolor='rgba(240,240,240,0.9)',
-                 bordercolor='gray', font=dict(size=10),
-                 pad=dict(r=5, t=5), type='dropdown'),
-            dict(buttons=axis_buttons, direction='down',
-                 x=1.0, xanchor='left', y=0.70, yanchor='top',
-                 showactive=True, bgcolor='rgba(240,240,240,0.9)',
-                 bordercolor='gray', font=dict(size=10),
-                 pad=dict(r=5, t=5), type='dropdown'),
+            dict(buttons=label_buttons, x=1.0, xanchor='left',
+                 y=1.0, yanchor='top', **dd),
+            dict(buttons=title_buttons, x=1.0, xanchor='left',
+                 y=0.88, yanchor='top', **dd),
+            dict(buttons=axis_buttons, x=1.0, xanchor='left',
+                 y=0.76, yanchor='top', **dd),
+            dict(buttons=arrow_size_buttons, x=1.0, xanchor='left',
+                 y=0.64, yanchor='top', **dd),
+            dict(buttons=arrow_width_buttons, x=1.0, xanchor='left',
+                 y=0.52, yanchor='top', **dd),
+            dict(buttons=arrow_head_buttons, x=1.0, xanchor='left',
+                 y=0.40, yanchor='top', **dd),
+            dict(buttons=arrow_color_buttons, x=1.0, xanchor='left',
+                 y=0.28, yanchor='top', **dd),
+            dict(buttons=title_x_buttons, x=1.0, xanchor='left',
+                 y=0.16, yanchor='top', **dd),
+            dict(buttons=title_pad_buttons, x=1.0, xanchor='left',
+                 y=0.04, yanchor='top', **dd),
         ],
         annotations=base_annotations + [
             dict(text='Labels:', x=1.0, xref='paper', xanchor='left',
                  y=1.04, yref='paper', yanchor='top',
                  showarrow=False, font=dict(size=9, color='gray')),
-            dict(text='Title:', x=1.0, xref='paper', xanchor='left',
-                 y=0.89, yref='paper', yanchor='top',
+            dict(text='Title size:', x=1.0, xref='paper', xanchor='left',
+                 y=0.92, yref='paper', yanchor='top',
                  showarrow=False, font=dict(size=9, color='gray')),
             dict(text='Axes:', x=1.0, xref='paper', xanchor='left',
-                 y=0.74, yref='paper', yanchor='top',
+                 y=0.80, yref='paper', yanchor='top',
+                 showarrow=False, font=dict(size=9, color='gray')),
+            dict(text='Arrow size:', x=1.0, xref='paper', xanchor='left',
+                 y=0.68, yref='paper', yanchor='top',
+                 showarrow=False, font=dict(size=9, color='gray')),
+            dict(text='Arrow width:', x=1.0, xref='paper', xanchor='left',
+                 y=0.56, yref='paper', yanchor='top',
+                 showarrow=False, font=dict(size=9, color='gray')),
+            dict(text='Arrowhead:', x=1.0, xref='paper', xanchor='left',
+                 y=0.44, yref='paper', yanchor='top',
+                 showarrow=False, font=dict(size=9, color='gray')),
+            dict(text='Arrow color:', x=1.0, xref='paper', xanchor='left',
+                 y=0.32, yref='paper', yanchor='top',
+                 showarrow=False, font=dict(size=9, color='gray')),
+            dict(text='Title pos:', x=1.0, xref='paper', xanchor='left',
+                 y=0.20, yref='paper', yanchor='top',
+                 showarrow=False, font=dict(size=9, color='gray')),
+            dict(text='Title pad:', x=1.0, xref='paper', xanchor='left',
+                 y=0.08, yref='paper', yanchor='top',
                  showarrow=False, font=dict(size=9, color='gray')),
         ],
-        margin=dict(r=150),
+        margin=dict(r=170),
     )
     return fig
 
