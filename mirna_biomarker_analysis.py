@@ -332,6 +332,11 @@ def _write_volcano_html(fig, filepath):
       <input type="color" id="titleColor" value="#000000">
     </div>
 
+    <div class="ctrl-group">
+      <label>All Text Color</label>
+      <input type="color" id="allTextColor" value="#000000">
+    </div>
+
     <hr class="sep">
 
     <div class="ctrl-group">
@@ -444,6 +449,59 @@ bindSlider('titlePad', 'titlePadVal', 'px', function(v) {{
 
 bindSlider('legendSize', 'legendSizeVal', 'pt', function(v) {{
   Plotly.relayout(gd, {{'legend.font.size': v}});
+}});
+
+document.getElementById('labelColor').addEventListener('input', function() {{
+  updateAnnotProp('font.color', this.value);
+}});
+
+document.getElementById('titleColor').addEventListener('input', function() {{
+  Plotly.relayout(gd, {{'title.font.color': this.value}});
+}});
+
+document.getElementById('allTextColor').addEventListener('input', function() {{
+  var c = this.value;
+  // Update label annotations
+  updateAnnotProp('font.color', c);
+  // Update title, axis titles, axis ticks, legend
+  Plotly.relayout(gd, {{
+    'title.font.color': c,
+    'xaxis.title.font.color': c,
+    'yaxis.title.font.color': c,
+    'xaxis.tickfont.color': c,
+    'yaxis.tickfont.color': c,
+    'legend.font.color': c
+  }});
+  // Sync the individual pickers
+  document.getElementById('labelColor').value = c;
+  document.getElementById('titleColor').value = c;
+}});
+
+// Populate title fields from current plot
+var currentTitle = gd.layout.title.text || '';
+var parts = currentTitle.split('<br>');
+var mainTitle = parts[0] || '';
+var subTitle = '';
+if (parts.length > 1) {{
+  subTitle = parts.slice(1).join('<br>').replace(/<sub>/g,'').replace(/<\/sub>/g,'');
+}}
+document.getElementById('titleText').value = mainTitle;
+document.getElementById('subtitleText').value = subTitle;
+
+document.getElementById('titleApply').addEventListener('click', function() {{
+  var main = document.getElementById('titleText').value;
+  var sub = document.getElementById('subtitleText').value;
+  var full = main;
+  if (sub) full += '<br><sub>' + sub + '</sub>';
+  Plotly.relayout(gd, {{'title.text': full}});
+}});
+
+document.getElementById('subtitleApply').addEventListener('click', function() {{
+  var main = document.getElementById('titleText').value;
+  var sub = document.getElementById('subtitleText').value;
+  var full = main;
+  if (sub) full += '<br><sub>' + sub + '</sub>';
+  Plotly.relayout(gd, {{'title.text': full}});
 }});
 </script>
 </body></html>"""
