@@ -373,6 +373,39 @@ def _write_volcano_html(fig, filepath):
       <textarea id="subtitleText" rows="2" style="width:100%;box-sizing:border-box;font-size:11px;padding:4px 6px;border:1px solid #ccc;border-radius:3px;resize:vertical;"></textarea>
       <button id="subtitleApply" style="margin-top:4px;width:100%;padding:5px;font-size:12px;cursor:pointer;border:1px solid #aaa;border-radius:3px;background:#e8e8e8;">Apply Subtitle</button>
     </div>
+
+    <hr class="sep">
+
+    <div class="ctrl-group">
+      <label>Export Resolution</label>
+      <select id="exportScale">
+        <option value="1">1x (standard)</option>
+        <option value="2">2x (high)</option>
+        <option value="3" selected>3x (publication)</option>
+        <option value="4">4x (poster)</option>
+        <option value="5">5x (max)</option>
+      </select>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Export Width (px)</label>
+      <input type="number" id="exportWidth" value="1800" min="400" max="6000" step="100"
+             style="width:100%;box-sizing:border-box;font-size:12px;padding:4px 6px;border:1px solid #ccc;border-radius:3px;">
+    </div>
+
+    <div class="ctrl-group">
+      <label>Export Height (px)</label>
+      <input type="number" id="exportHeight" value="1300" min="300" max="5000" step="100"
+             style="width:100%;box-sizing:border-box;font-size:12px;padding:4px 6px;border:1px solid #ccc;border-radius:3px;">
+    </div>
+
+    <div class="ctrl-group">
+      <button id="exportPNG" style="width:100%;padding:8px;font-size:13px;cursor:pointer;border:1px solid #27ae60;border-radius:4px;background:#2ecc71;color:white;font-weight:bold;">Export PNG</button>
+    </div>
+
+    <div class="ctrl-group">
+      <button id="exportSVG" style="width:100%;padding:8px;font-size:13px;cursor:pointer;border:1px solid #2980b9;border-radius:4px;background:#3498db;color:white;font-weight:bold;">Export SVG</button>
+    </div>
   </div>
 </div>
 
@@ -502,6 +535,31 @@ document.getElementById('subtitleApply').addEventListener('click', function() {{
   var full = main;
   if (sub) full += '<br><sub>' + sub + '</sub>';
   Plotly.relayout(gd, {{'title.text': full}});
+}});
+
+document.getElementById('exportPNG').addEventListener('click', function() {{
+  var scale = parseInt(document.getElementById('exportScale').value);
+  var w = parseInt(document.getElementById('exportWidth').value);
+  var h = parseInt(document.getElementById('exportHeight').value);
+  Plotly.downloadImage(gd, {{
+    format: 'png',
+    width: w,
+    height: h,
+    scale: scale,
+    filename: 'volcano_plot'
+  }});
+}});
+
+document.getElementById('exportSVG').addEventListener('click', function() {{
+  var w = parseInt(document.getElementById('exportWidth').value);
+  var h = parseInt(document.getElementById('exportHeight').value);
+  Plotly.downloadImage(gd, {{
+    format: 'svg',
+    width: w,
+    height: h,
+    scale: 1,
+    filename: 'volcano_plot'
+  }});
 }});
 </script>
 </body></html>"""
