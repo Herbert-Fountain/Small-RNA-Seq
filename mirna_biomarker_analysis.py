@@ -200,6 +200,10 @@ def create_all_volcano_plots(comparisons, output_dir):
 
     figs = {}
     for comp_name, comp_df in comparisons.items():
+        comp_df = comp_df.copy()
+        # Cells_vs_Organs has group1=Organs, group2=Cells (reversed)
+        if comp_name == 'Cells_vs_Organs':
+            comp_df['log2FC'] = -comp_df['log2FC']
         fig = create_volcano_plot(comp_df, comp_name)
         figs[comp_name] = fig
         fig.write_html(os.path.join(output_dir, f'volcano_{comp_name}.html'))
@@ -211,6 +215,8 @@ def create_all_volcano_plots(comparisons, output_dir):
     for i, (comp_name, comp_df) in enumerate(comparisons.items()):
         df = comp_df.dropna(subset=['log2FC', 'padj']).copy()
         df = df[df['padj'] > 0]
+        if comp_name == 'Cells_vs_Organs':
+            df['log2FC'] = -df['log2FC']
         df['neg_log10_padj'] = -np.log10(df['padj'])
 
         conditions = [
@@ -244,6 +250,8 @@ def create_all_volcano_plots(comparisons, output_dir):
     for comp_name, comp_df in comparisons.items():
         df = comp_df.dropna(subset=['log2FC', 'padj']).copy()
         df = df[df['padj'] > 0]
+        if comp_name == 'Cells_vs_Organs':
+            df['log2FC'] = -df['log2FC']
         conditions = [
             (df['padj'] <= 0.05) & (df['log2FC'] >= 1.0),
             (df['padj'] <= 0.05) & (df['log2FC'] <= -1.0),
@@ -449,6 +457,61 @@ def create_biomarker_summary(biomarkers, output_dir):
     return summary
 
 
+def create_group_summary_tables(biomarkers, group_avg, output_dir, top_n=10):
+    """
+    Create per-group summary tables (top N up and top N down) with
+    average counts and z-scores across all groups, exported to CSV.
+    """
+    avg_cols = ['avg_Cells', 'avg_He', 'avg_Ki', 'avg_Li', 'avg_Lu', 'avg_Sp']
+    display_names = ['Cells (4T1)', 'Heart', 'Kidney', 'Liver', 'Lung', 'Spleen']
+
+    avg_data = group_avg.set_index('GeneID')
+
+    # Compute z-scores for all genes
+    log2_expr = np.log2(avg_data[avg_cols] + 1)
+    z_all = log2_expr.subtract(log2_expr.mean(axis=1), axis=0).divide(log2_expr.std(axis=1), axis=0)
+    z_all.columns = [f'zscore_{n}' for n in display_names]
+
+    # Rename avg columns for clarity
+    count_rename = {c: f'count_{n}' for c, n in zip(avg_cols, display_names)}
+
+    all_tables = []
+    for group, df in biomarkers.items():
+        for direction in ['up', 'down']:
+            if direction == 'up':
+                hits = df[df['log2FC'] > 0].head(top_n)
+            else:
+                hits = df[df['log2FC'] < 0].head(top_n)
+
+            if len(hits) == 0:
+                continue
+
+            rows = []
+            for _, row in hits.iterrows():
+                gene = row['GeneID']
+                if gene not in avg_data.index:
+                    continue
+                entry = {
+                    'Group': group,
+                    'Direction': 'Upregulated' if direction == 'up' else 'Downregulated',
+                    'miRNA': gene.replace('mmu-', ''),
+                    'GeneID': gene,
+                    'log2FC': row['log2FC'],
+                    'padj': row['padj'],
+                    'biomarker_score': row['biomarker_score'],
+                }
+                for col, name in zip(avg_cols, display_names):
+                    entry[f'count_{name}'] = avg_data.loc[gene, col]
+                    entry[f'zscore_{name}'] = z_all.loc[gene, f'zscore_{name}']
+                rows.append(entry)
+
+            all_tables.extend(rows)
+
+    result = pd.DataFrame(all_tables)
+    result.to_csv(os.path.join(output_dir, 'biomarker_summary_tables.csv'), index=False)
+    return result
+
+
 # =============================================================================
 # 5. EXPRESSION PROFILE PLOTS
 # =============================================================================
@@ -652,6 +715,10 @@ def create_ma_plots(comparisons, output_dir):
     for comp_name, comp_df in comparisons.items():
         df = comp_df.dropna(subset=['log2FC', 'padj', 'log2avg']).copy()
 
+        # Cells_vs_Organs has group1=Organs, group2=Cells (reversed)
+        if comp_name == 'Cells_vs_Organs':
+            df['log2FC'] = -df['log2FC']
+
         df['significant'] = np.where(
             (df['padj'] <= 0.05) & (df['abs_log2FC'] >= 1.0), 'DE', 'Not DE'
         )
@@ -736,6 +803,8 @@ def main():
     summary = create_biomarker_summary(biomarkers, output_dir)
     print(f"\n  -> biomarker_candidates.csv ({len(summary)} candidates)")
 
+    group_tables = create_group_summary_tables(biomarkers, group_avg, output_dir)
+    print(f"  -> biomarker_summary_tables.csv ({len(group_tables)} entries)")
     # 5. Expression plots
     print("\n[5/6] Creating expression profile plots...")
     create_expression_dotplot(biomarkers, group_avg, output_dir, direction='up')
