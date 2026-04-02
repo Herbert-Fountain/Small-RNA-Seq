@@ -322,6 +322,16 @@ def _write_volcano_html(fig, filepath):
       <input type="color" id="arrowColor" value="#808080">
     </div>
 
+    <div class="ctrl-group">
+      <label>Label Text Color</label>
+      <input type="color" id="labelColor" value="#000000">
+    </div>
+
+    <div class="ctrl-group">
+      <label>Title Text Color</label>
+      <input type="color" id="titleColor" value="#000000">
+    </div>
+
     <hr class="sep">
 
     <div class="ctrl-group">
@@ -343,6 +353,20 @@ def _write_volcano_html(fig, filepath):
       <label>Legend Font Size</label>
       <input type="range" id="legendSize" min="8" max="18" value="12" step="1">
       <div class="val-display" id="legendSizeVal">12pt</div>
+    </div>
+
+    <hr class="sep">
+
+    <div class="ctrl-group">
+      <label>Edit Plot Title</label>
+      <textarea id="titleText" rows="3" style="width:100%;box-sizing:border-box;font-size:12px;padding:4px 6px;border:1px solid #ccc;border-radius:3px;resize:vertical;"></textarea>
+      <button id="titleApply" style="margin-top:4px;width:100%;padding:5px;font-size:12px;cursor:pointer;border:1px solid #aaa;border-radius:3px;background:#e8e8e8;">Apply Title</button>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Edit Subtitle</label>
+      <textarea id="subtitleText" rows="2" style="width:100%;box-sizing:border-box;font-size:11px;padding:4px 6px;border:1px solid #ccc;border-radius:3px;resize:vertical;"></textarea>
+      <button id="subtitleApply" style="margin-top:4px;width:100%;padding:5px;font-size:12px;cursor:pointer;border:1px solid #aaa;border-radius:3px;background:#e8e8e8;">Apply Subtitle</button>
     </div>
   </div>
 </div>
