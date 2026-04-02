@@ -349,9 +349,9 @@ def _write_volcano_html(fig, filepath):
     </div>
 
     <div class="ctrl-group">
-      <label>Title Top Padding</label>
-      <input type="range" id="titlePad" min="0" max="60" value="0" step="5">
-      <div class="val-display" id="titlePadVal">0px</div>
+      <label>Title Y Position</label>
+      <input type="range" id="titleY" min="0.85" max="1.15" value="0.98" step="0.01">
+      <div class="val-display" id="titleYVal">0.98</div>
     </div>
 
     <div class="ctrl-group">
@@ -443,8 +443,8 @@ document.getElementById('titlePos').addEventListener('change', function() {{
   Plotly.relayout(gd, {{'title.x': parseFloat(this.value)}});
 }});
 
-bindSlider('titlePad', 'titlePadVal', 'px', function(v) {{
-  Plotly.relayout(gd, {{'title.pad.t': v}});
+bindSlider('titleY', 'titleYVal', '', function(v) {{
+  Plotly.relayout(gd, {{'title.y': v, 'title.yanchor': 'top'}});
 }});
 
 bindSlider('legendSize', 'legendSizeVal', 'pt', function(v) {{
