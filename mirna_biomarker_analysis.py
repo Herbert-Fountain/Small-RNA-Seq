@@ -507,8 +507,17 @@ def create_expression_dotplot(biomarkers, group_avg, output_dir, top_per_group=1
                 cmid=0,
                 cmin=-3, cmax=3,
                 showscale=(j == 0),
-                colorbar=dict(title='Z-score') if j == 0 else None,
+                colorbar=dict(
+                    title=dict(text='Z-score', font=dict(size=13), side='top'),
+                    tickfont=dict(size=11),
+                    len=0.4,
+                    thickness=15,
+                    x=1.02,
+                    y=1.0,
+                    yanchor='top',
+                ) if j == 0 else None,
                 line=dict(width=0.5, color='black'),
+                opacity=0.85,
             ),
             customdata=np.stack([
                 expr_data[col].values,
@@ -523,15 +532,30 @@ def create_expression_dotplot(biomarkers, group_avg, output_dir, top_per_group=1
         ))
 
     dir_label = 'Upregulated' if direction == 'up' else 'Downregulated'
+    n_genes = len(genes_display)
     fig.update_layout(
-        title=f'Top {top_per_group} {dir_label} Biomarker Candidates per Group',
-        xaxis_title='Group',
-        yaxis_title='miRNA',
+        title=dict(
+            text=f'Top {top_per_group} {dir_label} Biomarker Candidates per Group',
+            font=dict(size=16, color='black'),
+            x=0.5,
+            xanchor='center',
+        ),
+        xaxis=dict(
+            title=dict(text='Group', font=dict(size=14)),
+            tickfont=dict(size=12),
+        ),
+        yaxis=dict(
+            title=dict(text='miRNA', font=dict(size=14)),
+            tickfont=dict(size=10),
+            automargin=True,
+        ),
         template='plotly_white',
-        width=900,
-        height=max(600, len(genes_display) * 20),
-        yaxis=dict(tickfont=dict(size=9)),
+        width=700,
+        height=max(700, n_genes * 18 + 120),
         showlegend=False,
+        margin=dict(l=120, r=80, t=60, b=60),
+        plot_bgcolor='white',
+        paper_bgcolor='white',
     )
     suffix = 'upregulated' if direction == 'up' else 'downregulated'
     fig.write_html(os.path.join(output_dir, f'biomarker_dotplot_{suffix}.html'))
