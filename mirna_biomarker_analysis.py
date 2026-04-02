@@ -384,6 +384,11 @@ def identify_biomarkers(comparisons, group_avg, sample_counts, fdr_cutoff=0.05, 
         df = comparisons[comp_name].copy()
         df = df.dropna(subset=['padj', 'log2FC'])
 
+        # Cells_vs_Organs has group1=Organs, group2=Cells (reversed),
+        # so flip the fold change to make positive = up in Cells
+        if comp_name == 'Cells_vs_Organs':
+            df['log2FC'] = -df['log2FC']
+
         # Filter for significant with sufficient FC
         mask = (df['padj'] <= fdr_cutoff) & (df['abs_log2FC'] >= fc_cutoff)
 
