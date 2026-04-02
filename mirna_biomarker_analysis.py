@@ -448,20 +448,30 @@ def create_biomarker_summary(biomarkers, output_dir):
 # 5. EXPRESSION PROFILE PLOTS
 # =============================================================================
 
-def create_expression_dotplot(biomarkers, group_avg, output_dir, top_per_group=10):
+def create_expression_dotplot(biomarkers, group_avg, output_dir, top_per_group=10,
+                             direction='up'):
     """
     Create an interactive dot plot showing expression of top biomarkers across groups.
     Dot size = expression level, color = z-score.
+
+    Parameters
+    ----------
+    direction : str
+        'up' to select upregulated biomarkers (log2FC > 0),
+        'down' to select downregulated biomarkers (log2FC < 0).
     """
     avg_cols = ['avg_Cells', 'avg_He', 'avg_Ki', 'avg_Li', 'avg_Lu', 'avg_Sp']
     display_names = ['Cells (4T1)', 'Heart', 'Kidney', 'Liver', 'Lung', 'Spleen']
 
-    # Collect top biomarkers per group
+    # Collect top biomarkers per group in the requested direction
     selected_genes = []
     gene_groups = []
     for group, df in biomarkers.items():
-        up = df[df['log2FC'] > 0].head(top_per_group)
-        for g in up['GeneID']:
+        if direction == 'up':
+            hits = df[df['log2FC'] > 0].head(top_per_group)
+        else:
+            hits = df[df['log2FC'] < 0].head(top_per_group)
+        for g in hits['GeneID']:
             if g not in selected_genes:
                 selected_genes.append(g)
                 gene_groups.append(group)
@@ -512,8 +522,9 @@ def create_expression_dotplot(biomarkers, group_avg, output_dir, top_per_group=1
             ),
         ))
 
+    dir_label = 'Upregulated' if direction == 'up' else 'Downregulated'
     fig.update_layout(
-        title=f'Top {top_per_group} Upregulated Biomarker Candidates per Group',
+        title=f'Top {top_per_group} {dir_label} Biomarker Candidates per Group',
         xaxis_title='Group',
         yaxis_title='miRNA',
         template='plotly_white',
@@ -522,7 +533,8 @@ def create_expression_dotplot(biomarkers, group_avg, output_dir, top_per_group=1
         yaxis=dict(tickfont=dict(size=9)),
         showlegend=False,
     )
-    fig.write_html(os.path.join(output_dir, 'biomarker_dotplot.html'))
+    suffix = 'upregulated' if direction == 'up' else 'downregulated'
+    fig.write_html(os.path.join(output_dir, f'biomarker_dotplot_{suffix}.html'))
     return fig
 
 
@@ -697,8 +709,10 @@ def main():
 
     # 5. Expression plots
     print("\n[5/6] Creating expression profile plots...")
-    create_expression_dotplot(biomarkers, group_avg, output_dir)
-    print("  -> biomarker_dotplot.html")
+    create_expression_dotplot(biomarkers, group_avg, output_dir, direction='up')
+    print("  -> biomarker_dotplot_upregulated.html")
+    create_expression_dotplot(biomarkers, group_avg, output_dir, direction='down')
+    print("  -> biomarker_dotplot_downregulated.html")
 
     create_individual_expression_plots(biomarkers, sample_counts, output_dir)
     print("  -> biomarker_expression_boxplots.html")
