@@ -1494,8 +1494,8 @@ def create_expression_dotplot(biomarkers, group_avg, output_dir, top_per_group=1
 
 def create_individual_expression_plots(biomarkers, sample_counts, output_dir, top_per_group=5):
     """
-    Create strip plots for top biomarker candidates showing individual sample values.
-    Uses go.Scatter with jitter instead of go.Box for cleaner rendering with few replicates.
+    Create a single-page HTML with a dropdown to select one miRNA at a time.
+    Each miRNA shows a clean bar chart with individual data points overlaid.
     """
     sample_groups = {
         'NIH 4T1 Cells': ['4T1.1', '4T1.2', '4T1.3'],
@@ -1526,83 +1526,106 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
     if not all_top_genes:
         return None
 
+    # Build one figure per gene, then combine with dropdown visibility
+    gene_names = [g.replace('mmu-', '') for g in all_top_genes]
     n_genes = len(all_top_genes)
-    n_cols = 3
-    n_rows = (n_genes + n_cols - 1) // n_cols
 
-    fig = make_subplots(rows=n_rows, cols=n_cols,
-                        subplot_titles=[g.replace('mmu-', '') for g in all_top_genes],
-                        vertical_spacing=0.10,
-                        horizontal_spacing=0.10)
+    fig = go.Figure()
+    traces_per_gene = len(group_order) * 2  # bar + scatter per group
 
-    for idx, gene in enumerate(all_top_genes):
-        row = idx // n_cols + 1
-        col = idx % n_cols + 1
-
+    for gene_idx, gene in enumerate(all_top_genes):
         gene_data = sample_counts[sample_counts['GeneID'] == gene]
-        if len(gene_data) == 0:
-            continue
+        visible = (gene_idx == 0)
 
         for group_name in group_order:
             samples = sample_groups[group_name]
-            vals = gene_data[samples].values.flatten()
+            vals = gene_data[samples].values.flatten() if len(gene_data) > 0 else np.array([])
             vals = vals[~np.isnan(vals)]
+            mean_val = np.mean(vals) if len(vals) > 0 else 0
 
-            # Jitter x positions slightly for visibility
-            jitter = np.random.uniform(-0.15, 0.15, size=len(vals))
+            # Bar for mean
+            fig.add_trace(go.Bar(
+                x=[group_name],
+                y=[mean_val],
+                name=group_name,
+                marker=dict(color=group_colors[group_name], opacity=0.6),
+                showlegend=(gene_idx == 0),
+                legendgroup=group_name,
+                visible=visible,
+                hovertemplate=f'<b>{gene_names[gene_idx]}</b><br>%{{x}}<br>Mean: %{{y:,.0f}}<extra></extra>',
+            ))
 
+            # Individual points overlaid
             fig.add_trace(go.Scatter(
                 x=[group_name] * len(vals),
                 y=vals,
                 mode='markers',
                 name=group_name,
-                marker=dict(
-                    color=group_colors[group_name],
-                    size=8,
-                    line=dict(width=0.5, color='white'),
-                ),
-                showlegend=(idx == 0),
+                marker=dict(color=group_colors[group_name], size=9,
+                            line=dict(width=1, color='white')),
+                showlegend=False,
                 legendgroup=group_name,
-                hovertemplate=(
-                    f'<b>{gene.replace("mmu-", "")}</b><br>'
-                    '%{x}<br>'
-                    'Count: %{y:,.0f}<extra></extra>'
-                ),
-            ), row=row, col=col)
+                visible=visible,
+                hovertemplate=f'<b>{gene_names[gene_idx]}</b><br>%{{x}}<br>Count: %{{y:,.0f}}<extra></extra>',
+            ))
 
-    # Clean axis styling - no template to avoid conflicts
-    fig.update_yaxes(
-        showgrid=True, gridcolor='rgba(0,0,0,0.08)', gridwidth=1,
-        nticks=5, zeroline=False,
-        showline=True, linewidth=1, linecolor='#CCCCCC',
-        title_text=None,
-    )
-    fig.update_xaxes(
-        showgrid=False,
-        showline=True, linewidth=1, linecolor='#CCCCCC',
-        tickangle=-45,
-    )
-
-    # Y-axis label only on leftmost column
-    for r in range(1, n_rows + 1):
-        fig.update_yaxes(title_text='Normalized Counts', row=r, col=1)
+    # Build dropdown buttons
+    buttons = []
+    for gene_idx, gene_name in enumerate(gene_names):
+        vis = [False] * (n_genes * traces_per_gene)
+        for t in range(traces_per_gene):
+            vis[gene_idx * traces_per_gene + t] = True
+        buttons.append(dict(
+            label=gene_name,
+            method='update',
+            args=[{'visible': vis},
+                  {'title.text': f'Individual Sample Expression: {gene_name}'}],
+        ))
 
     fig.update_layout(
         title=dict(
-            text=('Individual Sample Expression: Top Biomarker Candidates<br>'
-                  '<sub>Top 5 upregulated biomarkers per group</sub>'),
-            font=dict(size=16),
-            x=0.5,
-            xanchor='center',
+            text=f'Individual Sample Expression: {gene_names[0]}',
+            font=dict(size=18),
+            x=0.5, xanchor='center',
+        ),
+        updatemenus=[dict(
+            buttons=buttons,
+            direction='down',
+            x=0.0, xanchor='left',
+            y=1.15, yanchor='top',
+            showactive=True,
+            bgcolor='white',
+            bordercolor='#ccc',
+            font=dict(size=12),
+        )],
+        annotations=[dict(
+            text='Select miRNA:', x=0.0, xref='paper', xanchor='left',
+            y=1.19, yref='paper', yanchor='top',
+            showarrow=False, font=dict(size=12, color='#666'),
+        )],
+        xaxis=dict(
+            title=None,
+            tickfont=dict(size=12),
+            showline=True, linewidth=1, linecolor='#ccc',
+        ),
+        yaxis=dict(
+            title=dict(text='Normalized Counts', font=dict(size=14)),
+            tickfont=dict(size=11),
+            showgrid=True, gridcolor='rgba(0,0,0,0.07)', gridwidth=1,
+            showline=True, linewidth=1, linecolor='#ccc',
+            zeroline=False,
+            rangemode='tozero',
         ),
         template=None,
         plot_bgcolor='white',
         paper_bgcolor='white',
-        width=1300,
-        height=max(600, n_rows * 380),
-        legend=dict(font=dict(size=11), bgcolor='rgba(255,255,255,0.9)'),
-        margin=dict(l=90, r=40, t=90, b=60),
+        width=750,
+        height=500,
+        bargap=0.25,
+        legend=dict(font=dict(size=11), x=1.02, y=1, bgcolor='rgba(255,255,255,0.9)'),
+        margin=dict(l=80, r=120, t=100, b=60),
     )
+
     _write_interactive_html(fig, os.path.join(output_dir, 'biomarker_expression_boxplots.html'),
                             has_annotations=False, has_colorbar=False,
                             default_filename='biomarker_expression_boxplots')
