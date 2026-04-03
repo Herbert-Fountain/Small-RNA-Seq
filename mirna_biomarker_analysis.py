@@ -217,7 +217,15 @@ def _write_interactive_html(fig, filepath, has_annotations=True, default_filenam
     resetting other settings.
     If has_annotations=False, annotation/arrow controls are hidden."""
     plot_div = fig.to_html(full_html=False, include_plotlyjs='cdn',
-                           config={'editable': True})
+                           config={'edits': {
+                               'annotationPosition': True,
+                               'annotationTail': True,
+                               'annotationText': True,
+                               'axisTitleText': False,
+                               'titleText': False,
+                               'legendPosition': True,
+                               'legendText': False,
+                           }})
     # Find the div id
     import re as _re
     div_match = _re.search(r'id="([^"]+)"', plot_div)
@@ -293,13 +301,13 @@ def _write_interactive_html(fig, filepath, has_annotations=True, default_filenam
     </div>
 
     <div class="ctrl-group">
-      <label>Group Label Size (X-axis)</label>
+      <label>X-Axis Tick Size</label>
       <input type="range" id="xTickSize" min="6" max="24" value="12" step="1">
       <div class="val-display" id="xTickSizeVal">12pt</div>
     </div>
 
     <div class="ctrl-group">
-      <label>miRNA Label Size (Y-axis)</label>
+      <label>Y-Axis Tick Size</label>
       <input type="range" id="yTickSize" min="6" max="24" value="9" step="1">
       <div class="val-display" id="yTickSizeVal">9pt</div>
     </div>
@@ -515,13 +523,18 @@ bindSlider('xTickSize', 'xTickSizeVal', 'pt', function(v) {{
 }});
 
 bindSlider('yTickSize', 'yTickSizeVal', 'pt', function(v) {{
-  var estLabelWidth = v * 0.6 * 15 + 50;
-  var newMargin = Math.max(140, Math.ceil(estLabelWidth));
-  var nTicks = (gd.data[0] && gd.data[0].y) ? gd.data[0].y.length : 60;
-  var newHeight = Math.max(700, nTicks * (v * 1.4 + 2) + 160);
-  var upd = relayoutAllAxes('yaxis', {{'tickfont.size': v, 'dtick': 1}});
-  upd['margin.l'] = newMargin;
-  upd['height'] = newHeight;
+  // Detect if Y-axis has categorical string data (heatmap/dotplot with miRNA names)
+  var isCategorical = gd.data[0] && gd.data[0].y &&
+    typeof gd.data[0].y[0] === 'string';
+  var upd = relayoutAllAxes('yaxis', {{'tickfont.size': v}});
+  if (isCategorical) {{
+    // Scale margin and height for long miRNA label names
+    var estLabelWidth = v * 0.6 * 15 + 50;
+    upd['margin.l'] = Math.max(140, Math.ceil(estLabelWidth));
+    var nTicks = gd.data[0].y.length;
+    upd['height'] = Math.max(700, nTicks * (v * 1.4 + 2) + 160);
+    Object.assign(upd, relayoutAllAxes('yaxis', {{'tickfont.size': v, 'dtick': 1}}));
+  }}
   Plotly.relayout(gd, upd);
 }});
 
@@ -1348,9 +1361,13 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
     # Add y-axis labels to all subplots
     fig.update_yaxes(title_text='Normalized Counts')
 
+    # Add x-axis title to all subplots to prevent "Click to enter" placeholder
+    fig.update_xaxes(title_text='Group')
+
     fig.update_layout(
         title=dict(
-            text='Individual Sample Expression: Top Biomarker Candidates',
+            text=('Individual Sample Expression: Top Biomarker Candidates<br>'
+                  '<sub>Top 5 upregulated biomarkers per group</sub>'),
             font=dict(size=16),
             x=0.5,
             xanchor='center',
