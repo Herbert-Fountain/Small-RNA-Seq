@@ -1494,7 +1494,8 @@ def create_expression_dotplot(biomarkers, group_avg, output_dir, top_per_group=1
 
 def create_individual_expression_plots(biomarkers, sample_counts, output_dir, top_per_group=5):
     """
-    Create box/strip plots for top biomarker candidates showing individual sample values.
+    Create strip plots for top biomarker candidates showing individual sample values.
+    Uses go.Scatter with jitter instead of go.Box for cleaner rendering with few replicates.
     """
     sample_groups = {
         'NIH 4T1 Cells': ['4T1.1', '4T1.2', '4T1.3'],
@@ -1531,8 +1532,8 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
 
     fig = make_subplots(rows=n_rows, cols=n_cols,
                         subplot_titles=[g.replace('mmu-', '') for g in all_top_genes],
-                        vertical_spacing=0.08,
-                        horizontal_spacing=0.08)
+                        vertical_spacing=0.10,
+                        horizontal_spacing=0.10)
 
     for idx, gene in enumerate(all_top_genes):
         row = idx // n_cols + 1
@@ -1547,30 +1548,44 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
             vals = gene_data[samples].values.flatten()
             vals = vals[~np.isnan(vals)]
 
-            fig.add_trace(go.Box(
+            # Jitter x positions slightly for visibility
+            jitter = np.random.uniform(-0.15, 0.15, size=len(vals))
+
+            fig.add_trace(go.Scatter(
+                x=[group_name] * len(vals),
                 y=vals,
+                mode='markers',
                 name=group_name,
-                marker=dict(color=group_colors[group_name], size=6),
-                line=dict(width=1.5),
-                boxpoints='all',
-                jitter=0.3,
-                pointpos=0,
+                marker=dict(
+                    color=group_colors[group_name],
+                    size=8,
+                    line=dict(width=0.5, color='white'),
+                ),
                 showlegend=(idx == 0),
                 legendgroup=group_name,
+                hovertemplate=(
+                    f'<b>{gene.replace("mmu-", "")}</b><br>'
+                    '%{x}<br>'
+                    'Count: %{y:,.0f}<extra></extra>'
+                ),
             ), row=row, col=col)
 
-    # Only add y-axis label to leftmost subplots to avoid clutter
-    for idx in range(n_genes):
-        col = idx % n_cols + 1
-        if col == 1:
-            fig.update_yaxes(title_text='Normalized Counts', row=(idx // n_cols + 1), col=1)
+    # Clean axis styling - no template to avoid conflicts
+    fig.update_yaxes(
+        showgrid=True, gridcolor='rgba(0,0,0,0.08)', gridwidth=1,
+        nticks=5, zeroline=False,
+        showline=True, linewidth=1, linecolor='#CCCCCC',
+        title_text=None,
+    )
+    fig.update_xaxes(
+        showgrid=False,
+        showline=True, linewidth=1, linecolor='#CCCCCC',
+        tickangle=-45,
+    )
 
-    # Add consistent horizontal gridlines across all subplots
-    # Use integer gridwidth (1px) to avoid sub-pixel rendering inconsistencies
-    fig.update_yaxes(showgrid=True, gridcolor='#E0E0E0', gridwidth=1,
-                     griddash='dot',
-                     nticks=5, zeroline=False)
-    fig.update_xaxes(showgrid=False)
+    # Y-axis label only on leftmost column
+    for r in range(1, n_rows + 1):
+        fig.update_yaxes(title_text='Normalized Counts', row=r, col=1)
 
     fig.update_layout(
         title=dict(
@@ -1580,14 +1595,13 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
             x=0.5,
             xanchor='center',
         ),
-        template='plotly_white',
-        width=1200,
-        height=max(500, n_rows * 350),
-        boxmode='group',
-        boxgap=0.3,
-        boxgroupgap=0.2,
-        legend=dict(font=dict(size=12)),
-        margin=dict(l=80, r=40, t=80, b=40),
+        template=None,
+        plot_bgcolor='white',
+        paper_bgcolor='white',
+        width=1300,
+        height=max(600, n_rows * 380),
+        legend=dict(font=dict(size=11), bgcolor='rgba(255,255,255,0.9)'),
+        margin=dict(l=90, r=40, t=90, b=60),
     )
     _write_interactive_html(fig, os.path.join(output_dir, 'biomarker_expression_boxplots.html'),
                             has_annotations=False, has_colorbar=False,
