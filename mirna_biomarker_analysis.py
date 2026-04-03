@@ -1296,14 +1296,24 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
                 legendgroup=group_name,
             ), row=row, col=col)
 
+    # Add y-axis labels to all subplots
+    fig.update_yaxes(title_text='Normalized Counts')
+
     fig.update_layout(
-        title='Individual Sample Expression: Top Biomarker Candidates',
+        title=dict(
+            text='Individual Sample Expression: Top Biomarker Candidates',
+            font=dict(size=16),
+            x=0.5,
+            xanchor='center',
+        ),
         template='plotly_white',
         width=1100,
         height=max(400, n_rows * 300),
         boxmode='group',
+        legend=dict(font=dict(size=12)),
     )
-    fig.write_html(os.path.join(output_dir, 'biomarker_expression_boxplots.html'))
+    _write_interactive_html(fig, os.path.join(output_dir, 'biomarker_expression_boxplots.html'),
+                            has_annotations=False, default_filename='biomarker_expression_boxplots')
     return fig
 
 
