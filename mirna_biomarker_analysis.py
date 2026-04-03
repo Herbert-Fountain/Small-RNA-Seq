@@ -1546,16 +1546,37 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
             vals = vals[~np.isnan(vals)]
             mean_val = np.mean(vals) if len(vals) > 0 else 0
 
-            # Bar for mean
+            # Bar for mean with SD error bars and black border
+            sd_val = np.std(vals, ddof=1) if len(vals) > 1 else 0
+
             fig.add_trace(go.Bar(
                 x=[group_name],
                 y=[mean_val],
                 name=group_name,
-                marker=dict(color=group_colors[group_name], opacity=0.6),
+                marker=dict(
+                    color=group_colors[group_name],
+                    opacity=0.6,
+                    line=dict(width=1, color='black'),
+                ),
+                error_y=dict(
+                    type='data',
+                    array=[sd_val],
+                    visible=True,
+                    thickness=1.5,
+                    width=4,
+                    color='black',
+                ),
                 showlegend=(gene_idx == 0),
                 legendgroup=group_name,
                 visible=visible,
-                hovertemplate=f'<b>{gene_names[gene_idx]}</b><br>%{{x}}<br>Mean: %{{y:,.0f}}<extra></extra>',
+                hovertemplate=(
+                    f'<b>{gene_names[gene_idx]}</b><br>'
+                    '%{x}<br>'
+                    'Mean: %{y:,.0f}<br>'
+                    f'SD: {sd_val:,.0f}<br>'
+                    f'n = {len(vals)}'
+                    '<extra></extra>'
+                ),
             ))
 
             # Individual points overlaid
