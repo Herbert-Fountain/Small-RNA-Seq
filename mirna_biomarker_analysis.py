@@ -1566,7 +1566,7 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
                     width=4,
                     color='black',
                 ),
-                showlegend=(gene_idx == 0),
+                showlegend=False,
                 legendgroup=group_name,
                 visible=visible,
                 hovertemplate=(
@@ -1632,7 +1632,7 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
         width=750,
         height=500,
         bargap=0.25,
-        legend=dict(font=dict(size=11), x=1.02, y=1, bgcolor='rgba(255,255,255,0.9)'),
+        showlegend=False,
         margin=dict(l=80, r=120, t=100, b=60),
     )
 
