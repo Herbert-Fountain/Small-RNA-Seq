@@ -649,19 +649,18 @@ if (document.getElementById('cbarTickSize')) {{
 }}
 
 bindSlider('markerSize', 'markerSizeVal', 'px', function(v) {{
-  var indices = [];
+  // Directly mutate trace data and do a single react
   for (var t = 0; t < gd.data.length; t++) {{
-    if (gd.data[t].marker) indices.push(t);
+    if (gd.data[t].marker) gd.data[t].marker.size = v;
   }}
-  if (indices.length > 0) Plotly.restyle(gd, {{'marker.size': v}}, indices);
+  Plotly.react(gd, gd.data, gd.layout);
 }});
 
 bindSlider('lineWidth', 'lineWidthVal', 'px', function(v) {{
-  var indices = [];
   for (var t = 0; t < gd.data.length; t++) {{
-    if (gd.data[t].line !== undefined) indices.push(t);
+    if (gd.data[t].line) gd.data[t].line.width = v;
   }}
-  if (indices.length > 0) Plotly.restyle(gd, {{'line.width': v}}, indices);
+  Plotly.react(gd, gd.data, gd.layout);
 }});
 
 bindSlider('boxGap', 'boxGapVal', '', function(v) {{
