@@ -387,7 +387,7 @@ def _write_interactive_html(fig, filepath, has_annotations=True, has_colorbar=Tr
     </div>
 
     <div class="ctrl-group">
-      <label>All Marker Color</label>
+      <label>Box Line Color</label>
       <input type="color" id="allMarkerColor" value="#333333">
     </div>
 
@@ -402,6 +402,37 @@ def _write_interactive_html(fig, filepath, has_annotations=True, has_colorbar=Tr
     <div class="ctrl-group">
       <label>Gridline Color</label>
       <input type="color" id="gridColor" value="#E5E5E5">
+    </div>
+
+    <div class="ctrl-group">
+      <label>Y-Axis Line</label>
+      <select id="yAxisLine">
+        <option value="off">Off</option>
+        <option value="on">On</option>
+      </select>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Y-Axis Line Color</label>
+      <input type="color" id="yAxisLineColor" value="#000000">
+    </div>
+
+    <div class="ctrl-group">
+      <label>X-Axis Line</label>
+      <select id="xAxisLine">
+        <option value="off">Off</option>
+        <option value="on">On</option>
+      </select>
+    </div>
+
+    <div class="ctrl-group">
+      <label>X-Axis Line Color</label>
+      <input type="color" id="xAxisLineColor" value="#000000">
+    </div>
+
+    <div class="ctrl-group">
+      <label>All Circle Color</label>
+      <input type="color" id="allCircleColor" value="#333333">
     </div>
 
     <hr class="sep">
@@ -722,7 +753,6 @@ bindSlider('boxGroupGap', 'boxGroupGapVal', '', function(v) {{
 document.getElementById('allMarkerColor').addEventListener('input', function() {{
   var c = this.value;
   for (var t = 0; t < gd.data.length; t++) {{
-    if (gd.data[t].marker) gd.data[t].marker.color = c;
     if (gd.data[t].line) gd.data[t].line.color = c;
   }}
   Plotly.react(gd, gd.data, gd.layout);
@@ -735,6 +765,42 @@ document.getElementById('yGridToggle').addEventListener('change', function() {{
 
 document.getElementById('gridColor').addEventListener('input', function() {{
   Plotly.relayout(gd, relayoutAllAxes('yaxis', {{'gridcolor': this.value}}));
+}});
+
+document.getElementById('yAxisLine').addEventListener('change', function() {{
+  var show = this.value === 'on';
+  Plotly.relayout(gd, relayoutAllAxes('yaxis', {{
+    'showline': show,
+    'linewidth': 1,
+    'linecolor': document.getElementById('yAxisLineColor').value
+  }}));
+}});
+
+document.getElementById('yAxisLineColor').addEventListener('input', function() {{
+  Plotly.relayout(gd, relayoutAllAxes('yaxis', {{'linecolor': this.value, 'showline': true}}));
+  document.getElementById('yAxisLine').value = 'on';
+}});
+
+document.getElementById('xAxisLine').addEventListener('change', function() {{
+  var show = this.value === 'on';
+  Plotly.relayout(gd, relayoutAllAxes('xaxis', {{
+    'showline': show,
+    'linewidth': 1,
+    'linecolor': document.getElementById('xAxisLineColor').value
+  }}));
+}});
+
+document.getElementById('xAxisLineColor').addEventListener('input', function() {{
+  Plotly.relayout(gd, relayoutAllAxes('xaxis', {{'linecolor': this.value, 'showline': true}}));
+  document.getElementById('xAxisLine').value = 'on';
+}});
+
+document.getElementById('allCircleColor').addEventListener('input', function() {{
+  var c = this.value;
+  for (var t = 0; t < gd.data.length; t++) {{
+    if (gd.data[t].marker) gd.data[t].marker.color = c;
+  }}
+  Plotly.react(gd, gd.data, gd.layout);
 }});
 
 document.getElementById('allTextColor').addEventListener('input', function() {{
