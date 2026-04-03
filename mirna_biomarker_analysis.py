@@ -537,15 +537,16 @@ document.getElementById('subtitleApply').addEventListener('click', function() {{
   Plotly.relayout(gd, {{'title.text': full}});
 }});
 
-// Capture current font sizes, scale them up, export, then restore
-function exportWithScaledFonts(format) {{
-  var scale = parseInt(document.getElementById('exportScale').value);
+function exportPlot(format) {{
+  var scale = parseFloat(document.getElementById('exportScale').value);
   var w = parseInt(document.getElementById('exportWidth').value);
   var h = parseInt(document.getElementById('exportHeight').value);
-  var s = (format === 'svg') ? 1 : scale;
 
-  // Gather current sizes to restore later
+  // Save current layout state
   var layout = gd.layout;
+  var origWidth = layout.width;
+  var origHeight = layout.height;
+
   var saved = {{
     titleSize: (layout.title && layout.title.font) ? layout.title.font.size : 16,
     xTitleSize: (layout.xaxis && layout.xaxis.title && layout.xaxis.title.font) ? layout.xaxis.title.font.size : 14,
@@ -553,71 +554,114 @@ function exportWithScaledFonts(format) {{
     xTickSize: (layout.xaxis && layout.xaxis.tickfont) ? layout.xaxis.tickfont.size : 12,
     yTickSize: (layout.yaxis && layout.yaxis.tickfont) ? layout.yaxis.tickfont.size : 12,
     legendSize: (layout.legend && layout.legend.font) ? layout.legend.font.size : 12,
+    markerSize: (gd.data[0] && gd.data[0].marker) ? gd.data[0].marker.size : 5,
     annots: []
   }};
   var annots = layout.annotations || [];
   for (var i = 0; i < annots.length; i++) {{
     saved.annots.push({{
       fontSize: annots[i].font ? annots[i].font.size : null,
-      arrowwidth: annots[i].arrowwidth,
-      arrowsize: annots[i].arrowsize
+      arrowwidth: annots[i].arrowwidth != null ? annots[i].arrowwidth : 1,
+      arrowsize: annots[i].arrowsize != null ? annots[i].arrowsize : 1,
+      ay: annots[i].ay != null ? annots[i].ay : -30
     }});
   }}
 
-  // Scale up all fonts and arrows
-  var relayoutUp = {{
+  var s = (format === 'svg') ? 1 : scale;
+
+  // Build scaled layout
+  var upd = {{
+    'width': w * s,
+    'height': h * s,
     'title.font.size': saved.titleSize * s,
     'xaxis.title.font.size': saved.xTitleSize * s,
     'yaxis.title.font.size': saved.yTitleSize * s,
     'xaxis.tickfont.size': saved.xTickSize * s,
     'yaxis.tickfont.size': saved.yTickSize * s,
-    'legend.font.size': saved.legendSize * s
+    'legend.font.size': saved.legendSize * s,
+    'margin.l': (layout.margin ? layout.margin.l || 80 : 80) * s,
+    'margin.r': (layout.margin ? layout.margin.r || 80 : 80) * s,
+    'margin.t': (layout.margin ? layout.margin.t || 100 : 100) * s,
+    'margin.b': (layout.margin ? layout.margin.b || 80 : 80) * s
   }};
   for (var i = 0; i < annots.length; i++) {{
     if (saved.annots[i].fontSize) {{
-      relayoutUp['annotations[' + i + '].font.size'] = saved.annots[i].fontSize * s;
+      upd['annotations[' + i + '].font.size'] = saved.annots[i].fontSize * s;
     }}
-    if (saved.annots[i].arrowwidth) {{
-      relayoutUp['annotations[' + i + '].arrowwidth'] = saved.annots[i].arrowwidth * s;
-    }}
+    upd['annotations[' + i + '].arrowwidth'] = saved.annots[i].arrowwidth * s;
+    upd['annotations[' + i + '].arrowsize'] = saved.annots[i].arrowsize;
+    upd['annotations[' + i + '].ay'] = saved.annots[i].ay * s;
   }}
 
-  Plotly.relayout(gd, relayoutUp).then(function() {{
-    return Plotly.downloadImage(gd, {{
+  // Also scale marker sizes in data traces
+  var traceUpdates = [];
+  for (var t = 0; t < gd.data.length; t++) {{
+    traceUpdates.push({{'marker.size': (gd.data[t].marker ? gd.data[t].marker.size || 5 : 5) * s}});
+  }}
+
+  // Disable editable during export to avoid interference
+  Plotly.relayout(gd, upd).then(function() {{
+    var restyle = [];
+    for (var t = 0; t < traceUpdates.length; t++) {{
+      restyle.push(Plotly.restyle(gd, traceUpdates[t], [t]));
+    }}
+    return Promise.all(restyle);
+  }}).then(function() {{
+    // Use toImage to get data URL, then trigger download
+    return Plotly.toImage(gd, {{
       format: format,
       width: w * s,
-      height: h * s,
-      scale: 1,
-      filename: 'volcano_plot'
+      height: h * s
     }});
-  }}).then(function() {{
-    // Restore original sizes
-    var relayoutDown = {{
+  }}).then(function(dataUrl) {{
+    // Create download link
+    var a = document.createElement('a');
+    a.href = dataUrl;
+    a.download = 'volcano_plot.' + format;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    // Restore everything
+    var restore = {{
+      'width': origWidth,
+      'height': origHeight,
       'title.font.size': saved.titleSize,
       'xaxis.title.font.size': saved.xTitleSize,
       'yaxis.title.font.size': saved.yTitleSize,
       'xaxis.tickfont.size': saved.xTickSize,
       'yaxis.tickfont.size': saved.yTickSize,
-      'legend.font.size': saved.legendSize
+      'legend.font.size': saved.legendSize,
+      'margin.l': layout.margin ? layout.margin.l : 80,
+      'margin.r': layout.margin ? layout.margin.r : 80,
+      'margin.t': layout.margin ? layout.margin.t : 100,
+      'margin.b': layout.margin ? layout.margin.b : 80
     }};
     for (var i = 0; i < annots.length; i++) {{
       if (saved.annots[i].fontSize) {{
-        relayoutDown['annotations[' + i + '].font.size'] = saved.annots[i].fontSize;
+        restore['annotations[' + i + '].font.size'] = saved.annots[i].fontSize;
       }}
-      if (saved.annots[i].arrowwidth) {{
-        relayoutDown['annotations[' + i + '].arrowwidth'] = saved.annots[i].arrowwidth;
-      }}
+      restore['annotations[' + i + '].arrowwidth'] = saved.annots[i].arrowwidth;
+      restore['annotations[' + i + '].arrowsize'] = saved.annots[i].arrowsize;
+      restore['annotations[' + i + '].ay'] = saved.annots[i].ay;
     }}
-    return Plotly.relayout(gd, relayoutDown);
+    return Plotly.relayout(gd, restore);
+  }}).then(function() {{
+    var restoreTraces = [];
+    for (var t = 0; t < gd.data.length; t++) {{
+      var origSize = gd.data[t].marker ? gd.data[t].marker.size / s : 5;
+      restoreTraces.push(Plotly.restyle(gd, {{'marker.size': origSize}}, [t]));
+    }}
+    return Promise.all(restoreTraces);
   }});
 }}
 
 document.getElementById('exportPNG').addEventListener('click', function() {{
-  exportWithScaledFonts('png');
+  exportPlot('png');
 }});
 
 document.getElementById('exportSVG').addEventListener('click', function() {{
-  exportWithScaledFonts('svg');
+  exportPlot('svg');
 }});
 </script>
 </body></html>"""
