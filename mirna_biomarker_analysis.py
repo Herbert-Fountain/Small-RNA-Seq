@@ -401,7 +401,7 @@ def _write_interactive_html(fig, filepath, has_annotations=True, has_colorbar=Tr
 
     <div class="ctrl-group">
       <label>Gridline Color</label>
-      <input type="color" id="gridColor" value="#DDDDDD">
+      <input type="color" id="gridColor" value="#E0E0E0">
     </div>
 
     <div class="ctrl-group">
@@ -412,8 +412,17 @@ def _write_interactive_html(fig, filepath, has_annotations=True, has_colorbar=Tr
 
     <div class="ctrl-group">
       <label>Grid Line Width</label>
-      <input type="range" id="gridWidth" min="0.25" max="3" value="0.5" step="0.25">
-      <div class="val-display" id="gridWidthVal">0.5px</div>
+      <input type="range" id="gridWidth" min="1" max="3" value="1" step="1">
+      <div class="val-display" id="gridWidthVal">1px</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Grid Line Style</label>
+      <select id="gridStyle">
+        <option value="dot" selected>Dotted</option>
+        <option value="dash">Dashed</option>
+        <option value="solid">Solid</option>
+      </select>
     </div>
 
     <div class="ctrl-group">
@@ -785,6 +794,10 @@ bindSlider('gridNticks', 'gridNticksVal', '', function(v) {{
 
 bindSlider('gridWidth', 'gridWidthVal', 'px', function(v) {{
   Plotly.relayout(gd, relayoutAllAxes('yaxis', {{'gridwidth': v}}));
+}});
+
+document.getElementById('gridStyle').addEventListener('change', function() {{
+  Plotly.relayout(gd, relayoutAllAxes('yaxis', {{'griddash': this.value}}));
 }});
 
 document.getElementById('yAxisLine').addEventListener('change', function() {{
@@ -1553,9 +1566,10 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
             fig.update_yaxes(title_text='Normalized Counts', row=(idx // n_cols + 1), col=1)
 
     # Add consistent horizontal gridlines across all subplots
-    fig.update_yaxes(showgrid=True, gridcolor='#DDDDDD', gridwidth=0.5,
-                     nticks=6, zeroline=True, zerolinecolor='#CCCCCC',
-                     zerolinewidth=0.5)
+    # Use integer gridwidth (1px) to avoid sub-pixel rendering inconsistencies
+    fig.update_yaxes(showgrid=True, gridcolor='#E0E0E0', gridwidth=1,
+                     griddash='dot',
+                     nticks=5, zeroline=False)
     fig.update_xaxes(showgrid=False)
 
     fig.update_layout(
