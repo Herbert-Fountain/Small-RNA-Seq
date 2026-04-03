@@ -301,6 +301,12 @@ def _write_interactive_html(fig, filepath, has_annotations=True, has_colorbar=Tr
     </div>
 
     <div class="ctrl-group">
+      <label>Subplot Title Offset</label>
+      <input type="range" id="subplotTitleOffset" min="-0.05" max="0.1" value="0.01" step="0.005">
+      <div class="val-display" id="subplotTitleOffsetVal">0.01</div>
+    </div>
+
+    <div class="ctrl-group">
       <label>X-Axis Tick Size</label>
       <input type="range" id="xTickSize" min="6" max="24" value="12" step="1">
       <div class="val-display" id="xTickSizeVal">12pt</div>
@@ -378,6 +384,24 @@ def _write_interactive_html(fig, filepath, has_annotations=True, has_colorbar=Tr
       <label>Box Group Gap</label>
       <input type="range" id="boxGroupGap" min="0" max="0.8" value="0.2" step="0.05">
       <div class="val-display" id="boxGroupGapVal">0.2</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>All Marker Color</label>
+      <input type="color" id="allMarkerColor" value="#333333">
+    </div>
+
+    <div class="ctrl-group">
+      <label>Y Gridlines</label>
+      <select id="yGridToggle">
+        <option value="on" selected>On</option>
+        <option value="off">Off</option>
+      </select>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Gridline Color</label>
+      <input type="color" id="gridColor" value="#E5E5E5">
     </div>
 
     <hr class="sep">
@@ -518,12 +542,36 @@ bindSlider('axisSize', 'axisSizeVal', 'pt', function(v) {{
 }});
 
 bindSlider('subplotTitleSize', 'subplotTitleSizeVal', 'pt', function(v) {{
-  // Update all annotation font sizes (subplot titles from make_subplots)
   var annots = gd.layout.annotations;
   if (!annots) return;
   var upd = {{}};
   for (var i = 0; i < annots.length; i++) {{
     upd['annotations[' + i + '].font.size'] = v;
+  }}
+  Plotly.relayout(gd, upd);
+}});
+
+bindSlider('subplotTitleOffset', 'subplotTitleOffsetVal', '', function(v) {{
+  // Shift each subplot title annotation's y position
+  var annots = gd.layout.annotations;
+  if (!annots) return;
+  var upd = {{}};
+  // Subplot title annotations from make_subplots have yref='paper'
+  // We need to shift them relative to their subplot domain
+  for (var i = 0; i < annots.length; i++) {{
+    var a = annots[i];
+    if (a.yref === 'paper' && !a.showarrow) {{
+      // Get the subplot domain top and add offset
+      // The original y is at the top of the subplot domain
+      // Find which subplot this belongs to by checking xref
+      var baseY = a._defaultY !== undefined ? a._defaultY : a.y;
+      if (a._defaultY === undefined) {{
+        // Save original position on first call
+        annots[i]._defaultY = a.y;
+        baseY = a.y;
+      }}
+      upd['annotations[' + i + '].y'] = baseY + parseFloat(v);
+    }}
   }}
   Plotly.relayout(gd, upd);
 }});
@@ -669,6 +717,24 @@ bindSlider('boxGap', 'boxGapVal', '', function(v) {{
 
 bindSlider('boxGroupGap', 'boxGroupGapVal', '', function(v) {{
   Plotly.relayout(gd, {{'boxgroupgap': v}});
+}});
+
+document.getElementById('allMarkerColor').addEventListener('input', function() {{
+  var c = this.value;
+  for (var t = 0; t < gd.data.length; t++) {{
+    if (gd.data[t].marker) gd.data[t].marker.color = c;
+    if (gd.data[t].line) gd.data[t].line.color = c;
+  }}
+  Plotly.react(gd, gd.data, gd.layout);
+}});
+
+document.getElementById('yGridToggle').addEventListener('change', function() {{
+  var show = this.value === 'on';
+  Plotly.relayout(gd, relayoutAllAxes('yaxis', {{'showgrid': show}}));
+}});
+
+document.getElementById('gridColor').addEventListener('input', function() {{
+  Plotly.relayout(gd, relayoutAllAxes('yaxis', {{'gridcolor': this.value}}));
 }});
 
 document.getElementById('allTextColor').addEventListener('input', function() {{
@@ -1399,6 +1465,10 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
         col = idx % n_cols + 1
         if col == 1:
             fig.update_yaxes(title_text='Normalized Counts', row=(idx // n_cols + 1), col=1)
+
+    # Add horizontal gridlines for readability
+    fig.update_yaxes(showgrid=True, gridcolor='#E5E5E5', gridwidth=1)
+    fig.update_xaxes(showgrid=False)
 
     fig.update_layout(
         title=dict(
