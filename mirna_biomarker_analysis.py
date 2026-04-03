@@ -463,30 +463,15 @@ function bindSlider(id, valId, suffix, callback) {{
 }}
 
 // Helper: apply a relayout update to ALL x-axes or y-axes (handles subplots)
+// Brute-force: try axis, axis2, axis3, ... axis50
 function relayoutAllAxes(axis, props) {{
   var upd = {{}};
-  // Check both layout and _fullLayout for subplot axes
-  var src = gd._fullLayout || gd.layout;
-  var keys = Object.keys(src);
-  var seen = {{}};
-  for (var k = 0; k < keys.length; k++) {{
-    var key = keys[k];
-    // Match axis, axis2, axis3, ... but not axis_stuff or _axis
-    var re = new RegExp('^' + axis + '\\d*$');
-    if (re.test(key) && !seen[key]) {{
-      seen[key] = true;
-      for (var p in props) {{
-        upd[key + '.' + p] = props[p];
-      }}
-    }}
-  }}
-  // Also check gd.layout in case _fullLayout differs
-  keys = Object.keys(gd.layout);
-  for (var k = 0; k < keys.length; k++) {{
-    var key = keys[k];
-    var re = new RegExp('^' + axis + '\\d*$');
-    if (re.test(key) && !seen[key]) {{
-      seen[key] = true;
+  var suffixes = [''];
+  for (var i = 2; i <= 50; i++) suffixes.push(String(i));
+  for (var s = 0; s < suffixes.length; s++) {{
+    var key = axis + suffixes[s];
+    if ((gd.layout && gd.layout[key] !== undefined) ||
+        (gd._fullLayout && gd._fullLayout[key] !== undefined)) {{
       for (var p in props) {{
         upd[key + '.' + p] = props[p];
       }}
