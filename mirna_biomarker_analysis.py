@@ -449,8 +449,9 @@ function updateAnnotProp(prop, value) {{
 function bindSlider(id, valId, suffix, callback) {{
   var el = document.getElementById(id);
   var valEl = document.getElementById(valId);
+  if (!el) return;
   el.addEventListener('input', function() {{
-    valEl.textContent = el.value + suffix;
+    if (valEl) valEl.textContent = el.value + suffix;
     callback(parseFloat(el.value));
   }});
 }}
@@ -472,25 +473,34 @@ bindSlider('axisSize', 'axisSizeVal', 'pt', function(v) {{
   }});
 }});
 
-bindSlider('tickSize', 'tickSizeVal', 'pt', function(v) {{
-  // Scale margins and plot height to fit all labels at new size
-  var estLabelWidth = v * 0.6 * 15 + 50;
-  var newMargin = Math.max(140, Math.ceil(estLabelWidth));
-  // Count y-axis ticks to scale height
-  var nTicks = (gd.layout.yaxis && gd.layout.yaxis._categories)
-    ? gd.layout.yaxis._categories.length
-    : (gd.data[0] && gd.data[0].y ? gd.data[0].y.length : 60);
-  var newHeight = Math.max(700, nTicks * (v * 1.4 + 2) + 160);
+bindSlider('xTickSize', 'xTickSizeVal', 'pt', function(v) {{
   Plotly.relayout(gd, {{
     'xaxis.tickfont.size': v,
+    'xaxis.automargin': false,
+    'margin.b': Math.max(60, v * 4 + 20)
+  }});
+}});
+
+bindSlider('yTickSize', 'yTickSizeVal', 'pt', function(v) {{
+  var estLabelWidth = v * 0.6 * 15 + 50;
+  var newMargin = Math.max(140, Math.ceil(estLabelWidth));
+  var nTicks = (gd.data[0] && gd.data[0].y) ? gd.data[0].y.length : 60;
+  var newHeight = Math.max(700, nTicks * (v * 1.4 + 2) + 160);
+  Plotly.relayout(gd, {{
     'yaxis.tickfont.size': v,
     'yaxis.dtick': 1,
-    'xaxis.automargin': false,
     'yaxis.automargin': false,
     'margin.l': newMargin,
-    'margin.b': Math.max(60, v * 4),
     'height': newHeight
   }});
+}});
+
+bindSlider('xTitleStandoff', 'xTitleStandoffVal', 'px', function(v) {{
+  Plotly.relayout(gd, {{'xaxis.title.standoff': v}});
+}});
+
+bindSlider('yTitleStandoff', 'yTitleStandoffVal', 'px', function(v) {{
+  Plotly.relayout(gd, {{'yaxis.title.standoff': v}});
 }});
 
 bindSlider('subtitleSize', 'subtitleSizeVal', 'pt', function(v) {{
