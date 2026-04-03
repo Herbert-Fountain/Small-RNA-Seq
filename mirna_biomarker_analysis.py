@@ -791,15 +791,22 @@ def create_heatmap(group_avg, genes, comparisons, output_dir, top_n=50):
     ))
 
     fig.update_layout(
-        title=f'Top {len(z_scores)} Differentially Expressed miRNAs (Z-score normalized)',
+        title=dict(
+            text=f'Top {len(z_scores)} Differentially Expressed miRNAs (Z-score normalized)',
+            font=dict(size=16),
+            x=0.5,
+            xanchor='center',
+        ),
         xaxis_title='Group',
         yaxis_title='miRNA',
         template='plotly_white',
         width=800,
         height=max(600, len(z_scores) * 18),
         yaxis=dict(tickfont=dict(size=9)),
+        legend=dict(font=dict(size=12)),
     )
-    fig.write_html(os.path.join(output_dir, 'heatmap_top_DE_miRNAs.html'))
+    _write_interactive_html(fig, os.path.join(output_dir, 'heatmap_top_DE_miRNAs.html'),
+                            has_annotations=False, default_filename='heatmap_top_DE_miRNAs')
     return fig
 
 
