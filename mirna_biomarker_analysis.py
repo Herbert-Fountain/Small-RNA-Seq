@@ -287,9 +287,27 @@ def _write_interactive_html(fig, filepath, has_annotations=True, default_filenam
     </div>
 
     <div class="ctrl-group">
-      <label>Tick Label Size</label>
-      <input type="range" id="tickSize" min="6" max="18" value="12" step="1">
-      <div class="val-display" id="tickSizeVal">12pt</div>
+      <label>Group Label Size (X-axis)</label>
+      <input type="range" id="xTickSize" min="6" max="24" value="12" step="1">
+      <div class="val-display" id="xTickSizeVal">12pt</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>miRNA Label Size (Y-axis)</label>
+      <input type="range" id="yTickSize" min="6" max="24" value="9" step="1">
+      <div class="val-display" id="yTickSizeVal">9pt</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>X-Axis Title Offset</label>
+      <input type="range" id="xTitleStandoff" min="0" max="40" value="15" step="2">
+      <div class="val-display" id="xTitleStandoffVal">15px</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Y-Axis Title Offset</label>
+      <input type="range" id="yTitleStandoff" min="0" max="80" value="40" step="2">
+      <div class="val-display" id="yTitleStandoffVal">40px</div>
     </div>
 
     {'<hr class="sep">' if has_annotations else ''}
