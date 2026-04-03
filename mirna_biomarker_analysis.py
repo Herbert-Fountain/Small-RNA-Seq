@@ -377,6 +377,12 @@ def _write_interactive_html(fig, filepath, has_annotations=True, has_colorbar=Tr
     </div>
 
     <div class="ctrl-group">
+      <label>Bar Border Width</label>
+      <input type="range" id="barBorderWidth" min="0" max="4" value="1" step="0.5">
+      <div class="val-display" id="barBorderWidthVal">1px</div>
+    </div>
+
+    <div class="ctrl-group">
       <label>Box Gap</label>
       <input type="range" id="boxGap" min="0" max="0.8" value="0.3" step="0.05">
       <div class="val-display" id="boxGapVal">0.3</div>
@@ -761,6 +767,15 @@ bindSlider('markerSize', 'markerSizeVal', 'px', function(v) {{
 bindSlider('lineWidth', 'lineWidthVal', 'px', function(v) {{
   for (var t = 0; t < gd.data.length; t++) {{
     if (gd.data[t].line) gd.data[t].line.width = v;
+  }}
+  Plotly.react(gd, gd.data, gd.layout);
+}});
+
+bindSlider('barBorderWidth', 'barBorderWidthVal', 'px', function(v) {{
+  for (var t = 0; t < gd.data.length; t++) {{
+    if (gd.data[t].type === 'bar' && gd.data[t].marker && gd.data[t].marker.line) {{
+      gd.data[t].marker.line.width = v;
+    }}
   }}
   Plotly.react(gd, gd.data, gd.layout);
 }});
@@ -1625,6 +1640,7 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
             showline=True, linewidth=1, linecolor='#ccc',
             zeroline=False,
             rangemode='tozero',
+            layer='below traces',
         ),
         template=None,
         plot_bgcolor='white',
