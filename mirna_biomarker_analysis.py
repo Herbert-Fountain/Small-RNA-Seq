@@ -472,8 +472,12 @@ function bindSlider(id, valId, suffix, callback) {{
   var el = document.getElementById(id);
   var valEl = document.getElementById(valId);
   if (!el) return;
+  // Update display value on drag (lightweight)
   el.addEventListener('input', function() {{
     if (valEl) valEl.textContent = el.value + suffix;
+  }});
+  // Apply the actual Plotly update only on release (heavy)
+  el.addEventListener('change', function() {{
     callback(parseFloat(el.value));
   }});
 }}
