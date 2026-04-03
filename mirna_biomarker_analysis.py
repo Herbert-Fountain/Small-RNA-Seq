@@ -287,6 +287,12 @@ def _write_interactive_html(fig, filepath, has_annotations=True, default_filenam
     </div>
 
     <div class="ctrl-group">
+      <label>Subplot Title Size</label>
+      <input type="range" id="subplotTitleSize" min="8" max="22" value="12" step="1">
+      <div class="val-display" id="subplotTitleSizeVal">12pt</div>
+    </div>
+
+    <div class="ctrl-group">
       <label>Group Label Size (X-axis)</label>
       <input type="range" id="xTickSize" min="6" max="24" value="12" step="1">
       <div class="val-display" id="xTickSizeVal">12pt</div>
@@ -459,11 +465,28 @@ function bindSlider(id, valId, suffix, callback) {{
 // Helper: apply a relayout update to ALL x-axes or y-axes (handles subplots)
 function relayoutAllAxes(axis, props) {{
   var upd = {{}};
-  var keys = Object.keys(gd.layout);
+  // Check both layout and _fullLayout for subplot axes
+  var src = gd._fullLayout || gd.layout;
+  var keys = Object.keys(src);
+  var seen = {{}};
   for (var k = 0; k < keys.length; k++) {{
     var key = keys[k];
-    if (key.indexOf(axis) === 0 && !key.includes('.')) {{
-      // key is like 'xaxis', 'xaxis2', 'yaxis', 'yaxis3', etc.
+    // Match axis, axis2, axis3, ... but not axis_stuff or _axis
+    var re = new RegExp('^' + axis + '\\d*$');
+    if (re.test(key) && !seen[key]) {{
+      seen[key] = true;
+      for (var p in props) {{
+        upd[key + '.' + p] = props[p];
+      }}
+    }}
+  }}
+  // Also check gd.layout in case _fullLayout differs
+  keys = Object.keys(gd.layout);
+  for (var k = 0; k < keys.length; k++) {{
+    var key = keys[k];
+    var re = new RegExp('^' + axis + '\\d*$');
+    if (re.test(key) && !seen[key]) {{
+      seen[key] = true;
       for (var p in props) {{
         upd[key + '.' + p] = props[p];
       }}
@@ -486,6 +509,17 @@ bindSlider('axisSize', 'axisSizeVal', 'pt', function(v) {{
   var upd = {{}};
   Object.assign(upd, relayoutAllAxes('xaxis', {{'title.font.size': v}}));
   Object.assign(upd, relayoutAllAxes('yaxis', {{'title.font.size': v}}));
+  Plotly.relayout(gd, upd);
+}});
+
+bindSlider('subplotTitleSize', 'subplotTitleSizeVal', 'pt', function(v) {{
+  // Update all annotation font sizes (subplot titles from make_subplots)
+  var annots = gd.layout.annotations;
+  if (!annots) return;
+  var upd = {{}};
+  for (var i = 0; i < annots.length; i++) {{
+    upd['annotations[' + i + '].font.size'] = v;
+  }}
   Plotly.relayout(gd, upd);
 }});
 
@@ -518,19 +552,24 @@ bindSlider('subtitleSize', 'subtitleSizeVal', 'pt', function(v) {{
   // Update subtitle size by modifying the <sub> tag style in the title
   var titleEl = gd.layout.title;
   var currentText = (titleEl && titleEl.text) ? titleEl.text : '';
-  // Replace any existing font-size style in <sub>, or add one
+
+  // If no <sub> tag exists but there's a <br>, wrap the subtitle part
+  if (currentText.indexOf('<sub') < 0 && currentText.indexOf('<br>') >= 0) {{
+    var parts = currentText.split('<br>');
+    currentText = parts[0] + '<br><sub>' + parts.slice(1).join('<br>') + '</sub>';
+  }}
+
+  // Replace any existing <sub> tag (with or without style) with sized version
   var newText = currentText.replace(
     /<sub[^>]*>/,
     '<sub style="font-size:' + v + 'px">'
   );
-  // If there was no <sub> tag with style, try plain <sub>
-  if (newText === currentText && currentText.indexOf('<sub>') >= 0) {{
-    newText = currentText.replace('<sub>', '<sub style="font-size:' + v + 'px">');
-  }}
-  if (newText !== currentText) {{
+
+  if (newText !== currentText || currentText.indexOf('<sub') >= 0) {{
     Plotly.relayout(gd, {{'title.text': newText}});
   }}
-  // Also update the subtitle textarea to reflect
+
+  // Update the subtitle textarea
   var parts = newText.split('<br>');
   if (parts.length > 1) {{
     var sub = parts.slice(1).join('<br>').replace(/<sub[^>]*>/g,'').replace(/<\/sub>/g,'');
