@@ -317,6 +317,32 @@ def _write_interactive_html(fig, filepath, has_annotations=True, default_filenam
     <hr class="sep">
 
     <div class="ctrl-group">
+      <label>Colorbar Tick Size</label>
+      <input type="range" id="cbarTickSize" min="6" max="22" value="12" step="1">
+      <div class="val-display" id="cbarTickSizeVal">12pt</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Colorbar Title Size</label>
+      <input type="range" id="cbarTitleSize" min="8" max="24" value="14" step="1">
+      <div class="val-display" id="cbarTitleSizeVal">14pt</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Colorbar X Position</label>
+      <input type="range" id="cbarX" min="0.8" max="1.2" value="1.02" step="0.01">
+      <div class="val-display" id="cbarXVal">1.02</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Colorbar Y Position</label>
+      <input type="range" id="cbarY" min="0.0" max="1.0" value="0.5" step="0.05">
+      <div class="val-display" id="cbarYVal">0.5</div>
+    </div>
+
+    <hr class="sep">
+
+    <div class="ctrl-group">
       <label>Title Position</label>
       <select id="titlePos">
         <option value="0">Left</option>
@@ -509,6 +535,31 @@ if (document.getElementById('labelColor')) {{
 
 document.getElementById('titleColor').addEventListener('input', function() {{
   Plotly.relayout(gd, {{'title.font.color': this.value}});
+}});
+
+bindSlider('cbarTickSize', 'cbarTickSizeVal', 'pt', function(v) {{
+  // Update colorbar tick font size on first trace
+  if (gd.data.length > 0 && gd.data[0].colorbar) {{
+    Plotly.restyle(gd, {{'colorbar.tickfont.size': v}}, [0]);
+  }}
+}});
+
+bindSlider('cbarTitleSize', 'cbarTitleSizeVal', 'pt', function(v) {{
+  if (gd.data.length > 0 && gd.data[0].colorbar) {{
+    Plotly.restyle(gd, {{'colorbar.title.font.size': v}}, [0]);
+  }}
+}});
+
+bindSlider('cbarX', 'cbarXVal', '', function(v) {{
+  if (gd.data.length > 0 && gd.data[0].colorbar) {{
+    Plotly.restyle(gd, {{'colorbar.x': v}}, [0]);
+  }}
+}});
+
+bindSlider('cbarY', 'cbarYVal', '', function(v) {{
+  if (gd.data.length > 0 && gd.data[0].colorbar) {{
+    Plotly.restyle(gd, {{'colorbar.y': v}}, [0]);
+  }}
 }});
 
 document.getElementById('allTextColor').addEventListener('input', function() {{
