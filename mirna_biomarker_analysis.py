@@ -1615,20 +1615,57 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
         margin=dict(l=80, r=120, t=100, b=60),
     )
 
+    # Compute max value per gene for y-axis capping
+    gene_max_vals = []
+    for gene in all_top_genes:
+        gene_data = sample_counts[sample_counts['GeneID'] == gene]
+        max_val = 0
+        if len(gene_data) > 0:
+            for group_name in group_order:
+                samples = sample_groups[group_name]
+                vals = gene_data[samples].values.flatten()
+                vals = vals[~np.isnan(vals)]
+                if len(vals) > 0:
+                    max_val = max(max_val, np.max(vals))
+        gene_max_vals.append(float(max_val))
+
     # Build gene selector info for the HTML control panel
     gene_selector_js = f"""
     // Gene selector
     var geneNames = {gene_names};
     var tracesPerGene = {traces_per_gene};
     var nGenes = {n_genes};
+    var geneMaxVals = {gene_max_vals};
+
+    // Compute a nice y-axis cap: next round number above max
+    function niceMax(v) {{
+      if (v <= 0) return 1;
+      var pow10 = Math.pow(10, Math.floor(Math.log10(v)));
+      var mantissa = v / pow10;
+      var nice;
+      if (mantissa <= 1) nice = 1;
+      else if (mantissa <= 2) nice = 2;
+      else if (mantissa <= 5) nice = 5;
+      else nice = 10;
+      return nice * pow10;
+    }}
+
     var selEl = document.getElementById('geneSelector');
     if (selEl) {{
+      // Set initial y-axis range
+      var initMax = niceMax(geneMaxVals[0]);
+      Plotly.relayout(gd, {{'yaxis.range': [0, initMax]}});
+
       selEl.addEventListener('change', function() {{
         var idx = parseInt(this.value);
         var vis = [];
         for (var i = 0; i < nGenes * tracesPerGene; i++) vis.push(false);
         for (var t = 0; t < tracesPerGene; t++) vis[idx * tracesPerGene + t] = true;
-        Plotly.update(gd, {{'visible': vis}}, {{'title.text': 'Individual Sample Expression: ' + geneNames[idx]}});
+        var yMax = niceMax(geneMaxVals[idx]);
+        Plotly.update(gd, {{'visible': vis}}, {{
+          'title.text': 'Individual Sample Expression: ' + geneNames[idx],
+          'yaxis.range': [0, yMax]
+        }});
       }});
     }}
     """
