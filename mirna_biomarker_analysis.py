@@ -275,6 +275,12 @@ def _write_interactive_html(fig, filepath, has_annotations=True, default_filenam
     </div>
 
     <div class="ctrl-group">
+      <label>Subtitle Font Size</label>
+      <input type="range" id="subtitleSize" min="8" max="22" value="12" step="1">
+      <div class="val-display" id="subtitleSizeVal">12pt</div>
+    </div>
+
+    <div class="ctrl-group">
       <label>Axis Label Size</label>
       <input type="range" id="axisSize" min="8" max="22" value="14" step="1">
       <div class="val-display" id="axisSizeVal">14pt</div>
@@ -423,10 +429,40 @@ bindSlider('axisSize', 'axisSizeVal', 'pt', function(v) {{
 }});
 
 bindSlider('tickSize', 'tickSizeVal', 'pt', function(v) {{
+  // Scale left margin with tick size to prevent label clipping
+  var baseMargin = 80;
+  var extraPerPt = 8;
+  var newMargin = baseMargin + Math.max(0, (v - 10)) * extraPerPt;
   Plotly.relayout(gd, {{
     'xaxis.tickfont.size': v,
-    'yaxis.tickfont.size': v
+    'yaxis.tickfont.size': v,
+    'margin.l': newMargin
   }});
+}});
+
+bindSlider('subtitleSize', 'subtitleSizeVal', 'pt', function(v) {{
+  // Update subtitle size by modifying the <sub> tag style in the title
+  var titleEl = gd.layout.title;
+  var currentText = (titleEl && titleEl.text) ? titleEl.text : '';
+  // Replace any existing font-size style in <sub>, or add one
+  var newText = currentText.replace(
+    /<sub[^>]*>/,
+    '<sub style="font-size:' + v + 'px">'
+  );
+  // If there was no <sub> tag with style, try plain <sub>
+  if (newText === currentText && currentText.indexOf('<sub>') >= 0) {{
+    newText = currentText.replace('<sub>', '<sub style="font-size:' + v + 'px">');
+  }}
+  if (newText !== currentText) {{
+    Plotly.relayout(gd, {{'title.text': newText}});
+  }}
+  // Also update the subtitle textarea to reflect
+  var parts = newText.split('<br>');
+  if (parts.length > 1) {{
+    var sub = parts.slice(1).join('<br>').replace(/<sub[^>]*>/g,'').replace(/<\/sub>/g,'');
+    var subEl = document.getElementById('subtitleText');
+    if (subEl) subEl.value = sub;
+  }}
 }});
 
 if (document.getElementById('arrowSize')) {{
