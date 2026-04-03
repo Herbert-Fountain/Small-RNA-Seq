@@ -429,15 +429,17 @@ bindSlider('axisSize', 'axisSizeVal', 'pt', function(v) {{
 }});
 
 bindSlider('tickSize', 'tickSizeVal', 'pt', function(v) {{
-  // Scale left margin aggressively to prevent label clipping
-  // Estimate: each character ~0.6x font size, miRNA names ~15 chars
-  var estLabelWidth = v * 0.6 * 15 + 40;
-  var newMargin = Math.max(120, Math.ceil(estLabelWidth));
+  // Scale left margin to fit labels at new size
+  // ~15 chars for miRNA names, ~0.6em per char
+  var estLabelWidth = v * 0.6 * 15 + 50;
+  var newMargin = Math.max(140, Math.ceil(estLabelWidth));
   Plotly.relayout(gd, {{
     'xaxis.tickfont.size': v,
     'yaxis.tickfont.size': v,
+    'xaxis.automargin': false,
     'yaxis.automargin': false,
-    'margin.l': newMargin
+    'margin.l': newMargin,
+    'margin.b': Math.max(60, v * 4)
   }});
 }});
 
@@ -834,13 +836,16 @@ def create_heatmap(group_avg, genes, comparisons, output_dir, top_n=50):
             x=0.5,
             xanchor='center',
         ),
-        xaxis_title='Group',
-        yaxis_title='miRNA',
-        template='plotly_white',
+        xaxis=dict(title='Group', automargin=False,
+                    showgrid=False, showline=True, linecolor='#ccc'),
+        yaxis=dict(title='miRNA', tickfont=dict(size=9), automargin=False,
+                    showgrid=False, showline=True, linecolor='#ccc'),
+        template=None,
+        plot_bgcolor='white',
+        paper_bgcolor='white',
         width=900,
         height=max(700, len(z_scores) * 20),
-        yaxis=dict(tickfont=dict(size=9), automargin=False),
-        margin=dict(l=160),
+        margin=dict(l=160, b=80, t=80),
         legend=dict(font=dict(size=12)),
     )
     _write_interactive_html(fig, os.path.join(output_dir, 'heatmap_top_DE_miRNAs.html'),
