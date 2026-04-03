@@ -873,7 +873,7 @@ def create_heatmap(group_avg, genes, comparisons, output_dir, top_n=50):
     top_genes = gene_info.head(top_n)['GeneID'].tolist()
 
     avg_cols = ['avg_Cells', 'avg_He', 'avg_Ki', 'avg_Li', 'avg_Lu', 'avg_Sp']
-    display_names = ['Cells (4T1)', 'Heart', 'Kidney', 'Liver', 'Lung', 'Spleen']
+    display_names = ['NIH 4T1 Cells', 'Heart', 'Kidney', 'Liver', 'Lung', 'Spleen']
 
     heatmap_data = group_avg[group_avg['GeneID'].isin(top_genes)].copy()
     heatmap_data = heatmap_data.set_index('GeneID')
@@ -888,7 +888,7 @@ def create_heatmap(group_avg, genes, comparisons, output_dir, top_n=50):
 
     # Reorder by clustering-like sort: group by max expression group
     z_scores['max_group'] = z_scores.idxmax(axis=1)
-    group_order = ['Cells (4T1)', 'Heart', 'Kidney', 'Liver', 'Lung', 'Spleen']
+    group_order = ['NIH 4T1 Cells', 'Heart', 'Kidney', 'Liver', 'Lung', 'Spleen']
     z_scores['sort_key'] = z_scores['max_group'].map({g: i for i, g in enumerate(group_order)})
     z_scores = z_scores.sort_values(['sort_key', 'max_group'])
     z_scores = z_scores.drop(columns=['max_group', 'sort_key'])
