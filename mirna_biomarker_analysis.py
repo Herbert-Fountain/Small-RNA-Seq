@@ -456,6 +456,22 @@ function bindSlider(id, valId, suffix, callback) {{
   }});
 }}
 
+// Helper: apply a relayout update to ALL x-axes or y-axes (handles subplots)
+function relayoutAllAxes(axis, props) {{
+  var upd = {{}};
+  var keys = Object.keys(gd.layout);
+  for (var k = 0; k < keys.length; k++) {{
+    var key = keys[k];
+    if (key.indexOf(axis) === 0 && !key.includes('.')) {{
+      // key is like 'xaxis', 'xaxis2', 'yaxis', 'yaxis3', etc.
+      for (var p in props) {{
+        upd[key + '.' + p] = props[p];
+      }}
+    }}
+  }}
+  return upd;
+}}
+
 if (document.getElementById('labelSize')) {{
   bindSlider('labelSize', 'labelSizeVal', 'pt', function(v) {{
     updateAnnotProp('font.size', v);
@@ -467,18 +483,16 @@ bindSlider('titleSize', 'titleSizeVal', 'pt', function(v) {{
 }});
 
 bindSlider('axisSize', 'axisSizeVal', 'pt', function(v) {{
-  Plotly.relayout(gd, {{
-    'xaxis.title.font.size': v,
-    'yaxis.title.font.size': v
-  }});
+  var upd = {{}};
+  Object.assign(upd, relayoutAllAxes('xaxis', {{'title.font.size': v}}));
+  Object.assign(upd, relayoutAllAxes('yaxis', {{'title.font.size': v}}));
+  Plotly.relayout(gd, upd);
 }});
 
 bindSlider('xTickSize', 'xTickSizeVal', 'pt', function(v) {{
-  Plotly.relayout(gd, {{
-    'xaxis.tickfont.size': v,
-    'xaxis.automargin': false,
-    'margin.b': Math.max(60, v * 4 + 20)
-  }});
+  var upd = relayoutAllAxes('xaxis', {{'tickfont.size': v}});
+  upd['margin.b'] = Math.max(60, v * 4 + 20);
+  Plotly.relayout(gd, upd);
 }});
 
 bindSlider('yTickSize', 'yTickSizeVal', 'pt', function(v) {{
@@ -486,21 +500,18 @@ bindSlider('yTickSize', 'yTickSizeVal', 'pt', function(v) {{
   var newMargin = Math.max(140, Math.ceil(estLabelWidth));
   var nTicks = (gd.data[0] && gd.data[0].y) ? gd.data[0].y.length : 60;
   var newHeight = Math.max(700, nTicks * (v * 1.4 + 2) + 160);
-  Plotly.relayout(gd, {{
-    'yaxis.tickfont.size': v,
-    'yaxis.dtick': 1,
-    'yaxis.automargin': false,
-    'margin.l': newMargin,
-    'height': newHeight
-  }});
+  var upd = relayoutAllAxes('yaxis', {{'tickfont.size': v, 'dtick': 1}});
+  upd['margin.l'] = newMargin;
+  upd['height'] = newHeight;
+  Plotly.relayout(gd, upd);
 }});
 
 bindSlider('xTitleStandoff', 'xTitleStandoffVal', 'px', function(v) {{
-  Plotly.relayout(gd, {{'xaxis.title.standoff': v}});
+  Plotly.relayout(gd, relayoutAllAxes('xaxis', {{'title.standoff': v}}));
 }});
 
 bindSlider('yTitleStandoff', 'yTitleStandoffVal', 'px', function(v) {{
-  Plotly.relayout(gd, {{'yaxis.title.standoff': v}});
+  Plotly.relayout(gd, relayoutAllAxes('yaxis', {{'title.standoff': v}}));
 }});
 
 bindSlider('subtitleSize', 'subtitleSizeVal', 'pt', function(v) {{
@@ -594,15 +605,11 @@ document.getElementById('allTextColor').addEventListener('input', function() {{
   var c = this.value;
   // Update label annotations
   updateAnnotProp('font.color', c);
-  // Update title, axis titles, axis ticks, legend
-  Plotly.relayout(gd, {{
-    'title.font.color': c,
-    'xaxis.title.font.color': c,
-    'yaxis.title.font.color': c,
-    'xaxis.tickfont.color': c,
-    'yaxis.tickfont.color': c,
-    'legend.font.color': c
-  }});
+  // Update title, all axis titles and ticks, legend
+  var colorUpd = {{'title.font.color': c, 'legend.font.color': c}};
+  Object.assign(colorUpd, relayoutAllAxes('xaxis', {{'title.font.color': c, 'tickfont.color': c}}));
+  Object.assign(colorUpd, relayoutAllAxes('yaxis', {{'title.font.color': c, 'tickfont.color': c}}));
+  Plotly.relayout(gd, colorUpd);
   // Sync the individual pickers
   if (document.getElementById('labelColor')) document.getElementById('labelColor').value = c;
   document.getElementById('titleColor').value = c;
@@ -698,6 +705,16 @@ function exportPlot(format) {{
   }}
 
   // Disable editable during export to avoid interference
+  // Also scale all subplot axes for export
+  Object.assign(upd, relayoutAllAxes('xaxis', {{
+    'title.font.size': saved.xTitleSize * s,
+    'tickfont.size': saved.xTickSize * s
+  }}));
+  Object.assign(upd, relayoutAllAxes('yaxis', {{
+    'title.font.size': saved.yTitleSize * s,
+    'tickfont.size': saved.yTickSize * s
+  }}));
+
   Plotly.relayout(gd, upd).then(function() {{
     var restyle = [];
     for (var t = 0; t < traceUpdates.length; t++) {{
@@ -743,6 +760,14 @@ function exportPlot(format) {{
       restore['annotations[' + i + '].arrowsize'] = saved.annots[i].arrowsize;
       restore['annotations[' + i + '].ay'] = saved.annots[i].ay;
     }}
+    Object.assign(restore, relayoutAllAxes('xaxis', {{
+      'title.font.size': saved.xTitleSize,
+      'tickfont.size': saved.xTickSize
+    }}));
+    Object.assign(restore, relayoutAllAxes('yaxis', {{
+      'title.font.size': saved.yTitleSize,
+      'tickfont.size': saved.yTickSize
+    }}));
     return Plotly.relayout(gd, restore);
   }}).then(function() {{
     var restoreTraces = [];
