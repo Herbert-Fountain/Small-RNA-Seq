@@ -211,10 +211,11 @@ def create_volcano_plot(comp_df, comp_name, fdr_cutoff=0.05, fc_cutoff=1.0):
     return fig
 
 
-def _write_volcano_html(fig, filepath):
-    """Write a volcano plot to an HTML file with an external control panel.
+def _write_interactive_html(fig, filepath, has_annotations=True, default_filename="plot"):
+    """Write a Plotly figure to an HTML file with an external control panel.
     Controls use JavaScript to update individual properties without
-    resetting other settings."""
+    resetting other settings.
+    If has_annotations=False, annotation/arrow controls are hidden."""
     plot_div = fig.to_html(full_html=False, include_plotlyjs='cdn',
                            config={'editable': True})
     # Find the div id
@@ -265,11 +266,7 @@ def _write_volcano_html(fig, filepath):
   <div class="controls">
     <h3>Display Controls</h3>
 
-    <div class="ctrl-group">
-      <label>Label Font Size</label>
-      <input type="range" id="labelSize" min="6" max="20" value="10" step="1">
-      <div class="val-display" id="labelSizeVal">10pt</div>
-    </div>
+    {'<div class="ctrl-group"><label>Label Font Size</label><input type="range" id="labelSize" min="6" max="20" value="10" step="1"><div class="val-display" id="labelSizeVal">10pt</div></div>' if has_annotations else ''}
 
     <div class="ctrl-group">
       <label>Title Font Size</label>
@@ -289,43 +286,17 @@ def _write_volcano_html(fig, filepath):
       <div class="val-display" id="tickSizeVal">12pt</div>
     </div>
 
-    <hr class="sep">
+    {'<hr class="sep">' if has_annotations else ''}
 
-    <div class="ctrl-group">
-      <label>Arrow Size</label>
-      <input type="range" id="arrowSize" min="0.5" max="4" value="1" step="0.25">
-      <div class="val-display" id="arrowSizeVal">1x</div>
-    </div>
+    {'<div class="ctrl-group"><label>Arrow Size</label><input type="range" id="arrowSize" min="0.5" max="4" value="1" step="0.25"><div class="val-display" id="arrowSizeVal">1x</div></div>' if has_annotations else ''}
 
-    <div class="ctrl-group">
-      <label>Arrow Width</label>
-      <input type="range" id="arrowWidth" min="0.5" max="4" value="1" step="0.5">
-      <div class="val-display" id="arrowWidthVal">1px</div>
-    </div>
+    {'<div class="ctrl-group"><label>Arrow Width</label><input type="range" id="arrowWidth" min="0.5" max="4" value="1" step="0.5"><div class="val-display" id="arrowWidthVal">1px</div></div>' if has_annotations else ''}
 
-    <div class="ctrl-group">
-      <label>Arrowhead Style</label>
-      <select id="arrowHead">
-        <option value="0">None</option>
-        <option value="1">Thin</option>
-        <option value="2" selected>Arrow</option>
-        <option value="3">Barbed</option>
-        <option value="4">Wide</option>
-        <option value="5">Diamond</option>
-        <option value="6">Dot</option>
-        <option value="7">Open arrow</option>
-      </select>
-    </div>
+    {'<div class="ctrl-group"><label>Arrowhead Style</label><select id="arrowHead"><option value="0">None</option><option value="1">Thin</option><option value="2" selected>Arrow</option><option value="3">Barbed</option><option value="4">Wide</option><option value="5">Diamond</option><option value="6">Dot</option><option value="7">Open arrow</option></select></div>' if has_annotations else ''}
 
-    <div class="ctrl-group">
-      <label>Arrow Color</label>
-      <input type="color" id="arrowColor" value="#808080">
-    </div>
+    {'<div class="ctrl-group"><label>Arrow Color</label><input type="color" id="arrowColor" value="#808080"></div>' if has_annotations else ''}
 
-    <div class="ctrl-group">
-      <label>Label Text Color</label>
-      <input type="color" id="labelColor" value="#000000">
-    </div>
+    {'<div class="ctrl-group"><label>Label Text Color</label><input type="color" id="labelColor" value="#000000"></div>' if has_annotations else ''}
 
     <div class="ctrl-group">
       <label>Title Text Color</label>
@@ -434,9 +405,11 @@ function bindSlider(id, valId, suffix, callback) {{
   }});
 }}
 
-bindSlider('labelSize', 'labelSizeVal', 'pt', function(v) {{
-  updateAnnotProp('font.size', v);
-}});
+if (document.getElementById('labelSize')) {{
+  bindSlider('labelSize', 'labelSizeVal', 'pt', function(v) {{
+    updateAnnotProp('font.size', v);
+  }});
+}}
 
 bindSlider('titleSize', 'titleSizeVal', 'pt', function(v) {{
   Plotly.relayout(gd, {{'title.font.size': v}});
@@ -456,21 +429,20 @@ bindSlider('tickSize', 'tickSizeVal', 'pt', function(v) {{
   }});
 }});
 
-bindSlider('arrowSize', 'arrowSizeVal', 'x', function(v) {{
-  updateAnnotProp('arrowsize', v);
-}});
-
-bindSlider('arrowWidth', 'arrowWidthVal', 'px', function(v) {{
-  updateAnnotProp('arrowwidth', v);
-}});
-
-document.getElementById('arrowHead').addEventListener('change', function() {{
-  updateAnnotProp('arrowhead', parseInt(this.value));
-}});
-
-document.getElementById('arrowColor').addEventListener('input', function() {{
-  updateAnnotProp('arrowcolor', this.value);
-}});
+if (document.getElementById('arrowSize')) {{
+  bindSlider('arrowSize', 'arrowSizeVal', 'x', function(v) {{
+    updateAnnotProp('arrowsize', v);
+  }});
+  bindSlider('arrowWidth', 'arrowWidthVal', 'px', function(v) {{
+    updateAnnotProp('arrowwidth', v);
+  }});
+  document.getElementById('arrowHead').addEventListener('change', function() {{
+    updateAnnotProp('arrowhead', parseInt(this.value));
+  }});
+  document.getElementById('arrowColor').addEventListener('input', function() {{
+    updateAnnotProp('arrowcolor', this.value);
+  }});
+}}
 
 document.getElementById('titlePos').addEventListener('change', function() {{
   Plotly.relayout(gd, {{'title.x': parseFloat(this.value)}});
@@ -484,9 +456,11 @@ bindSlider('legendSize', 'legendSizeVal', 'pt', function(v) {{
   Plotly.relayout(gd, {{'legend.font.size': v}});
 }});
 
-document.getElementById('labelColor').addEventListener('input', function() {{
-  updateAnnotProp('font.color', this.value);
-}});
+if (document.getElementById('labelColor')) {{
+  document.getElementById('labelColor').addEventListener('input', function() {{
+    updateAnnotProp('font.color', this.value);
+  }});
+}}
 
 document.getElementById('titleColor').addEventListener('input', function() {{
   Plotly.relayout(gd, {{'title.font.color': this.value}});
@@ -506,7 +480,7 @@ document.getElementById('allTextColor').addEventListener('input', function() {{
     'legend.font.color': c
   }});
   // Sync the individual pickers
-  document.getElementById('labelColor').value = c;
+  if (document.getElementById('labelColor')) document.getElementById('labelColor').value = c;
   document.getElementById('titleColor').value = c;
 }});
 
@@ -617,7 +591,7 @@ function exportPlot(format) {{
     // Create download link
     var a = document.createElement('a');
     a.href = dataUrl;
-    a.download = 'volcano_plot.' + format;
+    a.download = '{default_filename}.' + format;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -682,7 +656,8 @@ def create_all_volcano_plots(comparisons, output_dir):
             comp_df['log2FC'] = -comp_df['log2FC']
         fig = create_volcano_plot(comp_df, comp_name)
         figs[comp_name] = fig
-        _write_volcano_html(fig, os.path.join(output_dir, f'volcano_{comp_name}.html'))
+        _write_interactive_html(fig, os.path.join(output_dir, f'volcano_{comp_name}.html'),
+                                has_annotations=True, default_filename=f'volcano_{comp_name}')
 
     # Combined with dropdown
     combined = go.Figure()
@@ -1201,7 +1176,8 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
 # =============================================================================
 
 def create_ma_plots(comparisons, output_dir):
-    """Create MA plots (log2FC vs mean expression) for each comparison."""
+    """Create MA plots (log2FC vs mean expression) for each comparison.
+    Includes draggable labels for top DE miRNAs and interactive controls."""
     for comp_name, comp_df in comparisons.items():
         df = comp_df.dropna(subset=['log2FC', 'padj', 'log2avg']).copy()
 
@@ -1230,15 +1206,48 @@ def create_ma_plots(comparisons, output_dir):
         fig.add_hline(y=1, line_dash='dash', line_color='gray')
         fig.add_hline(y=-1, line_dash='dash', line_color='gray')
 
+        # Label top DE hits as draggable annotations
+        de = df[df['significant'] == 'DE'].copy()
+        de['abs_fc'] = de['log2FC'].abs()
+        top_up = de[de['log2FC'] > 0].nlargest(5, 'abs_fc')
+        top_down = de[de['log2FC'] < 0].nlargest(5, 'abs_fc')
+        top_hits = pd.concat([top_up, top_down])
+
+        for _, row in top_hits.iterrows():
+            label = row['GeneID'].replace('mmu-', '')
+            fig.add_annotation(
+                x=row['log2avg'],
+                y=row['log2FC'],
+                text=label,
+                font=dict(size=10, color='black'),
+                showarrow=True,
+                arrowhead=2,
+                arrowsize=1,
+                arrowwidth=1,
+                arrowcolor='gray',
+                ax=0,
+                ay=-30,
+                bgcolor='rgba(255,255,255,0.7)',
+                borderpad=2,
+            )
+
         pretty = comp_name.replace('_', ' ').replace('vs', 'vs.')
+        n_de = (df['significant'] == 'DE').sum()
         fig.update_layout(
-            title=f'MA Plot: {pretty}',
+            title=dict(
+                text=f'MA Plot: {pretty}<br><sub>{n_de} DE miRNAs (FDR<0.05, |log2FC|>1.0)</sub>',
+                font=dict(size=16),
+                x=0.5,
+                xanchor='center',
+            ),
             xaxis_title='log2(Mean Expression)',
             yaxis_title='log2(Fold Change)',
             template='plotly_white',
             width=800, height=550,
+            legend=dict(x=0.01, y=0.99, bgcolor='rgba(255,255,255,0.8)'),
         )
-        fig.write_html(os.path.join(output_dir, f'ma_plot_{comp_name}.html'))
+        _write_interactive_html(fig, os.path.join(output_dir, f'ma_plot_{comp_name}.html'),
+                                has_annotations=True, default_filename=f'ma_plot_{comp_name}')
 
 
 # =============================================================================
