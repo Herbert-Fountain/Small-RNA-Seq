@@ -211,7 +211,7 @@ def create_volcano_plot(comp_df, comp_name, fdr_cutoff=0.05, fc_cutoff=1.0):
     return fig
 
 
-def _write_interactive_html(fig, filepath, has_annotations=True, default_filename="plot"):
+def _write_interactive_html(fig, filepath, has_annotations=True, has_colorbar=True, default_filename="plot"):
     """Write a Plotly figure to an HTML file with an external control panel.
     Controls use JavaScript to update individual properties without
     resetting other settings.
@@ -348,28 +348,36 @@ def _write_interactive_html(fig, filepath, has_annotations=True, default_filenam
 
     <hr class="sep">
 
+    {'<div class="ctrl-group"><label>Colorbar Tick Size</label><input type="range" id="cbarTickSize" min="6" max="22" value="12" step="1"><div class="val-display" id="cbarTickSizeVal">12pt</div></div>' if has_colorbar else ''}
+
+    {'<div class="ctrl-group"><label>Colorbar Title Size</label><input type="range" id="cbarTitleSize" min="8" max="24" value="14" step="1"><div class="val-display" id="cbarTitleSizeVal">14pt</div></div>' if has_colorbar else ''}
+
+    {'<div class="ctrl-group"><label>Colorbar X Position</label><input type="range" id="cbarX" min="0.8" max="1.2" value="1.02" step="0.01"><div class="val-display" id="cbarXVal">1.02</div></div>' if has_colorbar else ''}
+
+    {'<div class="ctrl-group"><label>Colorbar Y Position</label><input type="range" id="cbarY" min="0.0" max="1.0" value="0.5" step="0.05"><div class="val-display" id="cbarYVal">0.5</div></div>' if has_colorbar else ''}
+
     <div class="ctrl-group">
-      <label>Colorbar Tick Size</label>
-      <input type="range" id="cbarTickSize" min="6" max="22" value="12" step="1">
-      <div class="val-display" id="cbarTickSizeVal">12pt</div>
+      <label>Marker Size</label>
+      <input type="range" id="markerSize" min="2" max="16" value="6" step="1">
+      <div class="val-display" id="markerSizeVal">6px</div>
     </div>
 
     <div class="ctrl-group">
-      <label>Colorbar Title Size</label>
-      <input type="range" id="cbarTitleSize" min="8" max="24" value="14" step="1">
-      <div class="val-display" id="cbarTitleSizeVal">14pt</div>
+      <label>Line Width</label>
+      <input type="range" id="lineWidth" min="0.5" max="5" value="1.5" step="0.5">
+      <div class="val-display" id="lineWidthVal">1.5px</div>
     </div>
 
     <div class="ctrl-group">
-      <label>Colorbar X Position</label>
-      <input type="range" id="cbarX" min="0.8" max="1.2" value="1.02" step="0.01">
-      <div class="val-display" id="cbarXVal">1.02</div>
+      <label>Box Gap</label>
+      <input type="range" id="boxGap" min="0" max="0.8" value="0.3" step="0.05">
+      <div class="val-display" id="boxGapVal">0.3</div>
     </div>
 
     <div class="ctrl-group">
-      <label>Colorbar Y Position</label>
-      <input type="range" id="cbarY" min="0.0" max="1.0" value="0.5" step="0.05">
-      <div class="val-display" id="cbarYVal">0.5</div>
+      <label>Box Group Gap</label>
+      <input type="range" id="boxGroupGap" min="0" max="0.8" value="0.2" step="0.05">
+      <div class="val-display" id="boxGroupGapVal">0.2</div>
     </div>
 
     <hr class="sep">
@@ -613,29 +621,52 @@ document.getElementById('titleColor').addEventListener('input', function() {{
   Plotly.relayout(gd, {{'title.font.color': this.value}});
 }});
 
-bindSlider('cbarTickSize', 'cbarTickSizeVal', 'pt', function(v) {{
-  // Update colorbar tick font size on first trace
-  if (gd.data.length > 0 && gd.data[0].colorbar) {{
-    Plotly.restyle(gd, {{'colorbar.tickfont.size': v}}, [0]);
+if (document.getElementById('cbarTickSize')) {{
+  bindSlider('cbarTickSize', 'cbarTickSizeVal', 'pt', function(v) {{
+    if (gd.data.length > 0 && gd.data[0].colorbar) {{
+      Plotly.restyle(gd, {{'colorbar.tickfont.size': v}}, [0]);
+    }}
+  }});
+  bindSlider('cbarTitleSize', 'cbarTitleSizeVal', 'pt', function(v) {{
+    if (gd.data.length > 0 && gd.data[0].colorbar) {{
+      Plotly.restyle(gd, {{'colorbar.title.font.size': v}}, [0]);
+    }}
+  }});
+  bindSlider('cbarX', 'cbarXVal', '', function(v) {{
+    if (gd.data.length > 0 && gd.data[0].colorbar) {{
+      Plotly.restyle(gd, {{'colorbar.x': v}}, [0]);
+    }}
+  }});
+  bindSlider('cbarY', 'cbarYVal', '', function(v) {{
+    if (gd.data.length > 0 && gd.data[0].colorbar) {{
+      Plotly.restyle(gd, {{'colorbar.y': v}}, [0]);
+    }}
+  }});
+}}
+
+bindSlider('markerSize', 'markerSizeVal', 'px', function(v) {{
+  var upd = {{}};
+  for (var t = 0; t < gd.data.length; t++) {{
+    if (gd.data[t].marker) {{
+      Plotly.restyle(gd, {{'marker.size': v}}, [t]);
+    }}
   }}
 }});
 
-bindSlider('cbarTitleSize', 'cbarTitleSizeVal', 'pt', function(v) {{
-  if (gd.data.length > 0 && gd.data[0].colorbar) {{
-    Plotly.restyle(gd, {{'colorbar.title.font.size': v}}, [0]);
+bindSlider('lineWidth', 'lineWidthVal', 'px', function(v) {{
+  for (var t = 0; t < gd.data.length; t++) {{
+    if (gd.data[t].line !== undefined) {{
+      Plotly.restyle(gd, {{'line.width': v}}, [t]);
+    }}
   }}
 }});
 
-bindSlider('cbarX', 'cbarXVal', '', function(v) {{
-  if (gd.data.length > 0 && gd.data[0].colorbar) {{
-    Plotly.restyle(gd, {{'colorbar.x': v}}, [0]);
-  }}
+bindSlider('boxGap', 'boxGapVal', '', function(v) {{
+  Plotly.relayout(gd, {{'boxgap': v}});
 }});
 
-bindSlider('cbarY', 'cbarYVal', '', function(v) {{
-  if (gd.data.length > 0 && gd.data[0].colorbar) {{
-    Plotly.restyle(gd, {{'colorbar.y': v}}, [0]);
-  }}
+bindSlider('boxGroupGap', 'boxGroupGapVal', '', function(v) {{
+  Plotly.relayout(gd, {{'boxgroupgap': v}});
 }});
 
 document.getElementById('allTextColor').addEventListener('input', function() {{
@@ -843,7 +874,8 @@ def create_all_volcano_plots(comparisons, output_dir):
         fig = create_volcano_plot(comp_df, comp_name)
         figs[comp_name] = fig
         _write_interactive_html(fig, os.path.join(output_dir, f'volcano_{comp_name}.html'),
-                                has_annotations=True, default_filename=f'volcano_{comp_name}')
+                                has_annotations=True, has_colorbar=False,
+                                default_filename=f'volcano_{comp_name}')
 
     # Combined with dropdown
     combined = go.Figure()
@@ -1298,7 +1330,7 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
     Create box/strip plots for top biomarker candidates showing individual sample values.
     """
     sample_groups = {
-        'Cells (4T1)': ['4T1.1', '4T1.2', '4T1.3'],
+        'NIH 4T1 Cells': ['4T1.1', '4T1.2', '4T1.3'],
         'Heart': ['He.4', 'He.5'],
         'Kidney': ['Ki.4', 'Ki.5'],
         'Liver': ['Li.4', 'Li.5', 'Li.3'],
@@ -1306,14 +1338,14 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
         'Spleen': ['Sp.4', 'Sp.5', 'Sp.3'],
     }
     group_colors = {
-        'Cells (4T1)': '#e74c3c',
+        'NIH 4T1 Cells': '#e74c3c',
         'Heart': '#e67e22',
         'Kidney': '#2ecc71',
         'Liver': '#9b59b6',
         'Lung': '#3498db',
         'Spleen': '#1abc9c',
     }
-    group_order = ['Cells (4T1)', 'Heart', 'Kidney', 'Liver', 'Lung', 'Spleen']
+    group_order = ['NIH 4T1 Cells', 'Heart', 'Kidney', 'Liver', 'Lung', 'Spleen']
 
     # Collect top genes
     all_top_genes = []
@@ -1332,7 +1364,8 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
 
     fig = make_subplots(rows=n_rows, cols=n_cols,
                         subplot_titles=[g.replace('mmu-', '') for g in all_top_genes],
-                        vertical_spacing=0.06)
+                        vertical_spacing=0.08,
+                        horizontal_spacing=0.08)
 
     for idx, gene in enumerate(all_top_genes):
         row = idx // n_cols + 1
@@ -1350,7 +1383,8 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
             fig.add_trace(go.Box(
                 y=vals,
                 name=group_name,
-                marker_color=group_colors[group_name],
+                marker=dict(color=group_colors[group_name], size=6),
+                line=dict(width=1.5),
                 boxpoints='all',
                 jitter=0.3,
                 pointpos=0,
@@ -1358,11 +1392,11 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
                 legendgroup=group_name,
             ), row=row, col=col)
 
-    # Add y-axis labels to all subplots
-    fig.update_yaxes(title_text='Normalized Counts')
-
-    # Add x-axis title to all subplots to prevent "Click to enter" placeholder
-    fig.update_xaxes(title_text='Group')
+    # Only add y-axis label to leftmost subplots to avoid clutter
+    for idx in range(n_genes):
+        col = idx % n_cols + 1
+        if col == 1:
+            fig.update_yaxes(title_text='Normalized Counts', row=(idx // n_cols + 1), col=1)
 
     fig.update_layout(
         title=dict(
@@ -1373,13 +1407,17 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
             xanchor='center',
         ),
         template='plotly_white',
-        width=1100,
-        height=max(400, n_rows * 300),
+        width=1200,
+        height=max(500, n_rows * 350),
         boxmode='group',
+        boxgap=0.3,
+        boxgroupgap=0.2,
         legend=dict(font=dict(size=12)),
+        margin=dict(l=80, r=40, t=80, b=40),
     )
     _write_interactive_html(fig, os.path.join(output_dir, 'biomarker_expression_boxplots.html'),
-                            has_annotations=False, default_filename='biomarker_expression_boxplots')
+                            has_annotations=False, has_colorbar=False,
+                            default_filename='biomarker_expression_boxplots')
     return fig
 
 
@@ -1459,7 +1497,8 @@ def create_ma_plots(comparisons, output_dir):
             legend=dict(x=0.01, y=0.99, bgcolor='rgba(255,255,255,0.8)'),
         )
         _write_interactive_html(fig, os.path.join(output_dir, f'ma_plot_{comp_name}.html'),
-                                has_annotations=True, default_filename=f'ma_plot_{comp_name}')
+                                has_annotations=True, has_colorbar=False,
+                                default_filename=f'ma_plot_{comp_name}')
 
 
 # =============================================================================
