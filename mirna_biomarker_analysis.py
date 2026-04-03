@@ -401,7 +401,19 @@ def _write_interactive_html(fig, filepath, has_annotations=True, has_colorbar=Tr
 
     <div class="ctrl-group">
       <label>Gridline Color</label>
-      <input type="color" id="gridColor" value="#E5E5E5">
+      <input type="color" id="gridColor" value="#DDDDDD">
+    </div>
+
+    <div class="ctrl-group">
+      <label>Grid Line Count</label>
+      <input type="range" id="gridNticks" min="3" max="12" value="6" step="1">
+      <div class="val-display" id="gridNticksVal">6</div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Grid Line Width</label>
+      <input type="range" id="gridWidth" min="0.25" max="3" value="0.5" step="0.25">
+      <div class="val-display" id="gridWidthVal">0.5px</div>
     </div>
 
     <div class="ctrl-group">
@@ -765,6 +777,14 @@ document.getElementById('yGridToggle').addEventListener('change', function() {{
 
 document.getElementById('gridColor').addEventListener('input', function() {{
   Plotly.relayout(gd, relayoutAllAxes('yaxis', {{'gridcolor': this.value}}));
+}});
+
+bindSlider('gridNticks', 'gridNticksVal', '', function(v) {{
+  Plotly.relayout(gd, relayoutAllAxes('yaxis', {{'nticks': v}}));
+}});
+
+bindSlider('gridWidth', 'gridWidthVal', 'px', function(v) {{
+  Plotly.relayout(gd, relayoutAllAxes('yaxis', {{'gridwidth': v}}));
 }});
 
 document.getElementById('yAxisLine').addEventListener('change', function() {{
@@ -1532,8 +1552,10 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
         if col == 1:
             fig.update_yaxes(title_text='Normalized Counts', row=(idx // n_cols + 1), col=1)
 
-    # Add horizontal gridlines for readability
-    fig.update_yaxes(showgrid=True, gridcolor='#E5E5E5', gridwidth=1)
+    # Add consistent horizontal gridlines across all subplots
+    fig.update_yaxes(showgrid=True, gridcolor='#DDDDDD', gridwidth=0.5,
+                     nticks=6, zeroline=True, zerolinecolor='#CCCCCC',
+                     zerolinewidth=0.5)
     fig.update_xaxes(showgrid=False)
 
     fig.update_layout(
