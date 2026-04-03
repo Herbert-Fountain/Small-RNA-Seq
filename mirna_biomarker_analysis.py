@@ -211,7 +211,7 @@ def create_volcano_plot(comp_df, comp_name, fdr_cutoff=0.05, fc_cutoff=1.0):
     return fig
 
 
-def _write_interactive_html(fig, filepath, has_annotations=True, has_colorbar=True, default_filename="plot"):
+def _write_interactive_html(fig, filepath, has_annotations=True, has_colorbar=True, default_filename="plot", extra_html_top='', extra_js=''):
     """Write a Plotly figure to an HTML file with an external control panel.
     Controls use JavaScript to update individual properties without
     resetting other settings.
@@ -273,6 +273,8 @@ def _write_interactive_html(fig, filepath, has_annotations=True, has_colorbar=Tr
   <div class="plot-area">{plot_div}</div>
   <div class="controls">
     <h3>Display Controls</h3>
+
+    {extra_html_top}
 
     {'<div class="ctrl-group"><label>Label Font Size</label><input type="range" id="labelSize" min="6" max="20" value="10" step="1"><div class="val-display" id="labelSizeVal">10pt</div></div>' if has_annotations else ''}
 
@@ -1021,6 +1023,7 @@ document.getElementById('exportPNG').addEventListener('click', function() {{
 document.getElementById('exportSVG').addEventListener('click', function() {{
   exportPlot('svg');
 }});
+{extra_js}
 </script>
 </body></html>"""
 
@@ -1588,21 +1591,7 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
             font=dict(size=18),
             x=0.5, xanchor='center',
         ),
-        updatemenus=[dict(
-            buttons=buttons,
-            direction='down',
-            x=0.0, xanchor='left',
-            y=1.15, yanchor='top',
-            showactive=True,
-            bgcolor='white',
-            bordercolor='#ccc',
-            font=dict(size=12),
-        )],
-        annotations=[dict(
-            text='Select miRNA:', x=0.0, xref='paper', xanchor='left',
-            y=1.19, yref='paper', yanchor='top',
-            showarrow=False, font=dict(size=12, color='#666'),
-        )],
+
         xaxis=dict(
             title=None,
             tickfont=dict(size=12),
@@ -1626,9 +1615,35 @@ def create_individual_expression_plots(biomarkers, sample_counts, output_dir, to
         margin=dict(l=80, r=120, t=100, b=60),
     )
 
+    # Build gene selector info for the HTML control panel
+    gene_selector_js = f"""
+    // Gene selector
+    var geneNames = {gene_names};
+    var tracesPerGene = {traces_per_gene};
+    var nGenes = {n_genes};
+    var selEl = document.getElementById('geneSelector');
+    if (selEl) {{
+      selEl.addEventListener('change', function() {{
+        var idx = parseInt(this.value);
+        var vis = [];
+        for (var i = 0; i < nGenes * tracesPerGene; i++) vis.push(false);
+        for (var t = 0; t < tracesPerGene; t++) vis[idx * tracesPerGene + t] = true;
+        Plotly.update(gd, {{'visible': vis}}, {{'title.text': 'Individual Sample Expression: ' + geneNames[idx]}});
+      }});
+    }}
+    """
+
+    gene_selector_html = '<div class="ctrl-group"><label>Select miRNA</label><select id="geneSelector" style="width:100%;box-sizing:border-box;font-size:13px;padding:5px 6px;border:1px solid #ccc;border-radius:3px;background:white;">'
+    for i, gn in enumerate(gene_names):
+        sel = ' selected' if i == 0 else ''
+        gene_selector_html += f'<option value="{i}"{sel}>{gn}</option>'
+    gene_selector_html += '</select></div><hr class="sep">'
+
     _write_interactive_html(fig, os.path.join(output_dir, 'biomarker_expression_boxplots.html'),
                             has_annotations=False, has_colorbar=False,
-                            default_filename='biomarker_expression_boxplots')
+                            default_filename='biomarker_expression_boxplots',
+                            extra_html_top=gene_selector_html,
+                            extra_js=gene_selector_js)
     return fig
 
 
