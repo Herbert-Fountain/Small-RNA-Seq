@@ -19,6 +19,7 @@ import io
 import zipfile
 import re
 import sys
+import plotly.graph_objects as go
 
 RESULTS_DIR = "results"
 SUMMARY_CSV = os.path.join(RESULTS_DIR, "biomarker_summary_tables.csv")
@@ -177,6 +178,7 @@ def get_targetscan_targets(ts_df, mirna_id):
         return 0, pd.DataFrame(), None
 
     family_note = None
+    seed_matches = None
 
     # Try direct match for mouse
     mask = (ts_df['Species ID'] == 10090) & \
@@ -209,6 +211,16 @@ def get_targetscan_targets(ts_df, mirna_id):
                                f"'{seed}' with {rep_mirna.replace('mmu-', '')}. "
                                f"These miRNAs have identical seed sequences and are "
                                f"predicted to regulate the same targets.")
+
+    # Fallback to human (9606) predictions if no mouse entries found
+    if len(matches) == 0 and seed_matches is not None and len(seed_matches) > 0:
+        seed = seed_matches.iloc[0]['miRNA family']
+        mask = (ts_df['miRNA family'] == seed) & (ts_df['Species ID'] == 9606)
+        matches = ts_df[mask]
+        if len(matches) > 0:
+            family_note = (f"No mouse-specific predictions available. "
+                           f"Showing human (hsa) predictions for this seed family "
+                           f"'{seed}'.")
 
     if len(matches) == 0:
         return 0, pd.DataFrame(), None
@@ -444,7 +456,22 @@ def generate_report(mirnas_df, ts_df, mirbase_seqs, output_path):
     lines.append("# miRNA Biomarker Annotation Report\n\n")
     lines.append("Automated annotation of biomarker miRNA candidates using "
                  "TargetScan Mouse 8.0, NCBI Gene, PubMed, and miRBase "
-                 "sequence data.\n\n---\n\n")
+                 "sequence data.\n\n")
+
+    # Key Terms and Methodology section
+    lines.append("## Key Terms and Methodology\n\n")
+    lines.append("- **FDR (False Discovery Rate)**: Benjamini-Hochberg adjusted p-value "
+                 "controlling for multiple testing. FDR < 0.05 means there is less than "
+                 "a 5% chance of a false positive.\n\n")
+    lines.append("- **Biomarker Score**: Composite score calculated as "
+                 "-log10(FDR) * |log2FC| * specificity. Higher scores indicate more "
+                 "statistically significant, larger fold-change, and more tissue-specific "
+                 "miRNAs.\n\n")
+    lines.append("- **Cumulative weighted context++ score**: TargetScan's prediction "
+                 "confidence metric. More negative values indicate stronger predicted "
+                 "targeting. This score accounts for site type, 3' pairing, local AU "
+                 "content, target site accessibility, and position.\n\n")
+    lines.append("---\n\n")
 
     for i, gene_id in enumerate(unique_mirnas):
         mirna_name = gene_id.replace('mmu-', '')
@@ -604,6 +631,113 @@ def generate_report(mirnas_df, ts_df, mirbase_seqs, output_path):
                     f"(https://pubmed.ncbi.nlm.nih.gov/{art['pmid']}/)\n\n")
         else:
             lines.append("No relevant publications found in PubMed.\n\n")
+        lines.append("---\n\n")
+
+    # -----------------------------------------------------------------------
+    # Group-Specific Biomarker Rankings
+    # -----------------------------------------------------------------------
+    lines.append("## Group-Specific Biomarker Rankings\n\n")
+
+    # Load the full summary CSV (includes count columns)
+    full_df = pd.read_csv(SUMMARY_CSV)
+
+    # Identify count columns
+    count_cols = [c for c in full_df.columns if c.startswith('count_')]
+
+    for group in sorted(full_df['Group'].unique()):
+        lines.append(f"### {group}\n\n")
+        group_df = full_df[full_df['Group'] == group].copy()
+
+        # Determine which count column corresponds to this group
+        group_count_col = None
+        for cc in count_cols:
+            if group.lower() in cc.lower():
+                group_count_col = cc
+                break
+
+        # Compute human ortholog status for each miRNA in this group
+        ortho_statuses = []
+        for _, row in group_df.iterrows():
+            gene_id = row['GeneID']
+            ortho = find_human_ortholog(gene_id, mirbase_seqs)
+            if ortho is None:
+                ortho_statuses.append("Not in miRBase")
+            elif not ortho['found']:
+                ortho_statuses.append("No ortholog")
+            elif ortho['identical']:
+                ortho_statuses.append("Perfect match")
+            else:
+                # Check if seed region is conserved (positions 2-8)
+                seed_mismatches = [m for m in ortho.get('mismatches', [])
+                                   if m['position'] <= 8]
+                if not seed_mismatches:
+                    ortho_statuses.append("Seed match only")
+                else:
+                    ortho_statuses.append("No ortholog")
+        group_df['Ortholog Status'] = ortho_statuses
+
+        for direction in ['Upregulated', 'Downregulated']:
+            dir_df = group_df[group_df['Direction'] == direction].copy()
+            if len(dir_df) == 0:
+                continue
+            dir_df = dir_df.sort_values('biomarker_score', ascending=False).reset_index(drop=True)
+            dir_df['Rank'] = range(1, len(dir_df) + 1)
+
+            lines.append(f"**{direction} miRNAs in {group}**\n\n")
+
+            # Build table header
+            header = "| Rank | miRNA | log2FC | FDR | Biomarker Score"
+            if group_count_col:
+                header += f" | Avg Count in {group}"
+            header += " | Human Ortholog Status |\n"
+            lines.append(header)
+
+            sep = "|------|-------|--------|-----|----------------"
+            if group_count_col:
+                sep += "|-------------------"
+            sep += "|----------------------|\n"
+            lines.append(sep)
+
+            for _, row in dir_df.iterrows():
+                line = (f"| {row['Rank']} | {row['miRNA']} | "
+                        f"{row['log2FC']:+.2f} | {row['padj']:.2e} | "
+                        f"{row['biomarker_score']:.1f}")
+                if group_count_col:
+                    count_val = row.get(group_count_col, 'N/A')
+                    if pd.notna(count_val):
+                        line += f" | {int(count_val):,}"
+                    else:
+                        line += " | N/A"
+                line += f" | {row['Ortholog Status']} |\n"
+                lines.append(line)
+
+            lines.append("\n")
+
+        # Pie chart of ortholog conservation breakdown
+        status_counts = group_df['Ortholog Status'].value_counts()
+        labels = status_counts.index.tolist()
+        values = status_counts.values.tolist()
+
+        fig = go.Figure(data=[go.Pie(
+            labels=labels,
+            values=values,
+            hole=0.3,
+            marker=dict(colors=['#2ecc71', '#f39c12', '#e74c3c', '#95a5a6']),
+            textinfo='label+percent',
+            textposition='outside',
+        )])
+        fig.update_layout(
+            title=f"Human Ortholog Conservation - {group} Biomarkers",
+            showlegend=True,
+            width=600,
+            height=450,
+        )
+        pie_path = os.path.join(RESULTS_DIR, f"ortholog_pie_{group}.html")
+        fig.write_html(pie_path)
+        print(f"  Saved ortholog pie chart: {pie_path}")
+        lines.append(f"**Ortholog conservation breakdown:** "
+                     f"See [interactive chart](ortholog_pie_{group}.html)\n\n")
+
         lines.append("---\n\n")
 
     # Data sources

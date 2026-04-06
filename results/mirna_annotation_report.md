@@ -2,6 +2,14 @@
 
 Automated annotation of biomarker miRNA candidates using TargetScan Mouse 8.0, NCBI Gene, PubMed, and miRBase sequence data.
 
+## Key Terms and Methodology
+
+- **FDR (False Discovery Rate)**: Benjamini-Hochberg adjusted p-value controlling for multiple testing. FDR < 0.05 means there is less than a 5% chance of a false positive.
+
+- **Biomarker Score**: Composite score calculated as -log10(FDR) * |log2FC| * specificity. Higher scores indicate more statistically significant, larger fold-change, and more tissue-specific miRNAs.
+
+- **Cumulative weighted context++ score**: TargetScan's prediction confidence metric. More negative values indicate stronger predicted targeting. This score accounts for site type, 3' pairing, local AU content, target site accessibility, and position.
+
 ---
 
 ## miR-149-5p
@@ -227,7 +235,30 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> No mouse-specific predictions available. Showing human (hsa) predictions for this seed family 'ACCCUGG'.
+
+**Total predicted target genes: 313**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Cplx2 | 1 | -0.689 |
+| Tra2b | 1 | -0.544 |
+| 5830462I19Rik | 1 | -0.543 |
+| St8sia1 | 1 | -0.481 |
+| Pcdh1 | 1 | -0.474 |
+| Tec | 1 | -0.47 |
+| Tnfsf8 | 1 | -0.449 |
+| Ncdn | 1 | -0.432 |
+| Spry4 | 1 | -0.427 |
+| Arih2 | 1 | -0.403 |
+
+**Top target gene: Cplx2** (complexin 2)
+
+*Function:* Predicted to enable calcium-dependent protein binding activity and syntaxin-1 binding activity. Involved in positive regulation of synaptic plasticity and regulation of synaptic vesicle fusion to presynaptic active zone membrane. Is active in calyx of Held and glutamatergic synapse. Is expressed in nervous system; retina layer; and skeletal muscle. Used to study schizophrenia. Orthologous to human CPLX2 (complexin 2). [provided by Alliance of Genome Resources, Jul 2025]
+
+*NCBI Gene ID:* [12890](https://www.ncbi.nlm.nih.gov/gene/12890)
 
 ### Biological Function Summary
 
@@ -6438,6 +6469,224 @@ RT-qPCR verified the significant differential expression of miR-152-5p and miR-3
 4. Kong S et al. (2020). *miR-152-5p suppresses glioma progression and tumorigenesis and potentiates temozolomide sensitivity by targeting FBXL7.* J Cell Mol Med. DOI: [10.1111/jcmm.15114](https://doi.org/10.1111/jcmm.15114) PMID: [32150671](https://pubmed.ncbi.nlm.nih.gov/32150671/)
 
 5. You W et al. (2018). *MiR-152-5p as a microRNA passenger strand special functions in human gastric cancer cells.* Int J Biol Sci. DOI: [10.7150/ijbs.25272](https://doi.org/10.7150/ijbs.25272) PMID: [29904279](https://pubmed.ncbi.nlm.nih.gov/29904279/)
+
+---
+
+## Group-Specific Biomarker Rankings
+
+### Cells (4T1)
+
+**Upregulated miRNAs in Cells (4T1)**
+
+| Rank | miRNA | log2FC | FDR | Biomarker Score | Avg Count in Cells (4T1) | Human Ortholog Status |
+|------|-------|--------|-----|----------------|-------------------|----------------------|
+| 1 | miR-125b-1-3p | +7.15 | 3.94e-41 | 1495.3 | 53,878 | Perfect match |
+| 2 | miR-1190 | +8.35 | 7.35e-10 | 378.0 | 65 | No ortholog |
+| 3 | miR-694 | +4.18 | 2.70e-19 | 321.5 | 146 | No ortholog |
+| 4 | miR-1187 | +5.82 | 3.52e-11 | 289.1 | 110 | No ortholog |
+| 5 | miR-182-3p | +5.86 | 2.34e-10 | 274.8 | 248 | No ortholog |
+| 6 | miR-181d-3p | +3.98 | 2.01e-13 | 205.6 | 144 | No ortholog |
+| 7 | miR-466f-3p | +4.46 | 6.60e-11 | 202.2 | 3,590 | No ortholog |
+| 8 | miR-466m-3p | +4.66 | 3.19e-10 | 198.7 | 268 | No ortholog |
+| 9 | miR-669p-3p | +4.54 | 1.68e-09 | 176.2 | 230 | No ortholog |
+| 10 | miR-669k-5p | +5.70 | 1.11e-06 | 149.1 | 32 | No ortholog |
+
+**Downregulated miRNAs in Cells (4T1)**
+
+| Rank | miRNA | log2FC | FDR | Biomarker Score | Avg Count in Cells (4T1) | Human Ortholog Status |
+|------|-------|--------|-----|----------------|-------------------|----------------------|
+| 1 | miR-140-5p | -1.95 | 1.35e-11 | 6.4 | 8,137 | Perfect match |
+| 2 | miR-3068-5p | -1.55 | 3.49e-10 | 5.7 | 581 | No ortholog |
+| 3 | miR-191-5p | -2.05 | 2.79e-10 | 5.5 | 37,168 | Perfect match |
+| 4 | miR-1843b-5p | -2.85 | 3.09e-11 | 4.9 | 250 | No ortholog |
+| 5 | miR-152-3p | -5.57 | 8.38e-34 | 4.8 | 687 | Perfect match |
+| 6 | miR-1843a-5p | -3.33 | 2.68e-12 | 4.6 | 209 | No ortholog |
+| 7 | miR-26a-5p | -3.43 | 4.48e-11 | 4.0 | 66,574 | Perfect match |
+| 8 | miR-101a-3p | -3.54 | 8.08e-11 | 3.7 | 4,974 | Perfect match |
+| 9 | miR-1839-3p | -2.27 | 5.00e-07 | 3.5 | 262 | No ortholog |
+| 10 | miR-152-5p | -4.69 | 3.68e-15 | 3.5 | 4 | No ortholog |
+
+**Ortholog conservation breakdown:** See [interactive chart](ortholog_pie_Cells (4T1).html)
+
+---
+
+### Heart
+
+**Upregulated miRNAs in Heart**
+
+| Rank | miRNA | log2FC | FDR | Biomarker Score | Avg Count in Heart | Human Ortholog Status |
+|------|-------|--------|-----|----------------|-------------------|----------------------|
+| 1 | miR-149-5p | +4.92 | 1.20e-09 | 259.0 | 55,406 | Perfect match |
+| 2 | miR-1b-5p | +5.00 | 2.21e-08 | 254.1 | 347 | No ortholog |
+| 3 | miR-1a-3p | +7.68 | 9.23e-05 | 241.9 | 3,680,110 | Perfect match |
+| 4 | miR-504-5p | +5.39 | 2.25e-06 | 212.4 | 223 | Perfect match |
+| 5 | miR-466q | +3.56 | 1.36e-04 | 74.8 | 846 | No ortholog |
+| 6 | miR-743b-3p | +5.47 | 2.77e-03 | 74.2 | 20 | No ortholog |
+| 7 | miR-181a-2-3p | +2.61 | 2.21e-08 | 63.6 | 1,156 | No ortholog |
+| 8 | miR-208b-5p | +5.60 | 1.03e-02 | 58.7 | 18 | Seed match only |
+| 9 | miR-741-3p | +4.73 | 1.16e-02 | 54.8 | 60 | No ortholog |
+| 10 | miR-486a-3p | +3.06 | 8.90e-04 | 46.4 | 1,960 | Perfect match |
+
+**Downregulated miRNAs in Heart**
+
+| Rank | miRNA | log2FC | FDR | Biomarker Score | Avg Count in Heart | Human Ortholog Status |
+|------|-------|--------|-----|----------------|-------------------|----------------------|
+| 1 | miR-1839-5p | -1.72 | 6.59e-05 | 3.2 | 2,194 | No ortholog |
+| 2 | miR-362-5p | -1.64 | 6.91e-03 | 1.4 | 784 | Seed match only |
+| 3 | miR-33-5p | -1.99 | 9.45e-03 | 1.4 | 1,142 | No ortholog |
+| 4 | miR-103-3p | -1.15 | 1.02e-02 | 1.3 | 50,094 | No ortholog |
+| 5 | miR-551b-3p | -4.86 | 6.01e-05 | 1.2 | 62 | Perfect match |
+| 6 | miR-33-3p | -1.72 | 3.03e-02 | 1.1 | 210 | No ortholog |
+| 7 | miR-326-3p | -2.19 | 2.83e-02 | 1.1 | 862 | No ortholog |
+| 8 | miR-744-5p | -1.68 | 1.92e-02 | 1.0 | 1,127 | Perfect match |
+| 9 | miR-10a-5p | -2.96 | 2.36e-02 | 1.0 | 9,390 | Perfect match |
+| 10 | miR-652-3p | -1.38 | 3.51e-02 | 1.0 | 8,524 | Perfect match |
+
+**Ortholog conservation breakdown:** See [interactive chart](ortholog_pie_Heart.html)
+
+---
+
+### Kidney
+
+**Upregulated miRNAs in Kidney**
+
+| Rank | miRNA | log2FC | FDR | Biomarker Score | Avg Count in Kidney | Human Ortholog Status |
+|------|-------|--------|-----|----------------|-------------------|----------------------|
+| 1 | miR-10b-3p | +6.13 | 1.06e-15 | 632.4 | 3,233 | No ortholog |
+| 2 | miR-615-3p | +7.64 | 1.54e-08 | 452.6 | 2,709 | Perfect match |
+| 3 | miR-10b-5p | +5.98 | 1.15e-07 | 292.2 | 76,486 | Perfect match |
+| 4 | miR-615-5p | +6.20 | 1.19e-05 | 179.8 | 31 | Perfect match |
+| 5 | miR-196a-2-3p | +8.22 | 1.73e-03 | 160.1 | 54 | No ortholog |
+| 6 | miR-196b-3p | +8.30 | 9.26e-04 | 129.4 | 325 | Perfect match |
+| 7 | miR-196a-1-3p | +7.54 | 9.28e-03 | 116.2 | 310 | No ortholog |
+| 8 | miR-187-5p | +2.64 | 9.85e-06 | 50.1 | 572 | No ortholog |
+| 9 | miR-670-5p | +4.05 | 3.09e-03 | 48.5 | 28 | No ortholog |
+| 10 | miR-346-5p | +4.13 | 2.81e-02 | 35.5 | 107 | No ortholog |
+
+**Downregulated miRNAs in Kidney**
+
+| Rank | miRNA | log2FC | FDR | Biomarker Score | Avg Count in Kidney | Human Ortholog Status |
+|------|-------|--------|-----|----------------|-------------------|----------------------|
+| 1 | miR-511-3p | -2.64 | 3.92e-02 | 0.8 | 347 | Seed match only |
+| 2 | miR-294-3p | -4.74 | 3.71e-02 | 0.4 | 2 | No ortholog |
+| 3 | miR-150-3p | -5.60 | 3.29e-02 | 0.2 | 13 | Seed match only |
+| 4 | miR-490-3p | -7.56 | 1.95e-03 | 0.1 | 4 | Perfect match |
+| 5 | miR-208b-3p | -7.02 | 3.59e-02 | 0.1 | 3 | Perfect match |
+| 6 | miR-122-3p | -13.29 | 4.24e-04 | 0.0 | 16 | No ortholog |
+| 7 | miR-122-5p | -13.78 | 5.18e-05 | 0.0 | 142 | Perfect match |
+| 8 | miR-295-3p | -7.12 | 5.62e-03 | 0.0 | 0 | No ortholog |
+| 9 | miR-1912-5p | -21.37 | 4.37e-05 | 0.0 | 0 | No ortholog |
+| 10 | miR-1298-5p | -23.89 | 3.87e-06 | 0.0 | 0 | Perfect match |
+
+**Ortholog conservation breakdown:** See [interactive chart](ortholog_pie_Kidney.html)
+
+---
+
+### Liver
+
+**Upregulated miRNAs in Liver**
+
+| Rank | miRNA | log2FC | FDR | Biomarker Score | Avg Count in Liver | Human Ortholog Status |
+|------|-------|--------|-----|----------------|-------------------|----------------------|
+| 1 | miR-122-5p | +11.66 | 8.47e-13 | 750.2 | 7,957,305 | Perfect match |
+| 2 | miR-12195-3p | +6.76 | 4.36e-19 | 613.2 | 110 | No ortholog |
+| 3 | miR-122-3p | +11.54 | 2.48e-10 | 590.3 | 621,456 | No ortholog |
+| 4 | miR-122b-3p | +10.45 | 7.88e-11 | 557.7 | 823 | Perfect match |
+| 5 | miR-12195-5p | +7.24 | 9.33e-14 | 456.2 | 64 | No ortholog |
+| 6 | miR-1948-3p | +6.80 | 1.22e-14 | 447.8 | 106 | No ortholog |
+| 7 | miR-292b-3p | +8.00 | 6.59e-10 | 353.5 | 50 | No ortholog |
+| 8 | miR-292b-5p | +7.38 | 8.95e-10 | 310.8 | 40 | No ortholog |
+| 9 | miR-1948-5p | +6.29 | 2.72e-10 | 299.8 | 767 | No ortholog |
+| 10 | miR-101b-3p | +4.04 | 6.35e-16 | 258.3 | 258,170 | No ortholog |
+
+**Downregulated miRNAs in Liver**
+
+| Rank | miRNA | log2FC | FDR | Biomarker Score | Avg Count in Liver | Human Ortholog Status |
+|------|-------|--------|-----|----------------|-------------------|----------------------|
+| 1 | miR-181b-5p | -2.10 | 1.12e-12 | 6.8 | 2,921 | Seed match only |
+| 2 | miR-181a-1-3p | -2.52 | 2.63e-06 | 3.5 | 167 | No ortholog |
+| 3 | miR-181a-5p | -2.42 | 2.63e-06 | 3.4 | 11,264 | Perfect match |
+| 4 | miR-145a-5p | -1.82 | 5.69e-05 | 3.0 | 243,686 | Perfect match |
+| 5 | miR-181c-5p | -1.95 | 3.50e-07 | 2.9 | 1,165 | Perfect match |
+| 6 | miR-143-3p | -1.58 | 1.25e-04 | 2.8 | 191,498 | Perfect match |
+| 7 | miR-143-5p | -1.74 | 2.00e-04 | 2.6 | 361 | Seed match only |
+| 8 | miR-181d-5p | -1.87 | 5.45e-08 | 2.4 | 862 | Perfect match |
+| 9 | miR-322-5p | -1.69 | 2.70e-04 | 2.4 | 17,856 | No ortholog |
+| 10 | miR-181c-3p | -2.18 | 2.92e-07 | 2.3 | 163 | No ortholog |
+
+**Ortholog conservation breakdown:** See [interactive chart](ortholog_pie_Liver.html)
+
+---
+
+### Lung
+
+**Upregulated miRNAs in Lung**
+
+| Rank | miRNA | log2FC | FDR | Biomarker Score | Avg Count in Lung | Human Ortholog Status |
+|------|-------|--------|-----|----------------|-------------------|----------------------|
+| 1 | miR-1264-3p | +11.82 | 8.62e-32 | 1946.5 | 883 | No ortholog |
+| 2 | miR-1298-5p | +11.35 | 7.15e-29 | 1688.9 | 634 | Perfect match |
+| 3 | miR-449c-5p | +6.80 | 1.14e-41 | 1270.8 | 747 | No ortholog |
+| 4 | miR-1264-5p | +9.39 | 2.42e-22 | 1051.6 | 200 | No ortholog |
+| 5 | miR-449a-5p | +7.41 | 2.23e-22 | 825.2 | 12,889 | No ortholog |
+| 6 | miR-1912-5p | +9.40 | 1.96e-16 | 765.1 | 165 | No ortholog |
+| 7 | miR-764-5p | +8.00 | 7.86e-15 | 555.8 | 76 | No ortholog |
+| 8 | miR-34c-5p | +6.74 | 1.24e-12 | 417.3 | 90,497 | Perfect match |
+| 9 | miR-34b-5p | +6.68 | 1.09e-11 | 380.0 | 51,240 | No ortholog |
+| 10 | miR-448-3p | +7.67 | 1.16e-10 | 368.8 | 50 | No ortholog |
+
+**Downregulated miRNAs in Lung**
+
+| Rank | miRNA | log2FC | FDR | Biomarker Score | Avg Count in Lung | Human Ortholog Status |
+|------|-------|--------|-----|----------------|-------------------|----------------------|
+| 1 | miR-139-5p | -3.21 | 6.31e-16 | 9.3 | 1,918 | Seed match only |
+| 2 | miR-185-5p | -1.48 | 3.35e-05 | 3.6 | 12,943 | Perfect match |
+| 3 | miR-219a-5p | -1.80 | 3.71e-04 | 2.7 | 850 | Perfect match |
+| 4 | miR-1982-3p | -1.68 | 2.60e-03 | 1.9 | 18 | No ortholog |
+| 5 | miR-378d | -3.41 | 5.89e-04 | 1.7 | 746 | No ortholog |
+| 6 | miR-378a-3p | -3.32 | 8.12e-04 | 1.7 | 30,096 | Seed match only |
+| 7 | miR-378b | -3.17 | 1.35e-03 | 1.7 | 257 | No ortholog |
+| 8 | miR-139-3p | -3.67 | 3.60e-04 | 1.6 | 11 | Seed match only |
+| 9 | miR-378a-5p | -3.21 | 1.75e-03 | 1.6 | 1,836 | Perfect match |
+| 10 | miR-12191-3p | -4.73 | 2.94e-06 | 1.6 | 3 | No ortholog |
+
+**Ortholog conservation breakdown:** See [interactive chart](ortholog_pie_Lung.html)
+
+---
+
+### Spleen
+
+**Upregulated miRNAs in Spleen**
+
+| Rank | miRNA | log2FC | FDR | Biomarker Score | Avg Count in Spleen | Human Ortholog Status |
+|------|-------|--------|-----|----------------|-------------------|----------------------|
+| 1 | miR-142a-5p | +5.22 | 3.00e-38 | 953.7 | 776,938 | Perfect match |
+| 2 | miR-142a-3p | +5.08 | 2.07e-26 | 628.6 | 8,195,759 | Perfect match |
+| 3 | miR-3964 | +5.23 | 8.13e-20 | 479.5 | 520 | No ortholog |
+| 4 | miR-130b-3p | +3.96 | 6.22e-29 | 472.2 | 7,838 | Perfect match |
+| 5 | miR-211-5p | +5.01 | 8.13e-20 | 457.1 | 1,079 | Seed match only |
+| 6 | miR-342-5p | +3.51 | 1.18e-24 | 340.6 | 2,743 | Seed match only |
+| 7 | miR-150-3p | +5.60 | 6.52e-13 | 338.4 | 2,458 | Seed match only |
+| 8 | miR-130b-5p | +3.67 | 3.04e-20 | 282.8 | 423 | Seed match only |
+| 9 | miR-5107-5p | +6.29 | 3.22e-09 | 269.7 | 544 | No ortholog |
+| 10 | miR-150-5p | +4.44 | 2.41e-12 | 234.6 | 549,774 | Perfect match |
+
+**Downregulated miRNAs in Spleen**
+
+| Rank | miRNA | log2FC | FDR | Biomarker Score | Avg Count in Spleen | Human Ortholog Status |
+|------|-------|--------|-----|----------------|-------------------|----------------------|
+| 1 | miR-23b-3p | -1.85 | 1.62e-18 | 11.7 | 71,441 | Seed match only |
+| 2 | miR-27b-3p | -1.28 | 1.56e-18 | 11.4 | 78,893 | Perfect match |
+| 3 | miR-30c-2-3p | -2.98 | 1.06e-21 | 11.1 | 369 | Perfect match |
+| 4 | miR-30a-5p | -3.34 | 1.58e-20 | 9.1 | 46,654 | Perfect match |
+| 5 | miR-30a-3p | -2.97 | 4.46e-16 | 8.4 | 2,342 | Perfect match |
+| 6 | miR-30c-5p | -2.93 | 8.32e-10 | 4.9 | 99,469 | Perfect match |
+| 7 | miR-30b-5p | -2.27 | 3.65e-08 | 4.6 | 94,406 | Perfect match |
+| 8 | miR-335-5p | -2.39 | 7.21e-08 | 4.4 | 3,857 | Perfect match |
+| 9 | miR-99a-5p | -1.91 | 2.52e-05 | 3.2 | 22,126 | Perfect match |
+| 10 | let-7b-3p | -1.74 | 3.16e-06 | 3.1 | 318 | Perfect match |
+
+**Ortholog conservation breakdown:** See [interactive chart](ortholog_pie_Spleen.html)
 
 ---
 
