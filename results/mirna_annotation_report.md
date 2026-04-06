@@ -1,6 +1,6 @@
 # miRNA Biomarker Annotation Report
 
-Automated annotation of biomarker miRNA candidates using TargetScan Mouse 8.0, NCBI Gene, and PubMed.
+Automated annotation of biomarker miRNA candidates using TargetScan Mouse 8.0, NCBI Gene, PubMed, and miRBase sequence data.
 
 ---
 
@@ -11,6 +11,14 @@ Automated annotation of biomarker miRNA candidates using TargetScan Mouse 8.0, N
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Heart | Upregulated | +4.92 | 1.20e-09 | 259.0 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-149-5p** - **100% identical** (23 nt)
+
+Sequence: `UCUGGCUCCGUGUCUUCACUCCC`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -59,9 +67,70 @@ Automated annotation of biomarker miRNA candidates using TargetScan Mouse 8.0, N
 |-------|-----------|--------|-----|----------------|
 | Heart | Upregulated | +5.00 | 2.21e-08 | 254.1 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-1-5p** - **27.3% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-1b-5p) | `UACAUACUUCUUUACAUUCCA` | 21 nt |
+| Human (hsa-miR-1-5p) | `ACAUACUUCUUUAUAUGCCCAU` | 22 nt |
+
+```
+Mouse: UACAUACUUCUUUACAUUCCA
+       XXXXXXX|XX||XXXXXX|||-
+Human: ACAUACUUCUUUAUAUGCCCAU
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 1: U (mouse) -> A (human) *(in seed region)*
+- Position 2: A (mouse) -> C (human) *(in seed region)*
+- Position 3: C (mouse) -> A (human) *(in seed region)*
+- Position 4: A (mouse) -> U (human) *(in seed region)*
+- Position 5: U (mouse) -> A (human) *(in seed region)*
+- Position 6: A (mouse) -> C (human) *(in seed region)*
+- Position 7: C (mouse) -> U (human) *(in seed region)*
+- Position 9: U (mouse) -> C (human)
+- Position 10: C (mouse) -> U (human)
+- Position 13: U (mouse) -> A (human)
+- Position 14: A (mouse) -> U (human)
+- Position 15: C (mouse) -> A (human)
+- Position 16: A (mouse) -> U (human)
+- Position 17: U (mouse) -> G (human)
+- Position 18: U (mouse) -> C (human)
+
+Length difference: 1 nt
+
+*WARNING: 7 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-1b-5p shares seed family 'GGAAUGU' with miR-1a-3p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 731**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Serp1 | 3 | -1.018 |
+| Fam150b | 1 | -0.958 |
+| Coro1c | 2 | -0.868 |
+| Sri | 1 | -0.745 |
+| Tmsb4x | 1 | -0.74 |
+| Gja1 | 2 | -0.713 |
+| Pgrmc1 | 1 | -0.698 |
+| Tpm4 | 1 | -0.698 |
+| Bscl2 | 1 | -0.674 |
+| Pirt | 1 | -0.664 |
+
+**Top target gene: Serp1** (stress-associated endoplasmic reticulum protein 1)
+
+*Function:* Acts upstream of or within several processes, including endoplasmic reticulum unfolded protein response; positive regulation of organ growth; and positive regulation of peptide hormone secretion. Predicted to be located in cytoplasmic microtubule. Predicted to be active in endoplasmic reticulum. Is expressed in several structures, including jaw and orbito-sphenoid. Orthologous to human SERP1 (stress associated endoplasmic reticulum protein 1). [provided by Alliance of Genome Resources, Jul 2025]
+
+*NCBI Gene ID:* [28146](https://www.ncbi.nlm.nih.gov/gene/28146)
 
 ### Literature
 
@@ -80,6 +149,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Heart | Upregulated | +7.68 | 9.23e-05 | 241.9 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-1-3p** - **100% identical** (22 nt)
+
+Sequence: `UGGAAUGUAAAGAAGUAUGUAU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -128,6 +205,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Heart | Upregulated | +5.39 | 2.25e-06 | 212.4 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-504-5p** - **100% identical** (22 nt)
+
+Sequence: `AGACCCUGGUCUGCACUCUAUC`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -154,6 +239,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Heart | Upregulated | +3.56 | 1.36e-04 | 74.8 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `GUGCACACACACACAUACGU`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -178,6 +269,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Heart | Upregulated | +5.47 | 2.77e-03 | 74.2 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `GAAAGACAUCAUGCUGAAUAGA`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -199,6 +296,28 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Heart | Upregulated | +2.61 | 2.21e-08 | 63.6 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-181a-2-3p** - **95.5% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-181a-2-3p) | `ACCACCGACCGUUGACUGUACC` | 22 nt |
+| Human (hsa-miR-181a-2-3p) | `ACCACUGACCGUUGACUGUACC` | 22 nt |
+
+```
+Mouse: ACCACCGACCGUUGACUGUACC
+       |||||X||||||||||||||||
+Human: ACCACUGACCGUUGACUGUACC
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 6: C (mouse) -> U (human) *(in seed region)*
+
+*WARNING: 1 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -226,9 +345,55 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Heart | Upregulated | +5.60 | 1.03e-02 | 58.7 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-208b-5p** - **90.9% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-208b-5p) | `AAGCUUUUUGCUCGCGUUAUGU` | 22 nt |
+| Human (hsa-miR-208b-5p) | `AAGCUUUUUGCUCGAAUUAUGU` | 22 nt |
+
+```
+Mouse: AAGCUUUUUGCUCGCGUUAUGU
+       ||||||||||||||XX||||||
+Human: AAGCUUUUUGCUCGAAUUAUGU
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 15: C (mouse) -> A (human)
+- Position 16: G (mouse) -> A (human)
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-208b-5p shares seed family 'UAAGACG' with miR-208b-3p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 186**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Ube2v2 | 2 | -0.608 |
+| Vav3 | 1 | -0.584 |
+| Csnk2a2 | 1 | -0.533 |
+| D1Ertd622e | 1 | -0.53 |
+| Lrrtm1 | 1 | -0.51 |
+| Ets1 | 1 | -0.461 |
+| Stc1 | 1 | -0.424 |
+| Elavl4 | 2 | -0.401 |
+| Bhlhe41 | 1 | -0.398 |
+| Sos2 | 1 | -0.398 |
+
+**Top target gene: Ube2v2** (ubiquitin-conjugating enzyme E2 variant 2)
+
+*Function:* Acts upstream of or within error-free postreplication DNA repair. Predicted to be located in nucleoplasm. Predicted to be part of UBC13-MMS2 complex. Predicted to be active in nucleus. Is expressed in cerebral cortex ventricular layer; cortical plate; and embryo. Orthologous to human UBE2V2 (ubiquitin conjugating enzyme E2 V2). [provided by Alliance of Genome Resources, Jul 2025]
+
+*NCBI Gene ID:* [70620](https://www.ncbi.nlm.nih.gov/gene/70620)
 
 ### Literature
 
@@ -252,9 +417,38 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Heart | Upregulated | +4.73 | 1.16e-02 | 54.8 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UGAGAGAUGCCAUUCUAUGUAGA`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-741-3p shares seed family 'ACAUAGA' with miR-376c-3p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 272**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Kcnmb2 | 1 | -0.723 |
+| Gabra1 | 1 | -0.639 |
+| Sh2d1a | 1 | -0.595 |
+| Srp19 | 1 | -0.578 |
+| Ythdf1 | 1 | -0.573 |
+| Hbegf | 1 | -0.546 |
+| En2 | 1 | -0.533 |
+| Emc4 | 1 | -0.507 |
+| Gulp1 | 1 | -0.5 |
+| Arfgef1 | 2 | -0.491 |
+
+**Top target gene: Kcnmb2** (potassium large conductance calcium-activated channel, subfamily M, beta member 2)
+
+*Function:* Predicted to enable calcium-activated potassium channel activity and potassium channel regulator activity. Predicted to be involved in detection of calcium ion; neuronal action potential; and potassium ion transport. Predicted to be located in plasma membrane. Predicted to be part of voltage-gated potassium channel complex. Is expressed in acoustic ganglion; ascending aorta; and ductus arteriosus. Orthologous to human KCNMB2 (potassium calcium-activated channel subfamily M regulatory beta subuni...
+
+*NCBI Gene ID:* [72413](https://www.ncbi.nlm.nih.gov/gene/72413)
 
 ### Literature
 
@@ -278,9 +472,38 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Heart | Upregulated | +3.06 | 8.90e-04 | 46.4 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-486-3p** - **100% identical** (21 nt)
+
+Sequence: `CGGGGCAGCUCAGUACAGGAU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-486a-3p shares seed family 'CCUGUAC' with miR-486a-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 146**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Gm12355 | 1 | -1.322 |
+| Srsf3 | 2 | -1.27 |
+| Abhd17b | 2 | -0.58 |
+| Snrpd1 | 1 | -0.561 |
+| Tob1 | 1 | -0.497 |
+| Agbl5 | 1 | -0.486 |
+| Glis1 | 1 | -0.468 |
+| Piga | 1 | -0.465 |
+| Bivm | 1 | -0.453 |
+| Ccdc117 | 1 | -0.433 |
+
+**Top target gene: Srsf3-ps** (serine and arginine rich splicing factor 3, pseudogene)
+
+*NCBI Gene ID:* [100502754](https://www.ncbi.nlm.nih.gov/gene/100502754)
 
 ### Literature
 
@@ -303,6 +526,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Heart | Downregulated | -1.72 | 6.59e-05 | 3.2 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `AAGGUAGAUAGAACAGGUCUUG`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -327,6 +556,28 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Heart | Downregulated | -1.64 | 6.91e-03 | 1.4 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-362-5p** - **95.8% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-362-5p) | `AAUCCUUGGAACCUAGGUGUGAAU` | 24 nt |
+| Human (hsa-miR-362-5p) | `AAUCCUUGGAACCUAGGUGUGAGU` | 24 nt |
+
+```
+Mouse: AAUCCUUGGAACCUAGGUGUGAAU
+       ||||||||||||||||||||||X|
+Human: AAUCCUUGGAACCUAGGUGUGAGU
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 23: A (mouse) -> G (human)
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -375,6 +626,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Heart | Downregulated | -1.99 | 9.45e-03 | 1.4 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `GUGCAUUGUAGUUGCAUUGCA`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 403**
@@ -421,6 +678,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Heart | Downregulated | -1.15 | 1.02e-02 | 1.3 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `AGCAGCAUUGUACAGGGCUAUGA`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -469,6 +732,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Heart | Downregulated | -4.86 | 6.01e-05 | 1.2 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-551b-3p** - **100% identical** (21 nt)
+
+Sequence: `GCGACCCAUACUUGGUUUCAG`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 8**
@@ -514,9 +785,38 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Heart | Downregulated | -1.72 | 3.03e-02 | 1.1 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `CAAUGUUUCCACAGUGCAUCAC`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-33-3p shares seed family 'UGCAUUG' with miR-33-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 403**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Hmga2 | 2 | -0.586 |
+| Gm8787 | 1 | -0.507 |
+| En2 | 1 | -0.48 |
+| Grik2 | 2 | -0.469 |
+| Celf2 | 2 | -0.466 |
+| Rps6kb1 | 1 | -0.385 |
+| Pgam5 | 1 | -0.347 |
+| Foxc1 | 1 | -0.342 |
+| Ywhah | 1 | -0.335 |
+| Zfp281 | 2 | -0.333 |
+
+**Top target gene: Hmga2** (high mobility group AT-hook 2)
+
+*Function:* Enables minor groove of adenine-thymine-rich DNA binding activity. Involved in several processes, including negative regulation of cellular senescence; positive regulation of angiogenesis; and positive regulation of cell proliferation in bone marrow. Acts upstream of or within several processes, including endocrine system development; lung development; and positive regulation of cell population proliferation. Located in male germ cell nucleus and nuclear chromosome. Is expressed in several struc...
+
+*NCBI Gene ID:* [15364](https://www.ncbi.nlm.nih.gov/gene/15364)
 
 ### Literature
 
@@ -539,6 +839,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Heart | Downregulated | -2.19 | 2.83e-02 | 1.1 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `CCUCUGGGCCCUUCCUCCAGU`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -587,6 +893,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Heart | Downregulated | -1.68 | 1.92e-02 | 1.0 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-744-5p** - **100% identical** (22 nt)
+
+Sequence: `UGCGGGGCUAGGGCUAACAGCA`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 50**
@@ -633,6 +947,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Heart | Downregulated | -2.96 | 2.36e-02 | 1.0 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-10a-5p** - **100% identical** (23 nt)
+
+Sequence: `UACCCUGUAGAUCCGAAUUUGUG`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -681,6 +1003,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Heart | Downregulated | -1.38 | 3.51e-02 | 1.0 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-652-3p** - **100% identical** (21 nt)
+
+Sequence: `AAUGGCGCCACUAGGGUUGUG`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 16**
@@ -728,9 +1058,69 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Kidney | Upregulated | +6.13 | 1.06e-15 | 632.4 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-10b-3p** - **27.3% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-10b-3p) | `CAGAUUCGAUUCUAGGGGAAUA` | 22 nt |
+| Human (hsa-miR-10b-3p) | `ACAGAUUCGAUUCUAGGGGAAU` | 22 nt |
+
+```
+Mouse: CAGAUUCGAUUCUAGGGGAAUA
+       XXXXX|XXXX|XXXX|||X|XX
+Human: ACAGAUUCGAUUCUAGGGGAAU
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 1: C (mouse) -> A (human) *(in seed region)*
+- Position 2: A (mouse) -> C (human) *(in seed region)*
+- Position 3: G (mouse) -> A (human) *(in seed region)*
+- Position 4: A (mouse) -> G (human) *(in seed region)*
+- Position 5: U (mouse) -> A (human) *(in seed region)*
+- Position 7: C (mouse) -> U (human) *(in seed region)*
+- Position 8: G (mouse) -> C (human) *(in seed region)*
+- Position 9: A (mouse) -> G (human)
+- Position 10: U (mouse) -> A (human)
+- Position 12: C (mouse) -> U (human)
+- Position 13: U (mouse) -> C (human)
+- Position 14: A (mouse) -> U (human)
+- Position 15: G (mouse) -> A (human)
+- Position 19: A (mouse) -> G (human)
+- Position 21: U (mouse) -> A (human)
+- Position 22: A (mouse) -> U (human)
+
+*WARNING: 7 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-10b-3p shares seed family 'ACCCUGU' with miR-10a-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 295**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Bdnf | 1 | -0.791 |
+| Hoxa3 | 1 | -0.619 |
+| Zfp367 | 1 | -0.615 |
+| Map3k7 | 1 | -0.612 |
+| Arsj | 1 | -0.6 |
+| Hoxb3 | 1 | -0.558 |
+| Gata6 | 1 | -0.542 |
+| Rora | 2 | -0.535 |
+| Vwc2l | 2 | -0.51 |
+| Sobp | 2 | -0.504 |
+
+**Top target gene: Bdnf** (brain derived neurotrophic factor)
+
+*Function:* The protein encoded by this gene is a member of the nerve growth factor family. It is involved in the growth, differentiation and survival of specific types of developing neurons both in the central nervous system (CNS) and the peripheral nervous system. It is also involved in regulating synaptic plasticity in the CNS. Expression of a similar gene in human is reduced in both Alzheimer's and Huntington disease patients. Alternative splicing results in multiple transcript variants encoding differe...
+
+*NCBI Gene ID:* [12064](https://www.ncbi.nlm.nih.gov/gene/12064)
 
 ### Literature
 
@@ -753,6 +1143,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Kidney | Upregulated | +7.64 | 1.54e-08 | 452.6 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-615-3p** - **100% identical** (22 nt)
+
+Sequence: `UCCGAGCCUGGGUCUCCCUCUU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -801,6 +1199,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Kidney | Upregulated | +5.98 | 1.15e-07 | 292.2 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-10b-5p** - **100% identical** (23 nt)
+
+Sequence: `UACCCUGUAGAACCGAAUUUGUG`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 63**
@@ -848,9 +1254,40 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Kidney | Upregulated | +6.20 | 1.19e-05 | 179.8 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-615-5p** - **100% identical** (22 nt)
+
+Sequence: `GGGGGUCCCCGGUGCUCGGAUC`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-615-5p shares seed family 'CCGAGCC' with miR-615-3p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 10**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Mapt | 1 | -0.967 |
+| Lrrc73 | 1 | -0.896 |
+| Txnrd3 | 1 | -0.657 |
+| Lcor | 1 | -0.623 |
+| Mef2a | 1 | -0.509 |
+| Pacsin1 | 1 | -0.276 |
+| Ppfia4 | 1 | -0.191 |
+| Shank3 | 1 | -0.149 |
+| Foxp3 | 1 | -0.084 |
+| 9130213A22Rik | 1 | -0.056 |
+
+**Top target gene: Mapt** (microtubule-associated protein tau)
+
+*Function:* Enables DNA binding activity; microtubule binding activity; and protein kinase binding activity. Involved in DNA damage response; negative regulation of tubulin deacetylation; and regulation of cellular response to heat. Acts upstream of or within several processes, including adult walking behavior; generation of neurons; and transport along microtubule. Located in several cellular components, including cytoskeleton; membrane raft; and postsynaptic density. Is expressed in several structures, in...
+
+*NCBI Gene ID:* [17762](https://www.ncbi.nlm.nih.gov/gene/17762)
 
 ### Literature
 
@@ -874,6 +1311,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Kidney | Upregulated | +8.22 | 1.73e-03 | 160.1 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UCGGCAACAAGAAACUGCCUGA`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -892,9 +1335,40 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Kidney | Upregulated | +8.30 | 9.26e-04 | 129.4 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-196b-3p** - **100% identical** (22 nt)
+
+Sequence: `UCGACAGCACGACACUGCCUUC`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-196b-3p shares seed family 'AGGUAGU' with miR-196a-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 311**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Hoxa7 | 4 | -1.858 |
+| Nr6a1 | 4 | -1.117 |
+| Hmga2 | 2 | -0.963 |
+| Hand1 | 1 | -0.942 |
+| Hoxc8 | 3 | -0.786 |
+| Hoxb7 | 1 | -0.781 |
+| Foxi3 | 1 | -0.72 |
+| Hoxa9 | 2 | -0.666 |
+| Hoxa5 | 1 | -0.653 |
+| Epc2 | 2 | -0.626 |
+
+**Top target gene: Hoxa7** (homeobox A7)
+
+*Function:* Enables DNA binding activity and DNA-binding transcription factor activity. Acts upstream of or within several processes, including embryonic skeletal system morphogenesis; regulation of transcription by RNA polymerase II; and stem cell differentiation. Located in nucleus. Is expressed in several structures, including central nervous system; embryo mesenchyme; genitourinary system; gut; and musculoskeletal system. Orthologous to human HOXA7 (homeobox A7). [provided by Alliance of Genome Resource...
+
+*NCBI Gene ID:* [15404](https://www.ncbi.nlm.nih.gov/gene/15404)
 
 ### Literature
 
@@ -918,6 +1392,32 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Kidney | Upregulated | +7.54 | 9.28e-03 | 116.2 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-196a-1-3p** - **81.8% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-196a-1-3p) | `CAACGACAUCAAACCACCUGAU` | 22 nt |
+| Human (hsa-miR-196a-1-3p) | `CAACAACAUUAAACCACCCGA` | 21 nt |
+
+```
+Mouse: CAACGACAUCAAACCACCUGAU
+       ||||X||||X||||||||X||-
+Human: CAACAACAUUAAACCACCCGA
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 5: G (mouse) -> A (human) *(in seed region)*
+- Position 10: C (mouse) -> U (human)
+- Position 19: U (mouse) -> C (human)
+
+Length difference: 1 nt
+
+*WARNING: 1 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -936,9 +1436,68 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Kidney | Upregulated | +2.64 | 9.85e-06 | 50.1 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-187-5p** - **31.8% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-187-5p) | `AGGCUACAACACAGGACCCGGG` | 22 nt |
+| Human (hsa-miR-187-5p) | `GGCUACAACACAGGACCCGGGC` | 22 nt |
+
+```
+Mouse: AGGCUACAACACAGGACCCGGG
+       X|XXXXX|XXXXX|XX||X||X
+Human: GGCUACAACACAGGACCCGGGC
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 1: A (mouse) -> G (human) *(in seed region)*
+- Position 3: G (mouse) -> C (human) *(in seed region)*
+- Position 4: C (mouse) -> U (human) *(in seed region)*
+- Position 5: U (mouse) -> A (human) *(in seed region)*
+- Position 6: A (mouse) -> C (human) *(in seed region)*
+- Position 7: C (mouse) -> A (human) *(in seed region)*
+- Position 9: A (mouse) -> C (human)
+- Position 10: C (mouse) -> A (human)
+- Position 11: A (mouse) -> C (human)
+- Position 12: C (mouse) -> A (human)
+- Position 13: A (mouse) -> G (human)
+- Position 15: G (mouse) -> A (human)
+- Position 16: A (mouse) -> C (human)
+- Position 19: C (mouse) -> G (human)
+- Position 22: G (mouse) -> C (human)
+
+*WARNING: 6 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-187-5p shares seed family 'CGUGUCU' with miR-187-3p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 17**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Nudcd3 | 1 | -0.566 |
+| Prkar2a | 1 | -0.471 |
+| Hipk3 | 1 | -0.467 |
+| Lrfn1 | 1 | -0.443 |
+| Fgf9 | 1 | -0.438 |
+| Flrt2 | 1 | -0.417 |
+| Apc | 1 | -0.4 |
+| Kcnk10 | 1 | -0.376 |
+| Zcchc2 | 1 | -0.366 |
+| Acot11 | 1 | -0.33 |
+
+**Top target gene: Nudcd3** (NudC domain containing 3)
+
+*Function:* Predicted to enable unfolded protein binding activity. Predicted to be involved in protein folding. Predicted to be part of cytoplasmic dynein complex. Predicted to be active in cytoplasm. Orthologous to human NUDCD3 (NudC domain containing 3). [provided by Alliance of Genome Resources, Jul 2025]
+
+*NCBI Gene ID:* [209586](https://www.ncbi.nlm.nih.gov/gene/209586)
 
 ### Literature
 
@@ -962,7 +1521,33 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Kidney | Upregulated | +4.05 | 3.09e-03 | 48.5 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-670-5p** - **86.4% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-670-5p) | `AUCCCUGAGUGUAUGUGGUGAA` | 22 nt |
+| Human (hsa-miR-670-5p) | `GUCCCUGAGUGUAUGUGGUG` | 20 nt |
+
+```
+Mouse: AUCCCUGAGUGUAUGUGGUGAA
+       X|||||||||||||||||||--
+Human: GUCCCUGAGUGUAUGUGGUG
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 1: A (mouse) -> G (human) *(in seed region)*
+
+Length difference: 2 nt
+
+*WARNING: 1 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
+
+> Note: miR-670-5p shares seed family 'CCCUGAG' with miR-125b-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
 
 **Total predicted target genes: 846**
 
@@ -1009,6 +1594,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Kidney | Upregulated | +4.13 | 2.81e-02 | 35.5 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UGUCUGCCCGAGUGCCUGCCUCU`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 188**
@@ -1054,9 +1645,54 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Kidney | Downregulated | -2.64 | 3.92e-02 | 0.8 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-511-3p** - **86.4% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-511-3p) | `AAUGUGUAGCAAAAGACAGGAU` | 22 nt |
+| Human (hsa-miR-511-3p) | `AAUGUGUAGCAAAAGACAGA` | 20 nt |
+
+```
+Mouse: AAUGUGUAGCAAAAGACAGGAU
+       |||||||||||||||||||X--
+Human: AAUGUGUAGCAAAAGACAGA
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 20: G (mouse) -> A (human)
+
+Length difference: 2 nt
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-511-3p shares seed family 'AUGCCUU' with miR-532-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 217**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Gm26596 | 1 | -0.812 |
+| Slc25a46 | 1 | -0.628 |
+| Fhit | 1 | -0.611 |
+| Cript | 1 | -0.587 |
+| Bhlhb9 | 1 | -0.58 |
+| Ndp | 1 | -0.551 |
+| Csf1 | 1 | -0.551 |
+| Ahsg | 1 | -0.549 |
+| Csgalnact2 | 1 | -0.538 |
+| Ccdc64 | 1 | -0.519 |
+
+**Top target gene: Gm26596** (predicted gene, 26596)
+
+*NCBI Gene ID:* [544737](https://www.ncbi.nlm.nih.gov/gene/544737)
 
 ### Literature
 
@@ -1079,6 +1715,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Kidney | Downregulated | -4.74 | 3.71e-02 | 0.4 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `AAAGUGCUUCCCUUUUGUGUGU`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1126,9 +1768,54 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Kidney | Downregulated | -5.60 | 3.29e-02 | 0.2 |
 | Spleen | Upregulated | +5.60 | 6.52e-13 | 338.4 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-150-3p** - **95.5% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-150-3p) | `CUGGUACAGGCCUGGGGGAUAG` | 22 nt |
+| Human (hsa-miR-150-3p) | `CUGGUACAGGCCUGGGGGACAG` | 22 nt |
+
+```
+Mouse: CUGGUACAGGCCUGGGGGAUAG
+       |||||||||||||||||||X||
+Human: CUGGUACAGGCCUGGGGGACAG
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 20: U (mouse) -> C (human)
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-150-3p shares seed family 'CUCCCAA' with miR-150-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 326**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Myb | 2 | -0.752 |
+| Smr3a | 1 | -0.721 |
+| Gm7714 | 1 | -0.655 |
+| Prorsd1 | 1 | -0.637 |
+| Shisa4 | 1 | -0.614 |
+| Cxcl1 | 1 | -0.532 |
+| Myh1 | 1 | -0.52 |
+| Pdia3 | 1 | -0.507 |
+| Hilpda | 1 | -0.471 |
+| Them4 | 1 | -0.468 |
+
+**Top target gene: Myb** (Myb proto-oncogene, transcription factor)
+
+*Function:* Enables DNA-binding transcription activator activity, RNA polymerase II-specific; RNA polymerase II cis-regulatory region sequence-specific DNA binding activity; and WD40-repeat domain binding activity. Involved in positive regulation of transcription by RNA polymerase II. Acts upstream of or within several processes, including cellular response to cytokine stimulus; hematopoietic or lymphoid organ development; and hemopoiesis. Located in cytosol and nucleus. Part of RNA polymerase II transcript...
+
+*NCBI Gene ID:* [17863](https://www.ncbi.nlm.nih.gov/gene/17863)
 
 ### Literature
 
@@ -1151,6 +1838,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Kidney | Downregulated | -7.56 | 1.95e-03 | 0.1 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-490-3p** - **100% identical** (22 nt)
+
+Sequence: `CAACCUGGAGGACUCCAUGCUG`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1198,6 +1893,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Kidney | Downregulated | -7.02 | 3.59e-02 | 0.1 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-208b-3p** - **100% identical** (22 nt)
+
+Sequence: `AUAAGACGAACAAAAGGUUUGU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1247,9 +1950,69 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Kidney | Downregulated | -13.29 | 4.24e-04 | 0.0 |
 | Liver | Upregulated | +11.54 | 2.48e-10 | 590.3 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-122-3p** - **27.3% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-122-3p) | `AAACGCCAUUAUCACACUAAAU` | 22 nt |
+| Human (hsa-miR-122-3p) | `AACGCCAUUAUCACACUAAAUA` | 22 nt |
+
+```
+Mouse: AAACGCCAUUAUCACACUAAAU
+       ||XXX|XX|XXXXXXXXX||XX
+Human: AACGCCAUUAUCACACUAAAUA
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 3: A (mouse) -> C (human) *(in seed region)*
+- Position 4: C (mouse) -> G (human) *(in seed region)*
+- Position 5: G (mouse) -> C (human) *(in seed region)*
+- Position 7: C (mouse) -> A (human) *(in seed region)*
+- Position 8: A (mouse) -> U (human) *(in seed region)*
+- Position 10: U (mouse) -> A (human)
+- Position 11: A (mouse) -> U (human)
+- Position 12: U (mouse) -> C (human)
+- Position 13: C (mouse) -> A (human)
+- Position 14: A (mouse) -> C (human)
+- Position 15: C (mouse) -> A (human)
+- Position 16: A (mouse) -> C (human)
+- Position 17: C (mouse) -> U (human)
+- Position 18: U (mouse) -> A (human)
+- Position 21: A (mouse) -> U (human)
+- Position 22: U (mouse) -> A (human)
+
+*WARNING: 5 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-122-3p shares seed family 'GGAGUGU' with miR-122-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 215**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Slc25a34 | 1 | -0.899 |
+| Slc1a5 | 1 | -0.761 |
+| Aldoa | 1 | -0.671 |
+| Vamp3 | 1 | -0.669 |
+| Fundc2 | 1 | -0.668 |
+| Sh2d1a | 1 | -0.664 |
+| Grem2 | 1 | -0.631 |
+| Ctdnep1 | 1 | -0.618 |
+| P4ha1 | 1 | -0.581 |
+| Slc41a1 | 1 | -0.58 |
+
+**Top target gene: Slc25a34** (solute carrier family 25, member 34)
+
+*Function:* Acts upstream of or within blastocyst hatching. Located in mitochondrion. Is expressed in early conceptus. Orthologous to human SLC25A34 (solute carrier family 25 member 34). [provided by Alliance of Genome Resources, Jul 2025]
+
+*NCBI Gene ID:* [384071](https://www.ncbi.nlm.nih.gov/gene/384071)
 
 ### Literature
 
@@ -1273,6 +2036,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Kidney | Downregulated | -13.78 | 5.18e-05 | 0.0 |
 | Liver | Upregulated | +11.66 | 8.47e-13 | 750.2 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-122-5p** - **100% identical** (22 nt)
+
+Sequence: `UGGAGUGUGACAAUGGUGUUUG`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1320,6 +2091,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Kidney | Downregulated | -7.12 | 5.62e-03 | 0.0 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `AAAGUGCUACUACUUUUGAGUCU`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1369,6 +2146,42 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Kidney | Downregulated | -21.37 | 4.37e-05 | 0.0 |
 | Lung | Upregulated | +9.40 | 1.96e-16 | 765.1 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-1912-5p** - **31.8% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-1912-5p) | `UGCUCAUUGCAUGGGCUGUGUA` | 22 nt |
+| Human (hsa-miR-1912-5p) | `CUCAUUGCAUGGGCUGUGUAUA` | 22 nt |
+
+```
+Mouse: UGCUCAUUGCAUGGGCUGUGUA
+       XX|XXXXXXXXX|XXX|||X||
+Human: CUCAUUGCAUGGGCUGUGUAUA
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 1: U (mouse) -> C (human) *(in seed region)*
+- Position 2: G (mouse) -> U (human) *(in seed region)*
+- Position 4: U (mouse) -> A (human) *(in seed region)*
+- Position 5: C (mouse) -> U (human) *(in seed region)*
+- Position 6: A (mouse) -> U (human) *(in seed region)*
+- Position 7: U (mouse) -> G (human) *(in seed region)*
+- Position 8: U (mouse) -> C (human) *(in seed region)*
+- Position 9: G (mouse) -> A (human)
+- Position 10: C (mouse) -> U (human)
+- Position 11: A (mouse) -> G (human)
+- Position 12: U (mouse) -> G (human)
+- Position 14: G (mouse) -> C (human)
+- Position 15: G (mouse) -> U (human)
+- Position 16: C (mouse) -> G (human)
+- Position 20: G (mouse) -> A (human)
+
+*WARNING: 7 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -1387,6 +2200,14 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Kidney | Downregulated | -23.89 | 3.87e-06 | 0.0 |
 | Lung | Upregulated | +11.35 | 7.15e-29 | 1688.9 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-1298-5p** - **100% identical** (22 nt)
+
+Sequence: `UUCAUUCGGCUGUCCAGAUGUA`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1435,6 +2256,12 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Liver | Upregulated | +6.76 | 4.36e-19 | 613.2 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `CAGACAAGACUGUUAUACCC`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -1452,6 +2279,14 @@ No relevant publications found in PubMed.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Liver | Upregulated | +10.45 | 7.88e-11 | 557.7 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-122b-3p** - **100% identical** (22 nt)
+
+Sequence: `AAACACCAUUGUCACACUCCAC`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1479,6 +2314,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Liver | Upregulated | +7.24 | 9.33e-14 | 456.2 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UGGGUAUAACAGUCUUGGCUGG`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -1496,6 +2337,12 @@ No relevant publications found in PubMed.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Liver | Upregulated | +6.80 | 1.22e-14 | 447.8 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UUUAGGCAGAGCACUCGUACAG`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1515,6 +2362,12 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Liver | Upregulated | +8.00 | 6.59e-10 | 353.5 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `AAGAGCCCCCAGUUUGAGUAU`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -1532,6 +2385,12 @@ No relevant publications found in PubMed.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Liver | Upregulated | +7.38 | 8.95e-10 | 310.8 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `ACUCAAAACCUGGCGGCACUUUU`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1551,6 +2410,12 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Liver | Upregulated | +6.29 | 2.72e-10 | 299.8 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `AUAUGAGUAUUCUGCCUAAAU`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -1569,7 +2434,50 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Liver | Upregulated | +4.04 | 6.35e-16 | 258.3 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-101-3p** - **4.8% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-101b-3p) | `GUACAGUACUGUGAUAGCU` | 19 nt |
+| Human (hsa-miR-101-3p) | `UACAGUACUGUGAUAACUGAA` | 21 nt |
+
+```
+Mouse: GUACAGUACUGUGAUAGCU
+       XXXXXXXXXXXXXXX|XXX--
+Human: UACAGUACUGUGAUAACUGAA
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 1: G (mouse) -> U (human) *(in seed region)*
+- Position 2: U (mouse) -> A (human) *(in seed region)*
+- Position 3: A (mouse) -> C (human) *(in seed region)*
+- Position 4: C (mouse) -> A (human) *(in seed region)*
+- Position 5: A (mouse) -> G (human) *(in seed region)*
+- Position 6: G (mouse) -> U (human) *(in seed region)*
+- Position 7: U (mouse) -> A (human) *(in seed region)*
+- Position 8: A (mouse) -> C (human) *(in seed region)*
+- Position 9: C (mouse) -> U (human)
+- Position 10: U (mouse) -> G (human)
+- Position 11: G (mouse) -> U (human)
+- Position 12: U (mouse) -> G (human)
+- Position 13: G (mouse) -> A (human)
+- Position 14: A (mouse) -> U (human)
+- Position 15: U (mouse) -> A (human)
+- Position 17: G (mouse) -> C (human)
+- Position 18: C (mouse) -> U (human)
+- Position 19: U (mouse) -> G (human)
+
+Length difference: 2 nt
+
+*WARNING: 8 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
+
+> Note: miR-101b-3p shares seed family 'UACAGUA' with miR-101a-3p.2. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
 
 **Total predicted target genes: 934**
 
@@ -1615,6 +2523,26 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Liver | Downregulated | -2.10 | 1.12e-12 | 6.8 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-181b-5p** - **95.8% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-181b-5p) | `AACAUUCAUUGCUGUCGGUGGGUU` | 24 nt |
+| Human (hsa-miR-181b-5p) | `AACAUUCAUUGCUGUCGGUGGGU` | 23 nt |
+
+```
+Mouse: AACAUUCAUUGCUGUCGGUGGGUU
+       |||||||||||||||||||||||-
+Human: AACAUUCAUUGCUGUCGGUGGGU
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+Length difference: 1 nt
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1663,6 +2591,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Liver | Downregulated | -2.52 | 2.63e-06 | 3.5 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `ACCAUCGACCGUUGAUUGUACC`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -1686,6 +2620,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Liver | Downregulated | -2.42 | 2.63e-06 | 3.4 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-181a-5p** - **100% identical** (23 nt)
+
+Sequence: `AACAUUCAACGCUGUCGGUGAGU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1734,6 +2676,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Liver | Downregulated | -1.82 | 5.69e-05 | 3.0 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-145-5p** - **100% identical** (23 nt)
+
+Sequence: `GUCCAGUUUUCCCAGGAAUCCCU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 635**
@@ -1781,6 +2731,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Liver | Downregulated | -1.95 | 3.50e-07 | 2.9 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-181c-5p** - **100% identical** (22 nt)
+
+Sequence: `AACAUUCAACCUGUCGGUGAGU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 152**
@@ -1801,8 +2759,6 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Mturn | 2 | -0.417 |
 
 **Top target gene: Zfp1009** (zinc finger protein 1009)
-
-*Function:* 
 
 *NCBI Gene ID:* [100503353](https://www.ncbi.nlm.nih.gov/gene/100503353)
 
@@ -1827,6 +2783,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Liver | Downregulated | -1.58 | 1.25e-04 | 2.8 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-143-3p** - **100% identical** (21 nt)
+
+Sequence: `UGAGAUGAAGCACUGUAGCUC`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1875,9 +2839,52 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Liver | Downregulated | -1.74 | 2.00e-04 | 2.6 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-143-5p** - **95.5% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-143-5p) | `GGUGCAGUGCUGCAUCUCUGG` | 21 nt |
+| Human (hsa-miR-143-5p) | `GGUGCAGUGCUGCAUCUCUGGU` | 22 nt |
+
+```
+Mouse: GGUGCAGUGCUGCAUCUCUGG
+       |||||||||||||||||||||-
+Human: GGUGCAGUGCUGCAUCUCUGGU
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+Length difference: 1 nt
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-143-5p shares seed family 'GAGAUGA' with miR-143-3p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 432**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Lmo4 | 1 | -0.652 |
+| Cryz | 1 | -0.647 |
+| Ppp3r2 | 1 | -0.623 |
+| Gigyf2 | 1 | -0.618 |
+| Itm2b | 1 | -0.602 |
+| Kras | 2 | -0.588 |
+| Creld1 | 1 | -0.569 |
+| Ccdc58 | 1 | -0.557 |
+| Fgf7 | 1 | -0.553 |
+| Ttpa | 1 | -0.543 |
+
+**Top target gene: Lmo4** (LIM domain only 4)
+
+*Function:* Enables DNA-binding transcription factor binding activity and transcription corepressor activity. Involved in several processes, including negative regulation of transcription by RNA polymerase II; nervous system development; and positive regulation of kinase activity. Acts upstream of or within several processes, including cell differentiation in spinal cord; thymus development; and ventricular septum development. Located in cell leading edge and nucleus. Part of RNA polymerase II transcription...
+
+*NCBI Gene ID:* [16911](https://www.ncbi.nlm.nih.gov/gene/16911)
 
 ### Literature
 
@@ -1900,6 +2907,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Liver | Downregulated | -1.87 | 5.45e-08 | 2.4 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-181d-5p** - **100% identical** (23 nt)
+
+Sequence: `AACAUUCAUUGUUGUCGGUGGGU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -1948,6 +2963,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Liver | Downregulated | -1.69 | 2.70e-04 | 2.4 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `CAGCAGCAAUUCAUGUUUUGGA`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 240**
@@ -1995,9 +3016,69 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Liver | Downregulated | -2.18 | 2.92e-07 | 2.3 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-181c-3p** - **27.3% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-181c-3p) | `ACCAUCGACCGUUGAGUGGACC` | 22 nt |
+| Human (hsa-miR-181c-3p) | `AACCAUCGACCGUUGAGUGGAC` | 22 nt |
+
+```
+Mouse: ACCAUCGACCGUUGAGUGGACC
+       |X|XXXXXX|XX|XXXXX|XX|
+Human: AACCAUCGACCGUUGAGUGGAC
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 2: C (mouse) -> A (human) *(in seed region)*
+- Position 4: A (mouse) -> C (human) *(in seed region)*
+- Position 5: U (mouse) -> A (human) *(in seed region)*
+- Position 6: C (mouse) -> U (human) *(in seed region)*
+- Position 7: G (mouse) -> C (human) *(in seed region)*
+- Position 8: A (mouse) -> G (human) *(in seed region)*
+- Position 9: C (mouse) -> A (human)
+- Position 11: G (mouse) -> C (human)
+- Position 12: U (mouse) -> G (human)
+- Position 14: G (mouse) -> U (human)
+- Position 15: A (mouse) -> G (human)
+- Position 16: G (mouse) -> A (human)
+- Position 17: U (mouse) -> G (human)
+- Position 18: G (mouse) -> U (human)
+- Position 20: A (mouse) -> G (human)
+- Position 21: C (mouse) -> A (human)
+
+*WARNING: 6 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-181c-3p shares seed family 'ACAUUCA' with miR-181a-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 1119**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Zfp97 | 3 | -10.423 |
+| Zfp960 | 2 | -10.366 |
+| Gm14420 | 3 | -7.855 |
+| Gm6710 | 1 | -7.048 |
+| 9830147E19Rik | 4 | -5.727 |
+| Gm14431 | 4 | -5.532 |
+| Gm14295 | 1 | -5.5 |
+| 2410141K09Rik | 3 | -5.028 |
+| Zfp850 | 1 | -4.499 |
+| Gm14440 | 7 | -4.111 |
+
+**Top target gene: Zfp97** (zinc finger protein 97)
+
+*Function:* Predicted to enable DNA-binding transcription factor activity, RNA polymerase II-specific and RNA polymerase II cis-regulatory region sequence-specific DNA binding activity. Predicted to be involved in regulation of transcription by RNA polymerase II. Located in nucleus. Is expressed in central nervous system and genitourinary system. [provided by Alliance of Genome Resources, Jul 2025]
+
+*NCBI Gene ID:* [22759](https://www.ncbi.nlm.nih.gov/gene/22759)
 
 ### Literature
 
@@ -2021,6 +3102,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Lung | Upregulated | +11.82 | 8.62e-32 | 1946.5 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `CAAAUCUUAUUUGAGCACCUGU`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -2038,6 +3125,46 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Lung | Upregulated | +6.80 | 1.14e-41 | 1270.8 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-449c-5p** - **16.0% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-449c-5p) | `AGGCAGUGCAUUGCUAGCUGG` | 21 nt |
+| Human (hsa-miR-449c-5p) | `UAGGCAGUGUAUUGCUAGCGGCUGU` | 25 nt |
+
+```
+Mouse: AGGCAGUGCAUUGCUAGCUGG
+       XX|XXXXXXXX|XXXXXXX||----
+Human: UAGGCAGUGUAUUGCUAGCGGCUGU
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 1: A (mouse) -> U (human) *(in seed region)*
+- Position 2: G (mouse) -> A (human) *(in seed region)*
+- Position 4: C (mouse) -> G (human) *(in seed region)*
+- Position 5: A (mouse) -> C (human) *(in seed region)*
+- Position 6: G (mouse) -> A (human) *(in seed region)*
+- Position 7: U (mouse) -> G (human) *(in seed region)*
+- Position 8: G (mouse) -> U (human) *(in seed region)*
+- Position 9: C (mouse) -> G (human)
+- Position 10: A (mouse) -> U (human)
+- Position 11: U (mouse) -> A (human)
+- Position 13: G (mouse) -> U (human)
+- Position 14: C (mouse) -> G (human)
+- Position 15: U (mouse) -> C (human)
+- Position 16: A (mouse) -> U (human)
+- Position 17: G (mouse) -> A (human)
+- Position 18: C (mouse) -> G (human)
+- Position 19: U (mouse) -> C (human)
+
+Length difference: 4 nt
+
+*WARNING: 7 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -2086,6 +3213,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Lung | Upregulated | +9.39 | 2.42e-22 | 1051.6 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `AGGUCCUCAAUAAGUAUUUGUU`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -2103,6 +3236,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Lung | Upregulated | +7.41 | 2.23e-22 | 825.2 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UGGCAGUGUAUUGUUAGCUGGU`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -2151,6 +3290,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Lung | Upregulated | +8.00 | 7.86e-15 | 555.8 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `GGUGCUCACAUGUCCUCCU`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -2174,6 +3319,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Lung | Upregulated | +6.74 | 1.24e-12 | 417.3 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-34c-5p** - **100% identical** (23 nt)
+
+Sequence: `AGGCAGUGUAGUUAGCUGAUUGC`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -2222,6 +3375,47 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Lung | Upregulated | +6.68 | 1.09e-11 | 380.0 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-34b-5p** - **13.0% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-34b-5p) | `AGGCAGUGUAAUUAGCUGAUUGU` | 23 nt |
+| Human (hsa-miR-34b-5p) | `UAGGCAGUGUCAUUAGCUGAUUG` | 23 nt |
+
+```
+Mouse: AGGCAGUGUAAUUAGCUGAUUGU
+       XX|XXXXXXXXX|XXXXXXX|XX
+Human: UAGGCAGUGUCAUUAGCUGAUUG
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 1: A (mouse) -> U (human) *(in seed region)*
+- Position 2: G (mouse) -> A (human) *(in seed region)*
+- Position 4: C (mouse) -> G (human) *(in seed region)*
+- Position 5: A (mouse) -> C (human) *(in seed region)*
+- Position 6: G (mouse) -> A (human) *(in seed region)*
+- Position 7: U (mouse) -> G (human) *(in seed region)*
+- Position 8: G (mouse) -> U (human) *(in seed region)*
+- Position 9: U (mouse) -> G (human)
+- Position 10: A (mouse) -> U (human)
+- Position 11: A (mouse) -> C (human)
+- Position 12: U (mouse) -> A (human)
+- Position 14: A (mouse) -> U (human)
+- Position 15: G (mouse) -> A (human)
+- Position 16: C (mouse) -> G (human)
+- Position 17: U (mouse) -> C (human)
+- Position 18: G (mouse) -> U (human)
+- Position 19: A (mouse) -> G (human)
+- Position 20: U (mouse) -> A (human)
+- Position 22: G (mouse) -> U (human)
+- Position 23: U (mouse) -> G (human)
+
+*WARNING: 7 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 261**
@@ -2268,6 +3462,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Lung | Upregulated | +7.67 | 1.16e-10 | 368.8 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UUGCAUAUGUAGGAUGUCCCAU`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -2316,6 +3516,26 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Lung | Downregulated | -3.21 | 6.31e-16 | 9.3 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-139-5p** - **95.7% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-139-5p) | `UCUACAGUGCACGUGUCUCCAG` | 22 nt |
+| Human (hsa-miR-139-5p) | `UCUACAGUGCACGUGUCUCCAGU` | 23 nt |
+
+```
+Mouse: UCUACAGUGCACGUGUCUCCAG
+       ||||||||||||||||||||||-
+Human: UCUACAGUGCACGUGUCUCCAGU
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+Length difference: 1 nt
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 391**
@@ -2362,6 +3582,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Lung | Downregulated | -1.48 | 3.35e-05 | 3.6 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-185-5p** - **100% identical** (22 nt)
+
+Sequence: `UGGAGAGAAAGGCAGUUCCUGA`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -2410,6 +3638,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Lung | Downregulated | -1.80 | 3.71e-04 | 2.7 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-219a-5p** - **100% identical** (21 nt)
+
+Sequence: `UGAUUGUCCAAACGCAAUUCU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 387**
@@ -2457,6 +3693,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Lung | Downregulated | -1.68 | 2.60e-03 | 1.9 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UCUCACCCUAUGUUCUCCCACAG`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -2475,7 +3717,34 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Lung | Downregulated | -3.41 | 5.89e-04 | 1.7 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-378d** - **81.8% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-378d) | `ACUGGCCUUGGAGUCAGAAGGU` | 22 nt |
+| Human (hsa-miR-378d) | `ACUGGACUUGGAGUCAGAAA` | 20 nt |
+
+```
+Mouse: ACUGGCCUUGGAGUCAGAAGGU
+       |||||X|||||||||||||X--
+Human: ACUGGACUUGGAGUCAGAAA
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 6: C (mouse) -> A (human) *(in seed region)*
+- Position 20: G (mouse) -> A (human)
+
+Length difference: 2 nt
+
+*WARNING: 1 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
+
+> Note: miR-378d shares seed family 'CUGGACU' with miR-378a-3p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
 
 **Total predicted target genes: 223**
 
@@ -2521,6 +3790,26 @@ No relevant publications found in PubMed.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Lung | Downregulated | -3.32 | 8.12e-04 | 1.7 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-378a-3p** - **95.5% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-378a-3p) | `ACUGGACUUGGAGUCAGAAGG` | 21 nt |
+| Human (hsa-miR-378a-3p) | `ACUGGACUUGGAGUCAGAAGGC` | 22 nt |
+
+```
+Mouse: ACUGGACUUGGAGUCAGAAGG
+       |||||||||||||||||||||-
+Human: ACUGGACUUGGAGUCAGAAGGC
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+Length difference: 1 nt
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -2569,7 +3858,47 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Lung | Downregulated | -3.17 | 1.35e-03 | 1.7 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-378b** - **20.0% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-378b) | `CUGGACUUGGAGUCAGAAGA` | 20 nt |
+| Human (hsa-miR-378b) | `ACUGGACUUGGAGGCAGAA` | 19 nt |
+
+```
+Mouse: CUGGACUUGGAGUCAGAAGA
+       XXX|XXX|X|XXXXXXX|X-
+Human: ACUGGACUUGGAGGCAGAA
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 1: C (mouse) -> A (human) *(in seed region)*
+- Position 2: U (mouse) -> C (human) *(in seed region)*
+- Position 3: G (mouse) -> U (human) *(in seed region)*
+- Position 5: A (mouse) -> G (human) *(in seed region)*
+- Position 6: C (mouse) -> A (human) *(in seed region)*
+- Position 7: U (mouse) -> C (human) *(in seed region)*
+- Position 9: G (mouse) -> U (human)
+- Position 11: A (mouse) -> G (human)
+- Position 12: G (mouse) -> A (human)
+- Position 13: U (mouse) -> G (human)
+- Position 14: C (mouse) -> G (human)
+- Position 15: A (mouse) -> C (human)
+- Position 16: G (mouse) -> A (human)
+- Position 17: A (mouse) -> G (human)
+- Position 19: G (mouse) -> A (human)
+
+Length difference: 1 nt
+
+*WARNING: 6 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
+
+> Note: miR-378b shares seed family 'CUGGACU' with miR-378a-3p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
 
 **Total predicted target genes: 223**
 
@@ -2616,9 +3945,52 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Lung | Downregulated | -3.67 | 3.60e-04 | 1.6 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-139-3p** - **95.7% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-139-3p) | `UGGAGACGCGGCCCUGUUGGAG` | 22 nt |
+| Human (hsa-miR-139-3p) | `UGGAGACGCGGCCCUGUUGGAGU` | 23 nt |
+
+```
+Mouse: UGGAGACGCGGCCCUGUUGGAG
+       ||||||||||||||||||||||-
+Human: UGGAGACGCGGCCCUGUUGGAGU
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+Length difference: 1 nt
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-139-3p shares seed family 'CUACAGU' with miR-139-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 391**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Cxcr4 | 1 | -0.73 |
+| Dpy30 | 1 | -0.714 |
+| Cdc42 | 1 | -0.625 |
+| Zranb2 | 2 | -0.549 |
+| Akirin2 | 1 | -0.544 |
+| Tmpo | 1 | -0.543 |
+| Cdh20 | 2 | -0.527 |
+| Morn4 | 1 | -0.523 |
+| 2410004B18Rik | 1 | -0.521 |
+| Tgif1 | 1 | -0.499 |
+
+**Top target gene: Cxcr4** (C-X-C motif chemokine receptor 4)
+
+*Function:* Predicted to enable several functions, including chemokine receptor activity; cytoskeletal protein binding activity; and ubiquitin protein ligase binding activity. Involved in several processes, including nervous system development; positive regulation of cold-induced thermogenesis; and positive regulation of oligodendrocyte differentiation. Acts upstream of or within several processes, including CXCL12-activated CXCR4 signaling pathway; circulatory system development; and nervous system develop...
+
+*NCBI Gene ID:* [12767](https://www.ncbi.nlm.nih.gov/gene/12767)
 
 ### Literature
 
@@ -2642,9 +4014,40 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Lung | Downregulated | -3.21 | 1.75e-03 | 1.6 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-378a-5p** - **100% identical** (22 nt)
+
+Sequence: `CUCCUGACUCCAGGUCCUGUGU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-378a-5p shares seed family 'CUGGACU' with miR-378a-3p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 223**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Nme6 | 1 | -0.783 |
+| Tmed5 | 1 | -0.75 |
+| Psma1 | 1 | -0.677 |
+| Grb2 | 1 | -0.661 |
+| Gm28040 | 1 | -0.607 |
+| Sbds | 1 | -0.583 |
+| Grsf1 | 1 | -0.581 |
+| Cables2 | 1 | -0.58 |
+| Nisch | 2 | -0.561 |
+| Kcnd1 | 1 | -0.556 |
+
+**Top target gene: Nme6** (NME/NM23 nucleoside diphosphate kinase 6)
+
+*Function:* Predicted to enable nucleoside diphosphate kinase activity. Predicted to be involved in negative regulation of cell growth and negative regulation of mitotic nuclear division. Located in mitochondrion. Is expressed in several structures, including alimentary system; genitourinary system; hemolymphoid system; nervous system; and sensory organ. Orthologous to human NME6 (NME/NM23 nucleoside diphosphate kinase 6). [provided by Alliance of Genome Resources, Apr 2025]
+
+*NCBI Gene ID:* [54369](https://www.ncbi.nlm.nih.gov/gene/54369)
 
 ### Literature
 
@@ -2668,6 +4071,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Lung | Downregulated | -4.73 | 2.94e-06 | 1.6 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `CCCAUGGAGCUGUAGGAGCCG`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -2685,6 +4094,14 @@ No relevant publications found in PubMed.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Spleen | Upregulated | +5.22 | 3.00e-38 | 953.7 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-142-5p** - **100% identical** (21 nt)
+
+Sequence: `CAUAAAGUAGAAAGCACUACU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -2733,7 +4150,17 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Spleen | Upregulated | +5.08 | 2.07e-26 | 628.6 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-142-3p** - **100% identical** (23 nt)
+
+Sequence: `UGUAGUGUUUCCUACUUUAUGGA`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
+
+> Note: miR-142a-3p shares seed family 'GUAGUGU' with miR-142a-3p.1. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
 
 **Total predicted target genes: 312**
 
@@ -2780,6 +4207,12 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Spleen | Upregulated | +5.23 | 8.13e-20 | 479.5 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `AUAAGGUAGAAAGCACUAAA`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -2797,6 +4230,14 @@ No relevant publications found in PubMed.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Spleen | Upregulated | +3.96 | 6.22e-29 | 472.2 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-130b-3p** - **100% identical** (22 nt)
+
+Sequence: `CAGUGCAAUGAUGAAAGGGCAU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -2845,6 +4286,28 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Spleen | Upregulated | +5.01 | 8.13e-20 | 457.1 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-211-5p** - **95.5% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-211-5p) | `UUCCCUUUGUCAUCCUUUGCCU` | 22 nt |
+| Human (hsa-miR-211-5p) | `UUCCCUUUGUCAUCCUUCGCCU` | 22 nt |
+
+```
+Mouse: UUCCCUUUGUCAUCCUUUGCCU
+       |||||||||||||||||X||||
+Human: UUCCCUUUGUCAUCCUUCGCCU
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 18: U (mouse) -> C (human)
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 158**
@@ -2892,9 +4355,52 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Spleen | Upregulated | +3.51 | 1.18e-24 | 340.6 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-342-5p** - **95.5% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-342-5p) | `AGGGGUGCUAUCUGUGAUUGAG` | 22 nt |
+| Human (hsa-miR-342-5p) | `AGGGGUGCUAUCUGUGAUUGA` | 21 nt |
+
+```
+Mouse: AGGGGUGCUAUCUGUGAUUGAG
+       |||||||||||||||||||||-
+Human: AGGGGUGCUAUCUGUGAUUGA
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+Length difference: 1 nt
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-342-5p shares seed family 'CUCACAC' with miR-342-3p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 264**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Fam53c | 6 | -1.05 |
+| Mmab | 2 | -0.932 |
+| Diras1 | 1 | -0.931 |
+| Sfn | 2 | -0.782 |
+| Ube2d2a | 1 | -0.691 |
+| Agpat4 | 1 | -0.672 |
+| Spock2 | 1 | -0.564 |
+| Kdsr | 2 | -0.551 |
+| Lrp8 | 1 | -0.549 |
+| Dkk1 | 1 | -0.496 |
+
+**Top target gene: Fam53c** (family with sequence similarity 53, member C)
+
+*Function:* Predicted to be involved in protein import into nucleus. Predicted to be active in nucleus. Orthologous to human FAM53C (family with sequence similarity 53 member C). [provided by Alliance of Genome Resources, Jul 2025]
+
+*NCBI Gene ID:* [66306](https://www.ncbi.nlm.nih.gov/gene/66306)
 
 ### Literature
 
@@ -2918,9 +4424,52 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Spleen | Upregulated | +3.67 | 3.04e-20 | 282.8 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-130b-5p** - **95.5% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-130b-5p) | `ACUCUUUCCCUGUUGCACUACU` | 22 nt |
+| Human (hsa-miR-130b-5p) | `ACUCUUUCCCUGUUGCACUAC` | 21 nt |
+
+```
+Mouse: ACUCUUUCCCUGUUGCACUACU
+       |||||||||||||||||||||-
+Human: ACUCUUUCCCUGUUGCACUAC
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+Length difference: 1 nt
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-130b-5p shares seed family 'AGUGCAA' with miR-130b-3p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 799**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Skida1 | 4 | -0.959 |
+| Vps37a | 2 | -0.925 |
+| Mybl1 | 3 | -0.895 |
+| Maf | 2 | -0.792 |
+| Klf7 | 2 | -0.782 |
+| Pik3cb | 2 | -0.781 |
+| Pparg | 1 | -0.781 |
+| Slain1 | 2 | -0.763 |
+| Cdk19 | 2 | -0.762 |
+| Sybu | 2 | -0.746 |
+
+**Top target gene: Skida1** (SKI/DACH domain containing 1)
+
+*Function:* Is expressed in several structures, including body cavity or lining; genitourinary system; nervous system; respiratory system; and vertebral axis musculature. Orthologous to human SKIDA1 (SKI/DACH domain containing 1). [provided by Alliance of Genome Resources, Jul 2025]
+
+*NCBI Gene ID:* [72668](https://www.ncbi.nlm.nih.gov/gene/72668)
 
 ### Literature
 
@@ -2943,6 +4492,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Spleen | Upregulated | +6.29 | 3.22e-09 | 269.7 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UGGGCAGAGGAGGCAGGGACA`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -2967,6 +4522,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Spleen | Upregulated | +4.44 | 2.41e-12 | 234.6 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-150-5p** - **100% identical** (22 nt)
+
+Sequence: `UCUCCCAACCCUUGUACCAGUG`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3015,6 +4578,26 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Spleen | Downregulated | -1.85 | 1.62e-18 | 11.7 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-23b-3p** - **91.3% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-23b-3p) | `AUCACAUUGCCAGGGAUUACC` | 21 nt |
+| Human (hsa-miR-23b-3p) | `AUCACAUUGCCAGGGAUUACCAC` | 23 nt |
+
+```
+Mouse: AUCACAUUGCCAGGGAUUACC
+       |||||||||||||||||||||--
+Human: AUCACAUUGCCAGGGAUUACCAC
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+Length difference: 2 nt
+
+*Seed region (positions 2-8) is conserved between species, indicating shared target gene regulation.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 133**
@@ -3061,6 +4644,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Spleen | Downregulated | -1.28 | 1.56e-18 | 11.4 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-27b-3p** - **100% identical** (21 nt)
+
+Sequence: `UUCACAGUGGCUAAGUUCUGC`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3109,6 +4700,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Spleen | Downregulated | -2.98 | 1.06e-21 | 11.1 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-30c-2-3p** - **100% identical** (22 nt)
+
+Sequence: `CUGGGAGAAGGCUGUUUACUCU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -3134,6 +4733,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Spleen | Downregulated | -3.34 | 1.58e-20 | 9.1 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-30a-5p** - **100% identical** (22 nt)
+
+Sequence: `UGUAAACAUCCUCGACUGGAAG`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3182,9 +4789,40 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Spleen | Downregulated | -2.97 | 4.46e-16 | 8.4 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-30a-3p** - **100% identical** (22 nt)
+
+Sequence: `CUUUCAGUCGGAUGUUUGCAGC`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-30a-3p shares seed family 'GUAAACA' with miR-30e-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 1359**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Mkrn3 | 3 | -0.827 |
+| Pip4k2a | 3 | -0.752 |
+| Foxg1 | 2 | -0.716 |
+| Lhx8 | 2 | -0.71 |
+| Klhl28 | 3 | -0.689 |
+| Yod1 | 3 | -0.67 |
+| Cth | 1 | -0.645 |
+| Bnip3l | 2 | -0.642 |
+| Cyp24a1 | 1 | -0.636 |
+| Tmem170b | 2 | -0.632 |
+
+**Top target gene: Mkrn3** (makorin, ring finger protein, 3)
+
+*Function:* Predicted to enable identical protein binding activity and ubiquitin protein ligase activity. Predicted to be involved in protein ubiquitination. Predicted to be located in nucleus. Is expressed in gut; nervous system; and sensory organ. Used to study central precocious puberty 2. Human ortholog(s) of this gene implicated in central precocious puberty 2. Orthologous to human MKRN3 (makorin ring finger protein 3). [provided by Alliance of Genome Resources, Jul 2025]
+
+*NCBI Gene ID:* [22652](https://www.ncbi.nlm.nih.gov/gene/22652)
 
 ### Literature
 
@@ -3207,6 +4845,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Spleen | Downregulated | -2.93 | 8.32e-10 | 4.9 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-30c-5p** - **100% identical** (23 nt)
+
+Sequence: `UGUAAACAUCCUACACUCUCAGC`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3255,6 +4901,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Spleen | Downregulated | -2.27 | 3.65e-08 | 4.6 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-30b-5p** - **100% identical** (22 nt)
+
+Sequence: `UGUAAACAUCCUACACUCAGCU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 403**
@@ -3301,6 +4955,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Spleen | Downregulated | -2.39 | 7.21e-08 | 4.4 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-335-5p** - **100% identical** (23 nt)
+
+Sequence: `UCAAGAGCAAUAACGAAAAAUGU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3349,6 +5011,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Spleen | Downregulated | -1.91 | 2.52e-05 | 3.2 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-99a-5p** - **100% identical** (22 nt)
+
+Sequence: `AACCCGUAGAUCCGAUCUUGUG`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 **Total predicted target genes: 17**
@@ -3396,9 +5066,40 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Spleen | Downregulated | -1.74 | 3.16e-06 | 3.1 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-let-7b-3p** - **100% identical** (22 nt)
+
+Sequence: `CUAUACAACCUACUGCCUUCCC`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: let-7b-3p shares seed family 'GAGGUAG' with let-7d-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 1076**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Hmga2 | 7 | -2.59 |
+| Nr6a1 | 4 | -2.08 |
+| Trim71 | 6 | -1.782 |
+| Arid3b | 3 | -1.518 |
+| Lin28b | 5 | -1.342 |
+| Fign | 6 | -1.228 |
+| Vstm5 | 2 | -1.225 |
+| Arid3a | 3 | -1.174 |
+| Fignl2 | 3 | -1.128 |
+| Adrb3 | 2 | -1.072 |
+
+**Top target gene: Hmga2** (high mobility group AT-hook 2)
+
+*Function:* Enables minor groove of adenine-thymine-rich DNA binding activity. Involved in several processes, including negative regulation of cellular senescence; positive regulation of angiogenesis; and positive regulation of cell proliferation in bone marrow. Acts upstream of or within several processes, including endocrine system development; lung development; and positive regulation of cell population proliferation. Located in male germ cell nucleus and nuclear chromosome. Is expressed in several struc...
+
+*NCBI Gene ID:* [15364](https://www.ncbi.nlm.nih.gov/gene/15364)
 
 ### Literature
 
@@ -3421,6 +5122,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Upregulated | +7.15 | 3.94e-41 | 1495.3 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-125b-1-3p** - **100% identical** (22 nt)
+
+Sequence: `ACGGGUUAGGCUCUUGGGAGCU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3448,6 +5157,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Upregulated | +8.35 | 7.35e-10 | 378.0 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UCAGCUGAGGUUCCCCUCUGUC`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -3465,6 +5180,12 @@ No relevant publications found in PubMed.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Upregulated | +4.18 | 2.70e-19 | 321.5 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `CUGAAAAUGUUGCCUGAAG`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3487,6 +5208,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Upregulated | +5.82 | 3.52e-11 | 289.1 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UAUGUGUGUGUGUAUGUGUGUAA`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3514,9 +5241,69 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Upregulated | +5.86 | 2.34e-10 | 274.8 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-182-3p** - **23.8% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-182-3p) | `GUGGUUCUAGACUUGCCAACU` | 21 nt |
+| Human (hsa-miR-182-3p) | `UGGUUCUAGACUUGCCAACUA` | 21 nt |
+
+```
+Mouse: GUGGUUCUAGACUUGCCAACU
+       XX|X|XXXXXXX|XX|X|XXX
+Human: UGGUUCUAGACUUGCCAACUA
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 1: G (mouse) -> U (human) *(in seed region)*
+- Position 2: U (mouse) -> G (human) *(in seed region)*
+- Position 4: G (mouse) -> U (human) *(in seed region)*
+- Position 6: U (mouse) -> C (human) *(in seed region)*
+- Position 7: C (mouse) -> U (human) *(in seed region)*
+- Position 8: U (mouse) -> A (human) *(in seed region)*
+- Position 9: A (mouse) -> G (human)
+- Position 10: G (mouse) -> A (human)
+- Position 11: A (mouse) -> C (human)
+- Position 12: C (mouse) -> U (human)
+- Position 14: U (mouse) -> G (human)
+- Position 15: G (mouse) -> C (human)
+- Position 17: C (mouse) -> A (human)
+- Position 19: A (mouse) -> C (human)
+- Position 20: C (mouse) -> U (human)
+- Position 21: U (mouse) -> A (human)
+
+*WARNING: 6 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-182-3p shares seed family 'UUGGCAA' with miR-182-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 1130**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Palld | 1 | -0.877 |
+| Satb2 | 2 | -0.828 |
+| Wfdc9 | 1 | -0.823 |
+| Arf4 | 2 | -0.812 |
+| Bcl2l12 | 1 | -0.805 |
+| Tmem145 | 2 | -0.779 |
+| Prrg3 | 2 | -0.755 |
+| Vamp3 | 3 | -0.744 |
+| Frs2 | 3 | -0.739 |
+| Cacna2d1 | 1 | -0.725 |
+
+**Top target gene: Palld** (palladin, cytoskeletal associated protein)
+
+*Function:* Predicted to enable axon guidance receptor activity and cytoskeletal protein binding activity. Acts upstream of or within actin cytoskeleton organization; epithelial cell morphogenesis; and keratinocyte development. Located in Z disc; focal adhesion; and stress fiber. Is expressed in several structures, including alimentary system; embryo mesenchyme; genitourinary system; heart; and hemolymphoid system gland. Human ortholog(s) of this gene implicated in pancreatic cancer. Orthologous to human PA...
+
+*NCBI Gene ID:* [72333](https://www.ncbi.nlm.nih.gov/gene/72333)
 
 ### Literature
 
@@ -3540,9 +5327,66 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Upregulated | +3.98 | 2.01e-13 | 205.6 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-181d-3p** - **38.1% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-181d-3p) | `CCCACCGGGGGAUGAAUGUCA` | 21 nt |
+| Human (hsa-miR-181d-3p) | `CCACCGGGGGAUGAAUGUCAC` | 21 nt |
+
+```
+Mouse: CCCACCGGGGGAUGAAUGUCA
+       ||XX|X||||XXXX|XXXXXX
+Human: CCACCGGGGGAUGAAUGUCAC
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 3: C (mouse) -> A (human) *(in seed region)*
+- Position 4: A (mouse) -> C (human) *(in seed region)*
+- Position 6: C (mouse) -> G (human) *(in seed region)*
+- Position 11: G (mouse) -> A (human)
+- Position 12: A (mouse) -> U (human)
+- Position 13: U (mouse) -> G (human)
+- Position 14: G (mouse) -> A (human)
+- Position 16: A (mouse) -> U (human)
+- Position 17: U (mouse) -> G (human)
+- Position 18: G (mouse) -> U (human)
+- Position 19: U (mouse) -> C (human)
+- Position 20: C (mouse) -> A (human)
+- Position 21: A (mouse) -> C (human)
+
+*WARNING: 3 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-181d-3p shares seed family 'ACAUUCA' with miR-181a-5p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 1119**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Zfp97 | 3 | -10.423 |
+| Zfp960 | 2 | -10.366 |
+| Gm14420 | 3 | -7.855 |
+| Gm6710 | 1 | -7.048 |
+| 9830147E19Rik | 4 | -5.727 |
+| Gm14431 | 4 | -5.532 |
+| Gm14295 | 1 | -5.5 |
+| 2410141K09Rik | 3 | -5.028 |
+| Zfp850 | 1 | -4.499 |
+| Gm14440 | 7 | -4.111 |
+
+**Top target gene: Zfp97** (zinc finger protein 97)
+
+*Function:* Predicted to enable DNA-binding transcription factor activity, RNA polymerase II-specific and RNA polymerase II cis-regulatory region sequence-specific DNA binding activity. Predicted to be involved in regulation of transcription by RNA polymerase II. Located in nucleus. Is expressed in central nervous system and genitourinary system. [provided by Alliance of Genome Resources, Jul 2025]
+
+*NCBI Gene ID:* [22759](https://www.ncbi.nlm.nih.gov/gene/22759)
 
 ### Literature
 
@@ -3563,6 +5407,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Upregulated | +4.46 | 6.60e-11 | 202.2 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `CAUACACACACACAUACACAC`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3590,6 +5440,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Upregulated | +4.66 | 3.19e-10 | 198.7 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UACAUACACACAUACACACGCA`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -3607,6 +5463,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Upregulated | +4.54 | 1.68e-09 | 176.2 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `CAUAACAUACACACACACACGUAU`
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3626,6 +5488,12 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Upregulated | +5.70 | 1.11e-06 | 149.1 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UGUGCAUGUGUGUAUAGUUGUGUGC`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -3643,6 +5511,14 @@ No relevant publications found in PubMed.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Downregulated | -1.95 | 1.35e-11 | 6.4 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-140-5p** - **100% identical** (22 nt)
+
+Sequence: `CAGUGGUUUUACCCUAUGGUAG`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3691,6 +5567,12 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Downregulated | -1.55 | 3.49e-10 | 5.7 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UUGGAGUUCAUGCAAGUUCUAACC`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -3714,6 +5596,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Downregulated | -2.05 | 2.79e-10 | 5.5 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-191-5p** - **100% identical** (23 nt)
+
+Sequence: `CAACGGAAUCCCAAAAGCAGCUG`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3762,6 +5652,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Downregulated | -2.85 | 3.09e-11 | 4.9 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `AUGGAGGUCUCUGUCUGACUU`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -3779,6 +5675,14 @@ No relevant publications found in PubMed.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Downregulated | -5.57 | 8.38e-34 | 4.8 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-152-3p** - **100% identical** (21 nt)
+
+Sequence: `UCAGUGCAUGACAGAACUUGG`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3827,6 +5731,12 @@ No relevant publications found in PubMed.
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Downregulated | -3.33 | 2.68e-12 | 4.6 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `UAUGGAGGUCUCUGUCUGACU`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -3848,6 +5758,14 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 | Group | Direction | log2FC | FDR | Biomarker Score |
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Downregulated | -3.43 | 4.48e-11 | 4.0 |
+
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-26a-5p** - **100% identical** (22 nt)
+
+Sequence: `UUCAAGUAAUCCAGGAUAGGCU`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
 
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
@@ -3896,7 +5814,17 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Downregulated | -3.54 | 8.08e-11 | 3.7 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-101-3p** - **100% identical** (21 nt)
+
+Sequence: `UACAGUACUGUGAUAACUGAA`
+
+The mature miRNA sequence is perfectly conserved between mouse and human, suggesting direct translational relevance of findings to human biology.
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
+
+> Note: miR-101a-3p shares seed family 'UACAGUA' with miR-101a-3p.2. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
 
 **Total predicted target genes: 934**
 
@@ -3943,6 +5871,12 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Downregulated | -2.27 | 5.00e-07 | 3.5 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**No human ortholog found.**
+
+Mouse sequence: `AGACCUACUUAUCUACCAACAGC`
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
@@ -3963,9 +5897,75 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 |-------|-----------|--------|-----|----------------|
 | Cells (4T1) | Downregulated | -4.69 | 3.68e-15 | 3.5 |
 
+### Human Ortholog (miRBase Sequence Comparison)
+
+**Human ortholog: hsa-miR-152-5p** - **12.5% identity**
+
+| | Sequence | Length |
+|---|---|---|
+| Mouse (mmu-miR-152-5p) | `UAGGUUCUGUGAUACACUCCGACU` | 24 nt |
+| Human (hsa-miR-152-5p) | `AGGUUCUGUGAUACACUCCGACU` | 23 nt |
+
+```
+Mouse: UAGGUUCUGUGAUACACUCCGACU
+       XX|X|XXXXXXXXXXXXX|XXXX-
+Human: AGGUUCUGUGAUACACUCCGACU
+```
+(`|` = match, `X` = mismatch, `-` = length difference)
+
+**Mismatches:**
+
+- Position 1: U (mouse) -> A (human) *(in seed region)*
+- Position 2: A (mouse) -> G (human) *(in seed region)*
+- Position 4: G (mouse) -> U (human) *(in seed region)*
+- Position 6: U (mouse) -> C (human) *(in seed region)*
+- Position 7: C (mouse) -> U (human) *(in seed region)*
+- Position 8: U (mouse) -> G (human) *(in seed region)*
+- Position 9: G (mouse) -> U (human)
+- Position 10: U (mouse) -> G (human)
+- Position 11: G (mouse) -> A (human)
+- Position 12: A (mouse) -> U (human)
+- Position 13: U (mouse) -> A (human)
+- Position 14: A (mouse) -> C (human)
+- Position 15: C (mouse) -> A (human)
+- Position 16: A (mouse) -> C (human)
+- Position 17: C (mouse) -> U (human)
+- Position 18: U (mouse) -> C (human)
+- Position 20: C (mouse) -> G (human)
+- Position 21: G (mouse) -> A (human)
+- Position 22: A (mouse) -> C (human)
+- Position 23: C (mouse) -> U (human)
+
+Length difference: 1 nt
+
+*WARNING: 6 mismatch(es) in the seed region (positions 2-8), which may result in different target gene specificity between species.*
+
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
-No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+> Note: miR-152-5p shares seed family 'CAGUGCA' with miR-148a-3p. These miRNAs have identical seed sequences and are predicted to regulate the same targets.
+
+**Total predicted target genes: 647**
+
+**Top 10 predicted targets (by weighted context++ score):**
+
+| Gene Symbol | Total num conserved sites | Cumulative weighted context++ score |
+| --- | --- | --- |
+| Meox2 | 2 | -0.933 |
+| Arl6ip1 | 1 | -0.876 |
+| Snn | 3 | -0.861 |
+| Gadd45a | 1 | -0.83 |
+| Eogt | 1 | -0.792 |
+| Tmem54 | 1 | -0.767 |
+| Arrdc3 | 2 | -0.765 |
+| Nptn | 1 | -0.734 |
+| S1pr1 | 2 | -0.726 |
+| Szrd1 | 2 | -0.705 |
+
+**Top target gene: Meox2** (mesenchyme homeobox 2)
+
+*Function:* Predicted to enable DNA-binding transcription activator activity, RNA polymerase II-specific and RNA polymerase II cis-regulatory region sequence-specific DNA binding activity. Acts upstream of or within several processes, including angiogenesis; skeletal muscle tissue development; and somite specification. Predicted to be located in cytoplasm. Predicted to be active in nucleus. Is expressed in several structures, including alimentary system; embryo mesenchyme; genitourinary system; heart; and m...
+
+*NCBI Gene ID:* [17286](https://www.ncbi.nlm.nih.gov/gene/17286)
 
 ### Literature
 
@@ -3985,7 +5985,7 @@ No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 
 - **TargetScan Mouse 8.0**: Agarwal V, Bell GW, Nam JW, Bartel DP. Predicting effective microRNA target sites in mammalian mRNAs. *eLife*. 2015;4:e05005. DOI: [10.7554/eLife.05005](https://doi.org/10.7554/eLife.05005)
 
-- **miRBase**: Kozomara A, Birgaoanu M, Griffiths-Jones S. miRBase: from microRNA sequences to function. *Nucleic Acids Research*. 2019;47(D1):D155-D162. DOI: [10.1093/nar/gky1141](https://doi.org/10.1093/nar/gky1141)
+- **miRBase (Release 22.1)**: Kozomara A, Birgaoanu M, Griffiths-Jones S. miRBase: from microRNA sequences to function. *Nucleic Acids Research*. 2019;47(D1):D155-D162. DOI: [10.1093/nar/gky1141](https://doi.org/10.1093/nar/gky1141)
 
 - **NCBI PubMed/Gene**: National Center for Biotechnology Information. https://www.ncbi.nlm.nih.gov/
 
