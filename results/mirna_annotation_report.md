@@ -45,6 +45,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [20980](https://www.ncbi.nlm.nih.gov/gene/20980)
 
+### Biological Function Summary
+
+We report that physiological doses of 17β-estradiol promote EV secretion specifically from ER+ BC cells via inhibition of miR-149-5p, hindering its regulatory activity on SP1, a transcription factor that regulates the EV biogenesis factor nSMase2. (PMID: 37252969) Additionally, miR-149-5p downregulation promotes hnRNPA1 expression, responsible for the loading of let-7's miRNAs into EVs. (PMID: 37252969) Notably, both oncogenic and tumor suppressive roles have been reported for miR-149-5p. (PMID: 35008841) In this review, we summarize the impact of miR-149-5p in the tumorigenesis and elaborate mechanisms of its involvement in this process in a variety of neoplastic conditions based on three lines of evidence, i.e., in vitro, in vivo and clinical settings. (PMID: 35008841) Aberrant expression of miR-149 was also associated with metabolic alterations in several organs, but the impact of hepatic miR-149-5p deregulation in MASLD remains poorly characterized. (PMID: 39263327)
+
 ### Literature
 
 1. Drula R et al. (2023). *17β-estradiol promotes extracellular vesicle release and selective miRNA loading in ERα-positive breast cancer.* Proc Natl Acad Sci U S A. DOI: [10.1073/pnas.2122053120](https://doi.org/10.1073/pnas.2122053120) PMID: [37252969](https://pubmed.ncbi.nlm.nih.gov/37252969/)
@@ -132,6 +136,10 @@ Length difference: 1 nt
 
 *NCBI Gene ID:* [28146](https://www.ncbi.nlm.nih.gov/gene/28146)
 
+### Biological Function Summary
+
+Furthermore, the miRNAs mmu-miR-1b-5p and mmu-miR-10b-5p (a cancer-related miRNA) were significantly decreased (P < .05) in sera from the rats inoculated with Anisakis CE, compared with control rats inoculated with saline. (PMID: 30006808) The most significantly up-regulated miRNAs were miR-185-3p and miR-1b-5p and the most significantly down-regulated miRNAs were miR-129b-5p and miR-223-5p, of which the targeted genes were closely related to the PI3K-Akt signal pathway. (PMID: 36034465)
+
 ### Literature
 
 1. Corcuera MT et al. (2018). *Exploring tumourigenic potential of the parasite Anisakis: a pilot study.* Parasitol Res. DOI: [10.1007/s00436-018-6008-2](https://doi.org/10.1007/s00436-018-6008-2) PMID: [30006808](https://pubmed.ncbi.nlm.nih.gov/30006808/)
@@ -183,6 +191,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [28146](https://www.ncbi.nlm.nih.gov/gene/28146)
 
+### Biological Function Summary
+
+Additionally, miR-1a-3p expression was altered in vitro and in vivo to assess its role in regulating adipogenic differentiation. (PMID: 39438865) More importantly, exosomes derived from GC-M1 macrophages exhibited a heightened capacity to regulate the adipogenic differentiation of BMSCs, which was mediated by miR-1a-3p. (PMID: 39438865) In vivo and in vitro, miR-1a-3p promoted the adipogenic differentiation of BMSCs by targeting Cebpz and played an important role in the onset and progression of GA-ONFH. (PMID: 39438865) Inhibiting miR-1a-3p expression, both in vitro and in vivo, significantly mitigates the preferential adipogenic differentiation of BMSCs, thus slowing the progression of GA-ONFH. (PMID: 39438865) PLD1, which is a downstream target of miR-1a-3p, was the crux in the regulation of lipid metabolism by TSPJ. (PMID: 40663939)
+
 ### Literature
 
 1. Duan P et al. (2024). *Exosomal miR-1a-3p derived from glucocorticoid-stimulated M1 macrophages promotes the adipogenic differentiation of BMSCs in glucocorticoid-associated osteonecrosis of the femoral head by targeting Cebpz.* J Nanobiotechnology. DOI: [10.1186/s12951-024-02923-5](https://doi.org/10.1186/s12951-024-02923-5) PMID: [39438865](https://pubmed.ncbi.nlm.nih.gov/39438865/)
@@ -217,6 +229,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 
+### Biological Function Summary
+
+The expression of the most 10 differential expressed miRNAs (miR-122-5p, miR-133a-3p, miR-504-5p, miR-187-3p, miR-133b, miR-200c-3p, miR-375, miR-200b-5p, miR-200b-3p, and miR203a) was confirmed by droplet digital PCR in an independent cohort. (PMID: 31773868) After 10 weeks of daunorubicin treatment, when a further rise in cTnT was accompanied by significant left ventricle systolic dysfunction, only miR-504-5p was significantly (p < 0.01) downregulated, whereas 10 miRNAs were significantly upregulated relative to the control group; at this time-point,... (PMID: 38235109) OBJECTIVE: We aimed to determine the accuracy of the predictive value of a selected panel of miRNAs (miR-504-5p and miR-429) obtained on endometrial samples, in detecting EC and EIN, and to explore their role along the neoplastic continuum. (PMID: 41585943) CONCLUSION: Our preliminary findings suggest that reduced expression of miR-504-5p and miR-429 characterizes the transition from EIN to EC, supporting their potential role as tumor suppressors in this setting. (PMID: 41585943) Through bioinformatics analysis, DSCR9, microRNA-504-5p (miR-504-5p), and G protein-coupled receptor 65 (GPR65) were identified as targets implicated in breast cancer development. (PMID: 37248366)
+
 ### Literature
 
 1. Palmieri O et al. (2020). *microRNA-mRNA network model in patients with achalasia.* Neurogastroenterol Motil. DOI: [10.1111/nmo.13764](https://doi.org/10.1111/nmo.13764) PMID: [31773868](https://pubmed.ncbi.nlm.nih.gov/31773868/)
@@ -249,6 +265,10 @@ Mouse sequence: `GUGCACACACACACAUACGU`
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 
+### Biological Function Summary
+
+We show that miR-467f and miR-466q modulate the pro-inflammatory phenotype of activated N9 microglia cells and of primary microglia acutely isolated from late symptomatic SOD1G93A mice, a murine ALS model, by downregulating Tnf and Il1b expression. (PMID: 33462263) Further analysis of the mode of action of miR-467f and miR-466q indicated that they dampen the pro-inflammatory phenotype of microglia by modulating p38 MAPK signaling pathway via inhibition of expression of their target genes, Map3k8 and Mk2. (PMID: 33462263) Upregulated miRNAs in IECs from septic mice, particularly miR-149-5p, miR-466q, miR-495, and miR-511-3p, were seen to exhibit complex and global effects on gene regulation networks. (PMID: 36899862) Furthermore, Map3k5 was regulated by AK154638 and mir-466q simultaneously. (PMID: 36207684) Moreover, miR-466q and miR-467f mimics downregulate Mapk11, while miR-466m-5p and miR-466i-3p mimics promote the nuclear translocation of Nrf2. (PMID: 36497181)
+
 ### Literature
 
 1. Giunti D et al. (2021). *Role of miRNAs shuttled by mesenchymal stem cell-derived small extracellular vesicles in modulating neuroinflammation.* Sci Rep. DOI: [10.1038/s41598-021-81039-4](https://doi.org/10.1038/s41598-021-81039-4) PMID: [33462263](https://pubmed.ncbi.nlm.nih.gov/33462263/)
@@ -278,6 +298,10 @@ Mouse sequence: `GAAAGACAUCAUGCUGAAUAGA`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+Here we found that miR-743b-3p was higher expressed in the liver tissues of ageing mice through the small RNA sequencing and bioinformatics analysis, and its target PPM1K was predicted and confirmed the target relationship of miR-743b-3p with PPM1K in the aged mouse liver tissues and the cultured... (PMID: 38565071) Moreover, using the transfected miR-743b-3p mimics/inhibitors into the senescent hepatocyte AML12. (PMID: 38565071) RESULTS: We found that miR-743b-3p inhibition reversed the hepatocyte senescence, and finally decreased the expression of genes involved in lipid synthesis(Chrebp, Fabp4, Acly and Pparγ) through increasing the target gene expression of PPM1K which regulated the expression of branched-chain amino ... (PMID: 38565071) CONCLUSIONS: These results identify that age-induced expression of miR-743b-3p inhibits its target PPM1K which induces BCAA metabolic disorder and regulates hepatocyte lipid accumulation during ageing. (PMID: 38565071) Bioinformatics analysis confirmed four differentially expressed microRNAs (miR-22-3p, miR-743b-3p, miR-201-5p and miR-144-5p) and their common target genes (Tmem69 and Cxcl10). (PMID: 28123428)
 
 ### Literature
 
@@ -322,6 +346,10 @@ Human: ACCACUGACCGUUGACUGUACC
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+Although abnormal microRNA expression has been implicated in MDS, the exact role of miR-181a-2-3p has not been entirely elucidated. (PMID: 36444993) METHODS: We evaluated miR-181a-2-3p expression in BM samples of 54 newly diagnosed MDS cases, 16 sAML patients and 32 healthy donors and then assessed its association with clinical characteristics and its potential value for MDS diagnosis and prognosis. (PMID: 36444993) Additionally, in MDS patients with secondary AML (sAML), miR-181a-2-3p was over-expressed relative to levels in those without this form. (PMID: 36444993) Kaplan-Meier analysis showed a positive correlation between miR-181a-2-3p expression and overall survival (OS). (PMID: 36444993) CONCLUSION: Decreased miR-181a-2-3p expression in MDS patients may be considered as one of the underlying markers reflecting MDS progression and prognosis. (PMID: 36444993)
 
 ### Literature
 
@@ -395,6 +423,10 @@ Human: AAGCUUUUUGCUCGAAUUAUGU
 
 *NCBI Gene ID:* [70620](https://www.ncbi.nlm.nih.gov/gene/70620)
 
+### Biological Function Summary
+
+Therefore, the present study aimed to determine whether miR-208b-5p could regulate NSCLC progression. (PMID: 32565956) miR-208b-5p expression level was determined by reverse transcription-quantitative polymerase chain reaction. (PMID: 32565956) Furthermore, miR-208b-5p mimics was transfected into NSCLC A549 and H1299 cells in order to upregulate miR-208b-5p expression. (PMID: 32565956) Dual-luciferase reporter assay was utilized to investigate the associations between miR-208b-5p and IL9 mRNA. (PMID: 32565956) The results demonstrated that miR-208b-5p expression decreased in NSCLC tissues and cell lines. (PMID: 32565956)
+
 ### Literature
 
 1. Ma J et al. (2020). *miR-208b-5p inhibits invasion of non-small cell lung cancer through the STAT3 pathway by targeting interleukin-9.* Oncol Lett. DOI: [10.3892/ol.2020.11570](https://doi.org/10.3892/ol.2020.11570) PMID: [32565956](https://pubmed.ncbi.nlm.nih.gov/32565956/)
@@ -449,6 +481,10 @@ Mouse sequence: `UGAGAGAUGCCAUUCUAUGUAGA`
 *Function:* Predicted to enable calcium-activated potassium channel activity and potassium channel regulator activity. Predicted to be involved in detection of calcium ion; neuronal action potential; and potassium ion transport. Predicted to be located in plasma membrane. Predicted to be part of voltage-gated potassium channel complex. Is expressed in acoustic ganglion; ascending aorta; and ductus arteriosus. Orthologous to human KCNMB2 (potassium calcium-activated channel subfamily M regulatory beta subuni...
 
 *NCBI Gene ID:* [72413](https://www.ncbi.nlm.nih.gov/gene/72413)
+
+### Biological Function Summary
+
+Therefore, in our study, microRNA sequencing was used to discover differential miRNAs in the hippocampus of RBI-modeled mice, which suggested that miR-741-3p was most significantly upregulated. (PMID: 33544844) To clarify the underlying mechanism of miR-741-3p in RBI-modeled mice, an inhibitor of miR-741-3p (antagomiR-741) was delivered into the brain via the nasal passage before irradiation. (PMID: 33544844) The delivery of antagomiR-741 significantly reduced miR-741-3p levels in the hippocampus of RBI-modeled mice, and the cognitive dysfunction and neuronal apoptosis induced by radiation were also alleviated at 6 weeks postirradiation. (PMID: 33544844) Downregulation of miR-741-3p was found to improve the protrusion and branching status of microglia after irradiation and reduced the number of GFAP-positive astrocytes. (PMID: 33544844) Furthermore, Ddr2, PKCα and St8sia1 were revealed as target genes of miR-741-3p and as potential regulatory targets for RBI. (PMID: 33544844)
 
 ### Literature
 
@@ -505,6 +541,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [100502754](https://www.ncbi.nlm.nih.gov/gene/100502754)
 
+### Biological Function Summary
+
+Cell counting and MTS assay were used to evaluate the effect of Ang II, DHEA and miR-486a-3p on VSMCs proliferation. (PMID: 36247250) qRT-PCR was performed to detect the expression of miR-486a-3p, PCNA, IL-1β and NLRP3. (PMID: 36247250) Western blot analysis was performed to detect the expressions of PCNA, IL-1β and NLRP3 after miR-486a-3p was knocked down or overexpressed in VSMCs. (PMID: 36247250) Using miRNA microarray analysis, we found that DHEA upregulated the expression of miR-486a-3p in VSMCs. (PMID: 36247250) Further experiments indicated that DHEA promoted miR-486a-3p expression in VSMCs and in the vascular intima. (PMID: 36247250)
+
 ### Literature
 
 1. Zhang M et al. (2022). *Dehydroepiandrosterone inhibits vascular proliferation and inflammation by modulating the miR-486a-3p/NLRP3 axis.* Am J Transl Res. PMID: [36247250](https://pubmed.ncbi.nlm.nih.gov/36247250/)
@@ -536,6 +576,10 @@ Mouse sequence: `AAGGUAGAUAGAACAGGUCUUG`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+We also evaluated expression by a reverse transcriptase-polymerase chain reaction (RT-PCR) in normal tissues of the FSD2 gene, which spans the human miR-1839-5p gene in the opposite direction. (PMID: 31408249) Human heart tissue expresses both miR-1839-5p and FSD2. (PMID: 31408249) CONCLUSIONS: Human tissues express an orthologue of mouse miR-1839-5p and, given its expression pattern, we suggest that this miRNA could be explored as a potential oncomiR or cancer marker. (PMID: 31408249) Also, according to the genomic organization of miR-1839-5p and FSD2, perfect complementarity exists between the two elements, making possible miRNA-directed cleavage in human cardiac tissue. (PMID: 31408249) When melan-a melanocytes were treated with six synthesized microRNAs, miR-342-5p, miR-1839-5p, and miR-3082-5p inhibited melanosome transport and induced melanosome aggregation around the nucleus. (PMID: 31288473)
 
 ### Literature
 
@@ -604,6 +648,10 @@ Human: AAUCCUUGGAACCUAGGUGUGAGU
 
 *NCBI Gene ID:* [66460](https://www.ncbi.nlm.nih.gov/gene/66460)
 
+### Biological Function Summary
+
+Next, we used the NF-κB pathway inhibitor JSH-23 and miR-362-5p inhibitor or mimic to determine the molecular mechanisms. (PMID: 40083930) Lastly, we constructed the miR-362-5p sponge to validate its targeted therapeutic potential. (PMID: 40083930) Mechanistically, we found that HCC exosomes upregulate the expression of miR-362-5p in neutrophils and activate the NF-κB signaling pathway by targeting CYLD, promoting the survival and recruitment of neutrophils. (PMID: 40083930) In HCC mice, blocking miR-362-5p suppressed neutrophil infiltration, attenuated T-cell exhaustion, and suppressed HCC progression. (PMID: 40083930) Conclusions: This study clarified the roles of HCC exosomes on neutrophil infiltration and reprogramming and identified a potential target miR-362-5p for HCC treatment. (PMID: 40083930)
+
 ### Literature
 
 1. Bi W et al. (2025). *Tumor-derived exosomes induce neutrophil infiltration and reprogramming to promote T-cell exhaustion in hepatocellular carcinoma.* Theranostics. DOI: [10.7150/thno.104557](https://doi.org/10.7150/thno.104557) PMID: [40083930](https://pubmed.ncbi.nlm.nih.gov/40083930/)
@@ -656,6 +704,10 @@ Mouse sequence: `GUGCAUUGUAGUUGCAUUGCA`
 *Function:* Enables minor groove of adenine-thymine-rich DNA binding activity. Involved in several processes, including negative regulation of cellular senescence; positive regulation of angiogenesis; and positive regulation of cell proliferation in bone marrow. Acts upstream of or within several processes, including endocrine system development; lung development; and positive regulation of cell population proliferation. Located in male germ cell nucleus and nuclear chromosome. Is expressed in several struc...
 
 *NCBI Gene ID:* [15364](https://www.ncbi.nlm.nih.gov/gene/15364)
+
+### Biological Function Summary
+
+Raw264.7 macrophages were induced to form foam cells with ox-LDL, and FL's effects on the AMPKα/SREBP-1c pathway and miR-33-5p were investigated. (PMID: 39775070) FL decreased miR-33-5p expression but up-regulated PPARγ, promoting ABCA1- and ABCG1-mediated cholesterol efflux. (PMID: 39775070) However, miR-33-5p mimic reduced FL-induced cholesterol efflux, while miR-33-5p inhibitor increased it. (PMID: 39775070) CONCLUSION: FL may promote foam cell cholesterol efflux by modifying the AMPKα/SREBP-1c pathway and down-regulating miR-33-5p, which targets cholesterol metabolism genes (PPARγ, ABCA1, and ABCG1). (PMID: 39775070) In our study, we identified the role of a microRNA, miR-33-5p, in promoting chondrocyte senescence and OA progression. (PMID: 37343371)
 
 ### Literature
 
@@ -710,6 +762,10 @@ Mouse sequence: `AGCAGCAUUGUACAGGGCUAUGA`
 
 *NCBI Gene ID:* [75758](https://www.ncbi.nlm.nih.gov/gene/75758)
 
+### Biological Function Summary
+
+Whereas the highly abundant miR-126-5p promotes regenerative proliferation of dysadapted ECs, miR-103-3p stimulates inflammatory activation and impairs endothelial regeneration by aberrant proliferation and micronuclei formation. (PMID: 33454857) Here, we investigated the role of microRNA-103-3p (miR-103-3p) in regulating chondrocyte function and elucidated the underlying mechanism. (PMID: 40155964) METHODS: MiR-103-3p expression in interleukin-1β (IL-1β)-stimulated chondrocytes was evaluated using RT-qPCR. (PMID: 40155964) The targets of miR-103-3p predicted by online databases were verified using biotin-based pulldown assay and luciferase reporter assay. (PMID: 40155964) IL-1β stimulated-chondrocytes were transfected with miR-103-3p inhibitor along with siRNA targeting cytoplasmic polyadenylation element-binding protein3 (siCPEB3), the autophagy inhibitor 3-MA, or the PI3K agonist 740 Y-P. (PMID: 40155964)
+
 ### Literature
 
 1. Schober A et al. (2022). *Regulatory Non-coding RNAs in Atherosclerosis.* Handb Exp Pharmacol. DOI: [10.1007/164_2020_423](https://doi.org/10.1007/164_2020_423) PMID: [33454857](https://pubmed.ncbi.nlm.nih.gov/33454857/)
@@ -762,6 +818,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Predicted to enable cell adhesion molecule binding activity; toxic substance binding activity; and transmembrane signaling receptor activity. Acts upstream of or within positive regulation of synapse assembly. Predicted to be located in growth cone and synapse. Predicted to be active in axon; glutamatergic synapse; and presynaptic membrane. Is expressed in central nervous system and retina. Orthologous to human ADGRL1 (adhesion G protein-coupled receptor L1). [provided by Alliance of Genome Reso...
 
 *NCBI Gene ID:* [330814](https://www.ncbi.nlm.nih.gov/gene/330814)
+
+### Biological Function Summary
+
+In skin photoaging samples, PVT1 and AQP3 were poorly expressed, while miR-551b-3p was highly expressed. (PMID: 37000315) Mechanistically, PVT1 could sequester miR-551b-3p to upregulate the expression of AQP3, which further inactivated the ERK/p38 MAPK signaling pathway. (PMID: 37000315) In vitro cell experiments confirmed that overexpression of PVT1 or AQP3 enhanced viability of young and senescent HDFs and inhibited HDF senescence, while miR-551b-3p upregulation counteracted the effect of PVT1. (PMID: 37000315) In conclusion, PVT1-driven suppression of miR-551b-3p induces AQP3 expression to inactivate the ERK/p38 MAPK signaling pathway, thereby inhibiting HDF senescence and ultimately delaying the skin photoaging. (PMID: 37000315) The aim of the present study was to investigate the expression of serum miR-551b-3p in patients with GC and to explore its potential as a diagnostic biomarker in GC. (PMID: 31060996)
 
 ### Literature
 
@@ -818,6 +878,10 @@ Mouse sequence: `CAAUGUUUCCACAGUGCAUCAC`
 
 *NCBI Gene ID:* [15364](https://www.ncbi.nlm.nih.gov/gene/15364)
 
+### Biological Function Summary
+
+MicroRNA-33-3p (miR-33-3p) has been widely investigated for its roles in lipid metabolism and mitochondrial function; however, there are few studies on miR-33-3p in the context of neurological diseases. (PMID: 34152551) In this study, we investigated the functional role of miR-33-3p in rat pheochromocytoma PC12 cells. (PMID: 34152551) A miR-33-3p mimic was transduced into PC12 cells, and its effects on proliferation, apoptosis, and differentiation were studied using the MTS assay, EdU labeling, flow cytometry, qRT-PCR, western blot, ELISA, and immunofluorescence. (PMID: 34152551) We found that miR-33-3p significantly suppressed PC12 cell proliferation, but had no effect on apoptosis. (PMID: 34152551) Furthermore, miR-33-3p promoted the differentiation of PC12 cells into Tuj1-positive and choline acetyltransferase-positive neuron-like cells. (PMID: 34152551)
+
 ### Literature
 
 1. Shan BQ et al. (2021). *miR-33-3p Regulates PC12 Cell Proliferation and Differentiation In Vitro by Targeting Slc29a1.* Neurochem Res. DOI: [10.1007/s11064-021-03377-z](https://doi.org/10.1007/s11064-021-03377-z) PMID: [34152551](https://pubmed.ncbi.nlm.nih.gov/34152551/)
@@ -870,6 +934,10 @@ Mouse sequence: `CCUCUGGGCCCUUCCUCCAGU`
 *Function:* Enables actin binding activity. Involved in several processes, including circulatory system development; smooth muscle cell chemotaxis; and substrate adhesion-dependent cell spreading. Acts upstream of or within cell adhesion. Located in several cellular components, including focal adhesion; lamellipodium; and nucleus. Is expressed in several structures, including alimentary system; genitourinary system; nervous system; respiratory system; and sensory organ. Orthologous to human PARVA (parvin al...
 
 *NCBI Gene ID:* [57342](https://www.ncbi.nlm.nih.gov/gene/57342)
+
+### Biological Function Summary
+
+However, the role of miR-326-3p in goat brown adipocytes remains largely unclear. (PMID: 41153426) Methods: Primary brown adipocytes were isolated from goat perirenal adipose tissue and subjected to gain and loss-of-function assays using miR-326-3p mimics and inhibitors. (PMID: 41153426) Target prediction and dual-luciferase reporter assays were performed to validate direct interaction between miR-326-3p and FGF11. (PMID: 41153426) Results: Expression profiling demonstrated that miR-326-3p is more enriched in brown adipose tissue (BAT) than in white adipose tissue (WAT), and the expression level gradually decreases with adipocyte differentiation. (PMID: 41153426) miR-326-3p overexpression significantly inhibited lipid droplet accumulation and the expression of genes associated with differentiation, thermogenesis, and mitochondria, including PPARγ, FABP4, UCP1, and PGC1α, whereas inhibition produced the opposite effect. (PMID: 41153426)
 
 ### Literature
 
@@ -926,6 +994,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [18504](https://www.ncbi.nlm.nih.gov/gene/18504)
 
+### Biological Function Summary
+
+In the current study, we performed a differential analysis of miRNA across these subsets, identifying a distinct miRNA, hsa-miR-744-5p, characterized by progressively increasing expression levels upon T cell activation. (PMID: 38830518) Target genes of miR-744-5p were predicted, followed by Gene Ontology (GO) and Kyoto Encyclopedia of Genes and Genomes (KEGG) pathway enrichment analyses, revealing that these genes predominantly associate with pathways related to the 'Wnt signaling pathway'. (PMID: 38830518) We established that miR-744-5p directly targets STK11, influencing its expression. (PMID: 38830518) Further, we investigated the implications of miR-744-5p on T cell differentiation and functionality. (PMID: 38830518) Overexpression of miR-744-5p in T cells resulted in heightened apoptosis, reduced proliferation, an increased proportion of late-stage differentiated T cells, and elevated secretion of the cytokine TNF-α. (PMID: 38830518)
+
 ### Literature
 
 1. Han J et al. (2024). *miR-744-5p promotes T-cell differentiation via inhibiting STK11.* Gene. DOI: [10.1016/j.gene.2024.148635](https://doi.org/10.1016/j.gene.2024.148635) PMID: [38830518](https://pubmed.ncbi.nlm.nih.gov/38830518/)
@@ -981,6 +1053,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [12064](https://www.ncbi.nlm.nih.gov/gene/12064)
 
+### Biological Function Summary
+
+Our RNA-seq analysis revealed elevated expression of miR-10a-5p in Pla-Exos from POF rabbits. (PMID: 39069050) Moreover, our findings demonstrate that exosomal miR-10a-5p suppresses GCs proliferation and induces apoptosis via the mitochondrial pathway. (PMID: 39069050) Additionally, exosomal miR-10a-5p inhibits the TrkB/Akt/mTOR signaling pathway by downregulating BDNF expression, thereby modulating the expression levels of proteins and genes associated with the cell cycle, follicle development, and GCs senescence. (PMID: 39069050) In conclusion, our study highlights the role of Pla-Exos miR-10a-5p in promoting rabbit POF through the TrkB/Akt/mTOR signaling pathway by targeting BDNF. (PMID: 39069050) MiR-10a-5p represented over 21% of the miRNA molecules in OCCC with endometriosis and was significantly upregulated (NGS: log2fold change = 4.37, P = 2.43e-18; QPCR: 8.1-fold change, P< 0.05). (PMID: 37621654)
+
 ### Literature
 
 1. Bao Z et al. (2024). *Plasma-derived exosome miR-10a-5p promotes premature ovarian failure by target BDNF via the TrkB/Akt/mTOR signaling pathway.* Int J Biol Macromol. DOI: [10.1016/j.ijbiomac.2024.134195](https://doi.org/10.1016/j.ijbiomac.2024.134195) PMID: [39069050](https://pubmed.ncbi.nlm.nih.gov/39069050/)
@@ -1035,6 +1111,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Predicted to enable DNA-binding transcription activator activity, RNA polymerase II-specific and RNA polymerase II cis-regulatory region sequence-specific DNA binding activity. Involved in negative regulation of gene expression; positive regulation of gene expression; and positive regulation of glial cell proliferation. Acts upstream of or within gland morphogenesis and prostate gland growth. Predicted to be located in centrosome; cytosol; and nuclear speck. Is expressed in several structures, i...
 
 *NCBI Gene ID:* [56711](https://www.ncbi.nlm.nih.gov/gene/56711)
+
+### Biological Function Summary
+
+Studies investigating the role of one of the miRNA-miR-652-3p-detail diverse roles for this miRNA in normal cell homoeostasis and disease states, including cancers, cardiovascular disease, mental health, and central nervous system diseases. (PMID: 33712860) Here, we review recent literature surrounding miR-652-3p, discussing its known target genes and their relevance to disease progression. (PMID: 33712860) These studies demonstrate that miR-652-3p targets LLGL1 and ZEB1 to modulate cell polarity mechanisms, with impacts on cancer metastasis and asymmetric cell division. (PMID: 33712860) Inhibition of the NOTCH ligand JAG1 by miR-652-3p can have diverse effects on angiogenesis and immune cell regulation. (PMID: 33712860) Investigation of miR-652-3p and other dysregulated miRNAs identified a number of pathways potentially regulated by miR-652-3p. (PMID: 33712860)
 
 ### Literature
 
@@ -1122,6 +1202,10 @@ Human: ACAGAUUCGAUUCUAGGGGAAU
 
 *NCBI Gene ID:* [12064](https://www.ncbi.nlm.nih.gov/gene/12064)
 
+### Biological Function Summary
+
+METHODS: In this study, we found that miR-10b-3p expression was suppressed in sorafenib-resistant HCC cell lines through miRNA microarray analysis. (PMID: 35236936) RESULTS: Sorafenib-induced apoptosis in HCC cells was significantly enhanced by miR-10b-3p overexpression and partially abrogated by miR-10b-3p depletion. (PMID: 35236936) 3.5 months, p = 0.021), suggesting that high serum miR-10b-3p level in patients treated with sorafenib for advanced HCC serves as a biomarker for predicting sorafenib efficacy. (PMID: 35236936) Furthermore, we confirmed that cyclin E1, a known promoter of sorafenib resistance reported by our previous study, is the downstream target for miR-10b-3p in HCC cells. (PMID: 35236936) CONCLUSIONS: This study not only identified the molecular target for miR-10b-3p, but also provided evidence that circulating miR-10b-3p may be used as a biomarker for predicting sorafenib sensitivity in patients with HCC. (PMID: 35236936)
+
 ### Literature
 
 1. Shao YY et al. (2022). *Low miR-10b-3p associated with sorafenib resistance in hepatocellular carcinoma.* Br J Cancer. DOI: [10.1038/s41416-022-01759-w](https://doi.org/10.1038/s41416-022-01759-w) PMID: [35236936](https://pubmed.ncbi.nlm.nih.gov/35236936/)
@@ -1177,6 +1261,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [17762](https://www.ncbi.nlm.nih.gov/gene/17762)
 
+### Biological Function Summary
+
+Within the ceRNA network, SNHG9-hsa-miR-615-3p-ACER3, hsa-miR-212-5p and hsa-miR-5682 may play crucial roles in asthma pathogenesis. (PMID: 38297226) After SNHG9 knockdown, miR-615-3p expression was significantly upregulated, while that of ACER3 was significantly downregulated. (PMID: 38297226) In addition, SNHG9-hsa-miR-615-3p-ACER3 may be viewed as effective therapeutic targets for asthma. (PMID: 38297226) This study aimed to investigate the role of miR-615-3p in regulating odontogenic differentiation in stem cells from the apical papilla (SCAPs), offering insights into potential applications for enhancing dental tissue regeneration and repair. (PMID: 40745571) METHODS: Quantitative PCR (qPCR), Western blot analysis, alkaline phosphatase (ALP) activity assay, and Alizarin Red staining (ARS) were performed to assess odontogenic differentiation following miR-615-3p modulation in SCAPs. (PMID: 40745571)
+
 ### Literature
 
 1. Jia Y et al. (2024). *Lipid metabolism-related genes are involved in the occurrence of asthma and regulate the immune microenvironment.* BMC Genomics. DOI: [10.1186/s12864-023-09795-3](https://doi.org/10.1186/s12864-023-09795-3) PMID: [38297226](https://pubmed.ncbi.nlm.nih.gov/38297226/)
@@ -1231,6 +1319,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Enables RNA polymerase II cis-regulatory region sequence-specific DNA binding activity. Acts upstream of or within several processes, including hemopoiesis; nervous system development; and skeletal system development. Predicted to be located in nucleoplasm. Predicted to be active in nucleus. Is expressed in several structures, including branchial arch; central nervous system; embryo mesenchyme; gut; and mesoderm. Orthologous to human HOXB3 (homeobox B3). [provided by Alliance of Genome Resources...
 
 *NCBI Gene ID:* [15410](https://www.ncbi.nlm.nih.gov/gene/15410)
+
+### Biological Function Summary
+
+miR-10b-5p target genes were identified and validated in mouse and human cell lines. (PMID: 33421511) For gain-of-function studies, a synthetic miR-10b-5p mimic was injected in multiple diabetic mouse models. (PMID: 33421511) RESULTS: miR-10b-5p is highly expressed in ICCs from healthy mice, but drastically depleted in ICCs from diabetic mice. (PMID: 33421511) miR-10b-5p targets the transcription factor Krüppel-like factor 11 (KLF11), which negatively regulates KIT expression. (PMID: 33421511) CONCLUSIONS: miR-10b-5p is a key regulator in diabetes and gastrointestinal dysmotility via the KLF11-KIT pathway. (PMID: 33421511)
 
 ### Literature
 
@@ -1289,6 +1381,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [17762](https://www.ncbi.nlm.nih.gov/gene/17762)
 
+### Biological Function Summary
+
+miR-615-5p bound to 3'UTR of myelin regulator factor (MYRF), a crucial myelination transcription factor expressed in oligodendrocyte lineage cells. (PMID: 38246987) Mechanistically, exosomes from activated microglia transferred miR-615-5p to OPCs, which directly bound to MYRF and inhibited OPC maturation. (PMID: 38246987) Furthermore, an effect of AAV expressing miR-615-5p sponge in microglia was tested in experimental autoimmune encephalomyelitis (EAE) and cuprizone (CPZ)-induced demyelination model, the classical mouse models of multiple sclerosis. (PMID: 38246987) miR-615-5p sponge effectively alleviated disease progression and promoted remyelination. (PMID: 38246987) This study identifies miR-615-5p/MYRF as a new target for the therapy of demyelinating diseases. (PMID: 38246987)
+
 ### Literature
 
 1. Ji XY et al. (2024). *Microglia-derived exosomes modulate myelin regeneration via miR-615-5p/MYRF axis.* J Neuroinflammation. DOI: [10.1186/s12974-024-03019-5](https://doi.org/10.1186/s12974-024-03019-5) PMID: [38246987](https://pubmed.ncbi.nlm.nih.gov/38246987/)
@@ -1320,6 +1416,10 @@ Mouse sequence: `UCGGCAACAAGAAACUGCCUGA`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+In addition, we identified three miRNAs (mmu-miR-542-5p, mmu-miR-149-5p and mmu-miR-196a-2-3p) that were upregulated with the DN group and downregulated in the germacrone-treated group. (PMID: 39738220) Subsequently, the expression level of mmu-miR-542-5p, mmu-miR-149-5p and mmu-miR-196a-2-3p were validated in a validation dataset. (PMID: 39738220)
 
 ### Literature
 
@@ -1369,6 +1469,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Enables DNA binding activity and DNA-binding transcription factor activity. Acts upstream of or within several processes, including embryonic skeletal system morphogenesis; regulation of transcription by RNA polymerase II; and stem cell differentiation. Located in nucleus. Is expressed in several structures, including central nervous system; embryo mesenchyme; genitourinary system; gut; and musculoskeletal system. Orthologous to human HOXA7 (homeobox A7). [provided by Alliance of Genome Resource...
 
 *NCBI Gene ID:* [15404](https://www.ncbi.nlm.nih.gov/gene/15404)
+
+### Biological Function Summary
+
+RESULTS: In this study, we used BGISEQ-500 sequencing technology to analyze the expression of small RNAs in primary cultured IM and SC adipocytes on day 8 after adipogenic induction, and found 32-fold higher miR-196b-3p expression, as well as 8-fold lower miR-450b-3p expression in IM adipocytes t... (PMID: 37369998) Functional studies revealed that miR-196b-3p inhibits adipogenesis by targeting CD47 via the AMPK signaling pathway, and its effect was attenuated by the specific p-AMPKα activator AICAR. (PMID: 37369998) CONCLUSIONS: Our findings suggest that miR-196b-3p and miR-450b-3p are novel key regulatory factors that play opposite roles in porcine adipogenesis, helping us decipher the regulatory differences between porcine IM and SC fat deposition. (PMID: 37369998) Here, we show that an intrinsic constitutively activated feedforward signaling circuit composed of IκBα/NF-κB(p65), miR-196b-3p, Meis2, and PPP3CC is formed during the emergence of castration-resistant prostate cancer (CRPC). (PMID: 28041912) RESULTS: We identified miR-222-5p, miR-200a-5p, miR-196b-3p and miR-454-5p as biomarker candidates from the tumour tissue and embryoid body screening but the expression of these microRNAs was very low in serum and not statistically different between patients and controls. (PMID: 35181587)
 
 ### Literature
 
@@ -1421,6 +1525,10 @@ Length difference: 1 nt
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+By analyzing the expression profile of ileal microRNAs and correlation analysis with intestinal microbiota, we found that Staphylococcus and Corynebacterium1 cooperated with miR-196a-1-3p and miR-3060-3p, respectively, to play a regulatory role in the process of high-altitude hypoxia-induced inte... (PMID: 36304467)
 
 ### Literature
 
@@ -1499,6 +1607,10 @@ Human: GGCUACAACACAGGACCCGGGC
 
 *NCBI Gene ID:* [209586](https://www.ncbi.nlm.nih.gov/gene/209586)
 
+### Biological Function Summary
+
+Dose-dependent upregulation of miR-155-5p and miR-187-5p was evident at opium dose >1500 g/month, with a corresponding increase of TNF-α and IL-10. (PMID: 35098407) Therefore, increasing consumption of opium probably enhances inflammation leading to immunomodulation and aberrant expression of hsa-miR-155-5p and hsa-miR-187-5p in opioid use disorder. (PMID: 35098407) In our prior study, we discovered that miR-187-5p expression was inhibited by HBx. (PMID: 37531206) To investigate the underlying molecular mechanism of HBx-mediated miR-187-5p downregulation in hepatocellular carcinoma cells, effects of HBx and miR-187-5p on hepatoma carcinoma cell were observed, as well as their interactions. (PMID: 37531206) Through in vitro and in vivo experiments, we demonstrated that overexpression of miR-187-5p inhibited proliferation, migration, and invasion. (PMID: 37531206)
+
 ### Literature
 
 1. Purohit P et al. (2022). *Association of miR-155, miR-187 and Inflammatory Cytokines IL-6, IL-10 and TNF-α in Chronic Opium Abusers.* Inflammation. DOI: [10.1007/s10753-021-01566-0](https://doi.org/10.1007/s10753-021-01566-0) PMID: [35098407](https://pubmed.ncbi.nlm.nih.gov/35098407/)
@@ -1572,6 +1684,10 @@ Length difference: 2 nt
 
 *NCBI Gene ID:* [106582](https://www.ncbi.nlm.nih.gov/gene/106582)
 
+### Biological Function Summary
+
+However, the expression and function of miR-670-5p have not been evaluated in HCC to date. (PMID: 26796260) In this study, we examined and confirmed the over-expression of miR-670-5p in HCC and in hepatoma-derived cells Hep3B. (PMID: 26796260) At least 60% of HCC tissues showed a greater than three-fold enhance in the expression of miR-670-5p compared with paired adjacent non-cancerous tissues. (PMID: 26796260) Knockdown studies for miR-670-5p showed that the expression of miR-670-5p promoted cellular proliferation. (PMID: 26796260) In tissues and cells with high expression of miR-670-5p, decreased expression of PROX1, a miR-670-5p predicated target, was detected. (PMID: 26796260)
+
 ### Literature
 
 1. Shi C et al. (2016). *MiR-670-5p induces cell proliferation in hepatocellular carcinoma by targeting PROX1.* Biomed Pharmacother. DOI: [10.1016/j.biopha.2015.07.030](https://doi.org/10.1016/j.biopha.2015.07.030) PMID: [26796260](https://pubmed.ncbi.nlm.nih.gov/26796260/)
@@ -1624,6 +1740,10 @@ Mouse sequence: `UGUCUGCCCGAGUGCCUGCCUCU`
 *Function:* Involved in regulation of angiogenesis. Acts upstream of or within extrinsic apoptotic signaling pathway; positive regulation of axon extension; and substrate-dependent cell migration, cell attachment to substrate. Located in cell surface; plasma membrane; and ruffle. Is expressed in several structures, including adrenal medulla; alimentary system; genitourinary system; heart; and limb long bone. Orthologous to human TNFRSF12A (TNF receptor superfamily member 12A). [provided by Alliance of Genom...
 
 *NCBI Gene ID:* [27279](https://www.ncbi.nlm.nih.gov/gene/27279)
+
+### Biological Function Summary
+
+MiR-346-5p is overexpressed in several cancers, including colorectal cancer (CRC). (PMID: 31953162) SW620 and HCT116 cells were selected and then transfected with miR-346-5p mimic, miR-346-5p inhibitor, or specific siRNAs targeting F-box/LRR-repeat protein 2 (FBXL2). (PMID: 31953162) CRC cells were co-transfected with miR-346-5p inhibitor and siFBXL2 to investigate the involvement of FBXL2. (PMID: 31953162) The effect of miR-346-5p knockdown on CRC tumorigenesis in vivo was investigated. (PMID: 31953162) Here, we found that miR-346-5p overexpression promoted, while miR-346-5p knockdown inhibited cell proliferation and G1-S transition. (PMID: 31953162)
 
 ### Literature
 
@@ -1694,6 +1814,10 @@ Length difference: 2 nt
 
 *NCBI Gene ID:* [544737](https://www.ncbi.nlm.nih.gov/gene/544737)
 
+### Biological Function Summary
+
+M1 exosomes were transfected with NF-κB p50 siRNA and miR-511-3p to enhance M1 polarization and were surface-modified with IL4RPep-1, an IL4R-binding peptide, to target the IL4 receptor of TAMs (named IL4R-Exo(si/mi). (PMID: 34560422) Retraction: "Long noncoding RNA ZFPM2-AS1 is involved in lung adenocarcinoma via miR-511-3p/AFF4 pathway," by Juan Li, Jun Ge, Ye Yang, Bin Liu, Min Zheng, and Rui Shi, J Cell Biochem. (PMID: 36395200) Our previous studies have shown that miR-511-3p treatment has a beneficial effect in alleviating allergic airway inflammation. (PMID: 37996055) miR-511-3p knockout mice (miR-511-3p-/-) were generated by CRISPR/Cas and showed exacerbated airway hyper-responsiveness and Th2-associated allergic airway inflammation compared with wild-type (WT) mice after exposed to cockroach allergen. (PMID: 37996055) Intra-tracheal inhalation of Man-EV-miR-511-3p, which could effectively penetrate the airway mucus barrier and deliver functional miR-511-3p to lung macrophages, successfully reversed the increased airway inflammation observed in miR-511-3p-/- mice. (PMID: 37996055)
+
 ### Literature
 
 1. Gunassekaran GR et al. (2021). *M1 macrophage exosomes engineered to foster M1 polarization and target the IL-4 receptor inhibit tumor growth by reprogramming tumor-associated macrophages into M1-like macrophages.* Biomaterials. DOI: [10.1016/j.biomaterials.2021.121137](https://doi.org/10.1016/j.biomaterials.2021.121137) PMID: [34560422](https://pubmed.ncbi.nlm.nih.gov/34560422/)
@@ -1746,6 +1870,10 @@ Mouse sequence: `AAAGUGCUUCCCUUUUGUGUGU`
 *Function:* Contributes to ubiquitin-protein transferase activity. Involved in several processes, including SCF-dependent proteasomal ubiquitin-dependent protein catabolic process; entrainment of circadian clock by photoperiod; and protein destabilization. Located in cytosol and nucleus. Is expressed in embryo; extraembryonic component; inner cell mass; and trophectoderm. Orthologous to human FBXL3 (F-box and leucine rich repeat protein 3). [provided by Alliance of Genome Resources, Jul 2025]
 
 *NCBI Gene ID:* [50789](https://www.ncbi.nlm.nih.gov/gene/50789)
+
+### Biological Function Summary
+
+By constructing the circ/lncRNA-miRNA-mRNA network, we found that miR-291a-3p, miR-294-3p, and miR-295-3p may serve as key targets influencing early embryo development via multiple pathways, including the Toll-like receptor signaling pathway and p53 signaling pathway. (PMID: 40307905) Inhibition of miR-294-3p/5p did not affect ZGA initiation or embryo development, whereas pri-miR-290 knockdown decreased ZGA gene expression and slowed embryonic development. (PMID: 34907414) To clarify the mechanism of action, 33 candidate miR-294-3p target genes were screened from three databases, and miR-294-3p directly targeted the 3'-untranslated region of Cdkn1a (p21) mRNA. (PMID: 34907414) The data demonstrate that SARS-CoV-2-RBD treatment in pre-existing diabetes conditions in hACE2 (T2DM + RBD) mice results in the aggravated osteoblast inflammation and downregulation of Glucose transporter 4 (Glut4) expression via upregulation of miR-294-3p expression. (PMID: 35803174) The role of one of the regulated miRNA (miR-294-3p) in L. (PMID: 30949455)
 
 ### Literature
 
@@ -1817,6 +1945,10 @@ Human: CUGGUACAGGCCUGGGGGACAG
 
 *NCBI Gene ID:* [17863](https://www.ncbi.nlm.nih.gov/gene/17863)
 
+### Biological Function Summary
+
+We also found that miR-4298, miR-296-3p, miR-150-3p, miR-493-5p, and miR-6742-5p play important roles in cancer and PD. (PMID: 39329952) EBOV-encoded miRNAs such as miR-VP-3p and miR-1-5p and anti-EBOV host cell miRNAs such as has-miR-150-3p, has-miR-103b and has-miR-145-3p might be a possible diagnostic biomarker or druggable targets. (PMID: 39184819) The transportation mechanism from FLSs to chondrocytes was studied using the EV inhibitor GW4869, and the FLSs were transfected with a miR-150-3p mimic or inhibitor. (PMID: 36078172) RESULTS: The chondrocytes could uptake fluorescent-labeled miR-150-3p mimics and FLS-EVs, and GW4869 suppressed this uptake. (PMID: 36078172) The overexpression of miR-150-3p could significantly reduce the concentrations of pro-inflammatory cytokines in the cell culture medium and the expression of the miR-150-3p target T cell receptor-interacting molecule 14 (Trim14), as well as the innate immune-related factors, including nuclear fac... (PMID: 36078172)
+
 ### Literature
 
 1. Liu T et al. (2024). *Disulfidptosis: A New Target for Parkinson's Disease and Cancer.* Curr Issues Mol Biol. DOI: [10.3390/cimb46090600](https://doi.org/10.3390/cimb46090600) PMID: [39329952](https://pubmed.ncbi.nlm.nih.gov/39329952/)
@@ -1872,6 +2004,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [66181](https://www.ncbi.nlm.nih.gov/gene/66181)
 
+### Biological Function Summary
+
+miR-490-3p and miR-490-5p possess antitumor properties. (PMID: 34345303) miR-490-3p dysfunction has been associated with malignancies including colorectal cancer, while the abnormal function of miR-490-5p has been more considerably associated with bladder cancer (for example). (PMID: 34345303) At present, there are 30 and 11 target genes of miR-490-3p and miR-490-5p, respectively, that have been experimentally verified, of which the cyclin D1 (CCND1) gene is a common target. (PMID: 34345303) Through these target genes, miR-490-3p and miR-490-5p are involved in 7 and 3 signaling pathways, respectively, of which only 2 are shared regulatory signaling pathways. (PMID: 34345303) The present review introduces two competing endogenous RNA (ceRNA) regulatory networks centered on miR-490-3p and miR-490-5p. (PMID: 34345303)
+
 ### Literature
 
 1. Li Y et al. (2021). *MicroRNA-490-3p and -490-5p in carcinogenesis: Separate or the same goal?* Oncol Lett. DOI: [10.3892/ol.2021.12939](https://doi.org/10.3892/ol.2021.12939) PMID: [34345303](https://pubmed.ncbi.nlm.nih.gov/34345303/)
@@ -1926,6 +2062,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Acts upstream of or within error-free postreplication DNA repair. Predicted to be located in nucleoplasm. Predicted to be part of UBC13-MMS2 complex. Predicted to be active in nucleus. Is expressed in cerebral cortex ventricular layer; cortical plate; and embryo. Orthologous to human UBE2V2 (ubiquitin conjugating enzyme E2 V2). [provided by Alliance of Genome Resources, Jul 2025]
 
 *NCBI Gene ID:* [70620](https://www.ncbi.nlm.nih.gov/gene/70620)
+
+### Biological Function Summary
+
+Upregulation of miR-208b-3p, miR-143-3p, miR-145-3p and miR-152-3p, and down-regulation of miR-183-5p were further validated in the validation group. (PMID: 36723013) In conclusion, our findings indicate that plasma EVs miR-208b-3p and miR-143-3p may serve as promising biomarkers in predicting SCD in patients with ACS, as well as postmortem forensic diagnosis of the cause of death due to ACS. (PMID: 36723013) Differential expression of miR-208b-3p is associated with myocardial injury. (PMID: 32070878) But it is unknown that aberrant expression of miR-208b-3p is implicated in myocardial protection of Dex. (PMID: 32070878) qRT-PCR was performed to detect expression levels of miR-208b-3p in H9C2 undergoing HR, Dex preconditioning, overexpression of miR-208b-3p or inhibition, and to assess expression of Med13 in H9C2 following knockdown of Med13 mRNA. (PMID: 32070878)
 
 ### Literature
 
@@ -2014,6 +2154,10 @@ Human: AACGCCAUUAUCACACUAAAUA
 
 *NCBI Gene ID:* [384071](https://www.ncbi.nlm.nih.gov/gene/384071)
 
+### Biological Function Summary
+
+However, the specific role of miR-122-3p in pyroptosis during sepsis progression and its underlying mechanisms remain to be fully elucidated. (PMID: 37625833) We observed that overexpression of miR-122-3p effectively restored cell viability and attenuated the expression of key inflammatory markers promoted by LPS, such as caspase-1, pro-caspase-1, IL-18, IL-1β, NLRP3, apoptosis-associated speck-like protein containing CARD, and cleaved- gasdermin-D. (PMID: 37625833) Our data indicate that miR-122-3p is capable of directly bounding to NLRP1 and inhibiting its expression. (PMID: 37625833) CONCLUSIONS: These results confirmed that miR-122-3p plays a crucial role in the inhibition of sepsis by suppressing macrophage pyroptosis in an NLRP1-dependent manner. (PMID: 37625833) Therefore, miR-122-3p presents as a promising therapeutic target for sepsis. (PMID: 37625833)
+
 ### Literature
 
 1. Li M et al. (2023). *miR-122-3p Alleviates LPS-Induced Pyroptosis of Macrophages via Targeting NLRP1.* Ann Clin Lab Sci. PMID: [37625833](https://pubmed.ncbi.nlm.nih.gov/37625833/)
@@ -2070,6 +2214,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [384071](https://www.ncbi.nlm.nih.gov/gene/384071)
 
+### Biological Function Summary
+
+Of them, the expression of miR-122-5p was significantly upregulated in SLE exosomes, and positively correlated with systemic lupus erythematosus disease activity index (SLEDAI) and the dsDNA levels. (PMID: 39702207) Compared with SLE exosomes, inhibition of circulating exosomal miR-122-5p from SLE patients relieved lupus clinical aspects and polarization of macrophage. (PMID: 39702207) SLE exosomal miR-122-5p motivated M1 macrophage polarization by targeting FOXO3/NF-κB signaling pathway. (PMID: 39702207) Based on these findings, we conclude that SLE exosomal miR-122-5p can promote M1 macrophage polarization via targeting FOXO3/NF-κB signaling pathway and participate in pathogenesis of SLE. (PMID: 39702207) Collectively, plasma-derived exosomal miR-122-5p is a promising and effective target for treating SLE. (PMID: 39702207)
+
 ### Literature
 
 1. Ji J et al. (2024). *Circulating plasma derived exosomes from systemic lupus erythematosus aggravate lupus nephritis through miR-122-5p/FOXO3-mediated macrophage activation.* J Nanobiotechnology. DOI: [10.1186/s12951-024-03063-6](https://doi.org/10.1186/s12951-024-03063-6) PMID: [39702207](https://pubmed.ncbi.nlm.nih.gov/39702207/)
@@ -2122,6 +2270,10 @@ Mouse sequence: `AAAGUGCUACUACUUUUGAGUCU`
 *Function:* Enables chromatin binding activity. Involved in transcription initiation-coupled chromatin remodeling. Acts upstream of or within negative regulation of transcription by RNA polymerase II and transcription by RNA polymerase II. Predicted to be located in nucleoplasm. Predicted to be active in nucleus. Is expressed in several structures, including 1st branchial arch; genitourinary system; long bone epiphysis; nervous system; and sensory organ. Orthologous to human LCOR (ligand dependent nuclear r...
 
 *NCBI Gene ID:* [212391](https://www.ncbi.nlm.nih.gov/gene/212391)
+
+### Biological Function Summary
+
+By constructing the circ/lncRNA-miRNA-mRNA network, we found that miR-291a-3p, miR-294-3p, and miR-295-3p may serve as key targets influencing early embryo development via multiple pathways, including the Toll-like receptor signaling pathway and p53 signaling pathway. (PMID: 40307905) Discovery-driven experiments identified miR-295-3p within sEVs as a possible mediator of the VAT-heart axis, which impaired cardiac autophagy by binding to Ulk1 mRNA. (PMID: 41645491) Specifically, VAT-derived sEVs, miR-295-3p, and the resultant disruption of cardiac autophagy contribute significantly to the pathogenesis of HFpEF. (PMID: 41645491) In the present study, miR-25-5p, miR-105, miR-106b-5p, miR-154-3p, miR-20b-5p, miR-295-3p, miR-291-3p, miR-301b, miR-352, and miR-93-5p were predicted to target TXNIP mRNA from the databases of miRDB, Targetscan, and microT-CDS. (PMID: 36289253) Both diets altered the expression of several liver homeostasis-related microRNAs, including miR-190b-5p, miR-130b-3p, miR-376c-3p, miR-411-5p, miR-29c-3p, miR-295-3p, and miR-467d-5p, with the methionine-deficient diet causing a more substantial effect. (PMID: 35314295)
 
 ### Literature
 
@@ -2186,6 +2338,10 @@ Human: CUCAUUGCAUGGGCUGUGUAUA
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
+
 ### Literature
 
 No relevant publications found in PubMed.
@@ -2234,6 +2390,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [74203](https://www.ncbi.nlm.nih.gov/gene/74203)
 
+### Biological Function Summary
+
+However,there are not many studies of exosomal miRNAs in sepsis and sepsis lung injury.miR-1298-5p and suppressor of cytokine signaling 6 (SOCS6) were silenced or overexpressed in human bronchial epithelial cells (BEAS-2B). (PMID: 34100174) miR-1298-5p directly targeted SOCS6. (PMID: 34100174) Overexpressing SOCS6 reversed miR-1298-5p-induced cell permeability and inflammatory response. (PMID: 34100174) Exosomes isolated from patients of sepsis lung injury increased cell permeability and inflammatory response in BEAS-2B cells through exosomal miR-1298-5p which targeted SOCS6 via STAT3 pathway. (PMID: 34100174) Furthermore, the downregulation of miR-1298-5p levels remarkably inhibited autophagy, ultimately increasing the intracellular H. (PMID: 35192930)
+
 ### Literature
 
 1. Ma J et al. (2021). *Inhibition of miR-1298-5p attenuates sepsis lung injury by targeting SOCS6.* Mol Cell Biochem. DOI: [10.1007/s11010-021-04170-w](https://doi.org/10.1007/s11010-021-04170-w) PMID: [34100174](https://pubmed.ncbi.nlm.nih.gov/34100174/)
@@ -2266,6 +2426,10 @@ Mouse sequence: `CAGACAAGACUGUUAUACCC`
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
+
 ### Literature
 
 No relevant publications found in PubMed.
@@ -2291,6 +2455,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+RESULTS: By RNA sequencing and a miRNA-mRNA-PPI network analysis, we identified miR-615-5p and miR-122b-3p as possible miRNAs associated with keloids, as they differed most significantly in keloids. (PMID: 38242738) Relevant microRNAs included upstream regulator miR-132, enriched miR-124-3p, miR-122b-3p, miR-146-5p (HCM LV and LA), miR-370, miR-1185-5p, miR-12194-3p (HCM LV), miR-153-3p, miR-185-5p, and miR-185-3p (HCM LA). (PMID: 40725010) Based on qPCR, we validated COMMD1B, MOAP1, lncRNA CAPN15, lncRNA ALDH1L2, miR-3473b and miR-1964-3p were upregulated in thrombin-stimulated OM-MSCs, and GM20431, lncRNA GAPDH and miR-122b-3p were downregulated. (PMID: 37943469) RT-qPCR confirmed the differential expression of mmu-miR-125a-5p, mmu-miR-122b-3p, mmu-miR-139-3p, mmu-miR-330-3p, mmu-miR-3057-5p and mmu-miR-342-3p consistent with the small RNA sequence. (PMID: 38588846) Most of differentially expressed miRs in LGMD patients were up-regulated (miR-122-5p, miR-122b-3p, miR-6511a-3p, miR-192-5p, miR-574-3p, mir-885-3p, miR-29a-3p, miR-4646-3p, miR-203a-3p and miR-203b-5p) whilst only three of sequenced miRs were significantly down-regulated (miR-19b-3p, miR-7706, m... (PMID: 36575500)
 
 ### Literature
 
@@ -2324,6 +2492,10 @@ Mouse sequence: `UGGGUAUAACAGUCUUGGCUGG`
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
+
 ### Literature
 
 No relevant publications found in PubMed.
@@ -2347,6 +2519,10 @@ Mouse sequence: `UUUAGGCAGAGCACUCGUACAG`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
 
 ### Literature
 
@@ -2372,6 +2548,10 @@ Mouse sequence: `AAGAGCCCCCAGUUUGAGUAU`
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
+
 ### Literature
 
 No relevant publications found in PubMed.
@@ -2396,6 +2576,10 @@ Mouse sequence: `ACUCAAAACCUGGCGGCACUUUU`
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
+
 ### Literature
 
 No relevant publications found in PubMed.
@@ -2419,6 +2603,10 @@ Mouse sequence: `AUAUGAGUAUUCUGCCUAAAU`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+In vivo studies using inhibitory locked nucleic acid sequences revealed that miR-1948-5p preferentially represses female-biased messenger RNAs (mRNAs) and induces male-biased mRNAs in male liver; conversely, miR-802-5p preferentially represses male-biased mRNAs and increases levels of female-bias... (PMID: 29346554) Thus, miR-1948-5p and miR-802-5p are functional components of the GH regulatory network that shapes sex-differential gene expression in mouse liver. (PMID: 29346554)
 
 ### Literature
 
@@ -2502,6 +2690,10 @@ Length difference: 2 nt
 
 *NCBI Gene ID:* [216080](https://www.ncbi.nlm.nih.gov/gene/216080)
 
+### Biological Function Summary
+
+miR-101b-3p is highly expressed after A. (PMID: 36747241) cantonensis infection; however, the role of miR-101b-3p and the transcription regulation of miR-101b-3p in A. (PMID: 36747241) RESULTS: In the present study, we found that miR-101b-3p inhibition alleviated inflammation infiltration and pyroptosis in A. (PMID: 36747241) In addition, we found that CCAAT/enhancer-binding protein alpha (CEBPα) directly bound to the - 6-k to - 3.5-k region upstream of miR-101b, and CEBPα activated miR-101b-3p expression in microglia. (PMID: 36747241) These data suggest the existence of a novel CEBPα/miR-101b-3p/pyroptosis pathway in A. (PMID: 36747241)
+
 ### Literature
 
 1. Zeng X et al. (2023). *CEBPα/miR-101b-3p promotes meningoencephalitis in mice infected with Angiostrongylus cantonensis by promoting microglial pyroptosis.* Cell Commun Signal. DOI: [10.1186/s12964-023-01038-y](https://doi.org/10.1186/s12964-023-01038-y) PMID: [36747241](https://pubmed.ncbi.nlm.nih.gov/36747241/)
@@ -2569,6 +2761,10 @@ Length difference: 1 nt
 
 *NCBI Gene ID:* [76803](https://www.ncbi.nlm.nih.gov/gene/76803)
 
+### Biological Function Summary
+
+Analysis of M2EV microRNA content revealed abundant miR-181b-5p, which regulated macrophage glucose uptake, glycolysis, and mitigated mitochondrial reactive oxygen species generation. (PMID: 36950739) Functional blockade of miR-181b-5p is detrimental to beneficial M2EV actions and resulted in failure to inhibit CCR2+ macrophage numbers and infarct size. (PMID: 36950739) Taken together, this investigation showed that M2EV rescued myocardial function, improved myocardial repair, and regulated CCR2+ macrophages via miR-181b-5p-dependent mechanisms, indicating an option for cell-free therapy for AMI. (PMID: 36950739) On the other hand, hsa-miR-181b-5p was among the top upregulated miRNAs in response to TGFB1, which is also predicted to regulate CDKN1B, TNFRSF11B, SIM1, and ARSJ in the BT-549 model. (PMID: 34326372) The expression of miR-181b-5p in HB tissues and cells was detected using quantitative real-time PCR. (PMID: 37955014)
+
 ### Literature
 
 1. Li L et al. (2023). *M2 Macrophage-Derived sEV Regulate Pro-Inflammatory CCR2(+) Macrophage Subpopulations to Favor Post-AMI Cardiac Repair.* Adv Sci (Weinh). DOI: [10.1002/advs.202202964](https://doi.org/10.1002/advs.202202964) PMID: [36950739](https://pubmed.ncbi.nlm.nih.gov/36950739/)
@@ -2600,6 +2796,10 @@ Mouse sequence: `ACCAUCGACCGUUGAUUGUACC`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+Moreover, miR-27b-3p, miR-181a-1-3p, and miR-326-5p target MIP-1β, TNF-α, and NOS2 mRNA, respectively. (PMID: 28748390) In conclusion, these data suggest that 15d-PGJ2/PPARγ axis regulates BMM activation via promoting miR-27b-3p, miR-181a-1-3p, and miR-326-5p expressions. (PMID: 28748390) 15d-PGJ2/PPARγ axis promotes expression of miR-27b-3p, miR-181a-1-3p, and miR-326-5p. (PMID: 28748390) miR-27b-3p, miR-181a-1-3p, and miR-326-5p have an inhibitory effect on BMM activation via 15d-PGJ2/PPARγ axis. (PMID: 28748390) Real-time PCR analysis revealed that five types of miRNA (miR-140-3p, miR-140-5p, miR-181a-1-3p, miR-210-3p, and miR-222-3p) were differentially expressed with changing patterns of expression during fracture healing in diabetic rats compared with controls. (PMID: 29437637)
 
 ### Literature
 
@@ -2653,6 +2853,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Predicted to enable DNA-binding transcription factor activity, RNA polymerase II-specific and RNA polymerase II cis-regulatory region sequence-specific DNA binding activity. Predicted to be involved in regulation of transcription by RNA polymerase II. Located in nucleus. Is expressed in central nervous system and genitourinary system. [provided by Alliance of Genome Resources, Jul 2025]
 
 *NCBI Gene ID:* [22759](https://www.ncbi.nlm.nih.gov/gene/22759)
+
+### Biological Function Summary
+
+Furthermore, LXRα activates the transcription of both miR-181a-5p and its binding protein FUS to increase the recruitment of miR-181a-5p in tumor-derived extracellular vesicles (EVs). (PMID: 38031260) Intake of miR-181a-5p in macrophages promotes their M2 polarization and enhances the taurine export by inhibiting expression of its target gene lats1, which in turn inactivates the hippo pathway and results in a Yes-associated protein (YAP) nuclear translocation for transcriptional activation of ... (PMID: 38031260) Taken together, the findings indicate a reciprocal interaction between PCa cells and TAMs as a positive feedback-loop to repress ferroptosis in PCa, mediated by TAM-secreted taurine and tumor EV-delivered miR-181a-5p. (PMID: 38031260) The present study demonstrated that highly metastatic CRC cells released more miR-181a-5p-rich EVs than cells which exhibit a low metastatic potential, in-turn promoting CRLM. (PMID: 35041299) Additionally, we verified that FUS mediated packaging of miR-181a-5p into CRC EVs, which in-turn persistently activated hepatic stellate cells (HSCs) by targeting SOCS3 and activating the IL6/STAT3 signalling pathway. (PMID: 35041299)
 
 ### Literature
 
@@ -2709,6 +2913,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [14086](https://www.ncbi.nlm.nih.gov/gene/14086)
 
+### Biological Function Summary
+
+Mechanistically, the reduced miR-145a-5p expression hindered the osteogenic differentiation and immunomodulatory capacity of OVX MSCs by affecting the TGF-β/Smad 2/3-Wnt/β-catenin signaling axis, resulting in the development of osteoporosis. (PMID: 39304875) WT apoVs directly transferred miR-145a-5p to OVX MSCs, which were then reused to restore their impaired biological functions. (PMID: 39304875) The differential expression of miR-145a-5p is responsible for the distinct efficacy between the two types of apoVs. (PMID: 39304875) In vivo loss-of-function and gain-of-function studies were performed to explore the role of miR-145a-5p and Nr4a2 in NASH progression. (PMID: 37463623) RNA-sequencing and bioinformatic analysis were used to investigate the targets of miR-145a-5p. (PMID: 37463623)
+
 ### Literature
 
 1. Zhang R et al. (2024). *Apoptotic vesicles rescue impaired mesenchymal stem cells and their therapeutic capacity for osteoporosis by restoring miR-145a-5p deficiency.* J Nanobiotechnology. DOI: [10.1186/s12951-024-02829-2](https://doi.org/10.1186/s12951-024-02829-2) PMID: [39304875](https://pubmed.ncbi.nlm.nih.gov/39304875/)
@@ -2761,6 +2969,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 **Top target gene: Zfp1009** (zinc finger protein 1009)
 
 *NCBI Gene ID:* [100503353](https://www.ncbi.nlm.nih.gov/gene/100503353)
+
+### Biological Function Summary
+
+Meanwhile, circFNDC3B sequestered miR-181c-5p to upregulate SERPINE1 and PROX1, which drove epithelial-mesenchymal transition (EMT) or partial-EMT (p-EMT) in OSCC cells and promoted lymphangiogenesis to accelerate LN metastasis. (PMID: 36811957) MiR-181c-5p/HMGB1 axis plays a part in anti-inflammation effects. (PMID: 37466537) So we investigated the role of miR-181c-5p in learning and memory impairment induced by SD. (PMID: 37466537) We overexpressed miR-181c-5p in the mice hippocampus by injecting lentivirus vector-miR-181c-5p (LV-miR-181c-5p) particles. (PMID: 37466537) Moreover, the expression levels of HMGB1, TLR4 and p-NF-κB in the hippocampus of overexpressed miR-181c-5p mice were reduced. (PMID: 37466537)
 
 ### Literature
 
@@ -2816,6 +3028,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Enables DNA-binding transcription factor binding activity and transcription corepressor activity. Involved in several processes, including negative regulation of transcription by RNA polymerase II; nervous system development; and positive regulation of kinase activity. Acts upstream of or within several processes, including cell differentiation in spinal cord; thymus development; and ventricular septum development. Located in cell leading edge and nucleus. Part of RNA polymerase II transcription...
 
 *NCBI Gene ID:* [16911](https://www.ncbi.nlm.nih.gov/gene/16911)
+
+### Biological Function Summary
+
+METHODS AND RESULTS: In FF exosomal RNA-seq analysis, a decrease in glycolysis-related pathways was identified as an important feature of the PCOS group, and the differentially expressed miR-143-3p and miR-155-5p may be regulatory factors of glycolysis. (PMID: 35534864) By determining the effects of miR-143-3p and miR-155-5p on hexokinase (HK) 2, pyruvate kinase muscle isozyme M2 (PKM2), lactate dehydrogenase A (LDHA), pyruvate, lactate and apoptosis in KGN cells, we found that upregulated miR-143-3p expression in exosomes from the PCOS group inhibited glycolysi... (PMID: 35534864) In this study, HK2 was found to be the mediator of miR-143-3p and miR-155-5p in FF-derived exosome-mediated regulation of glycolysis in KGN cells. (PMID: 35534864) CONCLUSIONS: In conclusion, these results indicate that miR-143-3p and miR-155-5p in FF-derived exosomes antagonistically regulate glycolytic-mediated follicular dysplasia of GCs in PCOS. (PMID: 35534864) Heightened levels of miR-143-3p in BMECs induce the up-regulated expression of cell adhesion molecules (CAMs) that bind to circulating neutrophils and facilitate their transendothelial cell migration (TEM) into brain. (PMID: 38044319)
 
 ### Literature
 
@@ -2886,6 +3102,10 @@ Length difference: 1 nt
 
 *NCBI Gene ID:* [16911](https://www.ncbi.nlm.nih.gov/gene/16911)
 
+### Biological Function Summary
+
+By qRT-PCR, we validated that the expression of rno-miR-143-5p was corresponding to our prediction. (PMID: 39806038) Sinomenine inhibited vascular smooth muscle cells (VSMCs) calcification, accompanied with miR-143-5p upregulation. (PMID: 39806038) On the contrary, miR-143-5p inhibitor increased VSMCs calcification in high phosphate condition, which was inhibited by sinomenine. (PMID: 39806038) In chronic kidney disease patients with vascular calcification, the expression level of circulating miR-143-5p was lower than those without vascular calcification. (PMID: 39806038) Circulating miR-143-5p was supposed to be a potential biomarker for vascular calcification in chronic kidney disease patients. (PMID: 39806038)
+
 ### Literature
 
 1. Yu F et al. (2025). *Sinomenine attenuates uremia vascular calcification by miR-143-5p.* Sci Rep. DOI: [10.1038/s41598-025-86055-2](https://doi.org/10.1038/s41598-025-86055-2) PMID: [39806038](https://pubmed.ncbi.nlm.nih.gov/39806038/)
@@ -2941,6 +3161,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [208111](https://www.ncbi.nlm.nih.gov/gene/208111)
 
+### Biological Function Summary
+
+The beneficial effect of limb ischemic conditioning was mediated by muscle-to-liver transfer of small extracellular vesicles (sEVs) and their cargo microRNAs, leading to elevation of miR-181d-5p in the liver. (PMID: 40118054) Hepatic miR-181d-5p overexpression faithfully mirrored the molecular and histological benefits of limb ischemic conditioning by suppressing nuclear receptor 4A3 (NR4A3). (PMID: 40118054) Here, we generated two animal models of hypercholesterolemia to analyze the potential relationship between miR-181d-5p and LDL-C. (PMID: 38940622) In hypercholesterolemia model mice, adeno-associated virus (AAV)-mediated liver-directed overexpression of miR-181d-5p decreased the serum levels of cholesterol and LDL-C and the levels of cholesterol and triglyceride in the liver compared with control mice. (PMID: 38940622) Target Scan 8.0 indicated Proprotein convertase subtilisin/kexin type 9 (PCSK9) to be a possible target gene of miR-181d-5p, which was confirmed by in vitro experiments. (PMID: 38940622)
+
 ### Literature
 
 1. Zhao Y et al. (2025). *Remote limb ischemic conditioning alleviates steatohepatitis via extracellular vesicle-mediated muscle-liver crosstalk.* Cell Metab. DOI: [10.1016/j.cmet.2025.02.009](https://doi.org/10.1016/j.cmet.2025.02.009) PMID: [40118054](https://pubmed.ncbi.nlm.nih.gov/40118054/)
@@ -2993,6 +3217,10 @@ Mouse sequence: `CAGCAGCAAUUCAUGUUUUGGA`
 *Function:* Enables identical protein binding activity. Predicted to be involved in retrograde transport, endosome to Golgi. Predicted to be located in phagocytic vesicle membrane and plasma membrane. Predicted to be active in late endosome; lysosome; and phagocytic vesicle. Orthologous to human RAB9B (RAB9B, member RAS oncogene family). [provided by Alliance of Genome Resources, Apr 2025]
 
 *NCBI Gene ID:* [319642](https://www.ncbi.nlm.nih.gov/gene/319642)
+
+### Biological Function Summary
+
+MiR-322-5p has been revealed to play an important role in multiple diseases. (PMID: 35184431) In this study, we aimed to investigate the role and regulatory mechanism of miR-322-5p in vascular dementia. (PMID: 35184431) RESULTS: MiR-322-5p expression was significantly downregulated in the neurons exposed to OGD/R and the hippocampi of 2VO rats. (PMID: 35184431) Overexpression of miR-322-5p ameliorated cell apoptosis and the inflammatory response in vitro. (PMID: 35184431) In a mechanistic study, miR-322-5p was confirmed to directly target and negatively regulate tetraspanin 5 (TSPAN5) in cultured NRNs. (PMID: 35184431)
 
 ### Literature
 
@@ -3080,6 +3308,10 @@ Human: AACCAUCGACCGUUGAGUGGAC
 
 *NCBI Gene ID:* [22759](https://www.ncbi.nlm.nih.gov/gene/22759)
 
+### Biological Function Summary
+
+miR-9, miR-181a-2-3p, miR-181c, miR-181c-3p, miR-486-3p, and miR-582 showed increased expression, whereas miR-223 and miR-424-3p showed decreased expression. (PMID: 34270823) The results showed that H/R significantly increased the expression of miR-181c-5p but not miR-181c-3p in H9C2 cells. (PMID: 31178952) In the article, we found that the expression of miR-181c-3p and miR-181c-5p was significantly downregulated under glucose treatment in a dose-dependent manner and in peripheral blood from diabetic patients compared with healthy participants. (PMID: 29605252) We explored the role of miR-181c-3p and miR-181c-5p in high glucose (HG)-induced dysfunction in human umbilical vein endothelial cells (HUVECs) by regulating leukemia inhibitory factor (LIF), their potential target with binding sites in 3-UTR region, that is also closely related to glucose metabo... (PMID: 29605252) In addition, miR-181c-3p and miR-181c-5p significantly enhanced HG-induced oxidative stress injury by increasing malondialdehyde (MDA) and reactive oxygen species (ROS) production and promoted HG-induced HUVECs apoptosis, confirmed by TUNEL staining. (PMID: 29605252)
+
 ### Literature
 
 1. Wang W et al. (2022). *miR-181c regulates MCL1 and cell survival in GATA2 deficient cells.* J Leukoc Biol. DOI: [10.1002/JLB.2A1220-824R](https://doi.org/10.1002/JLB.2A1220-824R) PMID: [34270823](https://pubmed.ncbi.nlm.nih.gov/34270823/)
@@ -3111,6 +3343,10 @@ Mouse sequence: `CAAAUCUUAUUUGAGCACCUGU`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+RESULTS: In the mouse hippocampus, intermittent hypoxia altered the expression of many miRNAs, with miR-448-3p and miR-1264-3p changing over the course of more than three time periods. (PMID: 39912396) CONCLUSION: This study demonstrates that intermittent hypoxia alters the expression of miR-448-3p and miR-1264-3p, as well as the localization of the splicing factor hnRNPA2B1 in the cell nucleus. (PMID: 39912396)
 
 ### Literature
 
@@ -3191,6 +3427,10 @@ Length difference: 4 nt
 
 *NCBI Gene ID:* [50997](https://www.ncbi.nlm.nih.gov/gene/50997)
 
+### Biological Function Summary
+
+Here, we aimed to explore the function of miR-449c-5p in CAVD pathogenesis. (PMID: 28821833) In this study, we demonstrated the role of miR-449c-5p in VICs osteogenesis. (PMID: 28821833) MiRNA microarray assay and qRT-PCR results revealed miR-449c-5p was significantly down-regulated in calcified aortic valves compared with non-calcified valves. (PMID: 28821833) MiR-449c-5p overexpression inhibited VICs osteogenic differentiation in vitro, whereas down-regulation of miR-449c-5p enhanced the process. (PMID: 28821833) Target prediction analysis and dual-luciferase reporter assay confirmed Smad4 was a direct target of miR-449c-5p. (PMID: 28821833)
+
 ### Literature
 
 1. Xu R et al. (2017). *MicroRNA-449c-5p inhibits osteogenic differentiation of human VICs through Smad4-mediated pathway.* Sci Rep. DOI: [10.1038/s41598-017-09390-z](https://doi.org/10.1038/s41598-017-09390-z) PMID: [28821833](https://pubmed.ncbi.nlm.nih.gov/28821833/)
@@ -3222,6 +3462,10 @@ Mouse sequence: `AGGUCCUCAAUAAGUAUUUGUU`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+The expression of lnc240, miR-1264-5p, and MEF2C was analyzed with RNA-seq and further determined by qRT-PCR in HE mouse. (PMID: 36645630) The overexpression of lnc240 could significantly downregulate miR-1264-5p and upregulate MEF2C, also increasing the amplitude and frequency of mEPSC in primary cultured hippocampal neurons. (PMID: 36645630) The overexpression of miR-1264-5p reversed the effect of lnc240 on MEF2C. (PMID: 36645630) Lnc240 can regulate the expression of MEF2C through miR-1264-5p and regulate the synaptic plasticity of hippocampal neurons, thereby saving the learning and memory dysfunction in HE mice, suggesting that lnc240 might be a potential therapeutic target for the treatment of HE. (PMID: 36645630)
 
 ### Literature
 
@@ -3268,6 +3512,10 @@ Mouse sequence: `UGGCAGUGUAUUGUUAGCUGGU`
 
 *NCBI Gene ID:* [20979](https://www.ncbi.nlm.nih.gov/gene/20979)
 
+### Biological Function Summary
+
+Gene target analysis and our functional study with miR-449a-5p have revealed its potential as a serotherapeutic. (PMID: 36976763) Moreover, CFAR acted as a ceRNA sponge for miR-449a-5p and derepressed the expression of LOXL3, which we experimentally established as a target gene of miR-449a-5p. (PMID: 36334219) In contrast to CFAR, miR-449a-5p was found to be significantly downregulated in cardiac fibrosis, and artificial knockdown of miR-449a-5p exacerbated fibrogenesis, whereas overexpression of miR-449a-5p impeded fibrogenesis. (PMID: 36334219) Collectively, our study established CFAR as a new profibrotic factor acting through a novel miR-449a-5p/LOXL3/mTOR axis in the heart and therefore might be considered as a potential molecular target for the treatment of cardiac fibrosis and associated heart diseases. (PMID: 36334219) METHODS: MiR-449a-5p target genes were identified by Ago-RIP sequencing and validated by luciferase reporter assays and expression analyses. (PMID: 34976171)
+
 ### Literature
 
 1. Li B et al. (2021). *miR‑449a‑5p suppresses CDK6 expression to inhibit cardiomyocyte proliferation.* Mol Med Rep. DOI: [10.3892/mmr.2020.11652](https://doi.org/10.3892/mmr.2020.11652) PMID: [33179102](https://pubmed.ncbi.nlm.nih.gov/33179102/)
@@ -3299,6 +3547,10 @@ Mouse sequence: `GGUGCUCACAUGUCCUCCU`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+In this study, we found that miR-764-5p is up-expressed during the osteoblast differentiation in calvarial and osteoblast progenitor cells, coupled with down-expression of CHIP protein. (PMID: 22407479) We observed that forced expression or inhibition of miR-764-5p decreased or increased the CHIP protein level through affecting its translation by targeting the 3'-UTR region. (PMID: 22407479) Perturbation of miR-764-5p resulted in altered differentiation fate of osteoblast progenitor cells and the role of miR-764-5p was reversed by overexpression of CHIP, whereas depletion of CHIP impaired the effect of miR-764-5p. (PMID: 22407479) Our data showed that miR-764-5p positively regulates osteoblast differentiation from osteoblast progenitor cells by repressing the translation of CHIP protein. (PMID: 22407479) The expressions of miR-383-5p and miR-764-5p were up-regulated after CUMS, while their expressions were down-regulated by EA intervention. (PMID: 27264487)
 
 ### Literature
 
@@ -3352,6 +3604,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Is expressed in adrenal cortex; central nervous system; frenulum; lung; and seminiferous cord. Orthologous to human TRANK1 (tetratricopeptide repeat and ankyrin repeat containing 1). [provided by Alliance of Genome Resources, Jul 2025]
 
 *NCBI Gene ID:* [320429](https://www.ncbi.nlm.nih.gov/gene/320429)
+
+### Biological Function Summary
+
+We selected 13 miRNAs with altered expressions in testis tissue (hsa-miR-122-5p, hsa-miR-145-5p, hsa-miR-16-5p, hsa-miR-193a-3p, hsa-miR-19a-3p, hsa-miR-23a-3p, hsa-miR-30b-5p, hsa-miR-34b-5p, hsa-miR-34c-5p, hsa-miR-374b-5p, hsa-miR-449a, hsa-miR-574-3p and hsa-miR-92a-3p), and systematically ex... (PMID: 35760398) In consideration of the currently limited research on microRNAs in BAS, this study aimed to explore the role and mechanism of miR-34c-5p in BAS. (PMID: 38374244) The expression of miR-34c-5p in BAS granulation tissues showed a significant down-regulation compared with the normal control group. (PMID: 38374244) Moreover, miR-34c-5p mimics suppressed the proliferation and differentiation of human bronchial fibroblasts (HBFs) and the epithelial-mesenchymal transition (EMT) of human bronchial epithelial cells (HBE). (PMID: 38374244) Conversely, miR-34c-5p inhibitors aggravated those effects. (PMID: 38374244)
 
 ### Literature
 
@@ -3441,6 +3697,10 @@ Human: UAGGCAGUGUCAUUAGCUGAUUG
 
 *NCBI Gene ID:* [268709](https://www.ncbi.nlm.nih.gov/gene/268709)
 
+### Biological Function Summary
+
+As a member of the miRNA-34 family, miR-34b-5p serves as a powerful regulator of a suite of cellular activities, including cell growth, multiplication, development, differentiation, and apoptosis. (PMID: 36457043) This review aimed to provide an overview and update on the differential expression and function of miR-34b-5p in pathophysiologic processes, especially cancer and injury. (PMID: 36457043) Additionally, miR-34b-5p-mediated clinical trials have indicated promising consequences for the therapies of carcinomatosis and injury. (PMID: 36457043) With the application of the first tumor-targeted microRNA drug based on miR-34a mimics, it can be inferred that miR-34b-5p may become a crucial factor in the therapy of various diseases. (PMID: 36457043) We selected 13 miRNAs with altered expressions in testis tissue (hsa-miR-122-5p, hsa-miR-145-5p, hsa-miR-16-5p, hsa-miR-193a-3p, hsa-miR-19a-3p, hsa-miR-23a-3p, hsa-miR-30b-5p, hsa-miR-34b-5p, hsa-miR-34c-5p, hsa-miR-374b-5p, hsa-miR-449a, hsa-miR-574-3p and hsa-miR-92a-3p), and systematically ex... (PMID: 35760398)
+
 ### Literature
 
 1. Bai X et al. (2022). *Role of microRNA-34b-5p in cancer and injury: how does it work?* Cancer Cell Int. DOI: [10.1186/s12935-022-02797-3](https://doi.org/10.1186/s12935-022-02797-3) PMID: [36457043](https://pubmed.ncbi.nlm.nih.gov/36457043/)
@@ -3493,6 +3753,10 @@ Mouse sequence: `UUGCAUAUGUAGGAUGUCCCAU`
 *Function:* Predicted to be active in membrane. Is expressed in several structures, including brain; genitourinary system; hemolymphoid system gland; skin; and spinal cord lateral wall. Orthologous to human LHFPL6 (LHFPL tetraspan subfamily member 6). [provided by Alliance of Genome Resources, Jul 2025]
 
 *NCBI Gene ID:* [108927](https://www.ncbi.nlm.nih.gov/gene/108927)
+
+### Biological Function Summary
+
+MATERIAL AND METHODS: This study compared the expression levels of miR-26a, miR-29a and miR-448-3p in 50 samples each of cerebral aneurysm tissues and normal superficial temporal artery tissues. (PMID: 36951025) RESULTS: Expression levels of miR-26a, miR-29a and miR-448-3p were increased in aneurysm tissues compared with normal vascular tissues. (PMID: 36951025) CONCLUSION: This study showed that miR-26a, miR-29a and miR-448-3p overexpression could play an important role in intracranial aneurysm development independent of aneurysm location and rupture status. (PMID: 36951025) miR-26a, miR-29a and miR-448-3p could act as potential therapeutic targets in patients with intracranial aneurysms; however, further studies are needed on this issue. (PMID: 36951025) Here, intracranial aneurysms (IAs) were surgically induced in Sprague-Dawley rats, and we found that miR-448-3p was downregulated and KLF5 was upregulated in IA rats. (PMID: 30322616)
 
 ### Literature
 
@@ -3561,6 +3825,10 @@ Length difference: 1 nt
 
 *NCBI Gene ID:* [12767](https://www.ncbi.nlm.nih.gov/gene/12767)
 
+### Biological Function Summary
+
+Dual-luciferase reporter and chromatin immunoprecipitation assays were performed to investigate the targeted binding and inhibition of TOP2A 3' untranslated region (UTR) by miR-139-5p and the DNA enrichment of miR139-5p by EZH2 and H3K27me3. (PMID: 38008711) In addition, tissue microarrays were used to analyze the expression patterns and correlations among EZH2, TOP2A, and miR-139-5p expression in HCC. (PMID: 38008711) Mechanistically, EZH2 promotes TOP2A expression by regulating the H3K27me3-mediated epigenetic silencing of miR-139-5p. (PMID: 38008711) TOP2A is a direct target of miR-139-5p, and inhibition of miR-139-5p can reverse the promotion by EZH2 of TOP2A expression. (PMID: 38008711) The overexpression of miR-139-5p induces cellular senescence and inhibits proliferation of HCC cells both in vitro and in vivo. (PMID: 38008711)
+
 ### Literature
 
 1. Wang K et al. (2023). *EZH2-H3K27me3-mediated silencing of mir-139-5p inhibits cellular senescence in hepatocellular carcinoma by activating TOP2A.* J Exp Clin Cancer Res. DOI: [10.1186/s13046-023-02855-2](https://doi.org/10.1186/s13046-023-02855-2) PMID: [38008711](https://pubmed.ncbi.nlm.nih.gov/38008711/)
@@ -3615,6 +3883,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Predicted to be involved in collagen biosynthetic process and protein insertion into ER membrane. Predicted to be located in membrane. Predicted to be active in endoplasmic reticulum membrane. Is expressed in nose and skeleton. Orthologous to human TRAM2 (translocation associated membrane protein 2). [provided by Alliance of Genome Resources, Jul 2025]
 
 *NCBI Gene ID:* [170829](https://www.ncbi.nlm.nih.gov/gene/170829)
+
+### Biological Function Summary
+
+Emerging evidence implicates miR-185-5p in chronic inflammation diseases. (PMID: 35328023) However, the regulatory role of miR-185-5p in macrophage pro-inflammatory activation has not been studied previously. (PMID: 35328023) Here, we identified that miR-185-5p was one of the top genes and effectively downregulated in two macrophage miRNA expression datasets from GEO. (PMID: 35328023) Under LPS stress, miR-185-5p overexpression reduced pro-inflammatory cytokine expression, suppressed phagocytosis in RAW264.7 macrophage. (PMID: 35328023) miR-185-5p inhibitors augmented pro-inflammatory effects of LPS in macrophage. (PMID: 35328023)
 
 ### Literature
 
@@ -3671,6 +3943,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [244548](https://www.ncbi.nlm.nih.gov/gene/244548)
 
+### Biological Function Summary
+
+As Rorβ levels declined with differentiation, the expression of many of these miRNAs, including miR-219a-5p, was increased. (PMID: 30321475) We further demonstrated that miR-219a-5p was decreased in bone samples from old (24-month) mice, as compared with young (6-month) mice, concomitant with increased Rorβ expression. (PMID: 30321475) Importantly, we also found that miR-219a-5p expression was decreased in aged human bone biopsies compared with young controls, demonstrating that this phenomenon also occurs in aging bone in humans. (PMID: 30321475) Inhibition of miR-219a-5p in mouse calvarial osteoblasts led to increased Rorβ expression and decreased alkaline phosphatase expression and activity, whereas a miR-219a-5p mimic decreased Rorβ expression and increased osteogenic activity. (PMID: 30321475) Finally, we demonstrated that miR-219a-5p physically interacts with Rorβ mRNA in osteoblasts, defining Rorβ as a true molecular target of miR-219a-5p. (PMID: 30321475)
+
 ### Literature
 
 1. Aquino-Martinez R et al. (2019). *miR-219a-5p Regulates Rorβ During Osteoblast Differentiation and in Age-related Bone Loss.* J Bone Miner Res. DOI: [10.1002/jbmr.3586](https://doi.org/10.1002/jbmr.3586) PMID: [30321475](https://pubmed.ncbi.nlm.nih.gov/30321475/)
@@ -3702,6 +3978,10 @@ Mouse sequence: `UCUCACCCUAUGUUCUCCCACAG`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
 
 ### Literature
 
@@ -3769,6 +4049,10 @@ Length difference: 2 nt
 
 *NCBI Gene ID:* [54369](https://www.ncbi.nlm.nih.gov/gene/54369)
 
+### Biological Function Summary
+
+Mechanistically, more circ-ZNF277 molecules could absorb more miR-378d, thereby competitively activating the NF-κB signaling pathway, promoting the release of pro-inflammatory cytokines including interleukins IL-1β and IL-6, and tumor necrosis factor-α (TNF-α), and inhibiting the survival of intr... (PMID: 39996735) Expressing miR-378d or si-Rab10 targeting the transcription of Rab10 could antagonize the effects of overexpression of circ-ZNF277, resulting in the reduced intracellular survival of Mtb. (PMID: 39996735) In summary, circ-ZNF277 inhibits the intracellular survival of Mtb via the miR-378d/Rab10 axis. (PMID: 39996735) miR-378d expression was measured by RT-qPCR in the internal cohort, and its association with clinicopathological features and prognosis was analyzed. (PMID: 40119180) MiRNA sequencing identified miR-378d as significantly downregulated in GC tissues and associated with poor prognosis. (PMID: 40119180)
+
 ### Literature
 
 1. Zhu Y et al. (2025). *Circular RNA ZNF277 Sponges miR-378d to Inhibit the Intracellular Survival of Mycobacterium tuberculosis by Upregulating Rab10.* Cells. DOI: [10.3390/cells14040262](https://doi.org/10.3390/cells14040262) PMID: [39996735](https://pubmed.ncbi.nlm.nih.gov/39996735/)
@@ -3835,6 +4119,10 @@ Length difference: 1 nt
 *Function:* Predicted to enable nucleoside diphosphate kinase activity. Predicted to be involved in negative regulation of cell growth and negative regulation of mitotic nuclear division. Located in mitochondrion. Is expressed in several structures, including alimentary system; genitourinary system; hemolymphoid system; nervous system; and sensory organ. Orthologous to human NME6 (NME/NM23 nucleoside diphosphate kinase 6). [provided by Alliance of Genome Resources, Apr 2025]
 
 *NCBI Gene ID:* [54369](https://www.ncbi.nlm.nih.gov/gene/54369)
+
+### Biological Function Summary
+
+BAT-derived miR-378a-3p enhances gluconeogenesis by targeting p110α. (PMID: 37673898) miR-378 KO mice display reduced hepatic gluconeogenesis during cold exposure, while restoration of miR-378a-3p in iBAT induces the expression of gluconeogenic genes in the liver. (PMID: 37673898) This miR-378a-3p-mediated interorgan communication highlights a novel endocrine function of BAT in preventing hypoglycemia during cold stress. (PMID: 37673898) Its two mature strands, miR-378a-3p and miR-378a-5p, originate from the first intron of the peroxisome proliferator-activated receptor gamma, coactivator 1 beta (ppargc1b) gene encoding PGC-1β. (PMID: 26839547) The two strands of miR-378a, miR-378a-3p, and miR-378a-5p are encoded in the Ppargc1b gene and have an active role in the regulation of several metabolic pathways such as mitochondrial metabolism and autophagy. (PMID: 31748917)
 
 ### Literature
 
@@ -3923,6 +4211,10 @@ Length difference: 1 nt
 
 *NCBI Gene ID:* [54369](https://www.ncbi.nlm.nih.gov/gene/54369)
 
+### Biological Function Summary
+
+The goal of the present study was to elucidate the role of miR-378b in alcohol-induced hepatic insulin resistance and its underlying mechanism. (PMID: 32508647) This study has observed that miR-378b is up-regulated in National Institute on Alcohol Abuse and Alcoholism (NIAAA) alcoholic mouse models as well as in ethanol-induced L-02 cells in vitro. (PMID: 32508647) Furthermore, miR-378b overexpression impaired the insulin signaling pathway, and inhibition of miR-378b improved insulin sensitivity in vivo and in vitro. (PMID: 32508647) A mechanistic study revealed that IR and p110α are direct targets of miR-378b. (PMID: 32508647) Together, these results suggest that miR-378b controls insulin sensitivity by targeting the insulin receptor (IR) as well as p110α and possibly play an inhibitory role in the development of insulin resistance, thereby providing insights into the development of novel diagnostic and treatment methods. (PMID: 32508647)
+
 ### Literature
 
 1. Li YY et al. (2020). *miR-378b Regulates Insulin Sensitivity by Targeting Insulin Receptor and p110α in Alcohol-Induced Hepatic Steatosis.* Front Pharmacol. DOI: [10.3389/fphar.2020.00717](https://doi.org/10.3389/fphar.2020.00717) PMID: [32508647](https://pubmed.ncbi.nlm.nih.gov/32508647/)
@@ -3992,6 +4284,10 @@ Length difference: 1 nt
 
 *NCBI Gene ID:* [12767](https://www.ncbi.nlm.nih.gov/gene/12767)
 
+### Biological Function Summary
+
+EV miR-139-3p was identified as a potential cardiac repair factor mediating macrophage polarization. (PMID: 36927608) Knockdown of miR-139-3p in MSCATV-EV significantly attenuated while overexpression of it in MSC-EV enhanced the effect on promoting M2 polarization by suppressing downstream signal transducer and activator of transcription 1 (Stat1). (PMID: 36927608) Furthermore, MSCATV-EV loaded with miR-139-3p inhibitors decreased while MSC-EV loaded with miR-139-3p mimics increased the expressions of M2 markers and cardioprotective efficacy. (PMID: 36927608) CONCLUSIONS: We uncovered a novel mechanism that MSCATV-EV remarkably facilitate cardiac repair in AMI by promoting macrophage polarization via miR-139-3p/Stat1 pathway, which has the great potential for clinical translation. (PMID: 36927608) Subsequently, we analyzed the target genes of miR-139-3p and their enrichment signaling pathways through bioinformatics. (PMID: 36917402)
+
 ### Literature
 
 1. Ning Y et al. (2023). *Atorvastatin-pretreated mesenchymal stem cell-derived extracellular vesicles promote cardiac repair after myocardial infarction via shifting macrophage polarization by targeting microRNA-139-3p/Stat1 pathway.* BMC Med. DOI: [10.1186/s12916-023-02778-x](https://doi.org/10.1186/s12916-023-02778-x) PMID: [36927608](https://pubmed.ncbi.nlm.nih.gov/36927608/)
@@ -4049,6 +4345,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [54369](https://www.ncbi.nlm.nih.gov/gene/54369)
 
+### Biological Function Summary
+
+Its two mature strands, miR-378a-3p and miR-378a-5p, originate from the first intron of the peroxisome proliferator-activated receptor gamma, coactivator 1 beta (ppargc1b) gene encoding PGC-1β. (PMID: 26839547) The two strands of miR-378a, miR-378a-3p, and miR-378a-5p are encoded in the Ppargc1b gene and have an active role in the regulation of several metabolic pathways such as mitochondrial metabolism and autophagy. (PMID: 31748917) This study used miR-378a-5p overexpression and knockdown to manipulate OGD injury in nerve cells. (PMID: 39176087) The impact of astrocyte-derived exosomal miR-378a-5p on the regulation of cerebral ischemic neuroinflammation was assessed through analysis of nerve injury and pyroptosis protein expression. (PMID: 39176087) Further investigations revealed the involvement of astrocyte-derived exosomal miR-378a-5p in regulating pyroptosis by inhibiting NLRP3. (PMID: 39176087)
+
 ### Literature
 
 1. Krist B et al. (2015). *The Role of miR-378a in Metabolism, Angiogenesis, and Muscle Biology.* Int J Endocrinol. DOI: [10.1155/2015/281756](https://doi.org/10.1155/2015/281756) PMID: [26839547](https://pubmed.ncbi.nlm.nih.gov/26839547/)
@@ -4080,6 +4380,10 @@ Mouse sequence: `CCCAUGGAGCUGUAGGAGCCG`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
 
 ### Literature
 
@@ -4127,6 +4431,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Enables transcription corepressor activity. Involved in several processes, including negative regulation of female gonad development; positive regulation of cardiac muscle cell proliferation; and positive regulation of male gonad development. Acts upstream of or within several processes, including circulatory system development; in utero embryonic development; and regulation of transcription by RNA polymerase II. Located in cytoplasm and male germ cell nucleus. Is expressed in several structures...
 
 *NCBI Gene ID:* [22762](https://www.ncbi.nlm.nih.gov/gene/22762)
+
+### Biological Function Summary
+
+Further, miR-142a-5p/ mitofusin-1 (MFN1) axis was confirmed to be activated in denervated gastrocnemius, which disrupted the tubular mitochondrial network, and induced mitochondrial dysfunction, mitophagy and apoptosis. (PMID: 31938072) Furthermore, the atrophy of gastrocnemius induced by denervation was relieved through targeting miR-142a-5p/MFN1 axis. (PMID: 31938072) Conclusions: Collectively, our data revealed that miR-142a-5p was able to function as an important regulator of denervation-induced skeletal muscle atrophy by inducing mitochondrial dysfunction, mitophagy, and apoptosis via targeting MFN1. (PMID: 31938072) miR-142a-5p plays critical roles in multiple biological processes and diseases, such as inflammation and tumorigenesis. (PMID: 32700780) However, it remains to be explored if and how miR-142a-5p contributes to osteoblast differentiation. (PMID: 32700780)
 
 ### Literature
 
@@ -4185,6 +4493,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [320679](https://www.ncbi.nlm.nih.gov/gene/320679)
 
+### Biological Function Summary
+
+They also downregulated cellular levels of miR-142a-3p, resulting in increased levels of its target carnitine palmitoyl transferase 1A (CPT1A) which improved fatty acid oxidation (FAO) and oxidative phosphorylation (OxPHOS) in recipient cells. (PMID: 37593979) ApoE-dependent immunometabolic signaling by macrophage extracellular vesicles was dependent on transcriptional axes controlled by miR-146a-5p and miR-142a-3p that could be reproduced by infusing miR-146a mimics & miR-142a antagonists into hyperlipidemic apoE-deficient mice. (PMID: 37593979) In the present study, two novel miRNAs, miR-142a-3p and miR-155-5p, that were predicted to target Peli1 using bioinformatics were chosen, and their unique roles in METH-induced neuroinflammation via regulating Peli1 expression were identified. (PMID: 30914375) Our results showed that miR-142a-3p was significantly reduced in METH-induced neuroinflammation and was negatively associated with Peli1 expression both in BV2 cells and in the brain of mouse. (PMID: 30914375) Reciprocally, the overexpression of miR-142a-3p and miR-155-5p could directly suppress Peli1 expression and could protect against the inflammatory effects of METH treatment partially through activating p38 MAPK and NF-κB inflammatory pathways. (PMID: 30914375)
+
 ### Literature
 
 1. Phu TA et al. (2023). *ApoE expression in macrophages communicates immunometabolic signaling that controls hyperlipidemia-driven hematopoiesis & inflammation via extracellular vesicles.* J Extracell Vesicles. DOI: [10.1002/jev2.12345](https://doi.org/10.1002/jev2.12345) PMID: [37593979](https://pubmed.ncbi.nlm.nih.gov/37593979/)
@@ -4216,6 +4528,10 @@ Mouse sequence: `AUAAGGUAGAAAGCACUAAA`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
 
 ### Literature
 
@@ -4263,6 +4579,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Enables DNA binding activity and DNA-binding transcription factor activity. Acts upstream of or within axon guidance; dendrite morphogenesis; and positive regulation of DNA-templated transcription. Predicted to be located in cytosol and nucleoplasm. Is expressed in several structures, including genitourinary system; gut; immune system; nervous system; and sensory organ. Orthologous to human KLF7 (KLF transcription factor 7). [provided by Alliance of Genome Resources, Jul 2025]
 
 *NCBI Gene ID:* [93691](https://www.ncbi.nlm.nih.gov/gene/93691)
+
+### Biological Function Summary
+
+Although the role of miR-130b-3p as an oncogene that accelerates cancer progression by suppressing ferroptosis has been demonstrated, its role in the regulation of ferroptosis and cardiac injury in Lipopolysaccharide (LPS)-induced cardiomyopathy has not been fully clarified. (PMID: 37705752) In this study, we demonstrated that miR-130b-3p remarkably improved cardiac function and ameliorated morphological damage to heart tissue in LPS-induced mice. (PMID: 37705752) miR-130b-3p also improved cell viability and mitochondrial function and reduced the production of lipid ROS and ferroptosis in LPS-treated H9c2 cells. (PMID: 37705752) In addition, miR-130b-3p significantly upregulated GPX4 expression and suppressed ACSL4 activity in LPS-induced mouse heart tissue and H9c2 cells. (PMID: 37705752) Mechanistically, we used database analysis to locate miR-130b-3p and confirmed its inhibitory effects on the ferroptosis-related gene ACSL4 and autophagy-related gene PRKAA1 using a dual-luciferase reporter assay. (PMID: 37705752)
 
 ### Literature
 
@@ -4333,6 +4653,10 @@ Human: UUCCCUUUGUCAUCCUUCGCCU
 
 *NCBI Gene ID:* [320683](https://www.ncbi.nlm.nih.gov/gene/320683)
 
+### Biological Function Summary
+
+The dynamic decrease in miR-211-5p expression induces hypersynchronization and both nonconvulsive and convulsive seizures, and forebrain miR-211-5p suppression exacerbates long-lasting pentylenetetrazole-induced seizures. (PMID: 38191407) Additionally, in this study, induction of miR-211-5p expression or genetic-silencing of P2RX7 significantly reduced the seizure score and duration in murine models through the abovementioned pathways. (PMID: 38191407) These results suggest that the miR-211-5p/P2RX7 axis is a novel target for suppressing both ferroptosis and epilepsy. (PMID: 38191407) Mechanistically, microRNA-211-5p negatively regulates GDNF, and lncXIST serves as a miR-211-5p sponge. (PMID: 38454138) Further study demonstrates that DSGM leads to abnormal upregulation of miR-211-5p in gut-derived circulating exosomes, which inhibited the expression of meiosis-specific with coiled-coil domain (Meioc) in the testes and impaired spermatogenesis by disturbing meiosis process. (PMID: 38526201)
+
 ### Literature
 
 1. Li X et al. (2024). *The microRNA-211-5p/P2RX7/ERK/GPX4 axis regulates epilepsy-associated neuronal ferroptosis and oxidative stress.* J Neuroinflammation. DOI: [10.1186/s12974-023-03009-z](https://doi.org/10.1186/s12974-023-03009-z) PMID: [38191407](https://pubmed.ncbi.nlm.nih.gov/38191407/)
@@ -4401,6 +4725,10 @@ Length difference: 1 nt
 *Function:* Predicted to be involved in protein import into nucleus. Predicted to be active in nucleus. Orthologous to human FAM53C (family with sequence similarity 53 member C). [provided by Alliance of Genome Resources, Jul 2025]
 
 *NCBI Gene ID:* [66306](https://www.ncbi.nlm.nih.gov/gene/66306)
+
+### Biological Function Summary
+
+For AS therapy, adipose mesenchymal stem cell-derived exosomes protect endothelial cells from AS aggravation, via inhibiting miR-342-5p. (PMID: 32772195) OBJECTIVE: The aim of this research was to explore the role of miR-342-5p in EV71 replication. (PMID: 37479047) RESULTS: Transcriptome sequencing analyses know that the Wnt pathway played a role in EV71 infection, and the CTNNBIP1 gene in this pathway was the target gene of miR-342-5p. (PMID: 37479047) Whether in HMC3 cells or in the spinal cord tissue from the suckling mice, high levels of miR-342-5p markedly promoted EV71 VP1 mRNA and protein expression, elevated TNF-α, IL-6, and IL-10 levels, and inhibited IFN-β levels. (PMID: 37479047) In addition, highly expressed miR-342-5p destroyed neuronal structure in spinal cord tissues and reduced the number of glial cells. (PMID: 37479047)
 
 ### Literature
 
@@ -4471,6 +4799,10 @@ Length difference: 1 nt
 
 *NCBI Gene ID:* [72668](https://www.ncbi.nlm.nih.gov/gene/72668)
 
+### Biological Function Summary
+
+Mechanistically, we found that circDlc1(2) physically interacts with some mRNAs, associated with glutamate receptor signaling (gluRNAs), and with miR-130b-5p, a translational regulator of these transcripts. (PMID: 39321023) Notably, differently from canonical microRNA (miRNA) "sponges," circDlc1(2) synergizes with miR-130b-5p to repress gluRNA expression. (PMID: 39321023) We found that circDlc1(2) is required to spatially control miR-130b-5p localization at synaptic regions where gluRNA is localized, indicating a different layer of regulation where circRNAs ensure robust control of gene expression via the correct subcellular compartmentalization of functionally li... (PMID: 39321023) The present study aimed to investigate the effect of miR-130b duplex (miR-130b-5p, miR-130b-3p) and its target gene KLF3 in regulating goat intramuscular adipocyte differentiation. (PMID: 37279650) miR-130b-5p and miR-130b-3p mimics or inhibitors and their corresponding controls were transfected into goat intramuscular preadipocytes, respectively, and differentiation was induced by 50μM oleic acid for 48 h. (PMID: 37279650)
+
 ### Literature
 
 1. Silenzi V et al. (2024). *A tripartite circRNA/mRNA/miRNA interaction regulates glutamatergic signaling in the mouse brain.* Cell Rep. DOI: [10.1016/j.celrep.2024.114766](https://doi.org/10.1016/j.celrep.2024.114766) PMID: [39321023](https://pubmed.ncbi.nlm.nih.gov/39321023/)
@@ -4502,6 +4834,10 @@ Mouse sequence: `UGGGCAGAGGAGGCAGGGACA`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+For the mechanism study, dual-luciferase reporter, fluorescence in situ hybridization (FISH), RNA immunoprecipitation (RIP), RNA pull-down, gene editing, and CUT & Tag were performed in vitro to confirm that circSV2b directly sponged miR-5107-5p and alleviated the suppression of the expression of... (PMID: 35973363) Taken together, these findings suggested that the miR-5107-5p-Foxk1-Akt1 axis might serve as a key target of circSV2b overexpression in PD treatment, and highlighted the significant change of circSV2b in serum exosomes. (PMID: 35973363) Mechanistically, miR-5107-5p, significantly enriched in EPO-EVs, is delivered to mBMSCs, where it suppresses epidermal growth factor receptor (EGFR) expression and alleviates EGFR's inhibitory effect on RhoA. (PMID: 40289904)
 
 ### Literature
 
@@ -4555,6 +4891,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Enables DNA-binding transcription activator activity, RNA polymerase II-specific; RNA polymerase II cis-regulatory region sequence-specific DNA binding activity; and WD40-repeat domain binding activity. Involved in positive regulation of transcription by RNA polymerase II. Acts upstream of or within several processes, including cellular response to cytokine stimulus; hematopoietic or lymphoid organ development; and hemopoiesis. Located in cytosol and nucleus. Part of RNA polymerase II transcript...
 
 *NCBI Gene ID:* [17863](https://www.ncbi.nlm.nih.gov/gene/17863)
+
+### Biological Function Summary
+
+We show that miR-328a-3p and miR-150-5p, enriched in the sEVs after TBI, promote osteogenesis by directly targeting the 3'UTR of FOXO4 or CBL, respectively, and hydrogel carrying miR-328a-3p-containing sEVs efficiently repaires bone defects in rats. (PMID: 34654817) Mechanistically, the 3D-Exos promoted the proliferation of cornea-derived cells and reduced the release of inflammatory factors via miR-150-5p targeting of the PDCD4 gene. (PMID: 39955036) Interestingly, miR-150-5p was downregulated, whereas E2F3 and BIRC5 (survivin), a cell cycle activator and an antiapoptotic regulator, respectively, were upregulated. (PMID: 40203244) Increasing miR-150-5p in PBL-1 cells induced G1 cell cycle arrest, suppressed proliferation by transcriptionally repressing E2F3, and promoted apoptosis by the downregulation of BIRC5. (PMID: 40203244) Interestingly, the miR-150-5p tumor suppressor activity was diminished in E2F3-knockdown cells. (PMID: 40203244)
 
 ### Literature
 
@@ -4623,6 +4963,10 @@ Length difference: 2 nt
 
 *NCBI Gene ID:* [23937](https://www.ncbi.nlm.nih.gov/gene/23937)
 
+### Biological Function Summary
+
+The miR-23b-3p in extracellular vesicles promotes cartilage catabolism and inhibits anabolism by targeting OTUD4, disrupting mitophagy in chondrocytes. (PMID: 40399261) Inhibiting miR-23b-3p in osteocytes or chondrocytes reduces cartilage degeneration and osteoarthritis progression in male mice. (PMID: 40399261) Together, our findings highlight that osteocyte-derived extracellular vesicles mediate communication with chondrocytes and suggest miR-23b-3p as a potential therapeutic target for osteoarthritis. (PMID: 40399261) Concerning miRNA biomarkers, miRNA-24, miR-23b-3p, miR-195-3p, miR-29c, and mir-331-5p are promising across studies. (PMID: 38791346) The anti-inflammatory role of miR-23b-3p (miR-23b) is known in autoimmune diseases like multiple sclerosis, systemic lupus erythematosus, and rheumatoid arthritis. (PMID: 39870316)
+
 ### Literature
 
 1. Liu N et al. (2025). *Osteocyte-derived extracellular vesicles mediate the bone-to-cartilage crosstalk and promote osteoarthritis progression.* Nat Commun. DOI: [10.1038/s41467-025-59861-5](https://doi.org/10.1038/s41467-025-59861-5) PMID: [40399261](https://pubmed.ncbi.nlm.nih.gov/40399261/)
@@ -4678,6 +5022,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [81003](https://www.ncbi.nlm.nih.gov/gene/81003)
 
+### Biological Function Summary
+
+Mechanically, RNA-sequencing and fluorescence in situ hybridization (FISH) indicated that miR-27b-3p was enriched in MSC-ex and exosomal miR-27b-3p repressed Yes-associated protein (YAP) expression by targeting its 3' untranslated region in LX-2. (PMID: 37328872) Additionally, the miR-27b-3p inhibitor abrogated the anti-LOXL2 abilities of MSC-ex and diminished the antifibrotic efficacy. (PMID: 37328872) miR-27b-3p overexpression promoted MSC-ex mediated YAP/LOXL2 inhibition. (PMID: 37328872) Thus, MSC-ex may suppress LOXL2 expression through exosomal miR-27b-3p mediated YAP down-regulation. (PMID: 37328872) Importantly, exosomal miR-27b-3p efficiently enters into the vascular endothelial cells and activates the NF-κB pathway by downregulating PPARα. (PMID: 36640325)
+
 ### Literature
 
 1. Cheng F et al. (2023). *Mesenchymal stem cell-derived exosomal miR-27b-3p alleviates liver fibrosis via downregulating YAP/LOXL2 pathway.* J Nanobiotechnology. DOI: [10.1186/s12951-023-01942-y](https://doi.org/10.1186/s12951-023-01942-y) PMID: [37328872](https://pubmed.ncbi.nlm.nih.gov/37328872/)
@@ -4711,6 +5059,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+Circulating miR-30c-2-3p has been closely related to vascular diseases, however, its role and underlying mechanisms in ischemic stroke remained unclear. (PMID: 39511683) Further investigation revealed that these exosomal miR-30c-2-3p primarily originated from macrophages within atherosclerotic plaques, exacerbating ischemic stroke by targeting microglia. (PMID: 39511683) Exosomes enriched with miR-30c-2-3p increased microglial inflammatory properties in vivo and aggravated neuroinflammation by inhibiting SMAD2. (PMID: 39511683) miR-324-5p and miR-30c-2-3p expression are increased under hypertonicity in KC3AC1 cells. (PMID: 35563683) Overexpression of miR-324-5p and miR-30c-2-3p alter MR expression and signaling in KC3AC1 cells with blunted responses in terms of aldosterone-regulated genes expression. (PMID: 35563683)
 
 ### Literature
 
@@ -4766,6 +5118,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* The protein encoded by this gene is a member of the serine/arginine (SR)-rich family of pre-mRNA splicing factors, which constitute part of the spliceosome. Each of these factors contains an RNA recognition motif (RRM) for binding RNA and an RS domain for binding other proteins. The RS domain is rich in serine and arginine residues and facilitates interaction between different SR splicing factors. In addition to being critical for mRNA splicing, the SR proteins have also been shown to be involve...
 
 *NCBI Gene ID:* [225027](https://www.ncbi.nlm.nih.gov/gene/225027)
+
+### Biological Function Summary
+
+This study aimed to characterize the role and mechanism of action of miR-30a-5p in cardiac senescence. (PMID: 39511427) miR-30a-5p was downregulated in aged mouse hearts and neonatal rat cardiomyocytes (NRCMs). (PMID: 39511427) In vivo, using a combination of echocardiography and different molecular biological approaches, we investigated the role of miR-30a-5p knockout or overexpression in natural- or D-galactose-induced heart aging in mice. (PMID: 39511427) In vitro, using RNA sequencing and a series of molecular biology methods, the mechanism by which miR-30a-5p regulates cardiac senescence was explored in cardiomyocytes. (PMID: 39511427) miR-30a-5p knockout mice showed aggravated natural- or D-galactose-induced heart aging compared to wild-type littermate mice, with significantly decreased heart function, an increased number of γH2AX-positive cells, reduced telomere length, and upregulated p21 and p53 expression. (PMID: 39511427)
 
 ### Literature
 
@@ -4824,6 +5180,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [22652](https://www.ncbi.nlm.nih.gov/gene/22652)
 
+### Biological Function Summary
+
+The miRNA deep sequencing results showed that miR-30a-3p was enriched in sEVs from steatotic hepatocytes. (PMID: 37678722) miR-30a-3p directly targeted the 3' untranslated region of ABCA1 to inhibit ABCA1 expression and cholesterol efflux. (PMID: 37678722) Moreover, serum sEVs from patients with NAFLD and sEV-miR-30a-3p expression were associated with decreased cholesterol efflux levels in foam cells. (PMID: 37678722) CONCLUSION: Steatotic hepatocyte-derived sEVs promote foam cell formation and facilitate atherogenesis via the miR-30a-3p/ABCA1 axis. (PMID: 37678722) Reducing sEV secretion by steatotic hepatocytes or targeting miR-30a-3p may be potential therapeutic approaches to slow the progression of NAFLD-driven atherosclerosis. (PMID: 37678722)
+
 ### Literature
 
 1. Chen X et al. (2023). *Hepatic steatosis aggravates atherosclerosis via small extracellular vesicle-mediated inhibition of cellular cholesterol efflux.* J Hepatol. DOI: [10.1016/j.jhep.2023.08.023](https://doi.org/10.1016/j.jhep.2023.08.023) PMID: [37678722](https://pubmed.ncbi.nlm.nih.gov/37678722/)
@@ -4878,6 +5238,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Predicted to enable K48-linked deubiquitinase activity; cysteine-type deubiquitinase activity; and ubiquitin protein ligase binding activity. Predicted to be involved in several processes, including ERAD pathway; negative regulation of retrograde protein transport, ER to cytosol; and protein deubiquitination. Predicted to be located in cytoplasm. Is expressed in several structures, including adrenal gland; alimentary system; brain; genitourinary system; and respiratory system. Orthologous to hum...
 
 *NCBI Gene ID:* [226418](https://www.ncbi.nlm.nih.gov/gene/226418)
+
+### Biological Function Summary
+
+The downstream signaling pathways of S1PR1 was detected to clarify the specific pathways to regulates miR-30c-5p. (PMID: 39551792) S1PR1 inhibits the expression of FOXA1 through p-STAT1/miR-30c-5p, thereby suppressing the malignant function of LUAD cells. (PMID: 39551792) S1PR1 regulates the malignant function of LUAD cells by inhibiting the expression of COL5A1, MMP1 and SERPINE1 through the p-STAT1/miR-30c-5p/FOXA1 signaling pathway. (PMID: 39551792) Only three studies have explored the therapeutic potential of sEV-miRNAs in vivo in mice-two looked into the role of sEV-hsa-miR-214-3p in decreasing fibrosis, and one investigated sEV-hsa-miR-30c-5p in suppressing the invasive and migratory potential of endometriotic lesions. (PMID: 37877421) Specifically, miR-125b-5p/miR-30c-5p and miR-23a-3p inhibit the expression of smad2 and smad3 by targeting their 3'-untranslated regions, resulting in the downregulation of the transforming growth factor-β (TGF-β)/smad signaling pathway and the reversal of fibrosis. (PMID: 38241636)
 
 ### Literature
 
@@ -4934,6 +5298,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [22652](https://www.ncbi.nlm.nih.gov/gene/22652)
 
+### Biological Function Summary
+
+Mechanistically, AVEN 3' UTR lengthening provides additional binding sites for miR-30b-5p and miR-30c-5p, thus reducing AVEN expression. (PMID: 37816050) The results demonstrated that plasma EVs showed widespread deregulation of specific miRNAs (miR-106a-5p, miR-16-5p, miR-17-5p, miR-195-5p, miR-19b-3p, miR-20a-5p, miR-223-3p, miR-25-3p, miR-296-5p, miR-30b-5p, miR-532-3p, miR-92a-3p, and miR-451a), some of which were already known to be associate... (PMID: 37834197) We selected 13 miRNAs with altered expressions in testis tissue (hsa-miR-122-5p, hsa-miR-145-5p, hsa-miR-16-5p, hsa-miR-193a-3p, hsa-miR-19a-3p, hsa-miR-23a-3p, hsa-miR-30b-5p, hsa-miR-34b-5p, hsa-miR-34c-5p, hsa-miR-374b-5p, hsa-miR-449a, hsa-miR-574-3p and hsa-miR-92a-3p), and systematically ex... (PMID: 35760398) This study was to identify the function of the miR-30b-5p/BCL6 axis in osteogenic differentiation of hBMSCs. (PMID: 35100079) Realtime-quantitative PCR (RT-qPCR) and Western blotting were used to measure the relative expression of ALP, OCN, RUNX2, miR-30b-5p, and BCL6 during osteogenic differentiation of hBMSCs. (PMID: 35100079)
+
 ### Literature
 
 1. Yu P et al. (2023). *Downregulation of apoptotic repressor AVEN exacerbates cardiac injury after myocardial infarction.* Proc Natl Acad Sci U S A. DOI: [10.1073/pnas.2302482120](https://doi.org/10.1073/pnas.2302482120) PMID: [37816050](https://pubmed.ncbi.nlm.nih.gov/37816050/)
@@ -4989,6 +5357,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [15110](https://www.ncbi.nlm.nih.gov/gene/15110)
 
+### Biological Function Summary
+
+Retraction: "Upregulated expression of ROCK1 promotes cell proliferation by functioning as a target of miR-335-5p in non-small cell lung cancer," by Haicheng Tang, Wenwen Du, Yongqian Jiang, Hongmiao Li, Hongjian Bo, and Shu Song. (PMID: 34957558) Interestingly, 4 miRNAs (miR-335-5p, miR-17-5p, miR-486-5p and miR-484) were significantly upregulated in ARMS samples compared to ERMS. (PMID: 39385294) In the validation analysis performed in a larger group of patients only three miRNAs (miR-483-5p, miR-335-5p and miR-484) were differentially significantly expressed in RMS patients compared to HC. (PMID: 39385294) MiR-335-5p was upregulated in RMS tumor tissues respect to normal tissues (p = 0.00202) and upregulated significantly between ARMS and ERMS (p = 0.04). (PMID: 39385294) By performing in situ hybridization, we observed that miR-335-5p signal was exclusively in the cytoplasm of cancer cells. (PMID: 39385294)
+
 ### Literature
 
 1. Unknown (2022). *Retraction.* J Cell Physiol. DOI: [10.1002/jcp.30674](https://doi.org/10.1002/jcp.30674) PMID: [34957558](https://pubmed.ncbi.nlm.nih.gov/34957558/)
@@ -5043,6 +5415,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Predicted to enable AP-1 adaptor complex binding activity; Arp2/3 complex binding activity; and kinesin binding activity. Acts upstream of or within several processes, including negative regulation of cell motility; negative regulation of substrate adhesion-dependent cell spreading; and regulation of Arp2/3 complex-mediated actin nucleation. Located in endosome. Is expressed in several structures, including cardiovascular system; genitourinary system; gut; integumental system; and nervous system...
 
 *NCBI Gene ID:* [211556](https://www.ncbi.nlm.nih.gov/gene/211556)
+
+### Biological Function Summary
+
+Mechanistically, EV-packaged miR-99a-5p (EV-miR-99a) specifically targeted NLRP2 mRNA in fibroblasts and activated the proinflammatory NFκB signaling pathway, thereby converting normal fibroblasts into cancer-associated fibroblasts (CAF). (PMID: 40991395) Among the downstream miRNAs we identified, miR-99a-5p was found to be downregulated in breast cancer tissue. (PMID: 40264026) Inhibition of miR-99a-5p partially reversed the effects of FOXO1 overexpression on cell proliferation and apoptosis. (PMID: 40264026) E2F7, a target mRNA of miR-99a-5p, showed a negative correlation with FOXO1 expression in breast cancer mRNAs we screened. (PMID: 40264026) Silencing E2F7 partially mitigated the inhibitory effects of miR-99a-5p on proliferation and apoptosis in FOXO1-overexpressing cells. (PMID: 40264026)
 
 ### Literature
 
@@ -5101,6 +5477,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [15364](https://www.ncbi.nlm.nih.gov/gene/15364)
 
+### Biological Function Summary
+
+Some overexpressed miRNAs (mmu-let-7f-1-3p, mmu-let-7a-1-3p, mmu-let-7b-3p, mmu-let-7b-5p, mmu-miR-330-3p) regulate genes encoding for protein involved in biological, homeostatic, biosynthetic and small molecule metabolic processes, embryo development and cell differentiation, all phenomena relev... (PMID: 37419964) RESULTS: Our quantitative reverse transcription PCR results revealed that let-7b-3p was significantly overexpressed in brain tissues of the methamphetamine-user group. (PMID: 37075366) CONCLUSION: We have shown for the first time in the literature the differential expression of let-7b-3p in samples from methamphetamine-addicted individuals. (PMID: 37075366) Our results showed that differentially expressed let-7b-3p in methamphetamine users could be used as a diagnostic and therapeutic marker. (PMID: 37075366) Additionally, validated hsa-miR-6826-5p, hsa-let-7b-3p, hsa-miR-7846, and hsa-miR-451a emerged as promising miRNAs that are deregulated with aging and should be further investigated. (PMID: 39684581)
+
 ### Literature
 
 1. Fiorani F et al. (2023). *Ceramide releases exosomes with a specific miRNA signature for cell differentiation.* Sci Rep. DOI: [10.1038/s41598-023-38011-1](https://doi.org/10.1038/s41598-023-38011-1) PMID: [37419964](https://pubmed.ncbi.nlm.nih.gov/37419964/)
@@ -5135,6 +5515,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 
+### Biological Function Summary
+
+miR-125b-1-3p overexpression significantly reduced atherosclerotic plaque development in mice; it also led to decreased lipid uptake and deposition in VSMCs, enhanced autophagy, and suppression of smooth muscle cell phenotypic changes in-vitro. (PMID: 38471617) An interaction between miR-125b-1-3p and the RRAGD/mTOR/ULK1 pathway was revealed, elucidating its role in promoting autophagy. (PMID: 38471617) Therefore, miR-125b-1-3p plays a pivotal role in enhancing autophagic processes, inhibiting foam cell formation in VSMCs and mitigating atherosclerosis progression, partly through RRAGD/mTOR/ULK1 signaling axis modulation. (PMID: 38471617) Thus, miR-125b-1-3p is a promising target for preventive and therapeutic strategies for atherosclerosis. (PMID: 38471617) The expressions of miR-30b-3p and miR-125b-1-3p were determined by quantitative real-time PCR. (PMID: 35931990)
+
 ### Literature
 
 1. Chen X et al. (2024). *microRNA-125b-1-3p mediates autophagy via the RRAGD/mTOR/ULK1 signaling pathway and mitigates atherosclerosis progression.* Cell Signal. DOI: [10.1016/j.cellsig.2024.111136](https://doi.org/10.1016/j.cellsig.2024.111136) PMID: [38471617](https://pubmed.ncbi.nlm.nih.gov/38471617/)
@@ -5167,6 +5551,10 @@ Mouse sequence: `UCAGCUGAGGUUCCCCUCUGUC`
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
+
 ### Literature
 
 No relevant publications found in PubMed.
@@ -5190,6 +5578,10 @@ Mouse sequence: `CUGAAAAUGUUGCCUGAAG`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+miR-mRNA integrated analysis revealed that miR-694 was downregulated while its target gene tumor necrosis factor α-induced protein 3 (Tnfaip3) was upregulated, as confirmed by qPCR. (PMID: 25333455) Herein, we first report that Lass2 deficiency caused the downregulation of miR-694 and the upregulation of its target gene Tnfaip3 in vivo in mice, which may be related to a high risk of occurrence of HCC. (PMID: 25333455) Using miRXplore microarrays containing 634 mouse miRNAs in combination with quantitative RT-PCR, the liver is found to respond to primary infections with an upregulation of the three miRNA species miR-26b, MCMV-miR-M23-1-5p, and miR-1274a, and a downregulation of the 16 miRNA species miR-101b, le... (PMID: 21085987) Three miRNAs (miR-310-3p, miR-92, and miR-127) were found to be up-regulated and four miRNAs (miR-92d-3p, miR-375-5p, miR-146-3p, and miR-694) were found to be down-regulated in the S. (PMID: 28219342)
 
 ### Literature
 
@@ -5218,6 +5610,10 @@ Mouse sequence: `UAUGUGUGUGUGUAUGUGUGUAA`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+This study aimed to investigate the role and regulation mechanism of miR-1187 during the development of DN and podocyte injury. (PMID: 37208852) The content of miR-1187 in podocytes was up-regulated under high glucose (HG) treatment and increased in kidney tissue of db/db mice (DN model mice) compared with control db/m mice. (PMID: 37208852) The administration of miR-1187 inhibitor could decrease podocyte apoptosis induced by HG and attenuate the decline in renal function and reduce proteinuria as well as glomerular apoptosis in db/db mice. (PMID: 37208852) Mechanistically, miR-1187 could inhibit the autophagy level in HG-exposed podocytes and glomerulus of DN mice. (PMID: 37208852) Moreover, miR-1187 inhibitor could reduce HG-stimulated podocyte injury and autophagy flux inhibition. (PMID: 37208852)
 
 ### Literature
 
@@ -5305,6 +5701,10 @@ Human: UGGUUCUAGACUUGCCAACUA
 
 *NCBI Gene ID:* [72333](https://www.ncbi.nlm.nih.gov/gene/72333)
 
+### Biological Function Summary
+
+The following miRNAs have been identified as potential biomarkers for preterm birth and gestational diabetes mellitus: miR-197-3p and miR-520h, miR-1323, miR-342-3p, miR-132-3p, miR-182-3p, miR-517-3p, miR-222-3p, miR-16-5p and miR-126-3p. (PMID: 39596014) By performing a high-throughput luciferase screening of 54 candidate miRNAs, we identified miR-182-3p as a specific and efficient post-transcriptional regulator of TRF2. (PMID: 36426578) Ectopic expression of miR-182-3p drastically reduced TRF2 protein levels in a panel of telomerase- or alternative lengthening of telomeres (ALT)-positive cancer cell lines. (PMID: 36426578) Moreover, miR-182-3p induced DNA damage at telomeric and pericentromeric sites, eventually leading to strong apoptosis activation. (PMID: 36426578) We also observed that treatment with lipid nanoparticles (LNPs) containing miR-182-3p impaired tumor growth in triple-negative breast cancer (TNBC) models, including patient-derived tumor xenografts (PDTXs), without affecting mouse survival or tissue function. (PMID: 36426578)
+
 ### Literature
 
 1. Popova AK et al. (2024). *Extracellular Vesicles as Biomarkers of Pregnancy Complications.* Int J Mol Sci. DOI: [10.3390/ijms252211944](https://doi.org/10.3390/ijms252211944) PMID: [39596014](https://pubmed.ncbi.nlm.nih.gov/39596014/)
@@ -5388,6 +5788,10 @@ Human: CCACCGGGGGAUGAAUGUCAC
 
 *NCBI Gene ID:* [22759](https://www.ncbi.nlm.nih.gov/gene/22759)
 
+### Biological Function Summary
+
+ADAM12 and miR-181d-3p expressions in OSCC cells with Circ_0046336 knockdown were quantified. (PMID: 40760847) Circ_0046336 targeted miR-181d-3p and miR-181d-3p targeted ADAM12 in OSCC cells. (PMID: 40760847) Circ_0046336 silencing facilitated apoptosis, and suppressed viability, migration and invasion of OSCC cells, while upregulating miR-181d-3p and downregulating ADAM12. (PMID: 40760847) MiR-181d-3p deficiency reversed the regulatory role of Circ_0046336 in biological behaviors of OSCC cells. (PMID: 40760847) Circ_0046336 silencing promoted E-cadherin expression and inhibited N-cadherin and Vimentin expressions, but such effects were reversed by miR-181d-3p downregulation.ConclusionCirc_0046336 acts as a ceRNA to regulate apoptosis, migration, invasion and EMT of OSCC cells via miR-181d-3p/ADAM12 axis. (PMID: 40760847)
+
 ### Literature
 
 1. Chen YY et al. (2018). *Upregulation of miR-125b, miR-181d, and miR-221 Predicts Poor Prognosis in MGMT Promoter-Unmethylated Glioblastoma Patients.* Am J Clin Pathol. DOI: [10.1093/ajcp/aqy008](https://doi.org/10.1093/ajcp/aqy008) PMID: [29538610](https://pubmed.ncbi.nlm.nih.gov/29538610/)
@@ -5417,6 +5821,10 @@ Mouse sequence: `CAUACACACACACAUACACAC`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+Among enriched miRNA cargo in exosomes, miR-466f-3p was primarily responsible for the protective effects via inhibition of AKT/GSK3β pathway. (PMID: 35392967) Our mechanistic study further demonstrated that c-MET was the direct target of miR-466f-3p, whose restoration partially abrogated mMSCs-Exo-mediated inhibition in both EMT process and AKT/GSK3β signaling activity induced by radiation. (PMID: 35392967) CONCLUSIONS: Our findings indicated that exosomal miR-466f-3p derived from mMSCs may possess anti-fibrotic properties and prevent radiation-induced EMT through inhibition of AKT/GSK3β via c-MET, providing a promising therapeutic modality for radiation-induced lung fibrosis. (PMID: 35392967) In vitro, western blotting, transmission electron microscopy (TEM), immunofluorescence (IF) staining and qPCR were performed to verify the biological functions of NEAT1, miR-466f-3p and HK2. (PMID: 36169673) Additionally, rescue assays were conducted on osteoblasts to clarify the regulatory network of the NEAT1/miR-466f-3p/HK2 signalling pathway. (PMID: 36169673)
 
 ### Literature
 
@@ -5450,6 +5858,10 @@ Mouse sequence: `UACAUACACACAUACACACGCA`
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 
+### Biological Function Summary
+
+Further results showed that Hsp4 positively regulated the expression of miR-466m-3p. (PMID: 32976821) Knockdown of miR-466m-3p reversed LPS-induced cell apoptosis via increasing the levels of DNAjb6 which was confirmed to be the target gene of miR-466m-3p. (PMID: 32976821)
+
 ### Literature
 
 1. Ji Q et al. (2020). *Long non-coding RNA Hsp4 alleviates lipopolysaccharide-induced apoptosis of lung epithelial cells via miRNA-466m-3p/DNAjb6 axis.* Exp Mol Pathol. DOI: [10.1016/j.yexmp.2020.104547](https://doi.org/10.1016/j.yexmp.2020.104547) PMID: [32976821](https://pubmed.ncbi.nlm.nih.gov/32976821/)
@@ -5474,6 +5886,10 @@ Mouse sequence: `CAUAACAUACACACACACACGUAU`
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
 
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
+
 ### Literature
 
 No relevant publications found in PubMed.
@@ -5497,6 +5913,10 @@ Mouse sequence: `UGUGCAUGUGUGUAUAGUUGUGUGC`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
 
 ### Literature
 
@@ -5545,6 +5965,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [100039672](https://www.ncbi.nlm.nih.gov/gene/100039672)
 
+### Biological Function Summary
+
+Interestingly, the presence of long non-coding RNAs (lncRNAs) as well as microRNAs (miRNAs), such as PlncRNA-1, miR-22-3p, miR-526b, LncRNA NKILA, miR-140-5p and miR-214, which are implicated in the pathogenesis of SA-AKI, may also serve as potential therapeutic targets. (PMID: 38541160) Exosomes derived from miR-140-5p-overexpressing synovial mesenchymal stem cells (SMSC-140s) may be effective in treating OA. (PMID: 28042326) Highly-expressed miR-140-5p blocked this side-effect via RalA. (PMID: 28042326) PURPOSE: To assess the effect of exosomes derived from human urine-derived stem cells (hUSCs) overexpressing miR-140-5p (miR means microRNA) on KOA in an in vitro interleukin 1β (IL-1β)-induced osteoarthritis (OA) model and an in vivo rat KOA model. (PMID: 35179989) CONCLUSION: Our results demonstrated the superiority of hUSC-Exos overexpressing miR-140-5p for treating OA compared with the hUSC-Exos. (PMID: 35179989)
+
 ### Literature
 
 1. Kounatidis D et al. (2024). *Sepsis-Associated Acute Kidney Injury: Where Are We Now?* Medicina (Kaunas). DOI: [10.3390/medicina60030434](https://doi.org/10.3390/medicina60030434) PMID: [38541160](https://pubmed.ncbi.nlm.nih.gov/38541160/)
@@ -5576,6 +6000,10 @@ Mouse sequence: `UUGGAGUUCAUGCAAGUUCUAACC`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+Surprisingly, miR-3068-5p was upregulated following overexpression of Ago2 and downregulated by silencing Ago2 in the NAc. (PMID: 34483916) These findings demonstrated that dysregulated Ago2 in neurons in the NAc is capable of regulating METH sensitization and suggested a potential role of Ago2-dependent miR-3068-5p in METH sensitization. (PMID: 34483916) Overexpression of Gm28309 or inhibition of miR-3068-5p repressed p65 phosphorylation and reduced NLRP3 inflammasome and IL-1β and IL-18 secretion. (PMID: 33414782) Mechanistically, Gm28309 acted as a ceRNA of miR-3068-5p to activate NF-κB pathway by targeting κB-Ras2, an inhibitor of NF-κB signaling. (PMID: 33414782) Moreover, the number of intracellular Brucella was higher when Gm28309 was overexpressed or when miR-3068-5p or p65 was inhibited. (PMID: 33414782)
 
 ### Literature
 
@@ -5630,6 +6058,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [76959](https://www.ncbi.nlm.nih.gov/gene/76959)
 
+### Biological Function Summary
+
+The lack of DNMT2/TRDMT1 gene in DOX-treated four cancer cell lines resulted in decreased levels of four microRNAs, namely, miR-23a-3p, miR-93-5p, miR-125a-5p and miR-191-5p involved in the regulation of several pathways such as ubiquitin-mediated proteolysis, amino acid degradation and translati... (PMID: 36273376) MiR-191-5p has been proven to have high expression in breast cancer (BC), while its biological role and potential regulatory mechanisms in BC remain an open issue. (PMID: 37545272) OBJECTIVE: Bioinformatics was utilized to assay miR-191-5p level in BC tissues and predict its downstream target gene as well as the enriched signaling pathways of the target gene. (PMID: 37545272) RESULTS: Upregulated miR-191-5p expression and downregulated KLF6 expression were observed in BC cells. (PMID: 37545272) There was a targeting relationship between miR-191-5p and KLF6. (PMID: 37545272)
+
 ### Literature
 
 1. Adamczyk-Grochala J et al. (2023). *DNMT2/TRDMT1 gene knockout compromises doxorubicin-induced unfolded protein response and sensitizes cancer cells to ER stress-induced apoptosis.* Apoptosis. DOI: [10.1007/s10495-022-01779-0](https://doi.org/10.1007/s10495-022-01779-0) PMID: [36273376](https://pubmed.ncbi.nlm.nih.gov/36273376/)
@@ -5661,6 +6093,10 @@ Mouse sequence: `AUGGAGGUCUCUGUCUGACUU`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+No functional summary could be generated from available literature.
 
 ### Literature
 
@@ -5709,6 +6145,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [56336](https://www.ncbi.nlm.nih.gov/gene/56336)
 
+### Biological Function Summary
+
+Mechanistically, PDIA3P1 competes with miR-152-3p to prevent degradation of glucose transporter 1 (GLUT1) mRNA, and disrupts the binding between membrane-associated RING-CH 8 (MARCH8) and hexokinase 2 (HK2) to reduce ubiquitination degradation of HK2, thereby promoting glycolysis. (PMID: 40470706) MiRNA sequencing identified miR-152-3p as a key regulator. (PMID: 40075158) Further investigation using dual-luciferase reporter assays, qRT-PCR, and Western blot revealed that miR-152-3p inhibits the expression of FGFR3 by binding to its 3' UTR. (PMID: 40075158) Meanwhile, functional assays, including angiogenesis assays, Transwell assays, and wound healing assays, were performed to evaluate the effects of miR-152-3p on angiogenesis. (PMID: 40075158) We confirmed the significant role of SLC7A7 in BCa progression, specifically in promoting angiogenesis, through the involvement of exosomes and the regulatory axis of miR-152-3p/ FGFR3. (PMID: 40075158)
+
 ### Literature
 
 1. Huang T et al. (2025). *WTAP Mediated m6A Modification Stabilizes PDIA3P1 and Promotes Tumor Progression Driven by Histone Lactylation in Esophageal Squamous Cell Carcinoma.* Adv Sci (Weinh). DOI: [10.1002/advs.202506529](https://doi.org/10.1002/advs.202506529) PMID: [40470706](https://pubmed.ncbi.nlm.nih.gov/40470706/)
@@ -5740,6 +6180,10 @@ Mouse sequence: `UAUGGAGGUCUCUGUCUGACU`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+By integrating miRNA-mRNA regulatory networks, mmu-miR-1843a-5p, mmu-miR-193a-5p, mmu-miR-194-2-3p, and mmu-miR-30c-2-3p were identified as lysyl oxidases-specific miRNAs that were correlated with fibrosis reversal. (PMID: 34367261) RESULTS: Fourteen microRNAs, including miR-18a-5p, miR-376c-3p, miR-136-5p, miR-467c-5p, miR-467b-5p, miR-5104, miR-3098-3p, miR-30a-3p, miR-302b-3p, miR-18a-3p, miR-19b-1-5p, miR-19a-5p, miR-20a-5p, miR-155-5p, were up-regulated, while twenty-six microRNAs, including miR-200b-3p, miR-450a-1-3p, ... (PMID: 28816269) Furthermore, OI-EVs and BMSCs RNAs bioinformatics analysis indicated that OI-EVs play roles through transporting pivotal lncRNA acting as a "sponge" to compete with Mob3a for miR-1843a-5p to promote YAP dephosphorylation and nuclear translocation, ultimately resulting in elevated proliferation an... (PMID: 38311197) Clarification of potential OI-EVs lncRNA ceRNA regulatory mechanism in senescent bone regeneration OI-EVs play important roles through transferring lncRNA-ENSRNOG00000056625 sponging miR-1843a-5p that targeted Mob3a to activate YAP translocation into nucleus, ultimately alleviate senescence, prom... (PMID: 38311197)
 
 ### Literature
 
@@ -5791,6 +6235,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 *Function:* Predicted to be involved in nucleosome assembly. Predicted to be located in nucleus. Is expressed in several structures, including brain; extraembryonic component; liver; reproductive system; and spinal cord. Orthologous to human NAP1L5 (nucleosome assembly protein 1 like 5). [provided by Alliance of Genome Resources, Jul 2025]
 
 *NCBI Gene ID:* [58243](https://www.ncbi.nlm.nih.gov/gene/58243)
+
+### Biological Function Summary
+
+Finally, in addition to activating the repair properties of renal progenitor/stem cells, we uncovered a role for MSC-derived miR-26a-5p in mediating the therapeutic effects of MSCs by inhibiting Zeb2 expression and suppressing pro-fibrotic TECs and its subsequent recruitment of immune cell subpop... (PMID: 37533253) The effects of miR-26a-5p were tested after transfecting miR-26a-5p over-expressive lentivirus. (PMID: 39749190) BMDM-derived exosomes (BMDM-exo) increased miR-26a-5p and decreased PTGS2 expressions, inhibited the NF-κB signaling pathway and regulated macrophage polarization in vivo. (PMID: 39749190) Dual luciferase reporter assay results showed that miR-26a-5p directly binds to the 3'-UTR of PTGS2 mRNA and regulates the expression of PTGS2. (PMID: 39749190) The miR-26a-5p of BMDM-exo played a key role in macrophage polarization. (PMID: 39749190)
 
 ### Literature
 
@@ -5849,6 +6297,10 @@ The mature miRNA sequence is perfectly conserved between mouse and human, sugges
 
 *NCBI Gene ID:* [216080](https://www.ncbi.nlm.nih.gov/gene/216080)
 
+### Biological Function Summary
+
+Elevated ethanolamine increased the expression of microRNA-miR-101a-3p by enhancing ARID3a binding on the miR promoter. (PMID: 36948576) Increased miR-101a-3p decreased the stability of zona occludens-1 (Zo1) mRNA, which in turn, weakened intestinal barriers and induced gut permeability, inflammation and abnormalities in glucose metabolism. (PMID: 36948576) miR-101a-3p was validated as a synaptic miRNA upregulated in aSyn Tg mice and in the cortex of dementia with Lewy bodies patients. (PMID: 36744345) Mice and primary cultured neurons overexpressing miR-101a-3p showed downregulation of postsynaptic proteins GABA Ab2 and SAPAP3 and altered dendritic morphology resembling synaptic plasticity impairments and/or synaptic damage. (PMID: 36744345) Finally, a dynamic role of miR-101a-3p in synapse plasticity was shown by identifying downregulation of miR-101a-3p in a condition of enhanced synaptic plasticity modelled in Wt animals housed in enriched environment. (PMID: 36744345)
+
 ### Literature
 
 1. Mishra SP et al. (2023). *A mechanism by which gut microbiota elevates permeability and inflammation in obese/diabetic mice and human gut.* Gut. DOI: [10.1136/gutjnl-2022-327365](https://doi.org/10.1136/gutjnl-2022-327365) PMID: [36948576](https://pubmed.ncbi.nlm.nih.gov/36948576/)
@@ -5880,6 +6332,10 @@ Mouse sequence: `AGACCUACUUAUCUACCAACAGC`
 ### Predicted Gene Targets (TargetScan Mouse 8.0)
 
 No predicted targets found in TargetScan Mouse 8.0 conserved predictions.
+
+### Biological Function Summary
+
+Microarray analysis (758 miRNAs) identified beneficial changes in nine oncogenic/tumor-suppressive miRNAs, including miR-10a-5p, miR-322-5p, miR-450a-5p, miR-142-5p, miR-148b-3p, miR-1839-3p, miR-18a-5p, miR-1949, and miR-347. (PMID: 40371330)
 
 ### Literature
 
@@ -5966,6 +6422,10 @@ Length difference: 1 nt
 *Function:* Predicted to enable DNA-binding transcription activator activity, RNA polymerase II-specific and RNA polymerase II cis-regulatory region sequence-specific DNA binding activity. Acts upstream of or within several processes, including angiogenesis; skeletal muscle tissue development; and somite specification. Predicted to be located in cytoplasm. Predicted to be active in nucleus. Is expressed in several structures, including alimentary system; embryo mesenchyme; genitourinary system; heart; and m...
 
 *NCBI Gene ID:* [17286](https://www.ncbi.nlm.nih.gov/gene/17286)
+
+### Biological Function Summary
+
+RT-qPCR verified the significant differential expression of miR-152-5p and miR-3681-5p between STEMI and NSTEM groups. (PMID: 35751950) Exosomal miR-152-5p and miR-3681-5p may serve as potential biomarkers for ST-segment elevation myocardial infarction. (PMID: 35751950) In the present study, miRNA sequencing and reverse transcription-quantitative polymerase chain reaction techniques revealed that the expression of exosome derived miR-152-5p was significantly downregulated in patients with AMI compared with healthy controls. (PMID: 36936709) Following transfection of the cardiomyocytes using an miR-152-5p inhibitor, immunofluorescence staining of a-smooth muscle actin revealed a marked increase in fibrosis. (PMID: 36936709) The transfection of cardiomyocytes with miR-152-5p mimics was found to inhibit the activation of ARHGAP6 and Rho-associated coiled-coil containing kinase 2 (ROCK2). (PMID: 36936709)
 
 ### Literature
 

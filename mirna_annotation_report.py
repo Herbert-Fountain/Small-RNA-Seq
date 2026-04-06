@@ -269,6 +269,122 @@ def get_gene_summary(gene_symbol):
     }
 
 
+def fetch_abstracts(pmids):
+    """Fetch full abstract text for a list of PMIDs."""
+    if not pmids:
+        return {}
+    resp = ncbi_request('efetch.fcgi', {
+        'db': 'pubmed',
+        'id': ','.join(pmids),
+        'rettype': 'abstract',
+        'retmode': 'xml',
+    })
+    if not resp:
+        return {}
+
+    # Parse XML to extract abstracts
+    abstracts = {}
+    import xml.etree.ElementTree as ET
+    try:
+        root = ET.fromstring(resp.text)
+        for article in root.findall('.//PubmedArticle'):
+            pmid_el = article.find('.//PMID')
+            if pmid_el is None:
+                continue
+            pmid = pmid_el.text
+
+            abstract_el = article.find('.//Abstract')
+            if abstract_el is not None:
+                parts = []
+                for text_el in abstract_el.findall('.//AbstractText'):
+                    label = text_el.get('Label', '')
+                    text = ''.join(text_el.itertext()).strip()
+                    if label and text:
+                        parts.append(f"{label}: {text}")
+                    elif text:
+                        parts.append(text)
+                abstracts[pmid] = ' '.join(parts)
+    except ET.ParseError:
+        pass
+
+    return abstracts
+
+
+def generate_biological_summary(mirna_name, abstracts, articles):
+    """
+    Extract a biological function summary from PubMed abstracts.
+    Pulls out key sentences mentioning the miRNA's function, targets,
+    pathways, and disease associations.
+    """
+    if not abstracts:
+        return None
+
+    clean_name = mirna_name.replace('mmu-', '')
+    # Patterns to match: miR name followed by functional language
+    name_patterns = [
+        re.escape(clean_name),
+        re.escape(mirna_name),
+        re.escape(clean_name.replace('-', '')),  # miR1495p
+    ]
+    name_re = '|'.join(name_patterns)
+
+    # Keywords that indicate functional statements
+    func_keywords = [
+        'regulat', 'target', 'inhibit', 'promot', 'suppress',
+        'pathway', 'signal', 'express', 'role', 'function',
+        'associat', 'biomarker', 'involved', 'mediat', 'modulat',
+        'oncogen', 'tumor', 'cancer', 'apoptosis', 'proliferat',
+        'differentiat', 'inflammat', 'immune', 'cardiac', 'hepat',
+        'renal', 'pulmonar', 'neural',
+    ]
+
+    relevant_sentences = []
+    seen = set()
+
+    for pmid, abstract in abstracts.items():
+        # Split into sentences
+        sentences = re.split(r'(?<=[.!?])\s+', abstract)
+        for sent in sentences:
+            # Must mention the miRNA
+            if not re.search(name_re, sent, re.IGNORECASE):
+                continue
+            # Must contain a functional keyword
+            if not any(kw in sent.lower() for kw in func_keywords):
+                continue
+            # Deduplicate similar sentences
+            sent_clean = sent.strip()
+            sent_key = sent_clean[:80].lower()
+            if sent_key in seen:
+                continue
+            seen.add(sent_key)
+            # Find which article this came from
+            article_ref = None
+            for art in articles:
+                if art['pmid'] == pmid:
+                    article_ref = art
+                    break
+            relevant_sentences.append((sent_clean, article_ref))
+
+    if not relevant_sentences:
+        return None
+
+    # Build summary from the best sentences (max 5)
+    summary_parts = []
+    for sent, art_ref in relevant_sentences[:5]:
+        # Truncate very long sentences
+        if len(sent) > 300:
+            sent = sent[:297] + '...'
+        if art_ref and art_ref['doi']:
+            citation = f"(PMID: {art_ref['pmid']})"
+        elif art_ref:
+            citation = f"(PMID: {art_ref['pmid']})"
+        else:
+            citation = ""
+        summary_parts.append(f"{sent} {citation}")
+
+    return ' '.join(summary_parts)
+
+
 def search_pubmed(mirna_id, max_results=5):
     name = mirna_id.replace('mmu-', '')
     query = (f'("{name}"[Title/Abstract] OR "{mirna_id}"[Title/Abstract])'
@@ -456,6 +572,24 @@ def generate_report(mirnas_df, ts_df, mirbase_seqs, output_path):
         # PubMed
         print("  Searching PubMed...")
         articles = search_pubmed(gene_id, max_results=5)
+
+        # Fetch abstracts and generate biological summary
+        bio_summary = None
+        if articles:
+            pmids = [a['pmid'] for a in articles]
+            print("  Fetching abstracts...")
+            abstracts = fetch_abstracts(pmids)
+            if abstracts:
+                print("  Generating biological summary...")
+                bio_summary = generate_biological_summary(gene_id, abstracts, articles)
+
+        lines.append("### Biological Function Summary\n\n")
+        if bio_summary:
+            lines.append(f"{bio_summary}\n\n")
+        else:
+            lines.append(f"No functional summary could be generated from "
+                         f"available literature.\n\n")
+
         lines.append("### Literature\n\n")
         if articles:
             for j, art in enumerate(articles, 1):
